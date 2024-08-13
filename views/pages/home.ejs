@@ -1,0 +1,40 @@
+<!-- views/pages/auth.ejs -->
+<%- include('../partials/header') %>
+<section class="content-block light-blue">
+  <input type="hidden" value="<%= page.link %>" id="pageId"/>
+    <div class="grid-two-by-two">
+
+        <div style="font-size: 1.1em;">
+          <h1><%= page.title %></h1>
+          <p>
+            The Open Data Maturity Model is a way to assess how well an organisation publishes and consumes open data, and identifies actions for improvement.
+          </p>
+          <p>
+            The model is based around five themes and five progress levels. Each theme represents a broad area of operations within an organisation. Each theme is broken into areas of activity, which can then be used to assess progress.
+          </p>
+          <p>This interactive tool provides a framework to carry out a Consequence Scanning activity and generate a risk register that can be downloaded and incorporated into your project planning and governance.</p>
+        </div>
+      <div style="text-align: center;">
+        <img style="margin: 0em 2em; max-height: 400px;" src="/images/steps.png" alt="Maturity steps"/>
+      </div>
+      </div>
+    </div>
+</section>
+<section class="content-block dark-blue">
+    <h2><img style="width: 40px;
+      height: auto;
+      vertical-align: bottom;
+      padding-right: 10px;
+      filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(180deg) brightness(100%) contrast(100%);" src="/images/icons_tool-1070a476.svg" alt="Cog Icon"/>How to use the tool</h2>
+    <p>In order to use the tool you will need to first create an <a href="https://theodi.org/account/register/" target="_blank">ODI Account</a>.<p>You can then use this to <a href="/auth/django">login</a>.</p>
+    <p>All free accounts are limited to one assessment, while becoming a <a href="https://theodi.org/membership/" target="_blank">member of the ODI</a> removes this limitation.</p>
+</section>
+
+<style>
+    .grid-two-by-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+    }
+</style>
+<%- include('../partials/footer') %>

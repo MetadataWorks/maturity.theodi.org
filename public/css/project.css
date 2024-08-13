@@ -1,0 +1,263 @@
+:root {
+    --red: #d60303;
+    --orange: #ff6700;
+    --green: #0dbc37;
+    --lightblue: #178cff;
+    --blue: rgb(30 64 175);
+    --grey: #ccc;
+}
+.project {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+.project table {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  table-layout: fixed; /* Ensures the table doesn't resize with content */
+}
+.project tr {
+}
+.project th, td {
+  border: none;
+  padding: 8px;
+  text-align: center;
+  transition: width 0.5s ease; /* Smooth transition for width change */
+  vertical-align: middle;
+}
+.project th {
+  background-color: inherit;
+}
+.project th.level-1 {
+    background-color: var(--red);
+    color: white;
+}
+.project th.level-1 {
+    background-color: var(--red);
+}
+.project th.level-2 {
+    background-color: var(--orange);
+}
+.project th.level-3 {
+    background-color: var(--green);
+}
+.project th.level-4 {
+    background-color: var(--lightblue);
+}
+.project th.level-5 {
+    background-color: var(--blue);
+}
+.project tr {
+    min-height: 60px;
+    height: 60px;
+}
+.project tr th.level-1 {
+    color: white;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 0% 0%);
+    border-left: none;
+    position: relative;
+    width: 20%;
+}
+.project tr th.level-2, tr th.level-3, tr th.level-4, tr th.level-5  {
+    color: white;
+    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+    border-left: none;
+    position: relative;
+    width: 20%;
+    left: -1%;
+}
+.project tbody tr:nth-child(2n) {
+    background-color: inherit;
+}
+.project tr:nth-child(n+2) td {
+    position: relative;
+    vertical-align: top;
+}
+.project tr td:nth-child(n+2) {
+    left: -1%;
+}
+.project tr td:nth-child(n+3), tr th.level-3 {
+    left: -2%;
+}
+.project tr td:nth-child(n+4), tr th.level-4 {
+    left: -3%;
+}
+.project tr td:nth-child(n+5), tr th.level-5 {
+    left: -4%;
+}
+.project td button {
+    border: 2px solid var(--blue); /* Blue border */
+    width: 100%; /* Make the button take the full width of the <td> */
+    max-width: 60%; /* Set a maximum width for the button */
+    padding: 1em; /* Padding inside the button */
+    background-color: white !important; /* Button background color */
+    color: var(--blue); /* Text color */
+    font-size: 1em; /* Set font size */
+    text-align: center; /* Center the text */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow to the button */
+    border-radius: 5px; /* Rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project td button:hover {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+.project td button.selected {
+    background-color: var(--blue);
+    color: white;
+}
+.project td button:disabled, td.disabled button {
+    color: #999; /* Set the text color to grey */
+    background-color: #e0e0e0; /* Set a light grey background color */
+    border-color: #bbb; /* Set a lighter grey border */
+    cursor: not-allowed; /* Change the cursor to indicate the button is not clickable */
+    opacity: 0.6; /* Make the button appear slightly faded */
+    box-shadow: none; /* Remove any shadow for a flatter appearance */
+}
+.project button.green {
+  background-color: var(--green) !important;
+}
+.project button.red {
+  background-color: var(--red) !important;
+}
+.project button.grey {
+  background-color: var(--grey) !important;
+}
+.disabled {
+  color: #bbb !important;
+  background-color: #e0e0e0 !important;
+}
+#assessment-container {
+    flex-grow: 1;
+    background-color: #e6f7ff;
+    padding-left: 40px;
+    padding-right: 20px;
+}
+.question-container {
+  width: 90%;
+  left: -1%;
+  position: relative;
+  padding: 3%;
+  height: 100%;
+  top: -8px;
+}
+.question-container textarea {
+    width: 100%;
+    border: 1px solid var(--grey);
+    font-family: inherit;
+    font-size: inherit;
+    background-color: white !important;
+    color: inherit !important;
+}
+.question-container.active.level-1 {
+    border: 1px solid var(--red);
+    border-top: none;
+}
+.question-container.active.level-2 {
+    border: 1px solid var(--orange);
+    border-top: none;
+}
+.question-container.active.level-3 {
+    border: 1px solid var(--green);
+    border-top: none;
+}
+.question-container.active.level-4 {
+    border: 1px solid var(--lightblue);
+    border-top: none;
+}
+.question-container.active.level-5 {
+    border: 1px solid var(--blue);
+    border-top: none;
+}
+.project nav {
+    min-width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.project .activity {
+    display: none;
+}
+.project .activity.active {
+    display: block;
+}
+.project nav ul {
+    margin-top: 60px;
+    list-style-type: none;
+    padding: 0;
+}
+.project nav ul li ul li.active {
+    text-decoration: underline;
+}
+.project nav ul li {
+    margin-bottom: 10px;
+}
+
+.project nav ul li > ul {
+    list-style-type: none;
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+.project nav ul li > ul li {
+    cursor: pointer;
+    color: var(--blue);
+    margin-bottom: 5px;
+}
+
+.project nav ul li > ul li:hover {
+    text-decoration: underline;
+}
+
+.project nav .content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.project .nav-toggle {
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1100;
+    max-height: 100px;
+}
+
+.project nav.shrunk {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 1000;
+}
+
+@media (max-width: 1024px) {
+    .project {
+        flex-direction: column;
+    }
+
+    .project nav  {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    #assessment-container {
+        padding-top: 60px; /* Enough padding to avoid the nav toggle button overlapping */
+    }
+}
