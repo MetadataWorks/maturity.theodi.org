@@ -1,0 +1,31 @@
+
+<%- include('../../partials/header') %>
+<link rel="stylesheet" href="/css/progress_pie_compiled.css"/>
+<link rel="stylesheet" href="/css/project.css"/>
+<script src="/js/project2.js" type="text/javascript"></script>
+<section class="light-blue project">
+    <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    <nav>
+        <ul id="navList">
+            <!-- Dynamically populated -->
+        </ul>
+    </nav>
+    <section id="assessment-container">
+
+    </section>
+    <!-- Modal Structure -->
+    <div id="statement-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-statement"></h2>
+            <p id="modal-context"></p>
+            <div class="button-group">
+                <button id="modal-true-button" class="true-button">True</button>
+                <button id="modal-false-button" class="false-button">False</button>
+            </div>
+            <textarea id="modal-notes" placeholder="Add your notes here..."></textarea>
+        </div>
+    </div>
+
+</section>
+<%- include('../../partials/footer') %>

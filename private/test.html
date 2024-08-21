@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Pie Chart Progress Indicator</title>
+    <link rel="stylesheet" href="/progress_pie_compiled.css"/>
+    <link rel="stylesheet" href="/progress_pie_unicorn.css"/>
+    <style>
+        .progress-pie, .progress-pie-unicorn {
+            width: 30px;
+            height: 30px;
+        }
+
+        .progress-pie.transparent::after, .progress-pie-unicorn::after {
+            background: transparent;
+            font: 600 18px/20px sans-serif;
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="example">
+        <div class="progress-pie transparent" data-value="80"></div>
+        <div class="progress-pie transparent" data-value="55"></div>
+        <div class="progress-pie transparent" data-value="20"></div>
+        <div class="progress-pie transparent" data-value="71"></div>
+    </div>
+</body>
+</html>

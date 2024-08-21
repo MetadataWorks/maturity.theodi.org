@@ -1,0 +1,152 @@
+<%- include('../../partials/header') %>
+<section class="light-blue new-project padded">
+    <style>
+        .longText {
+            min-width: 80%;
+        }
+        .submit {
+            margin-top: 2em;
+        }
+        .padded {
+            padding: 2em;
+        }
+    </style>
+    <h1 id="newProjectTitle">New Project</h1>
+    <div id="res" class="alert"></div>
+    <form id="dataForm"></form>
+
+    <script>
+        const data = {}; // Load existing data here if editing, otherwise leave as {}
+        $('#dataForm').html("");
+        $('#res').html("");
+        $('form').show();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Fetch the project schema
+            fetch('/schemas/newProject.json')
+                .then(response => response.json())
+                .then(schema => {
+                    // Render the form with the original schema
+                    $('#dataForm').jsonForm({
+                        schema: schema.schema,
+                        form: schema.form,
+                        value: data,
+                        onSubmit: function (errors, values) {
+                            submitProjectForm(errors, values);
+                        }
+                    });
+            });
+            fetch('/assessments', {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(assessments => {
+                    // Create the assessment dropdown
+                    const assessmentLabel = $('<label for="assessmentSelect" class="form-control">Assessment</label>');
+                    const assessmentDropdown = $('<select id="assessmentSelect" class="form-control"></select>');
+                    assessmentDropdown.append('<option value="">Select model</option>');
+
+                    // Populate the dropdown with assessment options
+                    assessments.forEach(assessment => {
+                        assessmentDropdown.append(`<option value="${assessment._id}">${assessment.title}</option>`);
+                    });
+
+                    // Insert the dropdown into the form after the hidden assessment input
+                    console.log('trying to append');
+
+                    setTimeout(() => {
+                        $('.assessment').after(assessmentLabel);
+                        assessmentLabel.after(assessmentDropdown);
+                        // Handle assessment selection
+                        $('#assessmentSelect').change(function () {
+                            const selectedAssessmentId = $(this).val();
+                            $('input[name="assessment"]').val(selectedAssessmentId);
+                        });
+                    }, 100);
+                })
+                .catch(error => {
+                    console.error("Error loading assessments or schema:", error);
+                });
+
+            // Fetch the country list from the API
+            fetch('/lib/countries.json')
+                .then(response => response.json())
+                .then(countries => {
+                    // Create the label and dropdown elements
+                    const countryLabel = $('<label for="countryDropdown" class="form-control">Organisation Location (Country)</label>');
+                    const countryDropdown = $('<select id="countryDropdown" class="form-control"></select>');
+                    countryDropdown.append('<option value="">Select a country</option>');
+
+                    // Populate the dropdown with country options
+                    countries.forEach(country => {
+                        countryDropdown.append(`<option value="${country.cca2}" data-name="${country.name.common}">${country.name.common}</option>`);
+                    });
+
+                    // Insert the label and dropdown into the form before the submit button
+                    $('.submit').before(countryLabel);
+                    $('.submit').before(countryDropdown);
+
+                    // Handle country selection
+                    $('#countryDropdown').change(function () {
+                        const selectedOption = $(this).find('option:selected');
+                        const countryName = selectedOption.data('name');
+                        const countryCode = selectedOption.val();
+
+                        $('input[name="organisation.country.name"]').val(countryName);
+                        $('input[name="organisation.country.code"]').val(countryCode);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching schema or country data:", error);
+                });
+        });
+
+
+        function submitProjectForm(errors, values) {
+            console.log(values);
+            if (errors) {
+                const errorsObj = JSON.stringify(errors);
+                $('#res').html('<p>Please correct the errors in your form</p>' +  errorsObj);
+            } else {
+                // Disable the submit button
+                $('.submit').prop('disabled', true);
+                // Display a message while submitting
+                $('#res').html('<p>Submitting, please wait...</p>');
+
+                // Define whether it's an add or edit operation based on the presence of data._id
+                const postUrl = data._id ? `/projects/${data._id}` : '/projects';
+                const method = data._id ? 'PUT' : 'POST';
+
+                // Post the input object to the appropriate URL
+                fetch(postUrl, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(values)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle response
+                    if (data._id) {
+                        // Re-enable the submit button
+                        $('.submit').prop('disabled', false);
+                        $('#res').html(`<p>Successfully ${method === 'PUT' ? 'updated' : 'created'} project with ID: ${data._id}</p>`);
+                        // Redirect to /projects/{data._id};
+                    } else if (data.error) {
+                        $('#res').html(`<p>Error: ${data.error}</p>`);
+                    } else {
+                        $('#res').html('<p>Unknown error occurred</p>');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    $('#res').html('<p>An error occurred while processing your request</p>');
+                });
+            }
+        }
+    </script>
+</section>
+<%- include('../../partials/footer') %>

@@ -1,0 +1,36 @@
+<%- include('../../partials/header') %>
+
+<h1>Assessments</h1>
+
+<table id="assessmentsTable" class="display">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Owner</th>
+            <th>Organisation</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% assessments.forEach(assessment => { %>
+            <tr>
+                <td><%= assessment.title %></td>
+                <td><%= assessment.description %></td>
+                <td><%= assessment.owner %></td>
+                <td><%= assessment.organisation.name %> (<%= assessment.organisation.country.name %>)</td>
+                <td>
+                    <a href="/assessments/<%= assessment._id %>">View</a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#assessmentsTable').DataTable();
+    });
+</script>
+
+<%- include('../../partials/footer') %>

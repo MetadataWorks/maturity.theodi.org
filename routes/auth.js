@@ -75,7 +75,7 @@ router.post('/local',
 
 // Render local login page
 router.get('/local', (req, res) => {
-  res.render('pages/localLogin', {
+  res.render('pages/auth/localLogin', {
     page: {
       title: 'Local Login',
       link: '/login'
@@ -95,7 +95,7 @@ async function ensureAuthenticated(req, res, next) {
 
 // Route to render reset password page for local users
 router.get('/local/reset-password', ensureAuthenticated,  (req, res) => {
-  res.render('pages/changeLocalPassword', {
+  res.render('pages/auth/changeLocalPassword', {
     page: {
       title: 'Reset Local Account Password',
       link: '/reset-password'
@@ -123,6 +123,39 @@ router.post('/local/password', ensureAuthenticated, async (req, res, next) => {
   } catch (error) {
     console.log(error);
     res.status(500).send('Internal Server Error');
+  }
+});
+
+router.get('/profile', ensureAuthenticated, async (req, res) => {
+  res.locals.userProfile = await retrieveOrCreateUser(res.locals.user);
+  res.locals.userProfile.hubspot = await getHubspotProfile(res.locals.userProfile.id);
+  const page = {
+    title: "Profile page",
+    link: "/profile"
+  };
+  res.locals.page = page;
+  res.render('pages/auth/profile');
+});
+
+router.delete('/profile', ensureAuthenticated, async (req, res, next) => {
+  try {
+      // Get the user ID from the authenticated user
+      const userId = req.session.passport.user.id;
+
+      // Check if the user has any projects
+      const userProjects = await projectController.getUserProjects(userId);
+      const ownedProjects = userProjects.ownedProjects.projects;
+
+      if (ownedProjects.length === 0) {
+          // If the user has no projects, delete the user
+          await deleteUser(userId)
+          res.status(200).json({ message: "User deleted successfully." });
+      } else {
+          // If the user has projects, send a message indicating deletion is not allowed
+          res.status(403).json({ error: "User cannot be deleted because they have projects. Please delete all owned projects first." });
+      }
+  } catch (error) {
+      next(error);
   }
 });
 

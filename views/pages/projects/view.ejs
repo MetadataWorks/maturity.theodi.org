@@ -1,5 +1,5 @@
 <!-- views/sources.ejs -->
-<%- include('../partials/header') %>
+<%- include('../../partials/header') %>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
@@ -39,7 +39,7 @@
 <div class="content-block light-blue">
     <div style="text-align: center; width: 100%;">
         <br/>
-        <button class="transparent" onclick="window.location.href='/new'">Start a new evaluation</button>
+        <button class="transparent" onclick="window.location.href='/projects/new'">Start a new evaluation</button>
     </div>
 </div>
 <div class="content-block white">
@@ -63,26 +63,42 @@ $(document).ready(function () {
     })
     .then(response => response.json())
     .then(data => {
-        renderMyProjects(data.ownedProjects);
+        renderMyProjects();
         renderSharedProjects(data.sharedProjects);
     });
 });
 
-function renderMyProjects(data) {
+function renderMyProjects() {
     const myProjectsTable = $('#myProjectsTable').DataTable({
         ajax: {
             url: '/projects',
-            dataSrc: 'ownedProjects.projects',
+            dataSrc: function (json) {
+                // Only return ownedProjects
+                return json.ownedProjects;
+            },
             headers: {
-                Accept: 'application/json' // Set the Accept header to indicate JSON format
+                'Accept': 'application/json'
             }
         },
         columns: [
             { data: 'title', title: 'Title', defaultContent: '' },
+            { data: 'organisation.title', title: 'Organisation Name', defaultContent: '' },
+            { data: 'assessment.title', title: 'Assessment', defaultContent: '' },
             {
-                data: 'score',
-                title: 'Maturity level',
-                width: '12%'
+                data: 'assessmentData.activityCompletionPercentage',
+                title: 'Activities Complete (%)',
+                defaultContent: '0%',
+                render: function(data, type, row) {
+                    return data ? data + '%' : '0%';
+                }
+            },
+            {
+                data: 'assessmentData.statementCompletionPercentage',
+                title: 'Statements Complete (%)',
+                defaultContent: '0%',
+                render: function(data, type, row) {
+                    return data ? data + '%' : '0%';
+                }
             },
             {
                 data: 'lastModified',
@@ -98,9 +114,9 @@ function renderMyProjects(data) {
             {
                 title: 'Actions',
                 render: function (data, type, row) {
-                    return '<button class="editBtn" data-id="' + row.id + '">Edit</button>' +
-                           '<button class="shareBtn" data-id="' + row.id + '">Share</button>' +
-                           '<button class="deleteBtn" data-id="' + row.id + '">Delete</button>'
+                    return '<button class="editBtn" data-id="' + row._id + '">Edit</button>' +
+                           '<button class="shareBtn" data-id="' + row._id + '">Share</button>' +
+                           '<button class="deleteBtn" data-id="' + row._id + '">Delete</button>'
                 }
             }
         ],
@@ -113,12 +129,12 @@ function renderMyProjects(data) {
 
     $('#myProjectsTable').on('click', '.editBtn', function () {
         var id = $(this).data('id');
-        window.location.href = '/project/' + id + "/projectDetails";
+        window.location.href = '/projects/' + id + "";
     });
 
     $('#myProjectsTable').on('click', '.viewOutput', function () {
         var id = $(this).data('id');
-        window.location.href = '/project/' + id + "/";
+        window.location.href = '/projects/' + id + "";
     });
 
     $('#myProjectsTable').on('click', '.deleteBtn', function () {
@@ -126,7 +142,7 @@ function renderMyProjects(data) {
         if (confirm('Are you sure you want to delete this project?')) {
             $('#res').html('<p>Deleting, please wait.</p>');
             $.ajax({
-                url: '/project/' + id,
+                url: '/projects/' + id,
                 type: 'DELETE',
                 success: function (result) {
                     $('#res').html('<p>Project deleted successfully.</p>');
@@ -149,7 +165,6 @@ function renderMyProjects(data) {
     });
     $('#myProjectsTable').on('click', '.shareBtn', function () {
         var id = $(this).data('id');
-        console.log(id);
         openShareOverlay();
         document.getElementById("shareOverlay").setAttribute('data-projectid',id);
 
@@ -174,7 +189,7 @@ function renderMyProjects(data) {
         const projectId = $(this).closest('.overlay').data('projectid');
 
         // Call API to add share with email
-        fetch(`/project/${projectId}/sharedUsers`, {
+        fetch(`/projects/${projectId}/sharedUsers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -203,7 +218,7 @@ function renderMyProjects(data) {
         const projectId = $(this).closest('.overlay').data('projectid');
 
         // Call API to delete share with email
-        fetch(`/project/${projectId}/sharedUsers/${email}`, {
+        fetch(`/projects/${projectId}/sharedUsers/${email}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -228,10 +243,23 @@ function renderSharedProjects(data) {
         data: data,
         columns: [
             { data: 'title', title: 'Title', defaultContent: '' },
+            { data: 'organisation.title', title: 'Organisation Name', defaultContent: '' },
+            { data: 'assessment.title', title: 'Assessment', defaultContent: '' },
             {
-                data: 'score',
-                title: 'Maturity level',
-                width: '12%'
+                data: 'assessmentData.activityCompletionPercentage',
+                title: 'Activities Complete (%)',
+                defaultContent: '0%',
+                render: function(data, type, row) {
+                    return data ? data + '%' : '0%';
+                }
+            },
+            {
+                data: 'assessmentData.statementCompletionPercentage',
+                title: 'Statements Complete (%)',
+                defaultContent: '0%',
+                render: function(data, type, row) {
+                    return data ? data + '%' : '0%';
+                }
             },
             { data: 'owner', title: 'Owner', defaultContent: '' },
             {
@@ -248,7 +276,7 @@ function renderSharedProjects(data) {
             {
                 title: 'Actions',
                 render: function (data, type, row) {
-                    return '<button class="editBtn" data-id="' + row.id + '">Edit</button>'
+                    return '<button class="editBtn" data-id="' + row._id + '">Edit</button>'
                 }
             }
         ],
@@ -261,11 +289,11 @@ function renderSharedProjects(data) {
 
     $('#sharedProjectsTable').on('click', '.editBtn', function () {
         var id = $(this).data('id');
-        window.location.href = '/project/' + id + "";
+        window.location.href = '/projects/' + id + "";
     });
     $('#sharedProjectsTable').on('click', '.viewOutput', function () {
         var id = $(this).data('id');
-        window.location.href = '/project/' + id + "";
+        window.location.href = '/projects/' + id + "";
     });
 }
 // Function to open share overlay
@@ -280,7 +308,7 @@ function closeShareOverlay() {
 
 // Function to get shared users of a project
 function getSharedUsers(projectId) {
-    return fetch(`/project/${projectId}/sharedUsers`)
+    return fetch(`/projects/${projectId}/sharedUsers`)
         .then(response => response.json())
         .catch(error => console.error("Error fetching shared users:", error));
 }
@@ -300,4 +328,4 @@ function renderSharedUsers(sharedUsers) {
     sharedEmailsTable.draw();
 }
 </script>
-<%- include('../partials/footer') %>
+<%- include('../../partials/footer') %>

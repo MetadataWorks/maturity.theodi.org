@@ -11,6 +11,19 @@ const mongoose = require('mongoose');
 const mongoURI = process.env.MONGO_URI;
 const mongoDB = process.env.MONGO_DB;
 
+const express = require('express');
+const session = require('express-session');
+const passport = require('./passport'); // Require the passport module
+const authRoutes = require('./routes/auth'); // Require the authentication routes module
+const projectRoutes = require('./routes/project'); // Require the project routes module
+const assessmentsRoutes = require('./routes/assessment');
+const { loadProject } = require('./middleware/project');
+const loadAssessments = require('./lib/loadAssessments');
+//const { getHubspotProfile, updateToolStatistics } = require('./controllers/hubspot');
+const app = express();
+const port = process.env.PORT || 3080;
+app.set('view engine', 'ejs');
+
 // Connect to MongoDB
 mongoose.connect(mongoURI, { dbName: mongoDB });
 
@@ -20,25 +33,12 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function() {
   console.log("Connected to MongoDB database");
+  loadAssessments();
 });
-
-// Set up App
-
-const express = require('express');
-const session = require('express-session');
-const passport = require('./passport'); // Require the passport module
-const authRoutes = require('./routes/auth'); // Require the authentication routes module
-const projectRoutes = require('./routes/project'); // Require the project routes module
-const { loadProject } = require('./middleware/project');
-const { deleteUser, retrieveOrCreateUser } = require('./controllers/user'); // Import necessary functions from controllers
-//const { getHubspotProfile, updateToolStatistics } = require('./controllers/hubspot');
-const app = express();
-const port = process.env.PORT || 3080;
-app.set('view engine', 'ejs');
 
 // Middleware for logging
 const logger = require('morgan');
-//app.use(logger('dev'));
+app.use(logger('dev'));
 
 // Middleware for parsing incoming requests
 app.use(express.json());
@@ -127,7 +127,8 @@ app.get('/admin', function(req,res) {
 
 app.use(loadProject);
 
-app.use('/project', projectRoutes);
+app.use('/assessments', assessmentsRoutes);
+app.use('/projects', projectRoutes);
 
 app.get('/', function(req, res) {
   const page = {
@@ -147,75 +148,7 @@ app.get('/about', function(req, res) {
   res.render('pages/about');
 });
 
-app.get('/profile', ensureAuthenticated, async (req, res) => {
-  res.locals.userProfile = await retrieveOrCreateUser(res.locals.user);
-  res.locals.userProfile.hubspot = await getHubspotProfile(res.locals.userProfile.id);
-  const page = {
-    title: "Profile page",
-    link: "/profile"
-  };
-  res.locals.page = page;
-  res.render('pages/profile');
-});
-
-app.get('/new', ensureAuthenticated, function(req, res) {
-  const page = {
-    title: "Project details",
-    link: "projectDetails"
-  };
-  res.locals.page = page;
-  res.render('pages/project', { project: '' });
-});
-
-app.delete('/profile', ensureAuthenticated, async (req, res, next) => {
-  try {
-      // Get the user ID from the authenticated user
-      const userId = req.session.passport.user.id;
-
-      // Check if the user has any projects
-      const userProjects = await projectController.getUserProjects(userId);
-      const ownedProjects = userProjects.ownedProjects.projects;
-
-      if (ownedProjects.length === 0) {
-          // If the user has no projects, delete the user
-          await deleteUser(userId)
-          res.status(200).json({ message: "User deleted successfully." });
-      } else {
-          // If the user has projects, send a message indicating deletion is not allowed
-          res.status(403).json({ error: "User cannot be deleted because they have projects. Please delete all owned projects first." });
-      }
-  } catch (error) {
-      next(error);
-  }
-});
-
-const projectController = require('./controllers/project');
-
-app.get('/projects', ensureAuthenticated, async (req, res, next) => {
-    try {
-        // Check if the request accepts JSON
-        const acceptHeader = req.get('Accept');
-        const userId = req.session.passport.user.id;
-        if (acceptHeader === 'application/json') {
-            // Fetch user projects and send JSON response
-            const userProjects = await projectController.getUserProjects(userId);
-            res.json(userProjects);
-        } else {
-            if (req.session.authMethod !== 'local') {
-              //updateToolStatistics(req.session.passport.user.id);
-            }
-            const page = {
-              title: "Evaluations",
-              link: "/projects"
-            };
-            res.locals.page = page;
-            res.render('pages/projects');
-        }
-    } catch (error) {
-      console.log(error);
-      next(error);
-    }
-});
+app.use(ensureAuthenticated, express.static(__dirname + '/private'));
 
 // Error handling
 app.get('/error', (req, res) => res.send("error logging in"));

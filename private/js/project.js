@@ -328,7 +328,6 @@ async function loadData() {
 
     // Show the activity based on the URL hash on load
     window.addEventListener('load', () => {
-        console.log('in here');
         const hash = location.hash.substring(1); // Remove the '#' from the hash
         if (hash) {
             showActivity(hash);

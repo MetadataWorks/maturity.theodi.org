@@ -86,6 +86,7 @@
 .project tr td:nth-child(n+5), tr th.level-5 {
     left: -4%;
 }
+.modal button,
 .project td button {
     border: 2px solid var(--blue); /* Blue border */
     width: 100%; /* Make the button take the full width of the <td> */
@@ -104,12 +105,31 @@
     margin-left: auto;
     margin-right: auto;
 }
+.project td .button-container {
+    position: relative;
+}
+.modal button,
+.project td button.true-button,
+.project td button.false-button {
+    display: inline-block;
+    position: relative;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: auto;
+    margin: 5px;
+}
+
+.statement-container:hover .true-button,
+.statement-container:hover .false-button {
+    display: inline-block;
+}
 
 .project td button:hover {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
 }
+.modal button.selected,
 .project td button.selected {
-    background-color: var(--blue);
+    background-color: var(--blue) !important;
     color: white;
 }
 .project td button:disabled, td.disabled button {
@@ -223,7 +243,6 @@
 
 .project .nav-toggle {
     position: absolute;
-    top: 120px;
     left: 0px;
     background-color: var(--blue);
     color: white;
@@ -236,7 +255,7 @@
 
 .project nav.shrunk {
     position: fixed;
-    top: 120px;
+    top: 110px;
     left: 0;
     height: 100%;
     transform: translateX(-100%);
@@ -260,4 +279,163 @@
     #assessment-container {
         padding-top: 60px; /* Enough padding to avoid the nav toggle button overlapping */
     }
+}
+.statement-container {
+    position: relative;
+    margin: 10px;
+}
+.statement-bubble {
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.statement-bubble.positive-true.true-selected {
+    background-color: #d4edda;
+}
+.statement-bubble.positive-false.true-selected {
+    background-color: #f8d7da;
+}
+.statement-bubble.positive-true.false-selected {
+    background-color: #f8d7da;
+}
+.statement-bubble.positive-false.false-selected {
+    background-color: #d4edda;
+}
+.statement-bubble.true-selected .true-button{
+    background-color: var(--blue) !important;
+    color: white;
+}
+.statement-bubble.false-selected .false-button {
+    background-color: var(--blue) !important;
+    color: white;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-group {
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+#modal-notes {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.notes-icon {
+    margin-left: 5px;
+    font-size: 14px;
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    cursor: pointer;
+    position: absolute;
+    right: 27px;
+    bottom: 25%;
+}
+.progress-pie, .progress-pie-unicorn {
+    width: 30px;
+    height: 30px;
+}
+
+.progress-pie.transparent::after, .progress-pie-unicorn::after {
+    background: transparent;
+    font: 600 18px/20px sans-serif;
+    color: rgb(230, 196, 44);
+}
+.progress-pie.hidden {
+    background-image: none;
+}
+/* Style for the dimension items */
+.nav-dimension-item {
+    margin-bottom: 1em;
+}
+
+/* Style for dimension and activity titles */
+.dimension-title {
+    display: inline-block;
+    width: 100%; /* Adjust as needed */
+    vertical-align: middle;
+    font-weight: bold;
+}
+.activity-title, .overall-progress-title {
+    display: inline-block;
+    width: 70%; /* Adjust as needed */
+    vertical-align: middle;
+}
+
+/* Style for progress pie charts */
+.progress-pie {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Ensures that progress pies stack under each other */
+.nav-activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+}
+
+#navList {
+    list-style-type: none; /* Remove default list styles */
+    padding-left: 0;
+}
+
+#navList li ul {
+    list-style-type: none;
+    padding-left: 1em; /* Indent sub-items */
+}
+
+#navList li ul li {
+    padding: 0.5em 0; /* Add some space between items */
 }

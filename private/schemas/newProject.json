@@ -1,0 +1,80 @@
+{
+  "schema": {
+    "type": "object",
+    "properties": {
+      "assessment": {
+        "type": "string",
+        "title": "Assessment",
+        "required": true
+      },
+      "title": {
+        "type": "string",
+        "title": "Project Title",
+        "minLength": 1,
+        "required": true
+      },
+      "notes": {
+        "type": "string",
+        "title": "Notes"
+      },
+      "organisation": {
+        "type": "object",
+        "title": "Organisation",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Organisation Title"
+          },
+          "country": {
+            "type": "object",
+            "title": "Country",
+            "properties": {
+              "name": {
+                "type": "string",
+                "title": "Country Name"
+              },
+              "code": {
+                "type": "string",
+                "title": "Country Code"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "form": [
+    {
+      "key": "assessment",
+      "htmlClass": "hidden assessment"
+    },
+    {
+      "key": "title",
+      "title": "Project Title",
+      "validationMessage": "Please enter the project title."
+    },
+    {
+      "key": "notes",
+      "type": "textarea",
+      "title": "Notes",
+      "options": {
+        "rows": 4
+      }
+    },
+    {
+      "key": "organisation.title",
+      "title": "Organisation Name"
+    },
+    {
+      "key": "organisation.country.name"
+    },
+    {
+      "key": "organisation.country.code"
+    },
+    {
+      "type": "submit",
+      "title": "Submit",
+      "htmlClass": "submit"
+    }
+  ]
+}

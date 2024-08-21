@@ -47,11 +47,11 @@ const projectSchema = new mongoose.Schema({
     notes: {
         type: String
     },
-    assessmentTemplate: {
-        type: String,
+    assessment: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    activities: {
+    assessmentData: {
         type: mongoose.Schema.Types.Mixed
     },
     organisation: {
