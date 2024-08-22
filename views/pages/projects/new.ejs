@@ -134,7 +134,7 @@
                         // Re-enable the submit button
                         $('.submit').prop('disabled', false);
                         $('#res').html(`<p>Successfully ${method === 'PUT' ? 'updated' : 'created'} project with ID: ${data._id}</p>`);
-                        // Redirect to /projects/{data._id};
+                        window.location.href = `/projects/${data._id}`;
                     } else if (data.error) {
                         $('#res').html(`<p>Error: ${data.error}</p>`);
                     } else {
