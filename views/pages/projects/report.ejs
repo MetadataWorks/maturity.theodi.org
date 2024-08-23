@@ -1,0 +1,114 @@
+
+<%- include('../../partials/header') %>
+<link rel="stylesheet" href="/css/progress_pie_compiled.css"/>
+<link rel="stylesheet" href="/css/project.css"/>
+<script src="/js/project2.js" type="text/javascript"></script>
+<script src="/js/report.js" type="text/javascript"></script>
+<style>
+.project {
+    min-height: calc(100vh - 200px);
+    flex-direction: column;
+    padding: 1em;
+}
+.project tr th.level-1 {
+    color: white;
+    clip-path: none;
+    border-left: none;
+    position: relative;
+    width: 13%;
+    left: 0;
+}
+.project tr th.level-2, tr th.level-3, tr th.level-4, tr th.level-5  {
+    color: white;
+    clip-path: none;
+    border-left: none;
+    position: relative;
+    width: 13%;
+    left: 0;
+}
+.project tr td.level-1, .project tr td.level-2, .project tr td.level-3, .project tr td.level-4, .project tr td.level-5 {
+    background-color: rgba(200,200,200,0.5);
+    vertical-align: middle;
+}
+.shaded {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.project tr td:nth-child(n+1) {
+    vertical-align: middle;
+    left: 0;
+}
+.project tr td:nth-child(n+2) {
+    vertical-align: middle;
+    left: 0;
+}
+.project tr td:nth-child(n+3), tr th.level-3 {
+    vertical-align: middle;
+    left: 0;
+}
+.project tr td:nth-child(n+4), tr th.level-4 {
+    vertical-align: middle;
+    left: 0;
+}
+.project tr td:nth-child(n+5), tr th.level-5 {
+    vertical-align: middle;
+    left: 0;
+}
+.project tr {
+    min-height: 30px;
+    max-height: 30px;
+}
+.project table {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 80%;
+}
+.project table .dimensions {
+    width: 35%;
+}
+.project table .dimension-name {
+    width: 35%;
+    text-align: left;
+}
+.project table .activity-name {
+    text-align: left;
+    padding-left: 3em;
+}
+.project td {
+    vertical-align: middle;
+}
+.project td button.toggle-activities {
+    border: none;
+    width: auto;
+    max-width: 10%;
+    height: auto;
+    padding: 1em;
+    background-color: transparent !important;
+    color: inherit;
+    font-size: 1.2em;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+}
+.dimension-row {
+    border-top: 1px solid var(--blue);
+}
+.dimension-row .dimension-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+</style>
+<section class="light-blue project">
+    <h1>Overall maturity levels</h1>
+    <table id="report-table">
+
+    </table>
+</section>
+<%- include('../../partials/footer') %>

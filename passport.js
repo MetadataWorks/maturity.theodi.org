@@ -29,6 +29,7 @@ passport.use('django', new OAuth2Strategy({
   callbackURL: process.env.DJANGO_CALLBACK_URL,
   grant_type: 'authorization_code', // Specify grant type
   pkce: true, // Enable PKCE,
+  scope: "read",
   state: true,
   passReqToCallback: true
 }, (req, accessToken, refreshToken, profile, done) => {

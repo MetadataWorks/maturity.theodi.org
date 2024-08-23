@@ -81,12 +81,28 @@ function renderMyProjects() {
             }
         },
         columns: [
-            { data: 'title', title: 'Title', defaultContent: '' },
-            { data: 'organisation.title', title: 'Organisation Name', defaultContent: '' },
-            { data: 'assessment.title', title: 'Assessment', defaultContent: '' },
+        {
+                data: 'title',
+                title: 'Title',
+                width: '15%',
+                defaultContent: ''
+            },
+            {
+                data: 'organisation.title',
+                title: 'Organisation Name',
+                width: '10%',
+                defaultContent: ''
+            },
+            {
+                data: 'assessment.title',
+                title: 'Assessment',
+                width: '10%',
+                defaultContent: ''
+            },
             {
                 data: 'assessmentData.activityCompletionPercentage',
                 title: 'Activities Complete (%)',
+                width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
                     return data ? data + '%' : '0%';
@@ -95,6 +111,7 @@ function renderMyProjects() {
             {
                 data: 'assessmentData.statementCompletionPercentage',
                 title: 'Statements Complete (%)',
+                width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
                     return data ? data + '%' : '0%';
@@ -103,7 +120,7 @@ function renderMyProjects() {
             {
                 data: 'lastModified',
                 title: 'Last Modified',
-                width: '12%',
+                width: '10%',
                 render: function(data, type, row) {
                     // Parse the date string into a Date object
                     var date = new Date(data);
@@ -113,6 +130,7 @@ function renderMyProjects() {
             },
             {
                 title: 'Actions',
+                width: '35%',
                 render: function (data, type, row) {
                     return '<button class="editBtn" data-id="' + row._id + '">Edit</button>' +
                            '<button class="shareBtn" data-id="' + row._id + '">Share</button>' +
@@ -242,12 +260,28 @@ function renderSharedProjects(data) {
     $('#sharedProjectsTable').DataTable({
         data: data,
         columns: [
-            { data: 'title', title: 'Title', defaultContent: '' },
-            { data: 'organisation.title', title: 'Organisation Name', defaultContent: '' },
-            { data: 'assessment.title', title: 'Assessment', defaultContent: '' },
+            {
+                data: 'title',
+                title: 'Title',
+                width: '15%',
+                defaultContent: ''
+            },
+            {
+                data: 'organisation.title',
+                title: 'Organisation Name',
+                width: '10%',
+                defaultContent: ''
+            },
+            {
+                data: 'assessment.title',
+                title: 'Assessment',
+                width: '10%',
+                defaultContent: ''
+            },
             {
                 data: 'assessmentData.activityCompletionPercentage',
                 title: 'Activities Complete (%)',
+                width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
                     return data ? data + '%' : '0%';
@@ -256,16 +290,22 @@ function renderSharedProjects(data) {
             {
                 data: 'assessmentData.statementCompletionPercentage',
                 title: 'Statements Complete (%)',
+                width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
                     return data ? data + '%' : '0%';
                 }
             },
-            { data: 'owner', title: 'Owner', defaultContent: '' },
+            {
+                data: 'owner',
+                title: 'Owner',
+                width: '15%',
+                defaultContent: ''
+            },
             {
                 data: 'lastModified',
                 title: 'Last Modified',
-                width: '12%',
+                width: '10%',
                 render: function(data, type, row) {
                     // Parse the date string into a Date object
                     var date = new Date(data);
@@ -275,6 +315,7 @@ function renderSharedProjects(data) {
             },
             {
                 title: 'Actions',
+                width: '20%',
                 render: function (data, type, row) {
                     return '<button class="editBtn" data-id="' + row._id + '">Edit</button>'
                 }

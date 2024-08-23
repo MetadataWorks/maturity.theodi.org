@@ -46,6 +46,24 @@ router.get('/:id', ensureAuthenticated, checkProjectAccess, async (req, res, nex
         next(error);
     }
 });
+router.get('/:id/report', ensureAuthenticated, checkProjectAccess, async (req, res, next) => {
+    try {
+        const projectId = req.params.id;
+        const acceptHeader = req.get('Accept');
+
+        if (acceptHeader === 'application/json') {
+            const project = await projectController.getProjectById(projectId);
+            return res.json(project);
+        } else {
+            const page = { title: "Project Report", link: "/projects" };
+            res.locals.page = page;
+            return res.render('pages/projects/report');
+        }
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
 
 router.post('/', ensureAuthenticated, async (req, res) => {
     try {
