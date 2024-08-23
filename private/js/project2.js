@@ -1,6 +1,7 @@
 let defaultActivity = "";
 let projectData = {};  // This will store the current state of the project
 
+
 function createAssessmentTable(dimension, levelKeys) {
     const container = document.getElementById('assessment-container');
     dimension.activities.forEach(activity => {
@@ -104,58 +105,6 @@ function createAssessmentTable(dimension, levelKeys) {
     });
 }
 
-function handleStatementSelection(statement, isTrue, activity) {
-    statement.userAnswer = {
-        answer: isTrue,
-        notes: statement.userNotes || ""
-    };
-
-    const bubbles = document.querySelectorAll('.statement-bubble');
-    bubbles.forEach(bubble => {
-        const statementSpan = bubble.querySelector('.statement');
-        if (statementSpan.textContent === statement.text) {
-            bubble.classList.toggle('true-selected', isTrue);
-            bubble.classList.toggle('false-selected', !isTrue);
-        }
-    });
-
-    // Update projectData with the user's selection
-    updateProjectData(statement, activity);
-
-    // Recalculate the completion percentage for the activity and update the pie
-    const activityCompletion = calculateActivityCompletion(activity);
-    updateProgressPie(activity.title.toLowerCase().replace(/\s+/g, '-'), activityCompletion);
-
-    // Recalculate the overall completion percentage and update the overall pie
-    // Calculate overall completion metrics
-    //const { activityCompletionPercentage, statementCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
-//    updateOverallProgressPie(overallCompletion);
-
-    // Trigger debounced save
-    debouncedSaveProgress(projectData);
-}
-
-function updateProjectData(statement, activity) {
-    const projectDimension = projectData.assessmentData.dimensions.find(d => d.activities.some(a => a.title === activity.title));
-    const projectActivity = projectDimension.activities.find(a => a.title === activity.title);
-    const projectStatement = projectActivity.statements.find(s => s.text === statement.text);
-
-    projectStatement.userAnswer = {
-        answer: statement.userAnswer.answer,
-        notes: statement.userAnswer.notes
-    };
-
-    // Update activity completion
-    projectActivity.completionPercentage = calculateActivityCompletion(projectActivity);
-
-    // Update overall completion
-    // Calculate overall completion metrics
-    const { activityCompletionPercentage, statementCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
-    projectData.assessmentData.activityCompletionPercentage = activityCompletionPercentage;
-    projectData.assessmentData.statementCompletionPercentage = statementCompletionPercentage;
-}
-
-
 function openStatementModal(statement, notesIcon, activity) {
     const modal = document.getElementById('statement-modal');
     const modalStatement = document.getElementById('modal-statement');
@@ -206,6 +155,141 @@ function openStatementModal(statement, notesIcon, activity) {
     modal.style.display = 'block';
 }
 
+function handleStatementSelection(statement, isTrue, activity) {
+    statement.userAnswer = {
+        answer: isTrue,
+        notes: statement.userNotes || ""
+    };
+
+    const bubbles = document.querySelectorAll('.statement-bubble');
+    bubbles.forEach(bubble => {
+        const statementSpan = bubble.querySelector('.statement');
+        if (statementSpan.textContent === statement.text) {
+            bubble.classList.toggle('true-selected', isTrue);
+            bubble.classList.toggle('false-selected', !isTrue);
+        }
+    });
+
+    // Update projectData with the user's selection
+    updateProjectData(statement, activity);
+
+    // Recalculate the completion percentage for the activity and update the pie
+    const activityCompletion = calculateActivityCompletion(activity);
+    updateProgressPie(activity.title.toLowerCase().replace(/\s+/g, '-'), activityCompletion);
+
+    // Recalculate the overall completion percentage and update the overall pie
+    // Calculate overall completion metrics
+    //const { activityCompletionPercentage, statementCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
+//    updateOverallProgressPie(overallCompletion);
+
+    // Trigger debounced save
+    debouncedSaveProgress(projectData);
+}
+
+function updateProjectData(statement, activity) {
+    const projectDimension = projectData.assessmentData.dimensions.find(d => d.activities.some(a => a.title === activity.title));
+    const projectActivity = projectDimension.activities.find(a => a.title === activity.title);
+    const projectStatement = projectActivity.statements.find(s => s.text === statement.text);
+
+    projectStatement.userAnswer = {
+        answer: statement.userAnswer.answer,
+        notes: statement.userAnswer.notes
+    };
+
+    // Update activity completion
+    projectActivity.completionPercentage = calculateActivityCompletion(projectActivity);
+    updateActivityProgress(projectActivity);
+
+    // Update overall completion
+    // Calculate overall completion metrics
+    const { activityCompletionPercentage, statementCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
+    projectData.assessmentData.activityCompletionPercentage = activityCompletionPercentage;
+    projectData.assessmentData.statementCompletionPercentage = statementCompletionPercentage;
+}
+
+function updateActivityProgress(activity) {
+    const levelCoverage = calculateLevelCoverage(activity);
+    const achievedLevel = calculateAchievedLevel(levelCoverage);
+
+    activity.userProgress = {
+        achievedLevel: achievedLevel,
+        levelCoveragePercent: levelCoverage
+    };
+
+}
+
+function calculateLevelCoverage(activity) {
+    const levelCoverage = [];
+    const totalStatementsByLevel = {};
+
+    // Initialize counters
+    activity.statements.forEach(statement => {
+        const level = statement.associatedLevel;
+        if (!totalStatementsByLevel[level]) {
+            totalStatementsByLevel[level] = { total: 0, positive: 0 };
+        }
+        totalStatementsByLevel[level].total += 1;
+        if (statement.userAnswer && statement.userAnswer.answer === statement.positive) {
+            totalStatementsByLevel[level].positive += 1;
+        }
+    });
+
+    // Calculate coverage percentage for each level
+    for (const level in totalStatementsByLevel) {
+        const { total, positive } = totalStatementsByLevel[level];
+        const levelProgress = Math.round((positive / total) * 100);
+        levelCoverage.push({ [level]: levelProgress });
+
+        const activityContainer = document.getElementById(activity.title.toLowerCase().replace(/\s+/g, '-'));
+        const thElement = activityContainer.querySelector(`th.level-${level}`);
+        // Track the maximum coverage
+        if (thElement) {
+            const minOpacity = 0.6; // 40%
+            const opacity = minOpacity + (levelProgress / 100) * (1 - minOpacity); // Linear interpolation
+            changeHeadingOpacity(thElement, opacity * 100); // Convert to percentage
+        }
+    }
+
+    return levelCoverage;
+}
+
+function changeHeadingOpacity(element,percentage) {
+    // Get the current background color
+    const currentColor = window.getComputedStyle(element).backgroundColor;
+
+    // Extract the RGB values
+    const rgba = currentColor.match(/rgba?\((\d+), (\d+), (\d+)(?:, (\d+(\.\d+)?))?\)/);
+
+    if (rgba) {
+      const r = rgba[1];
+      const g = rgba[2];
+      const b = rgba[3];
+
+      // Calculate the new alpha based on the percentage
+      const newAlpha = percentage / 100;
+
+      // Apply the new background color with the specified opacity
+      element.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${newAlpha})`;
+    }
+}
+
+function calculateAchievedLevel(levelCoverage) {
+    let achievedLevel = 0;
+
+    for (const levelObj of levelCoverage) {
+        const level = parseInt(Object.keys(levelObj)[0]);
+        const coverage = levelObj[level];
+
+        if (coverage === 100) {
+            achievedLevel = level;
+        } else {
+            break;
+        }
+    }
+
+    return achievedLevel;
+}
+
 function calculateActivityCompletion(activity) {
     const totalStatements = activity.statements.length;
     const completedStatements = activity.statements.filter(statement => statement.userAnswer && statement.userAnswer.answer !== undefined).length;
@@ -242,13 +326,19 @@ function calculateOverallCompletion(dimensions) {
     };
 }
 
-
 function updateProgressPie(activityId, percentage) {
     const pie = document.querySelector(`#nav-${activityId} .progress-pie`);
     if (pie) {
         pie.setAttribute('data-value', percentage);
         if (percentage > 0) {
             pie.classList.remove('hidden');
+        }
+        if (percentage > 99) {;
+            // Add a class to show the tick mark
+            pie.classList.add('complete');
+        } else {
+            // Remove the class if it's not 100%
+            pie.classList.remove('complete');
         }
     }
 }
@@ -281,9 +371,6 @@ async function saveProgress(projectData) {
     }
 }
 
-// Debounced version of saveProgress
-const debouncedSaveProgress = debounce(saveProgress, 2000);
-
 function loadNavBar(data) {
     const dimensions = data.dimensions;
     const navList = document.getElementById('navList');
@@ -315,6 +402,10 @@ function loadNavBar(data) {
             progressPie.setAttribute('data-value', completionPercentage);
             if (completionPercentage < 1) {
                 progressPie.classList.add('hidden');
+            }
+            if (completionPercentage > 99) {;
+                // Add a class to show the tick mark
+                progressPie.classList.add('complete');
             }
             activityItem.appendChild(progressPie);
 
@@ -373,23 +464,6 @@ function updateHash(activityId) {
     }
 }
 
-window.addEventListener('load', () => {
-    const hash = location.hash.substring(1);
-    if (hash) {
-        showActivity(hash);
-    } else {
-        showActivity(defaultActivity);
-    }
-});
-
-window.addEventListener('beforeunload', () => {
-    saveProgress(projectData); // Ensure progress is saved before leaving
-});
-
-window.addEventListener('hashchange', () => {
-    saveProgress(projectData); // Ensure progress is saved before navigating
-});
-
 function toggleNav() {
     const nav = document.querySelector('.project nav');
     nav.classList.toggle('shrunk');
@@ -445,6 +519,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             assessmentData.dimensions.forEach(dimension => {
                 createAssessmentTable(dimension, levelKeys);
+                // Update opacity of the table headers based on the existing project data
+                dimension.activities.forEach(activity => {
+                    calculateLevelCoverage(activity);
+                });
             });
         }
     } else {
@@ -458,3 +536,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         showActivity(defaultActivity);
     }
 });
+
+window.addEventListener('load', () => {
+    const hash = location.hash.substring(1);
+    if (hash) {
+        showActivity(hash);
+    } else {
+        showActivity(defaultActivity);
+    }
+});
+
+window.addEventListener('beforeunload', () => {
+    saveProgress(projectData); // Ensure progress is saved before leaving
+});
+
+window.addEventListener('hashchange', () => {
+    saveProgress(projectData); // Ensure progress is saved before navigating
+});
+
+// Debounced version of saveProgress
+const debouncedSaveProgress = debounce(saveProgress, 2000);
