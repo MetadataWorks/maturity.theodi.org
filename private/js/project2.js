@@ -2,6 +2,61 @@ let defaultActivity = "";
 let projectData = {};  // This will store the current state of the project
 
 
+function renderAssessmentMetadata(data) {
+    console.log(data);
+    // Fetch the project schema
+    fetch('/schemas/newProject.json')
+    .then(response => response.json())
+    .then(schema => {
+        // Render the form with the original schema
+        $('#dataForm').jsonForm({
+            schema: schema.schema,
+            form: schema.form,
+            value: data,
+            onSubmit: function (errors, values) {
+                submitProjectForm(errors, values);
+            }
+        });
+    });
+    // Fetch the country list from the API
+    fetch('/lib/countries.json')
+    .then(response => response.json())
+    .then(countries => {
+
+        // Create the label and dropdown elements
+        const countryLabel = $('<label for="countryDropdown" class="form-control">Organisation Location (Country)</label>');
+        const countryDropdown = $('<select id="countryDropdown" class="form-control"></select>');
+        countryDropdown.append('<option value="">Select a country</option>');
+
+        // Populate the dropdown with country options
+        countries.forEach(country => {
+            countryDropdown.append(`<option value="${country.cca2}" data-name="${country.name.common}">${country.name.common}</option>`);
+        });
+
+        // Insert the label and dropdown into the form before the submit button
+        $('.submit').before(countryLabel);
+        $('.submit').before(countryDropdown);
+
+        setTimeout(function() {
+            $('input[name="organisation.country.name"]').prop('disabled', true);
+            $('input[name="organisation.country.code"]').prop('disabled', true);
+        }, 200);
+
+        // Handle country selection
+        $('#countryDropdown').change(function () {
+            const selectedOption = $(this).find('option:selected');
+            const countryName = selectedOption.data('name');
+            const countryCode = selectedOption.val();
+
+            $('input[name="organisation.country.name"]').val(countryName);
+            $('input[name="organisation.country.code"]').val(countryCode);
+        });
+    })
+    .catch(error => {
+        console.error("Error fetching schema or country data:", error);
+    });
+}
+
 function createAssessmentTable(dimension, levelKeys) {
     const container = document.getElementById('assessment-container');
     dimension.activities.forEach(activity => {
@@ -371,9 +426,65 @@ async function saveProgress(projectData) {
     }
 }
 
+function submitProjectForm(errors, values) {
+    console.log(values);
+    if (errors) {
+        const errorsObj = JSON.stringify(errors);
+        $('#res').html('<p>Please correct the errors in your form</p>' +  errorsObj);
+    } else {
+        // Disable the submit button
+        $('.submit').prop('disabled', true);
+        // Display a message while submitting
+        $('#res').html('<p>Submitting, please wait...</p>');
+
+        // Define whether it's an add or edit operation based on the presence of data._id
+        const postUrl = values._id ? `/projects/${values._id}` : '/projects';
+        const method = values._id ? 'PUT' : 'POST';
+
+        // Post the input object to the appropriate URL
+        fetch(postUrl, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle response
+            if (data._id) {
+                // Re-enable the submit button
+                $('.submit').prop('disabled', false);
+                $('#res').html(`<p>Successfully ${method === 'PUT' ? 'updated' : 'created'} project with ID: ${data._id}</p>`);
+            } else if (data.error) {
+                $('#res').html(`<p>Error: ${data.error}</p>`);
+            } else {
+                $('#res').html('<p>Unknown error occurred</p>');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            $('#res').html('<p>An error occurred while processing your request</p>');
+        });
+    }
+}
+
 function loadNavBar(data) {
     const dimensions = data.dimensions;
     const navList = document.getElementById('navList');
+
+    const metadataItem = document.createElement('li');
+    metadataItem.classList.add('nav-dimension-item'); // Add class for styling
+    metadataItem.setAttribute('id', 'nav-metadata');
+    const metadataTitle = document.createElement('span');
+    metadataTitle.textContent = "Metadata";
+    metadataTitle.classList.add('dimension-title');
+    metadataItem.appendChild(metadataTitle);
+    metadataItem.addEventListener('click', () => {
+        showMetadata();
+        updateHash("metadata");
+    });
+    navList.appendChild(metadataItem);
 
     dimensions.forEach(dimension => {
         const dimensionItem = document.createElement('li');
@@ -440,7 +551,18 @@ function loadNavBar(data) {
     */
 }
 
+function showMetadata() {
+    document.querySelectorAll('.activity').forEach(activity => {
+        activity.classList.remove('active');
+    });
+    const selectedActivityNav = document.getElementById('nav-metadata');
+    const selectedActivity = document.getElementById("metadata");
+    selectedActivity.classList.add('active');
+    selectedActivityNav.classList.add('active');
+}
+
 function showActivity(activityId) {
+    document.getElementById("metadata").classList.remove('active');
     document.querySelectorAll('.activity').forEach(activity => {
         activity.classList.remove('active');
     });
@@ -511,6 +633,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         projectData = await loadProject(projectId);
         const assessmentData = projectData.assessmentData;
 
+        renderAssessmentMetadata(projectData);
         loadNavBar(assessmentData);
 
         if (assessmentData) {

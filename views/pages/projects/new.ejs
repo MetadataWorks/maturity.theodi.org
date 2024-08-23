@@ -53,9 +53,6 @@
                         assessmentDropdown.append(`<option value="${assessment._id}">${assessment.title}</option>`);
                     });
 
-                    // Insert the dropdown into the form after the hidden assessment input
-                    console.log('trying to append');
-
                     setTimeout(() => {
                         $('.assessment').after(assessmentLabel);
                         assessmentLabel.after(assessmentDropdown);
@@ -87,6 +84,11 @@
                     // Insert the label and dropdown into the form before the submit button
                     $('.submit').before(countryLabel);
                     $('.submit').before(countryDropdown);
+
+                    setTimeout(function() {
+                        $('input[name="organisation.country.name"]').prop('disabled', true);
+                        $('input[name="organisation.country.code"]').prop('disabled', true);
+                    }, 1000);
 
                     // Handle country selection
                     $('#countryDropdown').change(function () {

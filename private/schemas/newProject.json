@@ -2,6 +2,9 @@
   "schema": {
     "type": "object",
     "properties": {
+      "_id": {
+        "type": "hidden"
+      },
       "assessment": {
         "type": "string",
         "title": "Assessment",
@@ -44,6 +47,10 @@
     }
   },
   "form": [
+    {
+      "key": "_id",
+      "htmlClass": "hidden"
+    },
     {
       "key": "assessment",
       "htmlClass": "hidden assessment"

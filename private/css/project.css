@@ -226,13 +226,15 @@
     padding-left: 15px;
 }
 
-.project nav ul li > ul li {
+.project nav ul li > ul li,
+.project nav ul li#nav-metadata {
     cursor: pointer;
     color: var(--blue);
     margin-bottom: 5px;
 }
 
-.project nav ul li > ul li:hover {
+.project nav ul li > ul li:hover,
+.project nav ul li#nav-metadata span:hover  {
     text-decoration: underline;
 }
 
@@ -433,6 +435,7 @@
 #navList {
     list-style-type: none; /* Remove default list styles */
     padding-left: 0;
+    max-width: 250px;
 }
 
 #navList li ul {
@@ -442,4 +445,10 @@
 
 #navList li ul li {
     padding: 0.5em 0; /* Add some space between items */
+}
+#metadata {
+    display: none;
+}
+#metadata.active {
+    display: block;
 }
