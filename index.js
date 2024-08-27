@@ -132,7 +132,7 @@ app.use('/projects', projectRoutes);
 
 app.get('/', function(req, res) {
   const page = {
-    title: "Open Data Maturity Model",
+    title: "ODI Maturity Assessment Tool",
     link: "/"
   };
   res.locals.page = page;
