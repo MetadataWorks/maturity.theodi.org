@@ -6,7 +6,11 @@
     --blue: rgb(30 64 175);
     --grey: #ccc;
 }
-.project {
+table {
+    margin-bottom: 0;
+}
+.project,
+.report-page {
     display: flex;
     flex-direction: row;
     min-height: 100vh;
@@ -19,36 +23,50 @@
 }
 .project tr {
 }
-.project th, td {
+.project th,
+.project td,
+.project-report th,
+.project-report td {
   border: none;
   padding: 8px;
   text-align: center;
   transition: width 0.5s ease; /* Smooth transition for width change */
   vertical-align: middle;
 }
-.project th {
+th {
   background-color: inherit;
 }
-.project th.level-1 {
-    background-color: var(--red);
+.project .level,
+.project-report .level {
     color: white;
 }
-.project th.level-1 {
+th.level-1,
+span.level-1,
+.questions-table td.level-1 {
     background-color: var(--red);
 }
-.project th.level-2 {
+th.level-2,
+span.level-2,
+.questions-table td.level-2 {
     background-color: var(--orange);
 }
-.project th.level-3 {
+th.level-3,
+span.level-3,
+.questions-table td.level-3 {
     background-color: var(--green);
 }
-.project th.level-4 {
+th.level-4,
+span.level-4,
+.questions-table td.level-4 {
     background-color: var(--lightblue);
 }
-.project th.level-5 {
+th.level-5,
+span.level-5,
+.questions-table td.level-5 {
     background-color: var(--blue);
 }
-.project tr {
+.project tr,
+.project-report tr {
     min-height: 60px;
     height: 60px;
 }
@@ -59,7 +77,7 @@
     position: relative;
     width: 20%;
 }
-.project tr th.level-2, tr th.level-3, tr th.level-4, tr th.level-5  {
+.project tr th.level-2, .project tr th.level-3, .project tr th.level-4, .project tr th.level-5  {
     color: white;
     clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
     border-left: none;
@@ -195,7 +213,8 @@
     border: 1px solid var(--blue);
     border-top: none;
 }
-.project nav {
+.project nav,
+.report-page nav {
     min-width: 250px;
     background-color: #f4f4f4;
     padding: 20px;
@@ -208,42 +227,53 @@
 .project .activity.active {
     display: block;
 }
-.project nav ul {
+.project nav ul,
+.report-page nav ul {
     margin-top: 60px;
     list-style-type: none;
     padding: 0;
 }
-.project nav ul li ul li.active {
+.project nav ul li ul li.active,
+.report-page nav ul li ul li.active {
     text-decoration: underline;
 }
-.project nav ul li {
+.project nav ul li,
+.report-page nav ul li {
     margin-bottom: 10px;
 }
 
-.project nav ul li > ul {
+.project nav ul li > ul,
+.report-page nav ul li > ul {
     list-style-type: none;
     margin-top: 5px;
     padding-left: 15px;
 }
 
 .project nav ul li > ul li,
-.project nav ul li#nav-metadata {
+.project nav ul li#nav-metadata,
+.report-page nav ul li > ul li,
+.report-page nav ul li#nav-metadata {
     cursor: pointer;
     color: var(--blue);
     margin-bottom: 5px;
 }
 
 .project nav ul li > ul li:hover,
-.project nav ul li#nav-metadata span:hover  {
+.project nav ul li#nav-metadata span:hover
+.report-page nav ul li > ul li:hover,
+.report-page nav ul li#nav-metadata span:hover
+{
     text-decoration: underline;
 }
 
-.project nav .content {
+.project nav .content,
+.report-page nav .content {
     flex-grow: 1;
     padding: 20px;
 }
 
-.project .nav-toggle {
+.project .nav-toggle,
+.report-page .nav-toggle {
     position: absolute;
     left: 0px;
     background-color: var(--blue);
@@ -255,7 +285,8 @@
     max-height: 100px;
 }
 
-.project nav.shrunk {
+.project nav.shrunk,
+.report-page nav.shrunk {
     position: fixed;
     top: 110px;
     left: 0;
@@ -269,7 +300,8 @@
         flex-direction: column;
     }
 
-    .project nav  {
+    .project nav,
+    .report-page nav  {
         position: fixed;
         top: 0;
         left: 0;
@@ -391,11 +423,11 @@
 .progress-pie.transparent::after, .progress-pie-unicorn::after {
     background: transparent;
     font: 600 18px/20px sans-serif;
-    color: rgb(230, 196, 44);
+    color: var(--blue);
 }
 .progress-pie.complete::after {
     content: '✔'; /* HTML tick mark */
-    color: var(--green);
+    color: gold;
 }
 .progress-pie.hidden {
     background-image: none;
@@ -416,6 +448,16 @@
     display: inline-block;
     width: 70%; /* Adjust as needed */
     vertical-align: middle;
+}
+.report-page nav .activity-title {
+    width: 100%;
+}
+.report-page nav {
+    position: sticky;
+    max-height: 100vh; /* Ensure it doesn’t overflow the viewport height */
+    overflow-y: auto; /* Allow scrolling within the nav if it’s too tall */
+    align-self: flex-start;
+    top: 0;
 }
 
 /* Style for progress pie charts */
@@ -451,4 +493,136 @@
 }
 #metadata.active {
     display: block;
+}
+.project-report {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.project-report table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.project-report tbody tr:nth-child(2n) {
+    background-color: inherit;
+}
+.project-report table .dimensions {
+    width: 35%;
+}
+.project-report table .level {
+    width: 13%;
+}
+.project-report table .dimension-name {
+    width: 35%;
+    text-align: left;
+}
+.project-report table .activity-name {
+    text-align: left;
+    padding-left: 3em;
+}
+.project-report td button.toggle-activities {
+    border: none;
+    width: auto;
+    max-width: 10%;
+    height: auto;
+    padding: 1em;
+    background-color: transparent !important;
+    color: inherit;
+    font-size: 1.2em;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+}
+.project-report table .dimension-row {
+    border-top: 1px solid var(--blue);
+}
+.project-report table .dimension-row .dimension-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.dimension-heatmap, .activity-heatmap {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--blue);
+}
+span.level {
+    padding: 1em;
+}
+.project-report .activity-details {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px dashed var(--blue);
+    border-radius: 5px;
+    padding: 1em;
+    padding-top: 0em;
+    margin-top: 2em;
+}
+.project-report .questions-table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse; /* Ensures borders don't double up */
+}
+
+.project-report .questions-table th,
+.project-report .questions-table td {
+    border: 1px solid var(--blue); /* Apply blue border to all cells */
+    padding: 8px; /* Optional: adds padding to cells for better readability */
+}
+.project-report .activity-details h4 {
+    text-align: center;
+}
+.project-report .title-level-container {
+    display: flex;
+    justify-content: space-between; /* Distributes space between items */
+    align-items: center; /* Aligns items vertically in the center */
+    width: 100%; /* Ensures the container takes the full width of its parent */
+    margin-bottom: 1em; /* Adds some space below the container */
+}
+
+.project-report .title-level-container .dimension-title,
+.project-report .title-level-container .activity-title {
+    flex: 1; /* Takes up available space on the left */
+    text-align: left; /* Aligns text to the left */
+    margin: 0; /* Removes default margin */
+    margin-top: 2em;
+}
+
+.project-report .title-level-container .dimension-level,
+.project-report .title-level-container .activity-level {
+    flex: 1; /* Takes up available space on the right */
+    text-align: right; /* Aligns text to the right */
+    margin: 0; /* Removes default margin */
+    margin-top: 2em;
+}
+.project-report .metadata-table {
+    width: auto;
+    margin-left: 0;
+}
+.project-report .metadata-table td {
+    text-align: left;
+}
+.project-report .metadata-table tr {
+    height: 30px;
+    max-height: 30px;
+}
+.project-report .metadata-table tr td:first-child {
+    font-weight: bold;
+}
+table td.level-progress {
+    color: white;
+    font-size: 1.2em;
+}
+.questions-table .question-progress {
+    font-size: 1.4em;
+}
+.questions-table .question-answer {
+    font-size: 0.8em;
 }

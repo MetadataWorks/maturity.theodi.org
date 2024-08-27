@@ -134,7 +134,8 @@ function renderMyProjects() {
                 render: function (data, type, row) {
                     return '<button class="editBtn" data-id="' + row._id + '">Edit</button>' +
                            '<button class="shareBtn" data-id="' + row._id + '">Share</button>' +
-                           '<button class="deleteBtn" data-id="' + row._id + '">Delete</button>'
+                           '<button class="deleteBtn" data-id="' + row._id + '">Delete</button>' +
+                           '<button class="reportBtn" data-id="' + row._id + '">View Report</button>'
                 }
             }
         ],
@@ -150,9 +151,9 @@ function renderMyProjects() {
         window.location.href = '/projects/' + id + "";
     });
 
-    $('#myProjectsTable').on('click', '.viewOutput', function () {
+    $('#myProjectsTable').on('click', '.reportBtn', function () {
         var id = $(this).data('id');
-        window.location.href = '/projects/' + id + "";
+        window.location.href = '/projects/' + id + "/report";
     });
 
     $('#myProjectsTable').on('click', '.deleteBtn', function () {
@@ -317,7 +318,8 @@ function renderSharedProjects(data) {
                 title: 'Actions',
                 width: '20%',
                 render: function (data, type, row) {
-                    return '<button class="editBtn" data-id="' + row._id + '">Edit</button>'
+                    return '<button class="editBtn" data-id="' + row._id + '">Edit</button>' +
+                           '<button class="reportBtn" data-id="' + row._id + '">View Report</button>'
                 }
             }
         ],
@@ -332,9 +334,9 @@ function renderSharedProjects(data) {
         var id = $(this).data('id');
         window.location.href = '/projects/' + id + "";
     });
-    $('#sharedProjectsTable').on('click', '.viewOutput', function () {
+    $('#sharedProjectsTable').on('click', '.reportBtn', function () {
         var id = $(this).data('id');
-        window.location.href = '/projects/' + id + "";
+        window.location.href = '/projects/' + id + "/report";
     });
 }
 // Function to open share overlay

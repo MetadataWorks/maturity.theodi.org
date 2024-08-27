@@ -282,7 +282,7 @@ function submitProjectForm(errors, values) {
     }
 }
 
-function loadNavBar(data) {
+function loadNavBar(data,projectId) {
     const dimensions = data.dimensions;
     const navList = document.getElementById('navList');
 
@@ -344,6 +344,17 @@ function loadNavBar(data) {
         dimensionItem.appendChild(activityList);
         navList.appendChild(dimensionItem);
     });
+
+    // Add Metadata item to the nav
+    const reportItem = document.createElement('li');
+    reportItem.classList.add('nav-dimension-item'); // Add class for styling
+    reportItem.setAttribute('id', 'nav-metadata');
+    const reportTitle = document.createElement('a');
+    reportTitle.textContent = "Report";
+    reportTitle.classList.add('dimension-title');
+    reportTitle.href = '/projects/' + projectId+ '/report'; // Link to the report
+    reportItem.appendChild(reportTitle);
+    navList.appendChild(reportItem);
 
     // Add overall progress
     /*
@@ -426,7 +437,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const assessmentData = projectData.assessmentData;
 
         renderAssessmentMetadata(projectData);
-        loadNavBar(assessmentData);
+        loadNavBar(assessmentData,projectId);
 
         if (assessmentData) {
             if (assessmentData.levels) {

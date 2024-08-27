@@ -20,10 +20,13 @@ async function getUserProjects(userId) {
             sharedProjects.map(async (project) => {
                 const owner = await User.findById(project.owner);
                 return {
-                    id: project._id,
+                    _id: project._id,
+                    assessment: project.assessment,
                     title: project.title,
                     owner: owner ? owner.name : "Unknown",
-                    lastModified: project.lastModified
+                    organisation: project.organisation || "Unknown",
+                    lastModified: project.lastModified,
+                    assessmentData: project.assessmentData || null,
                 };
             })
         );
@@ -87,6 +90,7 @@ async function createProject(projectData, userId) {
     try {
         // Assign the owner of the project
         projectData.owner = userId;
+        delete projectData._id; // Correct way to delete the _id field
 
         // Fetch the selected assessment using the assessment ID provided in projectData
         const assessment = await Assessment.findById(projectData.assessment);
@@ -99,7 +103,7 @@ async function createProject(projectData, userId) {
         projectData.assessmentData = {
             dimensions: assessment.dimensions
         };
-
+        console.log(projectData);
         // Create a new project instance
         const project = new Project(projectData);
 
@@ -136,15 +140,9 @@ async function handleProjectExport(project, format, res) {
             case 'json':
                 return res.json(project);
             case 'csv':
-                const fields = ['consequence', 'outcome', 'impact', 'likelihood', 'role', 'action.description', 'action.date', 'action.stakeholder', 'action.KPI'];
-                const opts = { fields };
-                const csv = parse(project.unintendedConsequences, opts);
-                res.setHeader('Content-Disposition', `attachment; filename=${project.title.replace(/\s+/g, '_').trim()}.csv`);
-                res.setHeader('Content-Type', 'text/csv');
-                return res.send(csv);
+                /* Not implemented */
             case 'docx':
                 const owner = await getProjectOwner(project);
-                const metrics = await getUserProjectMetrics([project]); // Assuming getUserProjectMetrics is defined elsewhere
                 const tempFilePath = await buildDocx(project, metrics, owner);
                 const fileName = `${project.title.replace(/\s+/g, '_').trim()}.docx`;
                 res.set('Content-Disposition', `attachment; filename="${fileName}"`);

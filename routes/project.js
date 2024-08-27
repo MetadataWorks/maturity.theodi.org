@@ -34,7 +34,10 @@ router.get('/:id', ensureAuthenticated, checkProjectAccess, async (req, res, nex
         const acceptHeader = req.get('Accept');
 
         if (acceptHeader === 'application/json') {
-            const project = await projectController.getProjectById(projectId);
+            let project = await projectController.getProjectById(projectId);
+            project = project.toObject();
+            delete project.owner;
+            delete project.sharedWith;
             return res.json(project);
         } else {
             const page = { title: "Edit Project", link: "/projects" };
@@ -51,9 +54,8 @@ router.get('/:id/report', ensureAuthenticated, checkProjectAccess, async (req, r
         const projectId = req.params.id;
         const acceptHeader = req.get('Accept');
 
-        if (acceptHeader === 'application/json') {
-            const project = await projectController.getProjectById(projectId);
-            return res.json(project);
+        if (acceptHeader === 'DOCX') {
+            // DOCX here
         } else {
             const page = { title: "Project Report", link: "/projects" };
             res.locals.page = page;

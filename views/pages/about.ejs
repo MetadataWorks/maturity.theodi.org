@@ -1,3 +1,5 @@
+<!-- views/pages/auth.ejs -->
+<%- include('../partials/header') %>
 <section class="content-block light-blue">
   <h1 style="text-align: center;">Your Privacy</h1>
   <h1>Data we collect about you and your project</h1>
@@ -49,7 +51,7 @@
   </div>
   <h1>Tool hosting, security and data storage</h1>
   <div class="infobox">
-    <p>The CARE tool is hosted on a <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a> server in the UK which is maintained with the latest security updates.</p>
+    <p>This tool is hosted on a <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a> server in the UK which is maintained with the latest security updates.</p>
     <p><a href="https://www.cloudflare.com">Cloudflare</a> is used as the content devlivery platform and to protect against attacks.</p>
     <p>Account data (name, email, time and date of login etc) and project data is stored in <a href="https://www.mongodb.com" target="_blank">MongoDB atlas</a> which is in turn hosted on Microsoft Azure infrastructure located in Ireland. Data is encryted at REST in Azure, so Microsoft/Mongo cannot see the data. System maintainers have access to the database for administration. Reading and extracting data for purposes other than ensuring the system is online and functioning is strictly prohibited.</p>
     <p>The tool is developed in <a href="https://nodejs.org/en" target="_blank">NodeJS</a> and regular valnerability audits are automatically carried out, reported and actioned as necessary.</p>
@@ -57,18 +59,26 @@
   </div>
   <h1 id="useOfAI">Use of AI (OpenAI ChatGPT)</h1>
   <div class="infobox">
-    <p>You can choose to make use of ChatGPT to assist you in the process of Consequence Scanning. Throughout the tool, you will have the option to generate suggestions and ideas for your project in order to help you identify consequences and plan risk mitigation.</p>
-    <p>In order to utilise the AI plugin, we process your input data and pass it through the plugin. You can see what data is passed to ChatGPT, along with the exact prompt we ask the AI, before choosing if you want to make use of it.</p>
-    <p><b>Important</b>: No data will be passed to ChatGPT without receiving your confirmation. You are able to use the tool without using the AI functionality, simply select 'No' or 'Continue without' when prompted.</p>
-    <p>When using this tool, please consider whether it is appropriate to utilise the AI functionality and avoid entering any personally identifiable, sensitive, or commercially sensitive information into the tool. You should also refer to your own organisation's policy and apply it to the use of this tool, as required.</p>
-    <p>Always refer to OpenAI's official privacy policy and terms of service for the most up-to-date information on data handling and privacy practices.</p>
-    <p>We are not tied to OpenAI. Like many organisations, we are continually evaluating other options as well as the ability to offer a number of different models.</p>
+    <p>The tool makes use of generative AI to produce human readable summaries of maturity at each level withing each dimension and activity.</p>
+    <p>The following data is shared with the AI:</p>
+    <ul>
+      <li>The asessment questions.</li>
+      <li>Your answers to questions (true or false).</li>
+      <li>The calculated level you achieve with the answers.</li>
+    </ul>
+    <p>The following data is not shared with the AI:</p>
+    <ul>
+      <li>Any notes you add alongside questions.</li>
+      <li>Your assessment metadata (title, organisation, notes, last modified etc).</li>
+      <li>User profile data (name, email etc).</li>
+    </ul>
   </div>
   <h1 id="contact">Contact Us</h1>
   <div class="infobox">
     <h2>For Bugs and Issues</h2>
-    <p>Please use <a href="https://github.com/theodi/care.theodi.org/issues" target="_blank">GitHub issues</a> to raise an issue with functionality, etc.</p>
+    <p>Please use <a href="https://github.com/theodi/maturity.theodi.org/issues" target="_blank">GitHub issues</a> to raise an issue with functionality, etc.</p>
     <h2>Everything Else</h2>
     <p><a href="https://theodi.org/about-the-odi/contact-us/" target="_blank">Contact us</a></p>
   </div>
 </section>
+<%- include('../partials/footer') %>
