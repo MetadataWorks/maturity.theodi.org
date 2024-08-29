@@ -3,7 +3,7 @@
     --orange: #ff6700;
     --green: #0dbc37;
     --lightblue: #178cff;
-    --blue: rgb(30 64 175);
+    --blue: var(--color-dark-blue);
     --grey: #ccc;
 }
 table {
@@ -21,8 +21,6 @@ table {
   position: relative;
   table-layout: fixed; /* Ensures the table doesn't resize with content */
 }
-.project tr {
-}
 .project th,
 .project td,
 .project-report th,
@@ -32,7 +30,14 @@ table {
   text-align: center;
   transition: width 0.5s ease; /* Smooth transition for width change */
   vertical-align: middle;
+  background-color: var(--color-light-grey);
+  border-right: 5px solid white;
 }
+.project th,
+.project-report th {
+    border-bottom: 5px solid white;
+}
+
 th {
   background-color: inherit;
 }
@@ -40,28 +45,42 @@ th {
 .project-report .level {
     color: white;
 }
+.project-report #overallProgress {
+    text-align: center;
+}
+.project-report #overallProgress div {
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
 th.level-1,
 span.level-1,
+div.level-1,
 .questions-table td.level-1 {
     background-color: var(--red);
 }
 th.level-2,
 span.level-2,
+div.level-2,
 .questions-table td.level-2 {
     background-color: var(--orange);
 }
 th.level-3,
 span.level-3,
+div.level-3,
 .questions-table td.level-3 {
     background-color: var(--green);
 }
 th.level-4,
 span.level-4,
+div.level-4,
 .questions-table td.level-4 {
     background-color: var(--lightblue);
 }
 th.level-5,
 span.level-5,
+div.level-5,
 .questions-table td.level-5 {
     background-color: var(--blue);
 }
@@ -72,18 +91,15 @@ span.level-5,
 }
 .project tr th.level-1 {
     color: white;
-    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 0% 0%);
     border-left: none;
     position: relative;
     width: 20%;
 }
 .project tr th.level-2, .project tr th.level-3, .project tr th.level-4, .project tr th.level-5  {
     color: white;
-    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
     border-left: none;
     position: relative;
     width: 20%;
-    left: -1%;
 }
 .project tbody tr:nth-child(2n) {
     background-color: inherit;
@@ -91,18 +107,6 @@ span.level-5,
 .project tr:nth-child(n+2) td {
     position: relative;
     vertical-align: top;
-}
-.project tr td:nth-child(n+2) {
-    left: -1%;
-}
-.project tr td:nth-child(n+3), tr th.level-3 {
-    left: -2%;
-}
-.project tr td:nth-child(n+4), tr th.level-4 {
-    left: -3%;
-}
-.project tr td:nth-child(n+5), tr th.level-5 {
-    left: -4%;
 }
 .modal button,
 .project td button {
@@ -115,7 +119,6 @@ span.level-5,
     font-size: 1em; /* Set font size */
     text-align: center; /* Center the text */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow to the button */
-    border-radius: 5px; /* Rounded corners */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
     cursor: pointer; /* Change cursor to pointer on hover */
     margin: 1em;
@@ -173,7 +176,7 @@ span.level-5,
 }
 #assessment-container {
     flex-grow: 1;
-    background-color: #e6f7ff;
+    background-color: white;
     padding-left: 40px;
     padding-right: 20px;
 }
@@ -216,7 +219,7 @@ span.level-5,
 .project nav,
 .report-page nav {
     min-width: 250px;
-    background-color: #f4f4f4;
+    background-color: var(--color-light-grey);
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     transition: transform 0.3s ease-in-out;
@@ -236,6 +239,7 @@ span.level-5,
 .project nav ul li ul li.active,
 .report-page nav ul li ul li.active {
     text-decoration: underline;
+    text-underline-offset: 4px;
 }
 .project nav ul li,
 .report-page nav ul li {
@@ -264,6 +268,7 @@ span.level-5,
 .report-page nav ul li#nav-metadata span:hover
 {
     text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .project nav .content,
@@ -321,23 +326,22 @@ span.level-5,
 .statement-bubble {
     padding: 10px 15px;
     background-color: #f0f0f0;
-    border-radius: 20px;
     display: inline-block;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .statement-bubble.positive-true.true-selected {
-    background-color: #d4edda;
+    background-color: #ceeed5;
 }
 .statement-bubble.positive-false.true-selected {
-    background-color: #f8d7da;
+    background-color: #facdd1;
 }
 .statement-bubble.positive-true.false-selected {
-    background-color: #f8d7da;
+    background-color: #facdd1;
 }
 .statement-bubble.positive-false.false-selected {
-    background-color: #d4edda;
+    background-color: #ceeed5;
 }
 .statement-bubble.true-selected .true-button{
     background-color: var(--blue) !important;
@@ -368,7 +372,6 @@ span.level-5,
     border: 1px solid #888;
     width: 80%;
     max-width: 600px;
-    border-radius: 10px;
 }
 
 .modal-content h2 {
@@ -400,7 +403,6 @@ span.level-5,
     height: 100px;
     padding: 10px;
     margin-top: 10px;
-    border-radius: 5px;
     border: 1px solid #ccc;
 }
 
@@ -423,7 +425,7 @@ span.level-5,
 .progress-pie.transparent::after, .progress-pie-unicorn::after {
     background: transparent;
     font: 600 18px/20px sans-serif;
-    color: var(--blue);
+    color: var(--color-orange);
 }
 .progress-pie.complete::after {
     content: '✔'; /* HTML tick mark */
@@ -517,6 +519,10 @@ span.level-5,
     width: 35%;
     text-align: left;
 }
+section.dimension-details {
+    border-top: 1px solid var(--color-dark-blue);
+    margin-top: 3em;
+}
 .project-report table .activity-name {
     text-align: left;
     padding-left: 3em;
@@ -532,24 +538,21 @@ span.level-5,
     font-size: 1.2em;
     text-align: center;
     box-shadow: none;
-    border-radius: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     display: inline-block;
     margin: 0;
 }
 .project-report table .dimension-row {
-    border-top: 1px solid var(--blue);
+    border-top: 5px solid white;
 }
-.project-report table .dimension-row .dimension-name {
-    font-size: 1.2em;
-    font-weight: bold;
+.project-report table .dimension-row .dimension-name span {
+    font-size: 1.3em;
 }
 .dimension-heatmap, .activity-heatmap {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid var(--blue);
 }
 span.level {
     padding: 1em;
@@ -558,8 +561,7 @@ span.level {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    border: 1px dashed var(--blue);
-    border-radius: 5px;
+    border: 1px dashed var(--color-dark-blue);
     padding: 1em;
     padding-top: 0em;
     margin-top: 2em;
@@ -608,6 +610,8 @@ span.level {
 }
 .project-report .metadata-table td {
     text-align: left;
+    background-color: transparent;
+    padding-right: 1em;
 }
 .project-report .metadata-table tr {
     height: 30px;

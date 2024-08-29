@@ -72,7 +72,8 @@ function createAssessmentTable(dimension, levelKeys) {
 
         levelKeys.forEach((level, index) => {
             const th = document.createElement('th');
-            th.textContent = level;
+            const levelIndex = index + 1;
+            th.textContent = levelIndex + ": " + level;
             th.className = "level-" + (index + 1);
             header.appendChild(th);
         });

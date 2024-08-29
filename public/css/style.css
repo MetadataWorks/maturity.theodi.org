@@ -1,18 +1,75 @@
 :root {
-  --button-base: rgb(30 64 175);
-  --button-hover: #9b9b9b;
-  --background: rgb(30 64 175);
-  --background-body: rgb(30 64 175);
-  --links: rgb(30 64 175);
+  /* Screens */
+  --screen-xxs: 350px;
+  --screen-xs: 580px;
+  --screen-sm: 640px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+
+  /* Colors */
+  --color-white: #FFFFFF;
+  --color-transparent: transparent;
+  --color-black: #000000;
+  --color-dark-grey: #333333;
+  --color-light-grey: #E2E6E9;
+  --color-dark-blue: #072589;
+  --color-light-blue: #6DF8FF;
+  --color-pink: #F467C0;
+  --color-orange: #F37533;
+  --color-light-green: #6BF58B;
+  --color-dark-green: #1DD3A7;
+
+  /* Font Family */
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Font Sizes */
+  --font-size-14: 0.875rem;
+  --line-height-14: 1.5rem;
+  --font-size-16: 1rem;
+  --line-height-16: 1.625rem;
+  --font-size-18: 1.125rem;
+  --line-height-18: 1.5rem;
+  --font-size-20: 1.25rem;
+  --line-height-20: 1.625rem;
+  --font-size-22: 1.375rem;
+  --line-height-22: 2rem;
+  --font-size-24: 1.5rem;
+  --line-height-24: 2.125rem;
+  --font-size-25: 1.563rem;
+  --line-height-25: 1.875rem;
+  --font-size-32: 2rem;
+  --line-height-32: 2.625rem;
+  --font-size-35: 2.188rem;
+  --line-height-35: 2.813rem;
+  --font-size-45: 2.813rem;
+  --line-height-45: 3.125rem;
+  --font-size-52: 3.25rem;
+  --line-height-52: 3.875rem;
+  --font-size-56: 3.5rem;
+  --line-height-56: 4.125rem;
+  --font-size-85: 5.313rem;
+  --line-height-85: 5.938rem;
+
+  --button-base: var(--color-dark-blue);
+  --button-hover: var(--color-light-grey);
+  --button-hover-color: var(--color-dark-blue);
+  --background: var(--color-dark-blue);
+  --background-body: var(--color-dark-blue);
+  --links: var(--color-dark-blue);
 }
+
+
 input:not([type="checkbox"]):not([type="radio"]), input[type="range"], select, button, textarea {
   appearance: auto;
   -webkit-appearance: auto;
 }
 * {
-  font-family: 'helvetica nue', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  letter-spacing: .25px;
+  font-size: 16px;
   /* For some Androids */
 }
 /*
@@ -25,6 +82,15 @@ body {
   margin: 0px;
   min-width: 100%;
   padding-left: 0px;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.2em;
+}
+h1, h2, h3, h4 {
+  color: var(--color-dark-blue);
 }
 section {
   margin-left: 0px; /* Same as sidebar width */
@@ -78,31 +144,42 @@ li {
  */
 .white {
   background-color: rgb(255 255 255);
-  color: rgb(30 64 175);
+  color: var(--color-dark-blue)
 }
 .white h1, .white h2, .white h3 {
-  color: rgb(30 64 175);
+  color: var(--color-dark-blue)
 }
 .dark-blue {
-  background-color: rgb(30 64 175);
+  background-color: var(--color-dark-blue)
 }
 .dark-blue a {
   color: white;
   text-decoration: underline;
+}
+.white {
+  background-color: var(--color-white);
+  color: black;
+}
+.light-grey {
+  background-color: var(--color-light-grey);
+  color: black;
+}
+.light-grey h1, .light-grey h2, .light-grey h3, .light-grey h4, .light-grey h5 {
+  color: var(--color-dark-blue) !important;
 }
 .light-blue {
   background-color: rgb(219 234 254);
   color: black;
 }
 .light-blue h1, .light-blue h2, .light-blue h3, .light-blue h4 {
-  color: rgba(30 64 175);
+  color: var(--color-dark-blue);
 }
 .yellow {
   background-color: rgb(255 237 213);
   color: black;
 }
 .yellow h1, .yellow h2, .yellow h3 {
-  color: rgb(30 64 175);
+  color: var(--color-dark-blue)
 }
 .light-yellow {
   background-color: rgba(255,237,213,0.4);
@@ -118,7 +195,7 @@ li {
   min-width: 250px;
   width: 300px;
   height: 250px;
-  border: 1px solid rgb(30 64 175);
+  border: 1px solid var(--color-dark-blue);
   margin-right: 1rem;
 }
 .top-risks {
@@ -140,7 +217,7 @@ li {
   color: white;
 }
 .dashboard-box .dashboard-header {
-  background-color: rgb(30 64 175);
+  background-color: var(--color-dark-blue);
   height: 55px;
 }
 .dashboard-box .dashboard-header .small {
@@ -169,7 +246,7 @@ li {
 .bar {
   height: 100%;
   border-radius: 10px;
-  background-color: rgb(30 64 175);/* Default color for the progress bars */
+  background-color: var(--color-dark-blue);/* Default color for the progress bars */
   text-align: center;
   line-height: 20px; /* Vertically center the text */
   color: white;
@@ -197,7 +274,7 @@ li {
     position: relative;
 }
 .overlay .overlay-content h2 {
-  color: rgb(30 64 175);
+  color: var(--color-dark-blue)
 }
 .overlay .share-section {
   flex: 1;
@@ -237,15 +314,15 @@ li {
   padding-bottom: .5rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  border: none !important;
 }
+.btn:hover, button:hover, .submitButton:hover {
+  background-color: var(--color-white);
+  color: var(--color-dark-blue);
+}
+
 .content-block .submitButton {
   margin-top: 1rem;
-}
-button {
-  border: 2px solid white;
-}
-.submitButton {
-  border: 2px solid white;
 }
 /*
  * jsonForm elements
@@ -286,7 +363,7 @@ ul._jsonform-array-ul ._jsonform-array-buttons {
   padding-inline: 0px;
 }
 ._jsonform-array-ul li {
-  border-bottom: 2px solid rgb(30 64 175);
+  border-bottom: 2px solid var(--color-dark-blue)
 }
 ._jsonform-array-deletelast {
   display: none;
@@ -327,9 +404,9 @@ fieldset .form-group {
  * Navigation and project progress bar
  */
 .header {
-  background:  rgb(30 64 175);
-  background-color:  rgb(30 64 175);
-  max-height: 120px;
+  background:  var(--color-dark-blue);
+  background-color:  var(--color-dark-blue);
+  max-height: 98px;
 }
 .header .header-top {
   display: flex;
@@ -358,7 +435,7 @@ fieldset .form-group {
 
 @media (min-width: 1440px) {
   .header .header-top {
-    padding: 40px 0;
+    padding: 30px 0;
   }
   .container {
     padding: 0 100px;
@@ -379,22 +456,27 @@ fieldset .form-group {
 }
 .header .main-nav ul .selected {
   text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .header .main-nav ul a,
 .header .main-nav ul button {
   cursor: pointer;
   color: #fff;
-  font-size: 1rem;
-  line-height: 1;
+  font-size: 16px;
   display: inline-flex;
   align-items: center;
-  font-weight: bold;
   padding: 0px;
   border-radius: 25px;
   border: none;
   text-decoration: none;
   background: none;
+}
+
+.header .main-nav ul a:hover,
+.header .main-nav ul button:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px; /* Adjust this value as needed */
 }
 
 @media (min-width: 768px) {
@@ -434,7 +516,7 @@ fieldset .form-group {
 
 .header .logo {
   width: 189px;
-  height: 44px;
+  height: 36px;
   background-image: url('/images/logo.svg');
   background-repeat: no-repeat;
   background-size: contain;
@@ -450,7 +532,7 @@ fieldset .form-group {
   min-width: 270px;
   max-width: 270px;
   min-height: 100vh;
-  background-color: rgb(30 64 175);
+  background-color: var(--color-dark-blue)
 }
 .result ul {
   line-height: 2rem;
@@ -479,7 +561,7 @@ fieldset .form-group {
   font-weight: bold;
 }
 .projectProgress {
-  background-color: rgb(30 64 175);
+  background-color: var(--color-dark-blue);
   padding-left: 1rem;
   padding-right: 0.5rem;
   padding-top: 0.5rem;
@@ -543,7 +625,7 @@ fieldset .form-group {
   float: right;
   padding: 6px;
   margin-top: -12px;
-  color: rgb(30 64 175);
+  color: var(--color-dark-blue)
 }
 .aiRunning {
   text-align: center;
@@ -556,6 +638,61 @@ fieldset .form-group {
 .postAI {
   display: none;
 }
+
+.assessment-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.assessment-item {
+  flex: 1;
+  min-width: 250px;
+  max-width: 30%;
+  text-align: center;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color-dark-blue);
+}
+.assessment-item h3 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--color-dark-blue);
+}
+
+.assessment-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+
+.assessment-item p {
+margin-top: auto; /* Push the description to the bottom */
+margin-bottom: 0;
+padding-top: 1rem;
+align-self: center; /* Center horizontally within the available space */
+display: flex;
+align-items: center; /* Center vertically within the flex item */
+justify-content: center; /* Center horizontally within the flex item */
+height: 100%; /* Allow the paragraph to grow and center within its container */
+}
+
+.grid-two-by-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 600px) {
   .sidebar {

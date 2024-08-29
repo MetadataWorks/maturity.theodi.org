@@ -14,8 +14,14 @@ function updateProjectData(statement, activity) {
     projectActivity.completionPercentage = calculateActivityCompletion(projectActivity);
     updateActivityProgress(projectActivity);
 
-    // Update overall completion
-    // Calculate overall completion metrics
+    // Update dimension progress
+    updateDimensionProgress(projectDimension);
+
+    // Calculate overall achieved level for the whole assessment
+    const overallAchievedLevel = calculateOverallAchievedLevel(projectData.assessmentData.dimensions);
+    projectData.assessmentData.overallAchievedLevel = overallAchievedLevel;
+
+    // Update overall completion metrics
     const { activityCompletionPercentage, statementCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
     projectData.assessmentData.activityCompletionPercentage = activityCompletionPercentage;
     projectData.assessmentData.statementCompletionPercentage = statementCompletionPercentage;
@@ -101,17 +107,6 @@ function calculateLevelCoverage(activity) {
         const { total, positive } = totalStatementsByLevel[level];
         const levelProgress = Math.round((positive / total) * 100);
         levelCoverage.push({ [level]: levelProgress });
-
-        const activityContainer = document.getElementById(activity.title.toLowerCase().replace(/\s+/g, '-')) || null;
-        if (activityContainer) {
-            const thElement = activityContainer.querySelector(`th.level-${level}`);
-            // Track the maximum coverage
-            if (thElement) {
-                const minOpacity = 0.6; // 40%
-                const opacity = minOpacity + (levelProgress / 100) * (1 - minOpacity); // Linear interpolation
-                changeCellOpacity(thElement, opacity * 100); // Convert to percentage
-            }
-        }
     }
 
     return levelCoverage;
@@ -132,6 +127,27 @@ function calculateAchievedLevel(levelCoverage) {
     }
 
     return achievedLevel;
+}
+
+function calculateOverallAchievedLevel(dimensions) {
+    // Initialize with a high value and reduce it as we go through dimensions
+    let overallAchievedLevel = Infinity;
+
+    dimensions.forEach(dimension => {
+        if (dimension.userProgress && dimension.userProgress.achievedLevel) {
+            overallAchievedLevel = Math.min(overallAchievedLevel, dimension.userProgress.achievedLevel);
+        } else {
+            // If any dimension does not have an achieved level, the overall level cannot be determined
+            overallAchievedLevel = 0;
+        }
+    });
+
+    // If no level was common, set the overall achieved level to 0
+    if (overallAchievedLevel === Infinity) {
+        overallAchievedLevel = 0;
+    }
+
+    return overallAchievedLevel;
 }
 
 function calculateActivityCompletion(activity) {

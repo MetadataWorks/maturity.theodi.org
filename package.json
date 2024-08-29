@@ -1,6 +1,6 @@
 {
   "name": "maturity.theodi.org",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "The ODI Maturity Assessment Tool (pathway)",
   "main": "index.js",
   "scripts": {

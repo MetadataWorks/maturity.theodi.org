@@ -3,6 +3,8 @@ const router = express.Router();
 const projectController = require('../controllers/project');
 const { ensureAuthenticated } = require('../middleware/auth'); // Assuming this middleware exists
 const { loadProject, checkProjectAccess, checkProjectOwner } = require('../middleware/project');
+const { generateDocxReport } = require('../lib/docxBuilder');
+const { Document, Packer } = require('docx');
 
 router.get('/', ensureAuthenticated, async (req, res, next) => {
     try {
@@ -52,10 +54,19 @@ router.get('/:id', ensureAuthenticated, checkProjectAccess, async (req, res, nex
 router.get('/:id/report', ensureAuthenticated, checkProjectAccess, async (req, res, next) => {
     try {
         const projectId = req.params.id;
+        const project = await projectController.getProjectById(projectId);
         const acceptHeader = req.get('Accept');
 
-        if (acceptHeader === 'DOCX') {
-            // DOCX here
+        if (acceptHeader === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+            const doc = generateDocxReport(project);
+
+            // Pack the document into a .docx file
+            const buffer = await Packer.toBuffer(doc);
+
+            // Set the headers to download the file
+            res.setHeader('Content-Disposition', `attachment; filename=${project.title || 'project-report'}.docx`);
+            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+            res.send(buffer);
         } else {
             const page = { title: "Project Report", link: "/projects" };
             res.locals.page = page;

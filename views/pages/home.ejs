@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
-<section class="content-block light-blue">
+<section class="content-block light-grey">
     <input type="hidden" value="<%= page.link %>" id="pageId"/>
-    <div style="font-size: 1.1em;">
+    <div>
         <h1>Welcome to the ODI Maturity Assessment Tool</h1>
         <p>
             The ODI Maturity Assessment Tool is designed to help organisations evaluate their data maturity across multiple domains. Whether you're focusing on open data, data ethics, or data practices, our assessments provide a structured approach to understanding your current capabilities, identifying areas for improvement, and tracking your progress over time.
@@ -39,76 +39,11 @@
     </div>
 </section>
 
-<section class="content-block light-blue">
-    <h2><img style="width: 40px; height: auto; vertical-align: bottom; padding-right: 10px;" src="/images/icons_tool-1070a476.svg" alt="Cog Icon"/>How to Use the Tool</h2>
+<section class="content-block light-grey">
+    <h1>How to Use the Tool</h1>
     <p>To use the tool, you will first need to create an <a href="https://theodi.org/account/register/" target="_blank">ODI Account</a>.</p>
     <p>Once registered, you can <a href="/auth/django">log in</a> and start your assessment.</p>
     <p>Free accounts are limited to one assessment, but becoming a <a href="https://theodi.org/membership/" target="_blank">member of the ODI</a> removes this limitation, giving you full access to all assessments.</p>
 </section>
-
-<style>
-:root {
-    --red: #d60303;
-    --orange: #ff6700;
-    --green: #0dbc37;
-    --lightblue: #178cff;
-    --blue: rgb(30 64 175);
-    --grey: #ccc;
-}
-    .assessment-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: space-between;
-    }
-
-    .assessment-item {
-      flex: 1;
-      min-width: 250px;
-      max-width: 30%;
-      text-align: center;
-      background-color: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: var(--blue);
-  }
-    .assessment-item h3 {
-      display: block;
-      font-size: 1.5em;
-      font-weight: bold;
-      color: inherit;
-    }
-
-    .assessment-image {
-        width: 100%;
-        max-width: 250px;
-        height: auto;
-        margin-bottom: 1rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 1rem;
-    }
-
-    .assessment-item p {
-      margin-top: auto; /* Push the description to the bottom */
-      margin-bottom: 0;
-      padding-top: 1rem;
-      align-self: center; /* Center horizontally within the available space */
-      display: flex;
-      align-items: center; /* Center vertically within the flex item */
-      justify-content: center; /* Center horizontally within the flex item */
-      height: 100%; /* Allow the paragraph to grow and center within its container */
-  }
-
-    .grid-two-by-two {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
-    }
-</style>
 
 <%- include('../partials/footer') %>

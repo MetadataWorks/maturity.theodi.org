@@ -16,6 +16,7 @@ function createReportTableHeadings(levelKeys) {
 }
 
 function createReportTableRows(assessmentData, levelKeys) {
+    console.log(assessmentData);
     const table = document.getElementById('report-table');
 
     assessmentData.dimensions.forEach((dimension, dimensionIndex) => {
@@ -273,7 +274,6 @@ function createActivityQuestions(section, activity, levelKeys) {
     section.appendChild(higherLevelQuestions);
 }
 
-
 function createHeatmap(container, data, levelKeys) {
     // Implement the logic to create a heatmap for the dimension or activity
     const table = document.createElement('table');
@@ -305,6 +305,36 @@ function createHeatmap(container, data, levelKeys) {
     });
 
     container.appendChild(table);
+}
+
+function createOverallMaturitySection(assessmentData, levelKeys) {
+    const overallSection = document.getElementById('overallProgress');
+
+    // Create a container for the overall maturity level
+    const overallLevelContainer = document.createElement('div');
+    overallLevelContainer.className = 'overall-level-container';
+
+    // Overall Maturity Level
+    const overallLevel = document.createElement('div');
+    const overallLevelName = levelKeys[assessmentData.overallAchievedLevel - 1];
+    overallLevel.textContent = overallLevelName;
+    overallLevel.className = `level level-${assessmentData.overallAchievedLevel}`;
+    overallLevelContainer.appendChild(overallLevel);
+
+    // Activity Completion Percentage
+    const activityCompletion = document.createElement('p');
+    activityCompletion.textContent = `Activity Completion: ${assessmentData.activityCompletionPercentage}%`;
+    activityCompletion.className = 'activity-completion';
+
+    // Statement Completion Percentage
+    const statementCompletion = document.createElement('p');
+    statementCompletion.textContent = `Statement Completion: ${assessmentData.statementCompletionPercentage}%`;
+    statementCompletion.className = 'statement-completion';
+
+    // Append elements to the section
+    overallSection.appendChild(overallLevelContainer);
+    overallSection.appendChild(activityCompletion);
+    overallSection.appendChild(statementCompletion);
 }
 
 function createTableOfContents(assessmentData) {
@@ -413,7 +443,6 @@ function toggleNav() {
     nav.classList.toggle('shrunk');
 }
 
-
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParts = window.location.pathname.split('/');
     const projectId = urlParts[urlParts.length - 2];
@@ -430,6 +459,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             loadNavBar(assessmentData);
             populateProjectMetadata(projectData);
+            createOverallMaturitySection(assessmentData,levelKeys);
 
             // Update the dimension and activity progress
             assessmentData.dimensions.forEach(dimension => {
@@ -479,8 +509,33 @@ document.addEventListener('DOMContentLoaded', async () => {
             downloadProjectDataAsJSON(projectData);
         });
         // Add event listener to the download JSON button
-        document.getElementById('downloadDOCX').addEventListener('click', () => {
-            alert('This feature is coming soon.');
+        document.getElementById("downloadDOCX").addEventListener("click", async () => {
+            try {
+                // Show an alert to inform users about updating the table of contents
+                alert("Once the document has downloaded, you will need to update the table of contents to correct page numbering and titles.");
+
+                // Fetch the document
+                const response = await fetch(`/projects/${projectId}/report`, {
+                    headers: {
+                        "Accept": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    }
+                });
+
+                const blob = await response.blob(); // Get the response as a Blob
+                const url = URL.createObjectURL(blob);
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = projectData.title.replace(/\s+/g, "_").trim() + ".docx";
+                document.body.appendChild(link); // Append the link to the document body
+                link.click();
+                document.body.removeChild(link); // Remove the link from the document body after clicking
+
+                // Cleanup
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error("Error downloading DOCX data:", error);
+            }
         });
     } else {
         console.error('No project ID found in the URL');
@@ -514,7 +569,6 @@ function downloadProjectDataAsJSON(projectData) {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
-
 
 async function getAIDimensionSummary(dimensionData, levels) {
     // This function would call your AI service to generate a dimension summary
