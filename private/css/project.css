@@ -45,6 +45,10 @@ th {
 .project-report .level {
     color: white;
 }
+.project-report .level-none {
+    background-color: var(--color-light-grey);
+    color: var(--color-dark-blue);
+}
 .project-report #overallProgress {
     text-align: center;
 }

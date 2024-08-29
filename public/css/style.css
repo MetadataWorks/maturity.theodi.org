@@ -54,11 +54,25 @@
   --button-base: var(--color-dark-blue);
   --button-hover: var(--color-light-grey);
   --button-hover-color: var(--color-dark-blue);
-  --background: var(--color-dark-blue);
+  --background: var(--color-white);
   --background-body: var(--color-dark-blue);
   --links: var(--color-dark-blue);
 }
 
+
+input, select, textarea {
+  border-radius: 0 !important;
+  color: var(--color-dark-blue);
+}
+input.btn {
+  color: white;
+}
+section#metadata input, section#metadata select, section#metadata textarea {
+  border: 1px solid var(--color-light-grey);
+}
+label {
+  color: var(--color-dark-blue);
+}
 
 input:not([type="checkbox"]):not([type="radio"]), input[type="range"], select, button, textarea {
   appearance: auto;

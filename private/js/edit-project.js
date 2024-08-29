@@ -1,7 +1,6 @@
 let defaultActivity = "";
 
 function renderAssessmentMetadata(data) {
-    console.log(data);
     // Fetch the project schema
     fetch('/schemas/newProject.json')
     .then(response => response.json())
@@ -36,8 +35,8 @@ function renderAssessmentMetadata(data) {
         $('.submit').before(countryDropdown);
 
         setTimeout(function() {
-            $('input[name="organisation.country.name"]').prop('disabled', true);
-            $('input[name="organisation.country.code"]').prop('disabled', true);
+            $('input[name="organisation.country.name"]').parent().parent().hide();
+            $('input[name="organisation.country.code"]').parent().parent().hide();
         }, 200);
 
         // Handle country selection
@@ -241,7 +240,6 @@ function handleStatementSelection(statement, isTrue, activity) {
 }
 
 function submitProjectForm(errors, values) {
-    console.log(values);
     if (errors) {
         const errorsObj = JSON.stringify(errors);
         $('#res').html('<p>Please correct the errors in your form</p>' +  errorsObj);

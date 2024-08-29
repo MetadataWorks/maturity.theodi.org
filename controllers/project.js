@@ -103,7 +103,6 @@ async function createProject(projectData, userId) {
         projectData.assessmentData = {
             dimensions: assessment.dimensions
         };
-        console.log(projectData);
         // Create a new project instance
         const project = new Project(projectData);
 

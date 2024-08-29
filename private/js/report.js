@@ -16,7 +16,6 @@ function createReportTableHeadings(levelKeys) {
 }
 
 function createReportTableRows(assessmentData, levelKeys) {
-    console.log(assessmentData);
     const table = document.getElementById('report-table');
 
     assessmentData.dimensions.forEach((dimension, dimensionIndex) => {
@@ -118,6 +117,15 @@ function createDimensionDetails(dimension, levelKeys, dimensionIndex) {
     title.className = 'dimension-title';
     titleLevelContainer.appendChild(title);
 
+    if (!dimension.userProgress) {
+        const noDataText = document.createElement('p');
+        noDataText.textContent = "No Data";
+        noDataText.className = 'no-data-text'; // Optional: Add a class for styling the "No Data" text
+        section.appendChild(titleLevelContainer);
+        section.appendChild(noDataText);
+        return section;
+    }
+
     // Current Dimension Level
     const currentLevel = document.createElement('p');
     currentLevel.textContent = `Current Level: `;
@@ -158,6 +166,15 @@ function createActivityDetails(activity, dimensionName, levelKeys, dimensionInde
     title.textContent = `Activity: ${activity.title}`;
     title.className = 'activity-title';
     titleLevelContainer.appendChild(title);
+
+    if (!activity.userProgress) {
+        const noDataText = document.createElement('p');
+        noDataText.textContent = "No Data";
+        noDataText.className = 'no-data-text'; // Optional: Add a class for styling the "No Data" text
+        section.appendChild(titleLevelContainer);
+        section.appendChild(noDataText);
+        return section;
+    }
 
     // Current Activity Level
     const currentLevel = document.createElement('p');
@@ -316,9 +333,16 @@ function createOverallMaturitySection(assessmentData, levelKeys) {
 
     // Overall Maturity Level
     const overallLevel = document.createElement('div');
-    const overallLevelName = levelKeys[assessmentData.overallAchievedLevel - 1];
-    overallLevel.textContent = overallLevelName;
-    overallLevel.className = `level level-${assessmentData.overallAchievedLevel}`;
+
+    if (assessmentData.overallAchievedLevel) {
+        const overallLevelName = levelKeys[assessmentData.overallAchievedLevel - 1];
+        overallLevel.textContent = overallLevelName;
+        overallLevel.className = `level level-${assessmentData.overallAchievedLevel}`;
+    } else {
+        overallLevel.textContent = 'No Level Achieved';
+        overallLevel.className = 'level level-none';
+    }
+
     overallLevelContainer.appendChild(overallLevel);
 
     // Activity Completion Percentage
@@ -336,6 +360,7 @@ function createOverallMaturitySection(assessmentData, levelKeys) {
     overallSection.appendChild(activityCompletion);
     overallSection.appendChild(statementCompletion);
 }
+
 
 function createTableOfContents(assessmentData) {
     const tocSection = document.getElementById('tableOfContents');
