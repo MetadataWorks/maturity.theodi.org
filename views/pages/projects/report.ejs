@@ -1,8 +1,10 @@
 <%- include('../../partials/header') %>
 <link rel="stylesheet" href="/css/progress_pie_compiled.css"/>
 <link rel="stylesheet" href="/css/project.css"/>
+<link rel="stylesheet" href="/css/ai-response.css"/>
 <script src="/js/project2.js" type="text/javascript"></script>
 <script src="/js/report.js" type="text/javascript"></script>
+
 
 <section class="white report-page">
     <button class="nav-toggle" onclick="toggleNav()">☰</button>
@@ -28,9 +30,13 @@
             <button id="downloadDOCX">Download project report (DOCX)</button>
         </subsection>
 
-        <!-- Maturity Heatmap -->
-        <h2>Maturity Heatmap</h2>
-        <table id="report-table"></table>
+        <subsection id="executiveSummary">
+            <h2>Executive Summary</h2>
+            <subsection id="aiExecutiveSummary">
+
+            </subsection>
+            <table id="report-table"></table>
+        </subsection>
     </section>
 </section>
 

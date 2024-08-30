@@ -1,0 +1,6 @@
+.ai-response strong {
+    color: var(--color-dark-blue);
+}
+.ai-response h2 {
+    font-size: 1em;
+}

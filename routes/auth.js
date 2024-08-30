@@ -4,7 +4,7 @@ const express = require('express');
 const passport = require('../passport'); // Require the passport module
 
 const { deleteLocalProjectsAndAccounts, retrieveOrCreateUser, updateDefaultPassword, getDefaultPassword } = require('../controllers/user');
-//const { getHubspotUser } = require('../controllers/hubspot');
+const { getHubspotUser } = require('../controllers/hubspot');
 
 const router = express.Router();
 
@@ -24,7 +24,7 @@ async function processLogin(req, res) {
     req.session.passport.user.id = user._id;
 
     if (req.session.authMethod !== 'local') {
-      //await getHubspotUser(user._id,user.email);
+      await getHubspotUser(user._id,user.email);
     }
 
   } catch (error) {

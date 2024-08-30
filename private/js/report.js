@@ -143,6 +143,21 @@ function createDimensionDetails(dimension, levelKeys, dimensionIndex) {
 
     section.appendChild(titleLevelContainer);
 
+    // AI Response Placeholder
+    const AIResponseParagraph = document.createElement('p');
+    AIResponseParagraph.className = `ai-response`;
+    section.appendChild(AIResponseParagraph);
+
+    // Handle AI summary asynchronously
+    getAIDimensionSummary(dimension)
+        .then(summary => {
+            AIResponseParagraph.innerHTML = summary;
+        })
+        .catch(error => {
+            console.error('Error fetching AI dimension summary:', error);
+            AIResponseParagraph.textContent = "Error fetching AI summary.";
+        });
+
     // Dimension Heatmap
     const heatmap = document.createElement('div');
     heatmap.className = 'dimension-heatmap';
@@ -167,11 +182,13 @@ function createActivityDetails(activity, dimensionName, levelKeys, dimensionInde
     title.className = 'activity-title';
     titleLevelContainer.appendChild(title);
 
+    // Append the title and level container first
+    section.appendChild(titleLevelContainer);
+
     if (!activity.userProgress) {
         const noDataText = document.createElement('p');
         noDataText.textContent = "No Data";
         noDataText.className = 'no-data-text'; // Optional: Add a class for styling the "No Data" text
-        section.appendChild(titleLevelContainer);
         section.appendChild(noDataText);
         return section;
     }
@@ -189,9 +206,12 @@ function createActivityDetails(activity, dimensionName, levelKeys, dimensionInde
 
     // Append the span to the paragraph
     currentLevel.appendChild(levelNameSpan);
-
     titleLevelContainer.appendChild(currentLevel);
-    section.appendChild(titleLevelContainer);
+
+    // AI Response Placeholder
+    const AIResponseParagraph = document.createElement('p');
+    AIResponseParagraph.className = `ai-response`;
+    section.appendChild(AIResponseParagraph);
 
     // Activity Heatmap
     const heatmap = document.createElement('div');
@@ -201,6 +221,19 @@ function createActivityDetails(activity, dimensionName, levelKeys, dimensionInde
 
     // Questions and Answers
     createActivityQuestions(section, activity, levelKeys);
+
+    // Handle AI summary asynchronously
+    if (levelName) {
+        // Start the async task without awaiting it
+        getAIActivitySummary(activity, dimensionName, levelKeys)
+            .then(summary => {
+                AIResponseParagraph.innerHTML = summary;
+            })
+            .catch(error => {
+                console.error('Error fetching AI summary:', error);
+                AIResponseParagraph.textContent = "Error fetching AI summary.";
+            });
+    }
 
     return section;
 }
@@ -291,6 +324,27 @@ function createActivityQuestions(section, activity, levelKeys) {
     section.appendChild(higherLevelQuestions);
 }
 
+function createExecutiveSummary() {
+    // Handle AI summary asynchronously
+    const section = document.getElementById('aiExecutiveSummary');
+    const AIResponseParagraph = document.createElement('p');
+    AIResponseParagraph.className = `ai-response`;
+    section.appendChild(AIResponseParagraph);
+
+    const heatmapHeading = document.createElement('h3');
+    heatmapHeading.textContent = "Maturity heatmap";
+
+    getAIExecutiveSummary()
+        .then(summary => {
+            AIResponseParagraph.innerHTML = summary;
+            section.appendChild(heatmapHeading);
+        })
+        .catch(error => {
+            console.error('Error fetching AI executive summary:', error);
+            AIResponseParagraph.textContent = "Error fetching AI summary.";
+        });
+}
+
 function createHeatmap(container, data, levelKeys) {
     // Implement the logic to create a heatmap for the dimension or activity
     const table = document.createElement('table');
@@ -361,7 +415,6 @@ function createOverallMaturitySection(assessmentData, levelKeys) {
     overallSection.appendChild(statementCompletion);
 }
 
-
 function createTableOfContents(assessmentData) {
     const tocSection = document.getElementById('tableOfContents');
     const tocList = document.createElement('ul');
@@ -416,20 +469,34 @@ function populateProjectMetadata(projectData) {
     metadataSection.appendChild(metadataTable);
 }
 
-function loadNavBar(data) {
+function createNavItem(target,titleText) {
+    const item = document.createElement('li');
+    item.classList.add('nav-dimension-item'); // Add class for styling
+    const title = document.createElement('a');
+    title.textContent = titleText;
+    title.classList.add('dimension-title');
+    title.href = target;
+    item.appendChild(title);
+    return item;
+}
+
+function loadNavBar(data,projectId) {
     const dimensions = data.dimensions;
     const navList = document.getElementById('navList');
 
-    // Add Metadata item to the nav
-    const metadataItem = document.createElement('li');
-    metadataItem.classList.add('nav-dimension-item'); // Add class for styling
-    metadataItem.setAttribute('id', 'nav-metadata');
-    const metadataTitle = document.createElement('a');
-    metadataTitle.textContent = "Metadata";
-    metadataTitle.classList.add('dimension-title');
-    metadataTitle.href = '#metadata'; // Link to the metadata section
-    metadataItem.appendChild(metadataTitle);
-    navList.appendChild(metadataItem);
+
+    const editItem = createNavItem('/projects/' + projectId,"<- Back to edit page");
+    navList.appendChild(editItem);
+
+    const topItem = createNavItem('#assessment-contriner',"Top");
+    navList.appendChild(topItem);
+
+    const downloadsItem = createNavItem('#downloads',"Downloads");
+    navList.appendChild(downloadsItem);
+
+    const executiveSummary = createNavItem('#executiveSummary',"Executive summary");
+    navList.appendChild(executiveSummary);
+
 
     // Loop through each dimension to create the navigation structure
     dimensions.forEach((dimension, dimensionIndex) => {
@@ -482,7 +549,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 levelKeys = assessmentData.levels;
             }
 
-            loadNavBar(assessmentData);
+            loadNavBar(assessmentData,projectId);
             populateProjectMetadata(projectData);
             createOverallMaturitySection(assessmentData,levelKeys);
 
@@ -493,6 +560,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
                 updateDimensionProgress(dimension);
             });
+
+            createExecutiveSummary();
 
             // Create the report table with headings and rows
             createReportTableHeadings(levelKeys);
@@ -516,17 +585,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
             const navLinks = document.querySelectorAll('#navList a');
             navLinks.forEach(link => {
-                link.addEventListener('click', event => {
-                    event.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+                // Only add the event listener if the href starts with "#"
+                if (link.getAttribute('href').startsWith('#')) {
+                    link.addEventListener('click', event => {
+                        event.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                }
             });
         }
         // Add event listener to the download JSON button
@@ -595,14 +667,120 @@ function downloadProjectDataAsJSON(projectData) {
     URL.revokeObjectURL(url);
 }
 
-async function getAIDimensionSummary(dimensionData, levels) {
-    // This function would call your AI service to generate a dimension summary
-    // For now, we'll return a placeholder text
-    return `AI Summary for ${dimensionData.name}...`;
+async function getAIDimensionSummary(dimensionData) {
+    try {
+        // Extract the project ID from the URL or other relevant source
+        const urlParts = window.location.pathname.split('/');
+        const projectId = urlParts[urlParts.length - 2];
+
+        // Prepare the query parameters for the request
+        const queryParams = new URLSearchParams({
+            dimensionName: dimensionData.name,
+        });
+
+        // Send a GET request to the server route
+        const response = await fetch(`/projects/${projectId}/assistant/getDimensionSummary?${queryParams.toString()}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            }
+        });
+
+        // Check if the response is successful
+        if (!response.ok) {
+            const errorData = await response.json();
+            if (response.status === 403 && errorData.message === "You need to be an ODI member to access AI summaries") {
+                return errorData.message;
+            } else {
+                throw new Error(`Failed to fetch AI executive summary: ${response.statusText}`);
+            }
+        }
+
+        // Parse the JSON response
+        const result = await response.json();
+
+        // Return the AI summary from the response
+        return result.summary;
+
+    } catch (error) {
+        console.error('Error fetching AI executive summary:', error);
+        return 'Error fetching AI summary, try refreshing the page.';
+    }
 }
 
-async function getAIActivitySummary(activityData, dimensionName, levels) {
-    // This function would call your AI service to generate an activity summary
-    // For now, we'll return a placeholder text
-    return `AI Summary for activity ${activityData.title} under ${dimensionName}...`;
+async function getAIActivitySummary(activityData) {
+    try {
+        // Extract the project ID from the URL or other relevant source
+        const urlParts = window.location.pathname.split('/');
+        const projectId = urlParts[urlParts.length - 2];
+
+        // Prepare the query parameters for the request
+        const queryParams = new URLSearchParams({
+            activityTitle: activityData.title,
+        });
+
+        // Send a GET request to the server route
+        const response = await fetch(`/projects/${projectId}/assistant/getActivitySummary?${queryParams.toString()}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            }
+        });
+
+        // Check if the response is successful
+        if (!response.ok) {
+            const errorData = await response.json();
+            if (response.status === 403 && errorData.message === "You need to be an ODI member to access AI summaries") {
+                return errorData.message;
+            } else {
+                throw new Error(`Failed to fetch AI executive summary: ${response.statusText}`);
+            }
+        }
+        // Parse the JSON response
+        const result = await response.json();
+
+        // Return the AI summary from the response
+        return result.response;
+
+    } catch (error) {
+        console.error('Error fetching AI executive summary:', error);
+        return 'Error fetching AI summary, try refreshing the page.';
+    }
+}
+
+async function getAIExecutiveSummary() {
+    try {
+        // Extract the project ID from the URL or other relevant source
+        const urlParts = window.location.pathname.split('/');
+        const projectId = urlParts[urlParts.length - 2];
+
+        // Send a GET request to the server route
+        const response = await fetch(`/projects/${projectId}/assistant/getExecutiveSummary`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            }
+        });
+
+        // Check if the response is successful
+        // If the response is not successful, handle it
+        if (!response.ok) {
+            const errorData = await response.json();
+            if (response.status === 403 && errorData.message === "You need to be an ODI member to access AI summaries") {
+                return errorData.message;
+            } else {
+                throw new Error(`Failed to fetch AI executive summary: ${response.statusText}`);
+            }
+        }
+
+        // Parse the JSON response
+        const result = await response.json();
+
+        // Return the AI executive summary from the response
+        return result.summary;
+
+    } catch (error) {
+        console.error('Error fetching AI executive summary:', error);
+        return 'Error fetching AI summary, try refreshing the page.';
+    }
 }

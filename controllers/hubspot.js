@@ -4,7 +4,6 @@ const User = require('../models/user');
 const hubspot = require('@hubspot/api-client');
 const projectController = require('../controllers/project');
 
-require("dotenv").config({ path: "../config.env" });
 const hubspotKey = process.env.HUBSPOT_API_KEY;
 
 const hubspotClient = new hubspot.Client({ accessToken: hubspotKey })

@@ -16,6 +16,7 @@ const session = require('express-session');
 const passport = require('./passport'); // Require the passport module
 const authRoutes = require('./routes/auth'); // Require the authentication routes module
 const projectRoutes = require('./routes/project'); // Require the project routes module
+const assistantRoutes = require('./routes/assistant');
 const assessmentsRoutes = require('./routes/assessment');
 const { loadProject } = require('./middleware/project');
 const loadAssessments = require('./lib/loadAssessments');
@@ -128,6 +129,7 @@ app.get('/admin', function(req,res) {
 app.use(loadProject);
 
 app.use('/assessments', assessmentsRoutes);
+app.use('/projects', assistantRoutes);
 app.use('/projects', projectRoutes);
 
 app.get('/', function(req, res) {
