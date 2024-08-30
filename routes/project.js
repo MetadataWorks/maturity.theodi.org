@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const projectController = require('../controllers/project');
+const Assessment = require('../models/assessment');
 const { ensureAuthenticated } = require('../middleware/auth'); // Assuming this middleware exists
 const { loadProject, checkProjectAccess, checkProjectOwner } = require('../middleware/project');
 const { generateDocxReport } = require('../lib/docxBuilder');
@@ -61,7 +62,13 @@ router.get('/:id/report', ensureAuthenticated, checkProjectAccess, async (req, r
 
         if (acceptHeader === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             let owner = await projectController.getProjectOwner(project);
-            const tempFilePath = await generateDocxReport(project,owner);
+            let template = "template";
+            const assessmentId = project.assessment;
+            const assessmentData = await Assessment.findById(assessmentId);
+            if (assessmentData.source) {
+                template = assessmentData.source
+            }
+            const tempFilePath = await generateDocxReport(project,owner,template);
             const fileName = `${project.title.replace(/\s+/g, '_').trim()}.docx`;
             //const buffer = await docx.Packer.toBuffer(doc);
             res.set('Content-Disposition', `attachment; filename="${fileName}"`);
