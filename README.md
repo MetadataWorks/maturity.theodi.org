@@ -6,6 +6,7 @@ The **ODI Maturity Assessment Tool** is a web-based application designed to help
 
 - [Overview](#overview)
 - [Features](#features)
+- [AI-Powered Summaries](#ai-powered-summaries)
 - [Available Assessments](#available-assessments)
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
@@ -22,7 +23,19 @@ The ODI Maturity Assessment Tool is designed to support organisations in underst
 - **Interactive Assessments**: Users can interact with assessments to evaluate their organisation's maturity.
 - **Progress Tracking**: Track progress over time and view historical assessments.
 - **Detailed Reporting**: Generate detailed reports that summarise the assessment results and provide actionable insights.
+- **AI-Powered Summaries**: Automatically generate human-readable summaries for each activity, dimension, and an executive overview using advanced AI capabilities.
 - **Customisable Assessments**: Upcoming features will allow for more customisation in assessments and evaluation criteria.
+
+## AI-Powered Summaries
+
+### Activity Summaries
+For each activity within an assessment, the tool generates an AI-driven summary. These summaries highlight areas where the organisation has shown progress and suggest improvements needed to reach the next level of maturity. This feature helps users quickly understand their current standing without diving into the detailed responses.
+
+### Dimension Summaries
+The AI also provides summaries for each dimension within the assessment. These summaries aggregate the insights from individual activities, offering a broader perspective on how the organisation performs across a particular domain.
+
+### Executive Summary
+At the top level, the tool generates an executive summary. This overview distills the key findings from all dimensions into a cohesive narrative, offering high-level recommendations and insights for strategic decision-making.
 
 ## Available Assessments
 
@@ -67,9 +80,10 @@ Before installing the ODI Maturity Assessment Tool, ensure you have the followin
    PORT=3000
    MONGODB_URI=mongodb://localhost:27017/odi_maturity_tool
    SESSION_SECRET=your-secret-key
+   OPENAI_API_KEY=your-openai-api-key
    ```
 
-   Replace `your-secret-key` with a secure string.
+   Replace `your-secret-key` and `your-openai-api-key` with your own secure values.
 
 ## Running the Application
 
@@ -88,9 +102,11 @@ The application will be accessible at `http://localhost:3000` by default.
 - **Open Data Maturity Model**: Navigate to the assessment section and select the Open Data Maturity Model to start the evaluation.
 - **Upcoming Assessments**: Look out for updates that will introduce new assessments like the Data Ethics Maturity Model and Data Practices Maturity Assessment.
 
-### Generating Reports
+### Generating AI-Powered Reports
 
-After completing an assessment, you can generate a detailed report. Reports can be downloaded in various formats, such as JSON or DOCX, for further analysis.
+After completing an assessment, you can generate a detailed report with AI-powered summaries. These summaries are automatically generated for each activity, dimension, and an overall executive summary, providing actionable insights and recommendations.
+
+Reports can be downloaded in various formats, such as JSON or DOCX, for further analysis.
 
 ## Contributing
 
