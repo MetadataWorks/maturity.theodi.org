@@ -123,14 +123,24 @@ router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjec
             return res.status(404).json({ error: 'Activity not found' });
         }
 
-        // 4. Use the getOrGenerateActivitySummary function to handle the summary generation or retrieval
-        const levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
-        const summary = await getOrGenerateActivitySummary(activity, dimension.name, levelKeys, assessmentTitle);
+        // 4. Create a deep copy of the activity object to remove notes before sending to AI
+        const activityCopy = JSON.parse(JSON.stringify(activity));
 
-        // 5. Generate hash for the current activity state
+        // 5. Remove notes from userAnswer in the activityCopy
+        activityCopy.statements.forEach(statement => {
+            if (statement.userAnswer && statement.userAnswer.notes) {
+                delete statement.userAnswer.notes;
+            }
+        });
+
+        // 6. Use the getOrGenerateActivitySummary function with the modified activityCopy
+        const levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        const summary = await getOrGenerateActivitySummary(activityCopy, dimension.name, levelKeys, assessmentTitle);
+
+        // 7. Generate hash for the current activity state
         const activityHash = generateHash(activity.statements.map(s => s.userAnswer));
 
-        // 6. Update the specific activity's aiResponse in the dimension
+        // 8. Update the specific activity's aiResponse in the dimension
         const updateQuery = {
             _id: projectId,
             'assessmentData.dimensions.name': dimension.name,
@@ -154,10 +164,10 @@ router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjec
             new: true
         };
 
-        // 7. Perform the update
+        // 9. Perform the update
         await Project.findOneAndUpdate(updateQuery, updateAction, updateOptions);
 
-        // 8. Send the summary as the response
+        // 10. Send the summary as the response
         res.json({ response: summary });
 
     } catch (error) {
