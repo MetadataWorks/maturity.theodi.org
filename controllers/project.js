@@ -85,7 +85,6 @@ async function getProjectOwner(project) {
     }
 }
 
-
 async function createProject(projectData, userId) {
     try {
         // Assign the owner of the project

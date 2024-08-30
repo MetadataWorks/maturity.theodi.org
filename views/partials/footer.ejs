@@ -2,16 +2,16 @@
 </body>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const glossaryLink = document.getElementById('glossary-link');
-  const privacyLink = document.getElementById('privacy-link');
   const contentOverlay = document.getElementById('contentOverlay');
   const overlayContentArea = document.getElementById('overlay-content-inner');
-
+/*
+  const glossaryLink = document.getElementById('glossary-link');
   glossaryLink.addEventListener('click', (event) => {
     event.preventDefault();
     showOverlay("/glossary");
   });
-
+  */
+  const privacyLink = document.getElementById('privacy-link');
   privacyLink.addEventListener('click', (event) => {
     event.preventDefault();
     showOverlay("/about");

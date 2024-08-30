@@ -344,7 +344,7 @@ function loadNavBar(data,projectId) {
         navList.appendChild(dimensionItem);
     });
 
-    // Add Metadata item to the nav
+    // Add Report item to the nav
     const reportItem = document.createElement('li');
     reportItem.classList.add('nav-dimension-item'); // Add class for styling
     reportItem.setAttribute('id', 'nav-metadata');

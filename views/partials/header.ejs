@@ -14,7 +14,6 @@
 <script type="text/javascript" src="/lib/jquery-ui.js"></script>
 <script type="text/javascript" src="/lib/jsv.js"></script>
 <script type="text/javascript" src="/lib/jsonform.js"></script>
-<script type="text/javascript" src="/js/glossary.js"></script>
 
 <link href="/css/water.css" rel="stylesheet">
 <link href="/css/glyphicon.css" rel="stylesheet">
@@ -46,7 +45,7 @@
 					<% } %>
 					<li><a href="/about" id="privacy-link" class="toggle-link <% if (page.link === '/about') { %>selected<% } %>">Your privacy</a></li>
 					<li>
-						<a style="padding: 0;" class="toggle-link <% if (page.link === '/profile') { %>selected<% } %>" href="/profile"><%= user ? (user.displayName || (user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : user.email)) : 'Guest' %></a>
+						<a style="padding: 0;" class="toggle-link <% if (page.link === '/auth/profile') { %>selected<% } %>" href="/auth/profile"><%= user ? (user.displayName || (user.first_name && user.last_name ? user.first_name + ' ' + user.last_name : user.email)) : 'Guest' %></a>
 						<form style="display: inline-flex;" id="logout_form" action="/logout" method="post">
 							 &nbsp;(<a href="javascript:;" onclick="document.getElementById('logout_form').submit();">Logout)</a>
 						</form>

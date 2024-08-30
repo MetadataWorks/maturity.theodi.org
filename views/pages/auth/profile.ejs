@@ -15,9 +15,10 @@
 </section>
 
 <section class="content-block white">
-  <h2>Delete Account</h2>
+  <h2>Delete Profile</h2>
+  <p><strong>Note:</strong> This will only delete your profile for this service, your account with a third party will remain.</p>
   <form id="deleteForm" action="/profile" method="POST">
-    <button type="button" onclick="confirmDelete()">Delete Account</button>
+    <button type="button" onclick="confirmDelete()">Delete Profile</button>
   </form>
   <p id="errorMessage" style="color: red;"></p> <!-- Error message element -->
 </section>
@@ -26,14 +27,14 @@
 
 <script>
   function confirmDelete() {
-    const confirmed = confirm('Are you sure you want to delete your account?');
+    const confirmed = confirm('Are you sure you want to delete your profile?');
     if (confirmed) {
       deleteUser();
     }
   }
 
   function deleteUser() {
-    fetch('/profile', {
+    fetch('/auth/profile', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

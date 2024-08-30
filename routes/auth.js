@@ -4,7 +4,9 @@ const express = require('express');
 const passport = require('../passport'); // Require the passport module
 
 const { deleteLocalProjectsAndAccounts, retrieveOrCreateUser, updateDefaultPassword, getDefaultPassword } = require('../controllers/user');
-const { getHubspotUser } = require('../controllers/hubspot');
+const { getHubspotUser, getHubspotProfile } = require('../controllers/hubspot');
+const { ensureAuthenticated } = require('../middleware/auth');
+const { getUserProjects } = require('../controllers/project');
 
 const router = express.Router();
 
@@ -83,16 +85,6 @@ router.get('/local', (req, res) => {
   });
 });
 
-// Middleware to ensure user is authenticated
-async function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated() && req.session.authMethod === 'google') {
-    return next();
-  }
-  const error = new Error('Unauthorized');
-  error.status = 401;
-  return next(error);
-}
-
 // Route to render reset password page for local users
 router.get('/local/reset-password', ensureAuthenticated,  (req, res) => {
   res.render('pages/auth/changeLocalPassword', {
@@ -143,8 +135,8 @@ router.delete('/profile', ensureAuthenticated, async (req, res, next) => {
       const userId = req.session.passport.user.id;
 
       // Check if the user has any projects
-      const userProjects = await projectController.getUserProjects(userId);
-      const ownedProjects = userProjects.ownedProjects.projects;
+      const userProjects = await getUserProjects(userId);
+      const ownedProjects = userProjects.ownedProjects;
 
       if (ownedProjects.length === 0) {
           // If the user has no projects, delete the user

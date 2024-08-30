@@ -118,7 +118,7 @@ section {
 .infobox {
   padding: 2rem;
   color: black;
-  background-color: white;
+  background-color: var(--color-light-grey);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .odi-logo {
@@ -159,6 +159,9 @@ li {
 .white {
   background-color: rgb(255 255 255);
   color: var(--color-dark-blue)
+}
+.white strong {
+  color: var(--color-dark-blue);
 }
 .white h1, .white h2, .white h3 {
   color: var(--color-dark-blue)
@@ -403,7 +406,6 @@ fieldset .form-group {
  */
 .error {
   width: 100%;
-  background: red;
   text-align: center;
 }
 .error p {
