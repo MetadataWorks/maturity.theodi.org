@@ -5,6 +5,8 @@ const { ensureAuthenticated } = require('../middleware/auth'); // Assuming this 
 const { loadProject, checkProjectAccess, checkProjectOwner } = require('../middleware/project');
 const { generateDocxReport } = require('../lib/docxBuilder');
 const { Document, Packer } = require('docx');
+const fs = require('fs');
+const path = require('path');
 
 router.get('/', ensureAuthenticated, async (req, res, next) => {
     try {
@@ -58,15 +60,24 @@ router.get('/:id/report', ensureAuthenticated, checkProjectAccess, async (req, r
         const acceptHeader = req.get('Accept');
 
         if (acceptHeader === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-            const doc = generateDocxReport(project);
-
-            // Pack the document into a .docx file
-            const buffer = await Packer.toBuffer(doc);
-
-            // Set the headers to download the file
-            res.setHeader('Content-Disposition', `attachment; filename=${project.title || 'project-report'}.docx`);
-            res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-            res.send(buffer);
+            let owner = await projectController.getProjectOwner(project);
+            const tempFilePath = await generateDocxReport(project,owner);
+            const fileName = `${project.title.replace(/\s+/g, '_').trim()}.docx`;
+            //const buffer = await docx.Packer.toBuffer(doc);
+            res.set('Content-Disposition', `attachment; filename="${fileName}"`);
+            res.set('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+            res.sendFile(path.resolve(tempFilePath), async (err) => {
+                if (err) {
+                    console.error("Error sending file:", err);
+                } else {
+                    // Cleanup temporary file after sending
+                    try {
+                        await fs.promises.unlink(tempFilePath);
+                    } catch (error) {
+                        console.error("Error deleting temporary file:", error);
+                    }
+                }
+            });
         } else {
             const page = { title: "Project Report", link: "/projects" };
             res.locals.page = page;

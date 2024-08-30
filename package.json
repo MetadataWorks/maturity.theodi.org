@@ -1,6 +1,6 @@
 {
   "name": "maturity.theodi.org",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "The ODI Maturity Assessment Tool (pathway)",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "morgan": "^1.10.0",
     "node-cron": "^3.0.3",
     "node-fetch": "^3.3.2",
+    "node-html-parser": "^6.1.13",
     "nodemon": "^3.1.0",
     "openai": "^4.56.2",
     "passport": "^0.6.0",
