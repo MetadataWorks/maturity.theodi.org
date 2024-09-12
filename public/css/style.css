@@ -337,6 +337,10 @@ li {
   background-color: var(--color-white);
   color: var(--color-dark-blue);
 }
+tbody tr:nth-child(2n) button:hover {
+  background-color: var(--color-white);
+  color: var(--color-dark-blue);
+}
 
 .content-block .submitButton {
   margin-top: 1rem;
