@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<section class="content-block light-grey">
+<section class="content-block light-grey home-top">
     <input type="hidden" value="<%= page.link %>" id="pageId"/>
     <div>
         <h1>Welcome to the ODI Maturity Assessment Tool</h1>
@@ -10,28 +10,29 @@
             With interactive assessments, detailed reports, and actionable insights, this tool is an essential resource for organisations looking to enhance their data management and utilisation strategies.
         </p>
     </div>
+    <img src="/images/steps.png" alt="Maturity steps"/>
 </section>
 
 <section class="content-block dark-blue">
-    <h2>Available Assessments</h2>
+    <h1 style="color: white;">Available Assessments</h1>
     <div class="assessment-grid">
         <div class="assessment-item">
-            <h3>Open Data Maturity Model</h3>
             <img src="/images/open-data-maturity.png" alt="Open Data Maturity Model" class="assessment-image"/>
+            <h3>Open Data Maturity Model</h3>
             <p>
                 Assess how well your organisation publishes and consumes open data. The model is structured around five themes and five progress levels, offering a comprehensive framework to evaluate your open data practices and identify key areas for improvement.
             </p>
         </div>
         <div class="assessment-item">
-            <h3>Data Ethics Maturity Model (Coming Soon)</h3>
             <img src="/images/data-ethics-maturity.png" alt="Data Ethics Maturity Model" class="assessment-image"/>
+            <h3>Data Ethics Maturity Model (Coming Soon)</h3>
             <p>
               The Data Ethics Maturity Model is a tool for anyone who collects, uses and shares data. It helps assess and benchmark how widely embedded data ethics culture and practices are across your organisation.
             </p>
         </div>
         <div class="assessment-item">
-            <h3>Data Practices Maturity Assessment (Coming Soon)</h3>
             <img src="/images/data-practices-maturity.png" alt="Data Practices Maturity Assessment" class="assessment-image"/>
+            <h3>Data Practices Maturity Assessment (Coming Soon)</h3>
             <p>
               The Data Practices Maturity Assessment offers a comprehensive framework designed to establish and showcase an organisation's trustworthiness in its data practices—whether it's creating, using, or sharing data. This tool also enhances the dialogue between technical teams and strategic leadership, ensuring that all data practices are fully aligned with organisational objectives and ethical standards.
           </p>
@@ -47,3 +48,4 @@
 </section>
 
 <%- include('../partials/footer') %>
+<%- include('../partials/footer-home') %>

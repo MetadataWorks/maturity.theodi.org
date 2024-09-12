@@ -1,7 +1,7 @@
 :root {
-    --red: #d60303;
+    --red: #dd1d1d;
     --orange: #ff6700;
-    --green: #0dbc37;
+    --green: #2fbc37;
     --lightblue: #178cff;
     --blue: var(--color-dark-blue);
     --grey: #ccc;
@@ -122,7 +122,6 @@ div.level-5,
     color: var(--blue); /* Text color */
     font-size: 1em; /* Set font size */
     text-align: center; /* Center the text */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow to the button */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
     cursor: pointer; /* Change cursor to pointer on hover */
     margin: 1em;
@@ -156,6 +155,9 @@ div.level-5,
 .project td button.selected {
     background-color: var(--blue) !important;
     color: white;
+}
+.modal button {
+    border: 1px solid var(--color-dark-blue) !important;
 }
 .project td button:disabled, td.disabled button {
     color: #999; /* Set the text color to grey */
@@ -429,11 +431,11 @@ div.level-5,
 .progress-pie.transparent::after, .progress-pie-unicorn::after {
     background: transparent;
     font: 600 18px/20px sans-serif;
-    color: var(--color-orange);
+    color: var(--green);
 }
 .progress-pie.complete::after {
     content: '✔'; /* HTML tick mark */
-    color: gold;
+    color: var(--green);
 }
 .progress-pie.hidden {
     background-image: none;
