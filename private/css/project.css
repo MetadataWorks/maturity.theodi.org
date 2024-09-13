@@ -430,12 +430,13 @@ div.level-5,
 
 .progress-pie.transparent::after, .progress-pie-unicorn::after {
     background: transparent;
-    font: 600 18px/20px sans-serif;
-    color: var(--green);
+    font: 400 14px/16px sans-serif;
+    color: var(--color-dark-blue);
 }
 .progress-pie.complete::after {
     content: '✔'; /* HTML tick mark */
-    color: var(--green);
+    font: 400 18px/22px sans-serif;
+    color: var(--color-dark-blue);
 }
 .progress-pie.hidden {
     background-image: none;
