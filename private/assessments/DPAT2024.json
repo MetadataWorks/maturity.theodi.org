@@ -1,0 +1,2651 @@
+{
+  "title": "Data Practices Maturity Model (2024)",
+  "description": "<p>The Data Practices Maturity Assessment offers a comprehensive framework designed to establish and showcase an organisation's trustworthiness in its data practices—whether it's creating, using, or sharing data. This tool also enhances the dialogue between technical teams and strategic leadership, ensuring that all data practices are fully aligned with organisational objectives and ethical standards.</p>",
+  "owner": "info@theodi.org",
+  "organisation": {
+    "name": "The Open Data Institute",
+    "homePage": "https://theodi.org",
+    "country": {
+      "name": "United Kingdom",
+      "code": "GB"
+    }
+  },
+  "public": true,
+  "dimensions": [
+    {
+      "name": "Accountability",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "Job descriptions do not clearly outline the data accountabilities and responsibilities for roles, leading to potential confusion and gaps in data management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some job descriptions include data accountabilities and responsibilities, but they are inconsistent.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Job descriptions generally outline data accountabilities and responsibilities, with consistent content.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Job descriptions clearly and consistently outline data accountabilities and responsibilities for all roles. They have well-defined documentation and regular updates to ensure clarity and alignment with organisational needs.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Job descriptions with data related responsibilties are proactively managed to ensure alignment with strategic goals.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is limited understanding among individuals about their responsibilities for compliance with applicable regulations, leading to potential inconsistencies and a risk of non-compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals understand their compliance responsibilities, but the level of knowledge is inconsistent.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Most individuals have a fair understanding of their responsibilities for compliance with the organisation's data processes and regulations, though the level of understanding may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "All individuals have a good understanding of their responsibilities for compliance with the organisation's data processes and regulations, ensuring a consistent following.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "There is a comprehensive and thorough understanding among all individuals of their responsibilities for compliance with the organisation's data processes and regulations, to help ensure consistent and effective compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no clear accountabilities for data within the senior management team, leading to potential gaps in oversight and strategic alignment.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some members of the senior management team may have informal or partial responsibilities for data.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Clear accountabilities for data are established within the senior management team, though the level of enforcement may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "The senior management team has well-defined and consistently applied accountabilities for data, helping to ensure strategic alignment and effective governance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "The senior management team has advanced, comprehensive accountabilities for data, helping to ensure optimal data governance and strategic alignment across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no dedicated group responsible for developing and supporting accountability for data across the organisation, leading to potential inconsistencies in data practice and oversight.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "An informal or ad-hoc group may address data accountability issues, but there is no official and consistently defined group.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal group is established to develop and support data accountability across the organisation, though its actions and effectiveness may be inconsistent.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A well-defined and consistently acting group is in place to develop and support data accountability across the organisation, helping to ensure comprehensive oversight and support.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A well-established group is strategically positioned to develop and support data accountability across the organisation, helping to ensure optimal data governance and accountability.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There is no clear link between the organisation's business plans and data activities, which therefore lack an overarching data strategy or roadmap, leading to potential misalignment and missed opportunities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal connections exist between business plans and data activities, but there is no comprehensive data strategy or roadmap to link them consistently.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A data strategy or roadmap exists and is linked to business plans, but alignment may be uneven, with some areas more closely integrated than others.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A well-defined and consistently applied data strategy or roadmap clearly links the organisation's business plans with data activities, with documented alignment to arising business challanges and regular reviews to ensure effective integration and support.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "An advanced, continuously refined data strategy or roadmap ensures a strategic and evolving link between the organisation's business plans and data activities. There is proactive management, detailed documentation, and alignment with strategic goals to drive optimal data-driven decision-making and value creation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no KPIs or metrics in place to demonstrate conformance to the processes that control data, leading to potential gaps in monitoring and accountability.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal KPIs or metrics may be used to assess conformance to data processes, but there is no consistent set of measures to monitor adherence.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal KPIs or metrics are established to demonstrate conformance to data control processes, though the scope and effectiveness of these measures may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied KPIs or metrics are in place to effectively demonstrate conformance to data control processes, with effective management to ensure accurate and reliable monitoring.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined KPIs or metrics are used to proactively and comprehensively demonstrate conformance to data control processes. There is detailed documentation, proactive management, and alignment with best practices to ensure optimal oversight and continuous improvement.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no named individuals accountable for each data asset, leading to potential unclear ownership and responsibility.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some data assets have designated individuals responsible for them, but accountability is not uniformly applied across all data assets.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Named individuals are assigned accountability for all important data assets, though the clarity and enforcement of these accountabilities may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Clearly defined individuals are accountable for all data assets, with well-documented roles and responsibilities, regular reviews, and effective management to ensure comprehensive ownership and oversight.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure that a senior individual is accountable for each data asset. They have comprehensive authority, provide proactive management, and align with best practices to ensure optimal data stewardship and governance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal process for identifying, recording, or mitigating risks associated with data assets, leading to potential unmanaged risks and vulnerabilities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods are used to identify and record risks related to data assets, but there is no consistent process for assessing or mitigating these risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal process is in place to identify, record, and mitigate risks associated with data assets, though the comprehensiveness and application of these processes may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes exist for identifying, recording, and mitigating risks associated with data assets. They have clear documentation, regular reviews, and effective oversight to ensure thorough risk management and mitigation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure comprehensive identification, recording, and mitigation of risks associated with data assets. There are proactive risk management strategies, detailed documentation, and alignment with best practices to ensure optimal risk reduction and data asset protection.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Privacy",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for ensuring data privacy, leading to potential gaps in privacy management and compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal responsibility for data privacy may exist, but there is no designated person accountable for ensuring data privacy across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is assigned to oversee data privacy, with documented responsibilities, though their role and authority may not be fully integrated across all departments.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A dedicated person is clearly accountable for ensuring data privacy, with well-defined responsibilities and effective oversight of privacy practices across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A senior individual is accountable for data privacy, with comprehensive authority and responsibility, continuously ensuring alignment with regulatory requirements and organisational goals.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal training provided on data protection and privacy laws and regulations, leading to potential gaps in understanding and compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals receive training on data protection and privacy laws and regulations, but it is inconsistent and not uniformly applied across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Training on data protection and privacy laws and regulations is provided and documented for most individuals, though the depth and frequency of training may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "All individuals receive regular and appropriate training on data protection and privacy laws and regulations, with clear documentation and consistent application across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Training on data protection and privacy laws and regulations is comprehensive, continuously updated, and tailored to roles, ensuring that all individuals are well-informed and aligned with the latest compliance requirements.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is little to no understanding of relevant data privacy laws and regulations, leading to potential non-compliance and gaps in data protection.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some awareness of relevant data privacy laws and regulations exists, but understanding is inconsistent and may not be integrated into organisational practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "The organisation maintains a general understanding of relevant data privacy laws and regulations, with documented knowledge and some processes in place to ensure compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "The organisation has a thorough understanding of relevant data privacy laws and regulations, with established practices to stay updated and ensure compliance across all data activities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "The organisation not only has a comprehensive and current understanding of relevant data privacy laws and regulations, but also proactively adapts its practices to anticipate changes and enhance data protection.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There are no formal processes in place to ensure compliance with data privacy laws and regulations, leading to potential non-compliance and legal risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal processes may be used to address compliance with data privacy laws and regulations, but there is no consistent or formally defined approach across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes have been implemented to ensure compliance with data privacy laws and regulations, though their effectiveness and consistency may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined processes are in place to ensure compliance with data privacy laws and regulations, with regular reviews and updates to maintain effectiveness.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced processes are continuously refined to ensure comprehensive compliance with data privacy laws and regulations, proactively adapting to changes and integrating best practices across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no formal processes in place to identify personal data and sensitive personal data, leading to potential risk of non-compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal processes may be used to identify personal data and sensitive personal data, but there is no consistent or formally defined process across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established for identifying personal data and sensitive personal data, with documented procedures, though the implementation and coverage may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place to identify personal data and sensitive personal data, ensuring comprehensive data classification and management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced processes are continuously refined to effectively identify and manage personal data and sensitive personal data, with proactive updates and integration into all relevant data handling practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no formal processes in place for transferring personal data between systems or to third parties, resulting in potential non-compliance and data security risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal processes exist for transferring personal data between systems or to third parties, but these are inconsistent.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established for transferring personal data between systems or to third parties, with documented procedures and compliance checks, though effectiveness may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined processes are in place for transferring personal data between systems or to third parties, with rigorous compliance checks and regular reviews to help ensure adherence to applicable regulations.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously improved processes ensure the secure and compliant transfer of personal data between systems or to third parties, with proactive measures and integration of best practices to address regulatory requirements.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal process in place for addressing requests from individuals about the data held about them, leading to potential delays or failures in responding to such requests.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods may exist for handling requests from individuals about their data, but there is no consistent process across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal process is established for addressing requests from individuals about their data, with documented procedures, though the process may not be uniformly applied or fully efficient.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place for addressing requests from individuals about their data, with clear documentation, timely responses, and regular reviews.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced processes are in place for addressing requests from individuals about their data, with proactive management, high efficiency, and continuous improvements to ensure prompt, transparent, and compliant handling of all requests.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal process in place for alerting or working with affected individuals in the event of a privacy breach, leading to potential delays and unmanaged responses.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal procedures are in place for handling privacy breaches, but they are inconsistent and lack a structured approach for alerting and working with affected individuals.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal process exists for alerting and working with affected individuals in the event of a privacy breach, with documented procedures, though the implementation and effectiveness may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place for promptly alerting and working with affected individuals in the event of a privacy breach, with clear communication and support mechanisms.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced processes are in place for managing privacy breaches, including proactive and efficient alerting of affected individuals, comprehensive support, and continuous improvements to ensure effective handling and compliance with regulations.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "The organisation has no formal process to ensure the organisation has the necessary lawful basis to collect, use, and share personal data, leading to potential legal and compliance risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal checks are made to establish a lawful basis for collecting, using, and sharing personal data, but these practices are inconsistent.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established to ensure the organisation has a lawful basis for collecting, using, and sharing personal data, with documented procedures, though adherence and comprehensiveness may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place to ensure the organisation always has the necessary lawful basis for collecting, using, and sharing personal data, with regular reviews and effective documentation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced processes are continuously refined to ensure robust and proactive management of a lawful basis for collecting, using, and sharing personal data, with comprehensive documentation and alignment with evolving legal requirements.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Security",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for ensuring data security, leading to potential gaps in data protection and security management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "A few individuals may be involved in data security, but there is no clearly designated person with overall accountability for ensuring data security across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is assigned responsibility for ensuring data security, with documented roles and responsibilities, though their influence and authority may not be fully integrated.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A dedicated individual is clearly accountable for ensuring data security, with well-defined responsibilities and effective oversight across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A senior individual is specifically accountable for data security, with comprehensive authority, continuous improvement initiatives, and proactive measures ensuring robust and integrated data security practices across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal training provided for data security, leading to potential vulnerabilities and a lack of awareness among individuals.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals receive data security training, but it is not uniformly applied across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Training in data security is provided to most individuals, though the depth and frequency of training may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "All individuals receive regular standardised data security training, with clear documentation and consistent application across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Training in data security is comprehensive, continuously updated, and tailored to roles, ensuring all individuals are well-informed and equipped to handle data security effectively as appropriate.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is little to no understanding of relevant data security regulations and laws, leading to risks of non-compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some awareness of relevant data security regulations and laws exists, but understanding is inconsistent and not systematically integrated into organisational practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "The organisation maintains a general understanding of relevant data security regulations and laws, with documented knowledge and some processes in place to ensure compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "The organisation has a thorough understanding of relevant data security regulations and laws, with established practices to stay updated and ensure compliance across all data security activities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "The organisation has a comprehensive and current understanding of relevant data security regulations and laws, and proactively adapts its practices to anticipate changes and enhance security measures.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There are no formal processes for classifying data according to the level of security needed, leading to inconsistent data protection practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods for data classification exist, but they lack documentation and uniform application.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established for classifying data according to the level of security needed, with documented procedures, though implementation may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place for classifying data based on security needs, with clear documentation and regular reviews to ensure effective data protection.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced and continuously refined processes are in place for classifying data according to security needs. There is proactive management and integration into all data handling practices, ensuring optimal protection and compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no formal processes in place to ensure the security of data being collected, used and shared, leading to potential vulnerabilities and risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal measures are taken to secure data during collection, use and sharing, but these processes are inconsistent and lack documentation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established to ensure the security of data during collection, use and sharing. There are documented procedures, though their effectiveness may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place to ensure data security throughout its lifecycle, including collection, use and sharing, with regular reviews and clear documentation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously improved processes ensure robust security of data during collection, use and sharing. There are proactive measures, comprehensive documentation, and integration of best practices to protect data throughout its lifecycle.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "No data security assessment has been undertaken within the last 12 months, whether through an independent party or self-assessment.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "A data security assessment, either through an independent party or self-assessment, has been conducted within the last 12 months, but it was informal or limited in scope, and may not have been comprehensive.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal data security assessment, either through an independent party or self-assessment, has been completed within the last 12 months, with documented findings and recommendations.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A thorough data security assessment has been conducted within the last 12 months, with comprehensive documentation and follow-up actions, performed either by an independent party or through a rigorous self-assessment.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Regular, detailed data security assessments are conducted at least once a year, with proactive and continuous improvements, which are based on comprehensive evaluations by independent parties or through robust self-assessment.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Technology",
+          "statements": [
+            {
+              "text": "The organisation lacks appropriate technology to ensure the security of data being collected, used and shared, leading to potential vulnerabilities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some technology is in place to secure data during collection, use and sharing, but it is inconsistent and may not fully address all data security needs.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "The organisation has appropriate technology to ensure data security during collection, use and sharing, with documented policies and procedures, though its effectiveness may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-established and effective technology is in place to ensure data security during collection, use and sharing, with regular updates, clear documentation, and integration into organisational practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously updated technology ensures comprehensive security of data during collection, use and sharing. There is proactive management, full integration into all data processes, and alignment with best practices and emerging threats.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standardisation",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for the management of data within the organisation, leading to potential gaps in oversight and coordination of data management activities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal or ad-hoc responsibility for data management exists, but there is no designated individual accountable for overseeing data management across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is formally assigned accountability for the management of data, with documented roles and responsibilities, though the integration and effectiveness of this role may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A clearly defined and consistently accountable individual is responsible for the management of data, for example with well-documented roles, regular reviews, and effective management to help ensure comprehensive data oversight and coordination.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "An advanced, continuously refined role is in place with a senior individual accountable for the management of data. They is proactive management, detailed documentation, and alignment with best practices to ensure optimal data governance and strategic alignment.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no clear understanding among staff about their roles in the management of data, leading to potential confusion and inconsistent practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal awareness exists regarding individual roles in the management of data, but there is no consistently defined understanding across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Roles in the management of data are formally defined and documented, and there is a basic understanding among staff about their responsibilities, though the clarity and communication of these roles may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Roles and responsibilities in the management of data are well-defined and consistently communicated to staff, with clear documentation and regular updates to ensure understanding and effective management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Roles in the management of data are clearly defined, communicated, and integrated into the organisational culture, with ongoing training and refinement to ensure everyone fully understands and effectively fulfills their responsibilities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "Few have received training for the management of data appropriate for their role.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal or ad-hoc training may be provided in the management of data for specific roles.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal training is established for all individuals regarding their roles in the management of data, though the coverage and effectiveness of the training may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied training programs are in place to ensure that all individuals understand their roles in the management of data, with clear documentation, regular updates, and effective delivery.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined training programs ensure that all individuals receive comprehensive and up-to-date training on their roles in the management of data, with detailed documentation, ongoing evaluations, and alignment with best practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There is no record of what data is collected, used and shared.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "There is some record of what data is collected, used and shared. There is greater focus on prominent high visibility data which is collected and used, but sharing may not be so well tracked.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "There is a good record of what data is collected, used and shared, catering for a wide range of data sets. The process may have some level of automation to ensure it is simple and robust.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "There is a complete record of what data is collected, used and shared, which is automated to a high degree.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Data records are readily available, automatically updated, and can be easily and understandably inspected by anyone with appropriate permissions.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "The organisation does not use a metadata standard.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some metadata is applied to a number of key data sets, but may not have wider adoption or enforcement.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Metadata is systematically gathered for most data sets, and is well maintained and accessible. In particular, it is structured and formatted in a machine readable way.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A generic machine readable open metadata standard is used throughout the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "The organisation not only uses a generic open metadata standard, but is comfortable enough to extend it if need be, and to promote those extensions to the wider community outside of the organisation itself.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no formal quality processes in place for how each data set is collected or created, leading to potential inconsistencies and inaccuracies in the data.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal or ad-hoc quality processes may be used for collecting or creating data sets, but there is no consistently defined approach applied across all data.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal quality processes are established for collecting and creating each data set, with documented procedures and guidelines, though the application and adherence may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied quality processes are in place for collecting and creating each data set, with clear documentation, regular reviews, and effective management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined quality processes ensure optimal standards for how each data set is collected and created. There is proactive management, detailed documentation, and alignment with best practices to drive superior data quality and reliability.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "The organisation can not explain the purpose for which many data sets have been collected/created. For example, there is a lot of historical data which is sitting in storage with little to no information about it.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "There is some record and understanding about the purpose for the collection and creation of certain key data sets. There is still a lot of other data without such insights, spread across multiple historical locations and projects.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "There is good record and understanding of the purpose for the collection and creation of nearly all data sets. Surrounding documentation is clear, even if the original data collectors and creators have moved on.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "All data has a clear purpose and scope. For example, processes may include regular checks to ensure that outdated or redundant data is removed and does not become a liability, especially regarding GDPR.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Purpose and scope are primary considerations for all data collection and creation activities, and are well considered in planning future projects. Documentation is clear, usage is always within initial scope, and retention policies are strictly adhered to.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no data specifications in place to standardise the data collected, used, and shared by the organisation, which may lead to inconsistencies and potential issues with data integration.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal guidelines or practices exist for data standardisation, but there is little documentation or consistent application across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal data specifications are established to standardise the data collected, used and shared, with documented guidelines, though implementation may vary across departments.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied data specifications are in place to standardise data collection, usage, and sharing, with clear documentation and regular reviews to ensure adherence.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined data specifications are fully integrated into all data processes, ensuring comprehensive standardisation of data collection, usage and sharing, with proactive management and alignment with best practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no formal processes for archiving or deleting data that is no longer required, leading to potential data retention issues and inefficiencies.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods for archiving and deleting data exist, but these processes are inconsistent and lack documentation or systematic application.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established for archiving and deleting data that is no longer required, with documented procedures, though adherence and effectiveness may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place for archiving and deleting data that is no longer required, with clear documentation, regular reviews, and effective management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously improved processes ensure efficient archiving and deletion of data that is no longer required. There is proactive management, comprehensive documentation, and alignment with best practices and regulatory requirements.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Technology",
+          "statements": [
+            {
+              "text": "There is no documentation for the algorithms used in the technology for collecting or creating data, this may lead to a lack of transparency and understanding of their operation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some algorithms used in data collection or creation are documented, but the documentation is inconsistent and may not cover all aspects of their operation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal documentation exists for the algorithms used in the technology for collecting or creating data, with documented descriptions and functions, though the level of detail and completeness may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Comprehensive documentation is in place for the algorithms used in data collection or creation, with clear descriptions, purposes, and operational details, which is regularly reviewed for accuracy and completeness.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Detailed and continuously updated documentation exists for all algorithms used in data collection or creation, with thorough descriptions, purposes, and operational insights, ensuring full transparency and alignment with best practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Resourcing",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for ensuring that data is fully resourced within the organisation, leading to potential gaps in data management and resource allocation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals may informally oversee data resourcing, but there is no clearly designated person with full accountability for ensuring data is properly resourced within the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is assigned accountability for ensuring data is fully resourced within the organisation, with documented responsibilities, though the scope and effectiveness of their role may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A dedicated individual is clearly accountable for ensuring data is fully resourced within the organisation, with well-defined responsibilities, effective oversight, and regular assessments to ensure adequate data resources.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A senior individual is accountable for ensuring optimal data resourcing within the organisation. They provide comprehensive authority, proactive management, and alignment with strategic goals to ensure effective and efficient data resource allocation and support.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no complete staffing structure for all the roles required to collect, use and share data, leading to potential gaps and inefficiencies in data management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some elements of the staffing structure for roles related to data collection, use and sharing are in place, but it is incomplete or unclear and lacks proper documentation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal staffing structure exists for roles related to data collection, use and sharing, with documented roles and responsibilities, though there may be areas where the structure is still developing or evolving.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A well-defined and consistently applied staffing structure is in place for all roles required to collect, use and share data. There is clear documentation, regular reviews, and effective management to ensure comprehensive coverage and alignment with organisational needs.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "An advanced and continuously refined staffing structure is established for all roles involved in data collection, use and sharing. There is proactive management, detailed documentation, and alignment with strategic objectives to ensure optimal efficiency and effectiveness in data management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There is no dedicated annual budget for data-related activities, for example infrastructure and staff costs, leading to potential resource constraints and inconsistent funding.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some budget allocation exists for data-related activities, but it is not comprehensive and may not fully cover all aspects of infrastructure and staff costs consistently.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal annual budget is allocated for data-related activities, including infrastructure and staff costs, with documented plans, though the coverage and adequacy of the budget may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A well-defined and consistently applied annual budget is established to cover all aspects of data-related activities, including infrastructure and staff costs, with clear documentation and regular reviews to ensure sufficient and effective resource allocation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "An advanced, continuously refined annual budget comprehensively covers all aspects of data-related activities, including infrastructure and staff costs. There is proactive management, detailed planning, and alignment with strategic goals to ensure optimal funding and support for data initiatives.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no formal processes in place for identifying and mitigating financial risks associated with data-related activities and services, leading to potential exposure to unmanaged financial risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods may be used to address financial risks associated with data-related activities and services, but there is no consistently defined process for identifying and mitigating these risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established for identifying and mitigating financial risks related to data-related activities and services, though the effectiveness and consistency of these processes may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place for identifying and mitigating financial risks associated with data-related activities and services, with clear documentation, regular reviews, and effective management to ensure comprehensive handling of risks.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure proactive identification and mitigation of financial risks associated with data-related activities and services. There is a comprehensive risk management strategy, detailed documentation, and alignment with best practices to effectively manage and minimise financial exposure.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Capability",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for ensuring the organisation has the required data capabilities, leading to potential gaps in both human and technical resources.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals may be involved in overseeing data capabilities, but there is no clearly designated person with overall accountability for ensuring both human and technical resources are adequate.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is assigned accountability for ensuring the organisation has the required data capabilities, both human and technical, and with documented roles and responsibilities, though their influence and authority may not be fully integrated.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A dedicated individual is clearly accountable for ensuring the organisation has the necessary data capabilities, including both human and technical resources, with well-defined responsibilities and effective authority and oversight.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A senior individual is accountable for ensuring the organisation maintains and enhances its data capabilities. They have comprehensive authority and responsibility for both human and technical resources, driving continuous improvement and alignment with strategic goals.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal process to review or maintain a record of the data skills and understanding of staff, leading to potential gaps in data competency.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal reviews of staff data skills and understanding occur, but there is no consistent or comprehensive record-keeping process in place.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal process is in place to review and maintain records of staff data skills and understanding, though the depth and frequency of reviews may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined processes are consistently applied to review and maintain clear records of staff data skills and understanding, with regular assessments and comprehensive documentation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously improved processes ensure a detailed and up-to-date record of staff data skills and understanding. There is proactive management, regular assessments, and alignment with evolving data needs and organisational goals.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no established training or development programmes to address gaps in skills or competence, leading to potential deficiencies in staff capabilities.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some ad-hoc training and development efforts are made to address skills and competence gaps, but these programmes are inconsistent and lack formal structure.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal training and development programmes are in place to address gaps in skills and competence, with documented plans and processes, though implementation and coverage may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied training and development programmes are established to address gaps in skills and competence, with clear documentation, regular updates, and effective tracking of progress.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined training and development programmes are in place to proactively address and close skills and competence gaps. There is tailored content, comprehensive tracking, and alignment with strategic goals and emerging needs.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal effort to maintain an understanding of emerging data trends and technologies, which may lead to missed opportunities and outdated practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some awareness of emerging data trends and technologies exists, but it is informal and not systematically integrated into organisational strategies.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "The organisation maintains a good understanding of emerging data trends and technologies.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined processes are in place to help stay informed about emerging data trends and technologies, with regular updates and systematic integration into organisational strategies and decision-making.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "The organisation actively monitors and integrates emerging data trends and technologies. There are advanced practices for continuous learning and adaptation, ensuring alignment with strategic goals and leveraging innovations effectively.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "Required data competencies are not defined within job descriptions, leading to unclear expectations and potential gaps in required skills.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some job descriptions include data competencies, but these are inconsistent and not systematically applied across all roles.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are in place to define required data competencies within job descriptions, with documented information for most roles, though there may be variations in detail and application.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes ensure that required data competencies are clearly defined in job descriptions, with comprehensive documentation and regular updates to align with evolving needs.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced processes are in place to ensure that required data competencies are thoroughly and proactively defined in job descriptions. There is continuous refinement, alignment with strategic goals, and integration of best practices to meet current and future demands.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "Technological deployments are not consistently aligned with data processes or standards during development, leading to potential mismatches and inefficiencies.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some technological deployments align with data processes and standards, but this is inconsistent and lacks proper documentation and systematic application.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are in place to ensure technological deployments conform with data processes and standards during development, though implementation and adherence may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes ensure that technological deployments conform with data processes and standards throughout development, with clear documentation, regular reviews, and effective integration.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure that technological deployments are proactively aligned with data processes and standards. There is thorough documentation, proactive management, and integration of best practices to ensure optimal performance and compliance.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Technology",
+          "statements": [
+            {
+              "text": "There is no awareness or documentation of whether the technology used to collect, create, or share data employs algorithms, leading to potential gaps in understanding and oversight.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some technology used for data collection, creation, or sharing may use algorithms, but there is inconsistent documentation or awareness regarding their use and function.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "The technology used to collect, create, or share data employs algorithms, and there is formal documentation describing them, though the level of detail may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied documentation exists for the algorithms used in technology for data collection, creation, and sharing, with clear descriptions and operational details.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced and continuously updated documentation exists for all algorithms used in technology for data collection, creation, and sharing. This ensures full transparency and integration with best practices for data management and analysis.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Engagement",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for ensuring that internal and external data stakeholders are involved in data decision-making processes, leading to potential oversight and lack of stakeholder engagement.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals may be involved in including internal and external data stakeholders in decision-making processes, but there is no clearly designated person with overall accountability for this involvement.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is assigned responsibility for ensuring that internal and external data stakeholders are included in the data decision-making process, though the effectiveness of stakeholder engagement may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A dedicated individual is clearly accountable for ensuring that both internal and external data stakeholders are actively involved in the data decision-making process, with well-defined responsibilities and effective oversight.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A senior individual is accountable for integrating both internal and external data stakeholders into the data decision-making process. They have comprehensive authority, proactive engagement strategies, and initiate continuous improvements to ensure effective collaboration and alignment with strategic goals.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no defined roles or elements in job descriptions related to engaging with data stakeholders, leading to unclear responsibilities and potential gaps in stakeholder interaction.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some roles or job descriptions may include elements related to engaging with data stakeholders, but these are inconsistent and not systematically defined across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal roles or elements related to engaging with data stakeholders are defined in all relevant job descriptions, though the level of detail and consistency may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined roles and elements related to engaging with data stakeholders are clearly outlined in all relevant job descriptions, with comprehensive documentation and consistent application across relevant positions.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced roles and responsibilities related to engaging with data stakeholders are thoroughly defined and integrated into job descriptions. There is continuous refinement and alignment with strategic objectives to ensure effective stakeholder engagement and collaboration.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There is limited understanding of stakeholders and their requirements for data collection, use or sharing, leading to potential gaps in addressing their needs.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "There is some understanding of stakeholders and their requirements for data collection, use or sharing, but it is incomplete and inconsistent.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A general understanding of stakeholders and their requirements for data collection, use or sharing is established, with documented processes, though the depth of understanding and coverage may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined processes ensure a thorough understanding of all stakeholders and their requirements for data collection, use or sharing, with clear documentation and regular updates to address evolving needs.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced processes are in place to maintain an extensive and continuously updated understanding of all stakeholders and their requirements for data collection, use or sharing. There is proactive engagement and alignment with strategic goals, ensuring comprehensive and effective stakeholder management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no formal processes for engaging with stakeholders, leading to potential inconsistencies and gaps in communication and collaboration.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods for engaging with stakeholders exist, but these are inconsistent and lacking systematic application.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established for engaging with stakeholders, with documented procedures for communication and interaction, though effectiveness and consistency may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "There are communication channels in place for stakeholders to submit data requests and compliants, and where relevant updates can be shared.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure proactive and strategic engagement with stakeholders. There is comprehensive documentation, regular feedback loops, and alignment with organisational goals to foster strong relationships and effective collaboration.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no tools or tech to support two-way communication for stakeholders to lodge data requests, complaints, or receive updates, leading to potential gaps in stakeholder engagement.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal or ad-hoc tools or tech supports communication channels for stakeholders to lodge requests or complaints and receive updates, but there is no consistent or formally defined system for managing these interactions.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal tools or tech are in place to support two-way communication channels for stakeholders to lodge data requests, complaints, and receive updates, with documented procedures, though the effectiveness and coverage of these channels may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and robust tools or tech is applied to two-way communication channels for stakeholders to lodge data requests, complaints, and receive updates, with clear documentation, regular reviews, and effective management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously upgraded tools or tech support two-way communication channels to ensure proactive and effective engagement with stakeholders, allowing for seamless lodging of requests, complaints, and updates, with detailed documentation, proactive management, and alignment with best practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ethics",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for data ethics, leading to potential gaps in ethical oversight and decision-making.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals may informally address data ethics, but there is no clearly designated person with accountability for overseeing data ethics within the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is assigned accountability for data ethics, with documented responsibilities, though the extent of their influence and authority may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A dedicated individual is clearly accountable for data ethics, with well-defined responsibilities and effective oversight, ensuring ethical considerations are integrated into data practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A senior individual is accountable for data ethics, with comprehensive authority and responsibility. They drive continuous improvement in ethical practices, provide proactive management, and align with best practices and regulatory standards.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal training provided on the ethical use of data, leading to potential gaps in understanding and adherence to ethical standards.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals receive informal or ad-hoc training on the ethical use of data, but it is inconsistent within the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal training on the ethical use of data is provided to most individuals, though the depth and frequency of training may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "All employees receive timely, formal training on the ethical use of data,which is documented and regularly reviewed for updates.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced training programs on the ethical use of data are updated at least annually and are tailored to different roles within the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There is no escalation process for resolving difficult ethical data use challenges, leading to inconsistent handling and potential unresolved issues.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some methods exist for addressing ethical data use challenges, but there is no consistent escalation process for handling more complex issues.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal escalation process is in place for resolving difficult ethical data use challenges, though the effectiveness and application of the process may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied escalation processes are in place for addressing complex ethical data use challenges. There is clear documentation, regular reviews, and effective management to ensure timely and appropriate resolution.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined escalation processes are established for resolving difficult ethical data use challenges. There is proactive management, comprehensive documentation, and integration of best practices to ensure effective and transparent resolution of complex issues.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no defined ethical statement regarding the collection, use and sharing of data, leading to potential gaps in ethical guidelines and practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal or partial ethical guidelines exist for data collection, use and sharing.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "There is a formal ethical statement with documented principles and guidelines for the collection, use and sharing of data, though its implementation and communication may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A well-defined ethical statement is in place, clearly addressing the collection, use and sharing of data, with effective communication and integration into organisational practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "An advanced, continuously updated ethical statement governs the collection, use and sharing of data. There is a set of comprehensive principles, proactive management, and integration into all relevant processes to ensure alignment with best practices and ethical standards.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There are no clear processes for assessing and managing the ethical implications of collecting, using and sharing data, leading to potential ethical oversights and inconsistent practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods are used to assess and manage the ethical implications of data collection, use and sharing.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal processes are established for assessing and managing the ethical implications of data collection, use and sharing, with documented procedures, though the depth and consistency of these processes may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place to assess and manage the ethical implications of data collection, use and sharing, with clear documentation, regular reviews, and effective management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure comprehensive assessment and management of the ethical implications of data collection, use, and sharing. There is proactive oversight, thorough documentation, and alignment with best practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Technology",
+          "statements": [
+            {
+              "text": "There are no tools available to assist with the application of data ethics for projects or operations, leading to potential gaps in ethical oversight and decision-making.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal tools or resources are used to address data ethics in projects or operations, but these may be inconsistently applied or lack integration into business workflows.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal tools are available to assist with the application of data ethics in projects or operations, though their effectiveness and integration may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied tools are in place to support the application of data ethics in projects or operations, with clear documentation, regular updates, and effective integration into project and operational workflows.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously updated tools are actively used to ensure robust application of data ethics in projects and operations. There is a set of comprehensive features, proactive management, and alignment with best practices to ensure thorough ethical oversight and support.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Permissions",
+      "activities": [
+        {
+          "title": "People",
+          "statements": [
+            {
+              "text": "There is no named person accountable for data sharing agreements, leading to potential gaps in oversight and consistency in managing data sharing practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "There is no clearly designated person with formal accountability for overseeing these agreements, which are instead handled in ad-hoc fashion.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A named person is assigned responsibility for managing data sharing agreements, with documented responsibilities, though their authority and scope of oversight may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "A dedicated individual is clearly accountable for data sharing agreements, with well-defined responsibilities and effective oversight, ensuring consistent and compliant management of these agreements.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "A senior individual is accountable for data sharing agreements, with comprehensive authority and responsibility. There is a drive for continuous improvement in data sharing practices, proactive management, and alignment with best practices and regulatory requirements.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal training provided on data permissions and their application, leading to the potential for misunderstandings and inconsistent handling of data permissions.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some individuals receive informal or ad-hoc training on data permissions, but it is inconsistent and lacks proper content and structure.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Most individuals receive regular formal training on data permissions and their application, with adequate content.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "All individuals receive appropriate training on data permissions and how they apply. There is clear documentation, consistent application, and periodic updates to ensure ongoing relevance and effectiveness.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously updated training programs on data permissions are in place. There is tailored content for different roles, proactive management, and integration of best practices to ensure comprehensive understanding and adherence across the organisation.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no formal escalation process for resolving difficult data sharing agreement issues, leading to potential delays and inconsistent resolution.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods are used to address basic issues with data sharing agreements, but there is no consistent or well defined escalation process for handling complex or challenging situations.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal escalation process is in place for resolving difficult issues related to data sharing agreements, with documented procedures, though the effectiveness and application of the process may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied escalation processes are established to address complex issues with data sharing agreements, with clear documentation, regular reviews, and effective management to ensure timely and appropriate resolution.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined escalation processes are in place for resolving difficult data sharing agreement issues. There is proactive management, comprehensive documentation, and integration of best practices to ensure effective and transparent resolution of complex problems.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no access to specialised legal support for dealing with complex intellectual property rights (IPR) and licensing issues, leading to potential challenges in addressing these matters effectively.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some legal support is available for IPR and licensing issues, but it may be informal and not specifically tailored to handling more complicated or nuanced cases.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "Formal access to legal support is established for handling IPR and licensing issues, with documented procedures for seeking assistance, though the availability and specialisation of the support may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied access to specialised legal support is in place for dealing with complicated IPR and licensing issues, with clear documentation, regular engagement, and effective management to ensure thorough and informed handling of complex cases.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined access to highly specialised legal support is available for managing intricate IPR and licensing issues. There is proactive management, comprehensive documentation, and alignment with best practices to ensure expert and efficient resolution of complex legal challenges.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        },
+        {
+          "title": "Process",
+          "statements": [
+            {
+              "text": "There is no process for deciding on appropriate data sharing agreementa, leading to potential inconsistencies and risks in data sharing practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods are used to determine appropriate data sharing agreements, but there is no consistent defined process in place for making these decisions.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal process is established for deciding on appropriate data sharing agreements, with documented procedures and criteria, though implementation and adherence may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are in place for determining appropriate data sharing agreements, with clear documentation, regular reviews, and effective management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure a strategic and thorough approach to deciding on appropriate data sharing agreements. There is comprehensive documentation, proactive management, and integration of best practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            },
+            {
+              "text": "There is no process for assessing, recording, or managing the permissions of acquired data, leading to potential issues with compliance and oversight.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 1,
+              "positive": false
+            },
+            {
+              "text": "Some informal methods are used to assess and manage permissions of acquired data, but there is no consistent defined process for recording and overseeing these permissions.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 2,
+              "positive": false
+            },
+            {
+              "text": "A formal process is in place for assessing, recording, and managing permissions of acquired data, with documented procedures, though the effectiveness and consistency of these practices may vary.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 3,
+              "positive": true
+            },
+            {
+              "text": "Well-defined and consistently applied processes are established for assessing, recording, and managing permissions of acquired data, with clear documentation, regular reviews, and effective management.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 4,
+              "positive": true
+            },
+            {
+              "text": "Advanced, continuously refined processes ensure a comprehensive approach to assessing, recording, and managing permissions of acquired data. There is proactive oversight, detailed documentation, and alignment with best practices.",
+              "tags": [
+                null
+              ],
+              "associatedLevel": 5,
+              "positive": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

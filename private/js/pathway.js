@@ -10,7 +10,7 @@ async function loadData() {
     }
   }
 
-  async function loadAssessment(projectId) {
+async function loadAssessment(projectId) {
     try {
         const response = await fetch(`/project/${projectId}`, {
             headers: {
@@ -30,7 +30,7 @@ async function loadData() {
     }
 }
 
-  function createAssessmentTable(dimension,levelKeys) {
+function createAssessmentTable(dimension,levelKeys) {
     const container = document.getElementById('assessment-container');
     dimension.activities.forEach(activity => {
       const activityContainer = document.createElement('section');
@@ -107,9 +107,9 @@ async function loadData() {
         defaultActivity = activityId;
       }
     });
-  }
+}
 
-  function handleAnswerSelection(question, selectedAnswer) {
+function handleAnswerSelection(question, selectedAnswer) {
       // Find the row that contains this question
       const rows = Array.from(document.querySelectorAll('tr'));
       const row = rows.find(tr => {
@@ -205,9 +205,9 @@ async function loadData() {
           alert(improvementText); // Display improvements as an alert or append to the UI
       }
       */
-  }
+}
 
-  async function loadUserData(userId) {
+async function loadUserData(userId) {
       try {
           const response = await fetch(`Pathway/userData/users/${userId}.json`);
           if (!response.ok) {
@@ -230,9 +230,9 @@ async function loadData() {
       } catch (error) {
           console.error('Error loading user data:', error);
       }
-  }
+}
 
-  async function loadAssessmentData(savedAssessment) {
+async function loadAssessmentData(savedAssessment) {
       const data = await loadData(); // Load the base assessment structure
 
       const assessmentDetailsDiv = document.querySelector('.assessment-details');
@@ -273,9 +273,9 @@ async function loadData() {
               });
           });
       }
-  }
+}
 
-  function loadNavBar(data) {
+function loadNavBar(data) {
         const dimensions = data.dimensions;
         const navList = document.getElementById('navList');
 
@@ -299,9 +299,9 @@ async function loadData() {
             dimensionItem.appendChild(activityList);
             navList.appendChild(dimensionItem);
         });
-    }
+}
 
-    function showActivity(activityId) {
+function showActivity(activityId) {
         document.querySelectorAll('.activity').forEach(activity => {
             activity.classList.remove('active');
         });
@@ -315,60 +315,58 @@ async function loadData() {
             selectedActivity.classList.add('active');
             selectedActivityNav.classList.add('active');
         }
-    }
+}
 
-    function updateHash(activityId) {
+function updateHash(activityId) {
         if (history.replaceState) {
             history.replaceState(null, null, `#${activityId}`);
         } else {
             location.hash = activityId; // Fallback for older browsers
         }
-    }
+}
 
-
-    // Show the activity based on the URL hash on load
-    window.addEventListener('load', () => {
-        const hash = location.hash.substring(1); // Remove the '#' from the hash
-        if (hash) {
-            showActivity(hash);
-        } else {
-            showActivity(defaultActivity); // Default to the first activity
-        }
-    });
-
-
-    function toggleNav() {
-        const nav = document.querySelector('.project nav');
-        nav.classList.toggle('shrunk');
-    }
-
-  document.addEventListener('DOMContentLoaded', async () => {
-    const urlParts = window.location.pathname.split('/');
-    const projectId = urlParts[urlParts.length - 1]; // Extract the project ID from the URL
-
-    let levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
-    const data = await loadData();
-    loadNavBar(data);
-
-    if (data) {
-        if (data.levels) {
-            levelKeys = data.levels;
-        }
-        data.dimensions.forEach(dimension => {
-            createAssessmentTable(dimension,levelKeys)
-        });
-    }
-
-    if (projectId) {
-        await loadAssessment(projectId);
-    } else {
-        console.error('No project ID found in the URL');
-    }
-
+// Show the activity based on the URL hash on load
+window.addEventListener('load', () => {
     const hash = location.hash.substring(1); // Remove the '#' from the hash
     if (hash) {
         showActivity(hash);
     } else {
         showActivity(defaultActivity); // Default to the first activity
     }
-  });
+});
+
+function toggleNav() {
+    const nav = document.querySelector('.project nav');
+    nav.classList.toggle('shrunk');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+const urlParts = window.location.pathname.split('/');
+const projectId = urlParts[urlParts.length - 1]; // Extract the project ID from the URL
+
+let levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+const data = await loadData();
+loadNavBar(data);
+
+if (data) {
+    if (data.levels) {
+        levelKeys = data.levels;
+    }
+    data.dimensions.forEach(dimension => {
+        createAssessmentTable(dimension,levelKeys)
+    });
+}
+
+if (projectId) {
+    await loadAssessment(projectId);
+} else {
+    console.error('No project ID found in the URL');
+}
+
+const hash = location.hash.substring(1); // Remove the '#' from the hash
+if (hash) {
+    showActivity(hash);
+} else {
+    showActivity(defaultActivity); // Default to the first activity
+}
+});
