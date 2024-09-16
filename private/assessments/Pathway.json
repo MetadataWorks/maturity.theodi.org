@@ -1,0 +1,2382 @@
+{
+    "title": "Open Data Pathway (2015)",
+    "description": "<p>Open Data Pathway. A self-assessment tool to help you assess how well your organisation publishes and consumes open data, and identify actions for improvement.</p>",
+    "owner": "info@theodi.org",
+    "organisation": {
+      "name": "The Open Data Institute",
+      "homePage": "https://theodi.org",
+      "country": {
+        "name": "United Kingdom",
+        "code": "GB"
+      }
+    },
+    "public": true,
+    "readOnly": true,
+    "dimensions": [
+        {
+        "name": "Data management processes",
+        "activities": [
+            {
+            "title": "Data release process",
+            "questions": [
+                {
+                "text": "Has your organisation published any open data?",
+                "notes": "The data published by your organisation will have been released publicly using some process, even if it is ad hoc, under an open licence. Identifying those datasets will help clarify the steps being used to release the data.\n\nFor example, UK public sector organisations should check data.gov.uk for a complete list of organisational datasets.",
+                "answers": [
+                    {
+                    "text": "Yes, we have published at least one dataset under an open licence",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we have not yet published any open data",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Identify one or more datasets to publish as open data."
+                        },
+                        {
+                        "notes": "Identify the key steps required to publish these datasets and define a lightweight process that will support their release."
+                        },
+                        {
+                        "notes": "Obtain Open Data Certificates for each dataset, aiming for a Raw or Pilot grade for the initial release. Use the certificates to guide further process improvements."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Do you have a standardised release process for datasets?",
+                "notes": "A release process will address the key stages of preparing and publishing a dataset, including preparing the assets for release, how the dataset is reviewed, and the publication process itself. These steps will be common to all datasets, even if the details of formats, etc. vary.",
+                "dependency_id": "1",
+                "answers": [
+                    {
+                    "text": "Yes, there is a defined process that we follow to release data",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, there is no standard process and releases are performed using bespoke processes",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Review your existing release processes and identify the common elements. Use this to define a lightweight process that can be applied to new datasets."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "How widely adopted is your release process?",
+                "notes": "Understanding the variety of ways in which data is released can help improve their quality. Ensuring that data releases are guided by a standard process will improve quality and will permit faster releases.",
+                "dependency_id": "2",
+                "answers": [
+                    {
+                    "text": "The process has not yet been rolled out",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Create a plan to introduce your standard process to support the release of both new and updated datasets. Prioritise the introduction of the plan based on the individual datasets."
+                        },
+                        {
+                        "notes": "Create and share documentation internally so that users understand how the process operates."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "The process has been adopted to support the release of some datasets, e.g. recently published data",
+                    "positive": true,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Create a plan to introduce your standard process to support the release of all datasets. Prioritise the introduction of the plan based on the individual datasets."
+                        },
+                        {
+                        "notes": "Create and share documentation internally so that users understand how the process operates."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "The process has been rolled out in support of all key datasets",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you publish a release schedule for your datasets?",
+                "notes": "A release schedule documents when new datasets will be released, as well as when updates to existing datasets are expected to become available. The schedule might be published as a web page or a calendar.",
+                "dependency_id": "3",
+                "answers": [
+                    {
+                    "text": "Yes, we have a public release schedule",
+                    "positive": true,
+                    "score": 4,
+                    "improvements": []
+                    },
+                    {
+                    "text": "Yes, we have a release schedule, but it is only available internally",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Publicly share your release schedule to help re-users track when new and updated data will be available."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "No, we don't have a release schedule",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Create a release schedule for your datasets. Ideally this should include a list of both forthcoming datasets and dates when updates to existing datasets will be available."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Do you collect and use metrics to streamline your release process?",
+                "notes": "Metrics might include the time taken to release a dataset, the number of datasets released to a schedule, etc. Collecting and improving these metrics can drive improvements to the process.",
+                "dependency_id": "4",
+                "answers": [
+                    {
+                    "text": "Yes, we monitor our process and look for improvements",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "We collect some metrics but are not yet using them to increase efficiency",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Review the metrics you are collecting to confirm you are monitoring the right things, e.g. the number of datasets released to schedule. Use these metrics to look for process improvements."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We are not collecting any metrics",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Identify and collect metrics on the performance of your data release process. E.g. the number of datasets released to schedule, or the time taken to fix data quality issues."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Standards development & adoption",
+            "questions": [
+                {
+                "text": "Have you used technical standards to inform how you publish data or APIs?",
+                "notes": "These technology standards can cover a range of topics including data formats, schemas, and data access methods (e.g. APIs).",
+                "answers": [
+                    {
+                    "text": "Yes, we have identified a set of technical standards relevant to our data releases",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't have a set of reference standards",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Research technical standards that are relevant to the type of data you release. These might be defined by standards bodies, or be the <i>de facto</i> standards in use in your sector or community."
+                        },
+                        {
+                        "notes": "Ask re-users how they would like to consume your data, e.g. are there standard formats or schemas that, if adopted, would make the data easier to use?"
+                        },
+                        {
+                        "notes": "Review the data you are already publishing or are planning to publish. Prioritise the adoption of technical standards to support these releases."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "How widely adopted are these technical standards in your organisation?",
+                "dependency_id": "6",
+                "answers": [
+                    {
+                    "text": "Standards are defined on a project or product basis. There are no organisation-wide standards",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Catalogue the various standards used across your organisation, identifying where and how they are most useful."
+                        },
+                        {
+                        "notes": "Identify where there are competing standards being used to release similar data and decide whether or not to converge on a single common standard."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "There are organisation-wide standards. These have been adopted for some datasets",
+                    "positive": true,
+                    "score": null,
+                    "improvements": [
+                        {
+                        "notes": "Define a plan for increasing adoption of standards across the organisation. For example by making a review of suitable standards a part of the data governance and release processes."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "There are organisation-wide standards. These have been adopted across the organisation",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Does your organisation use standard code lists when publishing data?",
+                "notes": "Datasets often use standard codes, e.g. to define a type of location, or building, or status of an application. They may also use standard identifiers, e.g. when reporting data for administrative regions.",
+                "dependency_id": "7",
+                "answers": [
+                    {
+                    "text": "Yes, our datasets do make use of standard code lists",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't have a standard set of codes",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Review your published and unpublished data to identify standard codes and identifiers that are common across the datasets."
+                        },
+                        {
+                        "notes": "Publish any codes and identifiers that are specific to your organisation as open data."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "How widely adopted are these code lists?",
+                "notes": "Datasets released as part of the same project or from the same part of the organisation may use consistent code lists, but these may not have been widely adopted.",
+                "dependency_id": "8",
+                "answers": [
+                    {
+                    "text": "They have not yet been adopted in our open data",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "As you update your datasets, or release new datasets, add your standard codes to the data."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "They have been applied to some, but not all applicable datasets",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Produce a plan for introducing your standard codes and identifiers to all of your datasets."
+                        },
+                        {
+                        "notes": "Ensure that your data governance process includes a step to review and select appropriate code lists and identifiers when constructing new datasets."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "They are routinely used in all datasets, where appropriate",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Does your organisation use open standards and identifiers where appropriate?",
+                "notes": "There are an increasing number of standard code lists and identifiers that can be applied to data. Using these identifiers can help simplify combining data from multiple sources.",
+                "dependency_id": "9",
+                "answers": [
+                    {
+                    "text": "Yes, we have adopted open industry standards",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we have not published our data using open standards",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Identify where custom code lists and identifiers can be replaced with standard alternatives, e.g. by reviewing data releases from similar organisations or engaging with re-users."
+                        },
+                        {
+                        "notes": "As data is released, replace or supplement custom identifiers with standard alternatives."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Does you organisation have a process for continual review and evaluation of technical standards, code lists, etc.?",
+                "notes": "Technology continues to evolve. Within your organisation is there a clear responsibility for tracking technology trends with particular reference to publishing open data?",
+                "dependency_id": "10",
+                "answers": [
+                    {
+                    "text": "Yes, there is a person or organisation whose responsibility is to review and recommend technology improvements",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, there is no review process",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Develop a plan for regularly reviewing your technical standards."
+                        },
+                        {
+                        "notes": "Identify how you can engage with re-users, industry groups or the wider community to track technology trends."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Data governance",
+            "questions": [
+                {
+                "text": "Do your dataset assets have a clear owner within the organisation?",
+                "notes": "Datasets might be owned by an individual (e.g. as part of a research project) or by a specific team or department. The owner of a dataset may also change over time (e.g. if data is archived). Regardless of the level of ownership, consider if there are clear responsibilities around the dataset.",
+                "answers": [
+                    {
+                    "text": "Yes, there is a well-defined owner for each dataset",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, responsibility for datasets is unclear or spread across different functions",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that there is a well-defined owner for each dataset. They should be responsible for key strategic decisions relating to the data, even if they are not involved at an operational level."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Does your organisation have processes for managing or governing datasets?",
+                "notes": "Data governance can cover a wide range of activities but, broadly, is there a process by which data is managed throughout its lifecycle?",
+                "dependency_id": "12",
+                "answers": [
+                    {
+                    "text": "Yes, there are data governance processes, although they may not be standardised",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, there is no data governance process",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Define an appropriate process for governing data within your organisation."
+                        },
+                        {
+                        "notes": "Identify one or more high value datasets and create a plan for adopting your standard governance process."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "How widely adopted are your data governance processes?",
+                "dependency_id": "13",
+                "answers": [
+                    {
+                    "text": "Processes are defined at the project or product level, there are no standards within the organisation",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Review the processes by which data is governed within the organisation to discover commonalities."
+                        },
+                        {
+                        "notes": "Define a common process that could be applied across both new and existing datasets."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "The organisation has defined a data governance process, but this has been adopted only for some datasets",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Create a plan to increase adoption of the governance process across the organisation."
+                        },
+                        {
+                        "notes": "Identify which datasets could benefit most from the adoption of your standard governance process and prioritise adoption accordingly."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "The organisation has defined a data governance process and this has been widely adopted",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you measure data quality as part of the governance process?",
+                "notes": "Data quality will be one element of a robust governance process. Does your organisation attempt to measure and/or review the quality of the data it is releasing?",
+                "dependency_id": "14",
+                "answers": [
+                    {
+                    "text": "Yes, the organisation has a process for reviewing data quality",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, there is no attempt to measure data quality",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you engage with re-users of your data to help improve quality?",
+                "notes": "Are there any attempts to seek feedback from external users on the quality of the data released by the organisation? This might include improvements to the structure of data as well as its accuracy.",
+                "dependency_id": "15",
+                "answers": [
+                    {
+                    "text": "Yes, we engage with re-users around data quality",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't engage with re-users on data quality",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Review your existing communication channels to gather unused feedback and act upon it."
+                        },
+                        {
+                        "notes": "Explicitly request existing re-users to give you feedback on the quality of your datasets."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you have a process for reviewing and monitoring the effectiveness of your data governance process?",
+                "notes": "Is there a person or group within the organisation that has ownership of the data governance process and makes recommendations as to how it is implemented and improved?",
+                "dependency_id": "16",
+                "answers": [
+                    {
+                    "text": "Yes, there is a process of internal review",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, there is no internal review",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Ensure the data governance process has a clear internal owner."
+                        },
+                        {
+                        "notes": "Ensure that the owner of the data governance process engages with internal users to guide implementation and seek feedback on improvements."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Managing sensitive data",
+            "questions": [
+                {
+                "text": "Have you had to remove any sensitive data from a dataset prior to release?",
+                "notes": "Sensitive information to be removed from a dataset can include commercially sensitive information (e.g. financial data) and/or personal information.",
+                "answers": [
+                    {
+                    "text": "Yes, we have had to remove sensitive data from a dataset prior to releasing it",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, the datasets we release as open data do not contain any sensitive data",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we have chosen not to release datasets that contain such data because of concerns about its sensitivity",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Conduct a Privacy Impact Assessment of sensitive datasets to assess potential impacts."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "What is your approach to removing sensitive data?",
+                "notes": "Specific techniques might include anonymisation, aggregation of data, and removal of sensitive fields. This question addresses how these processes are carried out in the organisation.",
+                "dependency_id": "18",
+                "answers": [
+                    {
+                    "text": "Processes are ad hoc and are defined around the needs of specific data releases",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Review third-party guidance around anonymisation and data sharing to identify best practices."
+                        },
+                        {
+                        "notes": "Review existing processes to identify common techniques and approaches that can be re-used internally."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We have defined standard processes to anonymise and aggregate data, but these are not widely adopted",
+                    "positive": true,
+                    "score": null,
+                    "improvements": [
+                        {
+                        "notes": "Produce a plan for increasing adoption of standard processes internally."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We have defined standard processes to anonymise and aggregate data, and these are widely adopted",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Do you conduct risk assessments on sensitive datasets prior to release?",
+                "dependency_id": "19",
+                "answers": [
+                    {
+                    "text": "No, we do not routinely carry out risk assessments",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Identify a process for conducting a risk assessment on your data."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "Yes, a risk assessment is carried out for all sensitive datasets prior to publication",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you regularly re-evaluate the risks of releasing datasets throughout their lifecycle?",
+                "dependency_id": "20",
+                "answers": [
+                    {
+                    "text": "Yes, we regularly re-assess datasets",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, risk assessments are made prior to release but are not revisited",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that risk assessments are performed throughout the lifecycle of a dataset."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Do you regularly review the processes you use to anonymise data? ",
+                "notes": "A review process may consider the approaches used to remove sensitive data from individual datasets, as well as broader organisational best practices.",
+                "dependency_id": "21",
+                "answers": [
+                    {
+                    "text": "Yes, we regularly re-evaluate our processes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we are not routinely re-assessing our processes",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Incorporate a review of risk assessment procedures and evolving best practices as part of the regular review of your data governance process."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            }
+        ]
+        },
+        {
+        "name": "Knowledge & skills",
+        "activities": [
+            {
+            "title": "Open data expertise",
+            "questions": [
+                {
+                "text": "Does your organisation provide any training to support the development of open data related skills?",
+                "notes": "Training might cover in-house training courses, mentoring within teams, or may be more formal training that is delivered by third-parties.",
+                "answers": [
+                    {
+                    "text": "Yes, certain skills are recognised as important to develop more broadly in the organisation",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, if needs are identified these are handled on an individual basis",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Review the types of training and support that have already been provided internally, to identify the range of skills needed."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "What is your approach for building open data expertise within the organisation?",
+                "notes": "Publishing and consuming open data can require a range of skills, including technical knowledge, legal expertise, etc.",
+                "dependency_id": "23",
+                "answers": [
+                    {
+                    "text": "Our approach is operational, skills and expertise are being developed as required on a day to day basis by individual teams",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Work with teams within the organisation to identify common needs for training or expertise."
+                        },
+                        {
+                        "notes": "Define a training plan to deliver the training you need, either internally or by identifying suitable external sources of training."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We have a more tactical approach, e.g. we have identified key skills that require further development",
+                    "positive": true,
+                    "score": null,
+                    "improvements": [
+                        {
+                        "notes": "Adopt a more strategic view of training needs by developing a programme of training for new starters and existing staff."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We have a strategic approach, and offer training & refresher courses to all staff",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Is open data awareness and training a standard part of staff induction?",
+                "dependency_id": "24",
+                "answers": [
+                    {
+                    "text": "Yes, this is a standard component of staff induction",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, this is not covered as part of induction",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Identify and deliver an appropriate briefing on open data topics and best practices as part of staff induction."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Are staff briefed on how using or publishing open data aligns with organisational strategy?",
+                "dependency_id": "25",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Develop a communications plan for ensuring staff are briefed on how open data publishing aligns with organisational strategy."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Is the organisation working to build networks of expertise relating to open data both within the organisation and externally?",
+                "dependency_id": "26",
+                "answers": [
+                    {
+                    "text": "Yes, there is proactive encouragement to share knowledge",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, there is no direct encouragement for staff to share knowledge and experience.",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Facilitate internal sharing of knowledge between staff, e.g. through the creation of interest groups."
+                        },
+                        {
+                        "notes": "Identify and join industry or community groups that may be a valuable source of information. Support staff in connecting with those groups."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Knowledge management",
+            "questions": [
+                {
+                "text": "How does your organisation approach knowledge management?",
+                "notes": "From an open data perspective knowledge management is important for two reasons. Firstly, staff need to be able to find and use documentation on organisational standards and best practices relating to data. Secondly, data retains its value if it is properly documented to support its management and re-use.",
+                "answers": [
+                    {
+                    "text": "There is no standard approach. Knowledge transfer happens on an ad hoc basis, e.g. at the end of projects or when staff change responsibility",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Identify the key pieces of information vital to ensuring that a dataset is well managed."
+                        },
+                        {
+                        "notes": "Identify the key pieces of information vital to ensuring that a dataset is correctly used."
+                        },
+                        {
+                        "notes": "Define ways to capture and share that information throughout the lifecycle of a dataset and project."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "Individual teams have defined processes to capture and share knowledge on an ongoing basis",
+                    "positive": true,
+                    "score": null,
+                    "improvements": [
+                        {
+                        "notes": "Review the variety of ways in which teams are currently sharing knowledge internally."
+                        },
+                        {
+                        "notes": "Define a common knowledge management process that can be applied across both new and existing datasets."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We have organisational policies relating to knowledge capture and transfer",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "When does knowledge capture happen?",
+                "notes": "Ideally knowledge should be captured throughout the lifetime of a project. However this is may not always be the case. For example, significant documentation about the sources and structure of a dataset may only be captured at the end of a project, e.g. during a transfer of responsibilities.",
+                "dependency_id": "28",
+                "answers": [
+                    {
+                    "text": "Primarily at the end of a project",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Update your standard project lifecycle to embed knowledge management, ensuring that information is collected and shared at every stage."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "Throughout the life-cycle of a project",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Is there well-defined location for finding the documentation and assets related to datasets?",
+                "notes": "This location may be an organisation-wide repository. Or it may be a well-defined location for each project or dataset.",
+                "dependency_id": "29",
+                "answers": [
+                    {
+                    "text": "Yes, there is a clear location to find the relevant information",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, practices vary and staff are likely to need support in finding the necessary information",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Identify standard ways for signposting all internal documentation and policies relating to a dataset."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you have a process by which internal teams and groups can share knowledge and experience of working with or publishing data?",
+                "notes": "This type of process may be supported through internal forums allowing practitioners to connect with one another.",
+                "dependency_id": "30",
+                "answers": [
+                    {
+                    "text": "Yes, we encourage knowledge sharing through internal groups, presentation, etc.",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, this type of knowledge sharing is more ad hoc",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Support staff in sharing knowledge internally, e.g. through briefings at team or company meetings."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Are you engaging with others in your sector to share knowledge about working with open data?",
+                "notes": "A mature organisation will not only be sharing information internally, it will also be sharing its experiences with others.",
+                "dependency_id": "31",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Identify industry or community groups with whom your organisation can share its experience of working with open data. E.g. by speaking at events, publishing white papers, etc."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            }
+        ]
+        },
+        {
+        "name": "Customer support & engagement",
+        "activities": [
+            {
+            "title": "Engagement process",
+            "questions": [
+                {
+                "text": "Do you attempt to engage with re-users of your data?",
+                "answers": [
+                    {
+                    "text": "Yes, we make some attempts to engage with re-users",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we do not actively engage with re-users",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Identify the community of users interested in using your data."
+                        },
+                        {
+                        "notes": "Identify and prioritise the ways in which you contact re-users to get insight into how they are using your data, e.g. via social media, contact forms, community groups, or public events."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Do you have a means by which re-users can request data for release?",
+                "notes": "This may be achieved in a variety of ways, e.g. through user forums or a designated point of contact for requesting data.",
+                "dependency_id": "33",
+                "answers": [
+                    {
+                    "text": "Yes, we have a well-defined contact point for data requests",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we do not have a process for requesting data",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Document how a user can contact your organisation to request data."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Do you have a standard process for engaging with external re-users?",
+                "dependency_id": "34",
+                "answers": [
+                    {
+                    "text": "Yes we have a defined process",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, outreach is done on an ad hoc basis",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Identify where in the process of releasing and updating your open data, engagement with users would be useful."
+                        },
+                        {
+                        "notes": "During your release process, incorporate steps for communicating with re-users, and for ongoing follow-up subsequent to the release of a dataset."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Do you engage with re-users prior to releasing data, e.g. to get input on what and how data will be released?",
+                "dependency_id": "35",
+                "answers": [
+                    {
+                    "text": "Yes, we seek input prior to releasing data",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we engage with re-users only after release",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Adapt your data release process to incorporate input from re-users, e.g. seek their input when considering how data will be opened, when prioritising releases, etc."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Do you have a means for assessing how effectively you are engaging with re-users?",
+                "notes": "Measuring engagement can be achieved in a number of ways, including number of people attending events, numbers of data requests, subscribers to email newsletters, etc.",
+                "dependency_id": "36",
+                "answers": [
+                    {
+                    "text": "Yes, we attempt to measure how effectively we are engaging with users",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No we don't attempt to measure impact",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Identify the key metrics that can be used to assess how well you are communicating and engaging with your re-users."
+                        },
+                        {
+                        "notes": "Start regularly collecting and reporting on these metrics."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you use these metrics or assessments to improve how you are engaging with re-users?",
+                "dependency_id": "37",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Review the metrics you are collecting to ensure you are monitoring the right things."
+                        },
+                        {
+                        "notes": "Identify how you can apply these metrics to guide and improve how well you engage with re-users."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Open data documentation",
+            "questions": [
+                {
+                "text": "Do you try to include some level of documentation when releasing data?",
+                "notes": "Documentation may include basic metadata fields, e.g. a title and description, or detailed documentation on the dataset itself.",
+                "answers": [
+                    {
+                    "text": "Yes, an appropriate level of documentation accompanies each dataset",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't always include documentation",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Define a basic set of documentation that should accompany each relese of your data."
+                        },
+                        {
+                        "notes": "Adapt your data release process to include the necessary steps for creating and reviewing dataset documentation."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Do you have a check-list or standard template that guides the creation of dataset documentation?",
+                "notes": "Dataset documentation will typically describe how a dataset has been collected, maintained and then processed prior to publication.",
+                "dependency_id": "39",
+                "answers": [
+                    {
+                    "text": "Yes, we have an organisational standards, although these may be tailored to the needs of specific datasets",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, it is left up the data owner to decide what documentation to include",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Review the type and structure of the dataset documentation you are currently publishing."
+                        },
+                        {
+                        "notes": "Ensure that a common base set of documentation accompanies each open data release."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Do you publish a standard set of metadata alongside the documentation?",
+                "notes": "Dataset metadata will typically include fields such as title, description, publication dates, etc.",
+                "dependency_id": "40",
+                "answers": [
+                    {
+                    "text": "Yes, we have defined a set of metadata which accompanies releases",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, it is left up the data owner to decide what metadata to include",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Review the range of metadata currently used when releasing data."
+                        },
+                        {
+                        "notes": "Ensure that a common base set of metadata accompanies each open data release."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Does your publication process include both the creation and ongoing maintenance of both metadata and documentation?",
+                "dependency_id": "41",
+                "answers": [
+                    {
+                    "text": "Yes, we have a work flow for maintaining documentation and metadata",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, documentation tends to be created at release but is rarely improved or updated",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Whenever a dataset is updated, ensure that the documentation is reviewed and updated as required to incorporate any suggested improvements or necessary changes."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "How well documented are the datasets you have released?",
+                "dependency_id": "42",
+                "answers": [
+                    {
+                    "text": "Only some datasets, e.g. recently published or more complex datasets are published with metadata and documentation",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Implement a plan to ensure that all of the data released by your organisation conforms to your standard documentation and metadata templates."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "All the key, high-value datasets are accompanied with metadata and documentation",
+                    "positive": true,
+                    "score": null,
+                    "improvements": [
+                        {
+                        "notes": "Identify ways to add basic documentation and metadata to all data as it is released."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "All our datasets are routinely published with an appropriate level of metadata and documentation",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you invite re-users to provide feedback on documentation to help guide improvements?",
+                "dependency_id": "43",
+                "answers": [
+                    {
+                    "text": "Yes, we invite feedback and suggestions for improvements",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we review and maintain this documentation ourselves",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Identify how re-users can contact you to provide feedback on dataset documentation."
+                        },
+                        {
+                        "notes": "Invite re-users to provide you with feedback on your open data documentation."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Do you promote the availability of third-party resources that help to document or demonstrate the usefulness of your data?",
+                "dependency_id": "44",
+                "answers": [
+                    {
+                    "text": "Yes, we showcase third-party tutorials, documentation and tools",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we direct users to our own materials",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Invite re-users to provide you with links to any resources that they have created that will help others use your data."
+                        },
+                        {
+                        "notes": "Add links to useful third-party material to your open data documentation."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Re-user support processes",
+            "questions": [
+                {
+                "text": "Do you provide any support for re-users?",
+                "notes": "Support might cover a range of activities, including communications with users data updates, contact points where users can request help, facility to report errors, user training, etc.",
+                "answers": [
+                    {
+                    "text": "Yes, we offer some support to re-users",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't offer any support for re-users",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Define contact points for each dataset, e.g. to allow re-users to ask questions or report problems with your datasets."
+                        },
+                        {
+                        "notes": "Ensure that these contact points are clearly documented for each dataset."
+                        },
+                        {
+                        "notes": "Decide how support for re-users will be delivered, e.g. is there an existing team whose responsibility it will be to receive and respond to requests?"
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Is the level of support available for a dataset clearly indicated to re-users?",
+                "dependency_id": "46",
+                "answers": [
+                    {
+                    "text": "Yes, if support is available, it is clearly identified and described",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't communicate any expectations around our support operation",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that the support available for datasets is clearly documented, e.g. contact points are well signposted and that the appropriate expectations are set for turnaround times for requests for support."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "How is support made available to re-users?",
+                "dependency_id": "47",
+                "answers": [
+                    {
+                    "text": "Individual teams/data owners support their own data",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Create public user forums as a means for re-users to engage with your organisation and each other."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We provide user forums as the primary contact point for re-users and encourage self-help",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "We have a user support team who provide support to re-users",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Do you provide multiple channels for support & engagement?",
+                "answers": [
+                    {
+                    "text": "Yes, we encourage interaction through a variety of channels",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Use multiple channels for engaging with re-users, e.g. include social media as well as email and forums."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you collect metrics on your support operations?",
+                "dependency_id": "49",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Identify the key metrics that could be used to assess how well you are supporting re-users, e.g. the time taken to respond to requests or issues."
+                        },
+                        {
+                        "notes": "Begin collecting and reporting on these metrics internally."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Are you using these metrics to help reduce the costs and increase efficiency of your support operations?",
+                "dependency_id": "50",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Review the metrics you are collecting to ensure you are monitoring the right things."
+                        },
+                        {
+                        "notes": "Create a plan for how these metrics will be applied to improve how well you support re-users."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Community norms",
+            "questions": [
+                {
+                "text": "Does your organisation use any third-party open data?",
+                "notes": "Open data comes in many shapes and sizes so it may be that you are consuming open data without realising it (for example using standard geographic identifiers, or other government data). Be thorough about considering the range of possible datasets you may be using.",
+                "answers": [
+                    {
+                    "text": "Yes, we are consuming one or more open datasets",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we are not knowingly consuming any open data",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Conduct an internal review to identify whether open data is being used in the organisation."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Do you have a standard process to ensure that you have the right to publish data provided by or derived from third parties as part of your open data?",
+                "notes": "Data is published under a variety of licences, not all of them qualify as true open licences. All licences will include terms that dictate how a dataset can be used.",
+                "dependency_id": "52",
+                "answers": [
+                    {
+                    "text": "Yes, we have a process of reviewing rights and ensure that our usage complies with those rights",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't have a standard process and any reviews are conducted on an ad hoc basis by the teams using the data",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that there is review of licensing terms before data begins being used by the organisation."
+                        },
+                        {
+                        "notes": "Ensure that decisions to use (or not use) data published under specific licences are recorded, to streamline future decision making."
+                        },
+                        {
+                        "notes": "Identify a set of licences that are acceptable (or not acceptable) to the organisation."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Do you acknowledge all datasets your organisation uses, regardless of whether this is required by licensing?",
+                "notes": "The majority of open data licences require some form of attribution. However some datasets are considered to be in the public domain and attribution may not be required.",
+                "dependency_id": "53",
+                "answers": [
+                    {
+                    "text": "Yes, we are transparent about all our data sources",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we only attribute as required",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Be transparent about all of the open data your organisation uses, especially those from the public domain that may not legally require attribution."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "How do you work with the open data publishers whose data you are re-using?",
+                "notes": "If you have questions about a dataset or have ideas for how to improve a dataset, do you provide feedback to the original publisher?",
+                "dependency_id": "54",
+                "answers": [
+                    {
+                    "text": "We don't work with the publishers of the data we re-use",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Contact the open data publishers to let them know you are using their datasets."
+                        },
+                        {
+                        "notes": "Where you have feedback or improvements to the data, contribute these back to the organisation."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We engage with data suppliers to provide feedback",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Consider how you can contribute to the maintenance of a dataset, e.g. by identifying fixes or improvements to the data, or more actively contributing e.g. through sponsorship or helping to curate data."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "We engage with data suppliers to provide feedback and, where possible, contribute to the project",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Do you work with other organisations in your sector to promote the value of specific datasets, or open data in general?",
+                "dependency_id": "55",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Share your experiences with using open data with others in your industry sector, e.g. by publishing case studies that demonstrate how you have benefited by using the data."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            }
+        ]
+        },
+        {
+        "name": "Investment & financial performance",
+        "activities": [
+            {
+            "title": "Financial oversight",
+            "questions": [
+                {
+                "text": "How are open data releases funded within your organisation?",
+                "dependency_id": "56",
+                "answers": [
+                    {
+                    "text": "Releases are funded as one-off R&D projects or exceptional expenditure",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Review budgets for new open data projects and ensure that costs are allocated for ongoing release of open data."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "Individual projects may have budget allocated for open data",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Review budgets for all projects and, where appropriate, ensure that costs are allocated for ongoing release of open data."
+                        },
+                        {
+                        "notes": "Review the actual costs associated with open data releases to provide a baseline for future projects and releases."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "Open data publication is routinely included as part of project funding and operational costs",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Does your organisation track the financial costs and benefits of open data publication & re-use across projects?",
+                "dependency_id": "57",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that financial costs of data releases are a standard part of the financial planning for all projects."
+                        },
+                        {
+                        "notes": "Review the actual costs associated with open data releases to provide a baseline for future projects and releases."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Does your organisation identify the financial costs & benefits associated with open data releases/re-use separately from general data governance",
+                "dependency_id": "58",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Identify, track and report costs of data governance processes separately to costs for open data releases."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Is there a process for identifying cost savings through publication or re-use of open data?",
+                "dependency_id": "59",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Review the costs associated with using licensed datasets and assess whether or not switching to open alternatives may result in savings."
+                        },
+                        {
+                        "notes": "Review the costs of all ongoing data releases and look for efficiency savings, e.g. through adopting common tools, shared infrastructure, etc."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Dataset valuation process",
+            "questions": [
+                {
+                "text": "Does your organisation attempt to assign a value to datasets?",
+                "answers": [
+                    {
+                    "text": "Yes, we make some attempts to identify or describe how our open data is valuable",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we don't try to assess value",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Identify the communities of users interested in your data. Find out how they are using your data."
+                        },
+                        {
+                        "notes": "Share how your data could be useful to new users, e.g. by indicating suggested uses in the documentation."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "When do you assign a value to datasets?",
+                "dependency_id": "61",
+                "answers": [
+                    {
+                    "text": "Prior to release to help prioritise releases or build business cases",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "Only after release, e.g. as part of identifying the value generated and as justification for ongoing investment",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Review the data you are planning to release and ensure business cases and prioritisation are being driven by the expected value of the data."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "How do you go about assigning value to datasets?",
+                "dependency_id": "62",
+                "answers": [
+                    {
+                    "text": "Valuations are not quantified, instead value is described in terms of the general benefits to re-users",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Identify some financial metrics that could be used to quantify the value gained by users of your data."
+                        },
+                        {
+                        "notes": "Identify financial metrics that can be used to quantify the cost savings associated with releasing your data."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "Valuations are quantified, but the process is largely based on the individual dataset under consideration",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Review the variety of ways in which you are valuing datasets to look for commonalities."
+                        },
+                        {
+                        "notes": "Research ways in which other organisations are valuing their datasets."
+                        },
+                        {
+                        "notes": "Identify a standard process and key metrics that will form the basis of a standard dataset valuation process."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "There is a standard valuation process or processes which are used to quantify value",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "What datasets get assigned a value?",
+                "dependency_id": "63",
+                "answers": [
+                    {
+                    "text": "It is not widely applied to any datasets",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Produce a plan for introducing your standard valuation process and metrics to your key open datasets."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "All key datasets published or used by the organisation are assigned a value",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Produce a plan for introducing your standard valuation process and metrics for all open datasets."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "All data assets are assigned a value",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Is the value of a dataset used to inform the level of financial investment in its use or ongoing release?",
+                "dependency_id": "64",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that the development of business cases made to support publication or consumption of open data include dataset valuations."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Do you regularly revisit your metrics to ensure they align with organisational goals?",
+                "dependency_id": "65",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Regularly review the metrics used to value datasets, to ensure that they are in-line with organisational goals."
+                        },
+                        {
+                        "notes": "Regularly review the metrics used to value datasets, to ensure that they are in-line with emerging best practices and industry standards."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Open data in procurement",
+            "questions": [
+                {
+                "text": "What is your approach for publishing open data when your rights in the data are unclear? ",
+                "answers": [
+                    {
+                    "text": "We retrospectively clear the rights so that we can open the data",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "We are clear on the rights for all of our datasets, so this is not an issue",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "We have chosen not to release data as open data where we are uncertain about rights",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Clarify rights around existing data, e.g. by amending contracts on renewal or asking contributors to sign a contributor agreement."
+                        },
+                        {
+                        "notes": "Tailor new contracts and procurement activities to ensure re-use rights for data is clear."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "Have you begun tailoring contracts or procurement activities to address data licensing issues?",
+                "dependency_id": "67",
+                "answers": [
+                    {
+                    "text": "Yes, we try to avoid the need to retrospectively clear rights",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we have not taken steps to ensure we have clarity around licensing",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Tailor new contracts and procurement activities to ensure re-use rights for data is clear."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Do you use open data capabilities as a differentiator between suppliers in procurement exercises?",
+                "notes": "When assessing suppliers, do you consider their ability to support open data principles as part of the procurement process?",
+                "dependency_id": "68",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Where appropriate, ask for qualifications of competency and experience with open data in your procurement exercises and standards."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Has your organisation drafted standard clauses for inclusion in contracts and ITTs that specifically relate to re-use rights and open data?",
+                "dependency_id": "69",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Create standard clauses relating to re-use rights and open data to be used, as appropriate, in contracts and invitations to tender."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you have a process for reviewing contracts on renewal to clarify licensing?",
+                "dependency_id": "70",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that your contract renewal process includes a step to clarify re-use rights where appropriate."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Do you ensure that the requirements relating to the provision of open data in your ITTs are appropriate for the type of service that is being procured?",
+                "notes": "Also see the <a href=\" http://training.theodi.org/ Procurement/Guide/\">ODI's procurement guide</a> on embedding open data into procurement of public services.",
+                "dependency_id": "71",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "When issuing tenders consider whether it is appropriate to ask the supplier to publish or supply open data."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Do you track the whole-life cost of contracts?",
+                "dependency_id": "72",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Consider whole life costs of contracts when planning tenders."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            }
+        ]
+        },
+        {
+        "name": "Strategic oversight",
+        "activities": [
+            {
+            "title": "Open data strategy",
+            "questions": [
+                {
+                "text": "Is there understanding around how open data publishing aligns with your organisation's strategy?",
+                "notes": "A mature organisation will have documented its ongoing commitments and policies relating to open data. Specifically, the organisation will understand how publishing open data aligns with its broader organisational objectives and strategy.",
+                "answers": [
+                    {
+                    "text": "There has been no attempt document or identify strategic alignment. Open data activities are limited to R&D exercises, prototypes, or external requirements",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Run an innovation workshop or similar activity to explore how open data might benefit your whole organisation, an individual team, or department."
+                        },
+                        {
+                        "notes": "Review your organisational strategy and products: where could publishing open data help you to achieve your goals?"
+                        },
+                        {
+                        "notes": "Review your organisational strategy and products: where could reusing open data help you to achieve your goals?"
+                        }
+                    ]
+                    },
+                    {
+                    "text": "Individual business units have identified and documented some strategic benefits relevant to their individual activities",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Draft an open data policy for your organisation that identifies how you will publish or use open data."
+                        },
+                        {
+                        "notes": "Publicly publish your open data policy."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "The organisation has a defined open data strategy",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Is there clear responsibility and budget support for delivering the open data strategy?",
+                "dependency_id": "74",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Identify an owner for the organisational open data policy."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "Has the organisation set measurable targets for assessing performance against strategy?",
+                "dependency_id": "75",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Revise your open data policy to include measurable targets to track its implementation, e.g. release of key datasets, or achievement of a specific level of open data certification for key datasets."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Does the organisation have a process for reviewing the alignment of its open data strategy with wider goals?",
+                "dependency_id": "76",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Institute a regular review of your open data policies and strategy to ensure that it aligns with organisational goals."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Is publication and use of open data a key part of organisational strategy?",
+                "dependency_id": "77",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "Revise your open data policy to ensure it covers both publishing and consumption of open data."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 4
+                },
+                {
+                "text": "Is there a process for ongoing review of metrics and goals relating to open data alignment with organisational strategy?",
+                "dependency_id": "78",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": [
+                        {
+                        "notes": "As part of the regular review of your policies, ensure that the metrics and goals used to measure progress are regularly revised and updated."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            },
+            {
+            "title": "Asset catalogue",
+            "questions": [
+                {
+                "text": "Does your organisation attempt to catalogue its data assets?",
+                "notes": "A mature open data organisation will treat data as an asset. The organisation will maintain a catalogue that lists both its own internal datasets and those it uses from third-parties. Ideally the catalogue will include all significant internal data, not just that published as open data.",
+                "answers": [
+                    {
+                    "text": "Yes, we attempt to catalogue our data assets",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No, we make not attempt to catalogue our data assets",
+                    "positive": false,
+                    "score": 1,
+                    "improvements": [
+                        {
+                        "notes": "Ask departments and teams to survey their internal data assets to identify key datasets that are managed internally and third-party datasets used by the organisation."
+                        },
+                        {
+                        "notes": "Ask departments to regularly update their asset catalogue as they create or use new data sources."
+                        },
+                        {
+                        "notes": "Publish the results of your survey in an internal asset catalogue: this might be a web page, spreadsheet or similar register that captures useful summary information about each dataset."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 1
+                },
+                {
+                "text": "How widely are data assets catalogued?",
+                "notes": "This question reflects how well deployed the asset catalogue is within an organisation. A mature organisation will aim to catalogue all of its data assets. However initially an asset catalogue might only be created and used by individual teams within the organisation.",
+                "dependency_id": "80",
+                "answers": [
+                    {
+                    "text": "Individual business units maintain their own lists of assets",
+                    "positive": false,
+                    "score": 2,
+                    "improvements": [
+                        {
+                        "notes": "Create an organisation wide asset catalogue that lists all key datasets and clearly identifies where they are managed and used."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "There is an organisation wide asset catalogue and key data assets are listed in there",
+                    "positive": true,
+                    "score": null,
+                    "improvements": [
+                        {
+                        "notes": "Produce a plan to extend the survey to include all data assets, not just the most important datasets."
+                        }
+                    ]
+                    },
+                    {
+                    "text": "There is an organisation wide asset catalogue and all data assets are listed in there",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 2
+                },
+                {
+                "text": "When planning new products/services is there a process of reviewing existing data assets before creating/acquiring new ones?",
+                "notes": "The asset catalogue can be used to identify datasets that can be re-used to create new products and services. This reduces the investment required in creating new products and services.",
+                "dependency_id": "81",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": null,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 3,
+                    "improvements": [
+                        {
+                        "notes": "Ensure that your project planning process includes a step to review availability of existing assets prior to creating new data sources."
+                        },
+                        {
+                        "notes": "Regularly review internally curated data assets to identify if there are suitable open alternatives."
+                        }
+                    ]
+                    }
+                ],
+                "associatedLevel": 3
+                },
+                {
+                "text": "Is there a review process that looks for efficiency savings by reducing overlaps between assets?",
+                "notes": "An organisation might often be maintaining multiple copies of the same data, or be using datasets that have significant overlap. Savings might be made by regularly reviewing data assets to ensure that they are being effectively managed.",
+                "dependency_id": "82",
+                "answers": [
+                    {
+                    "text": "Yes",
+                    "positive": true,
+                    "score": 5,
+                    "improvements": []
+                    },
+                    {
+                    "text": "No",
+                    "positive": false,
+                    "score": 4,
+                    "improvements": []
+                    }
+                ],
+                "associatedLevel": 5
+                }
+            ]
+            }
+        ]
+        }
+    ]
+}
