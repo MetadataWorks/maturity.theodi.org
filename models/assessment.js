@@ -40,7 +40,10 @@ const activitySchema = new mongoose.Schema({
   title: {
     type: String
   },
-  statements: [statementSchema]
+  statements: [statementSchema],
+  questions: {
+    type: mongoose.Schema.Types.Mixed
+  }
 }, { _id: false });
 
 // Define the dimension schema
@@ -103,6 +106,11 @@ const assessmentSchema = new mongoose.Schema({
   },
   sharedWith: [sharedWithSchema], // Optional field for sharing assessments with others
   public: {
+    type: Boolean,
+    default: false, // Default value is false (not public)
+    required: true
+  },
+  readOnly: {
     type: Boolean,
     default: false, // Default value is false (not public)
     required: true

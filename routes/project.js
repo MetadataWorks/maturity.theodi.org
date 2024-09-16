@@ -37,7 +37,6 @@ router.get('/:id', ensureAuthenticated, checkProjectAccess, async (req, res, nex
     try {
         const projectId = req.params.id;
         const acceptHeader = req.get('Accept');
-
         if (acceptHeader === 'application/json') {
             let project = await projectController.getProjectById(projectId);
             project = project.toObject();
@@ -45,8 +44,15 @@ router.get('/:id', ensureAuthenticated, checkProjectAccess, async (req, res, nex
             delete project.sharedWith;
             return res.json(project);
         } else {
+            let project = await projectController.getProjectById(projectId);
+            let assessment = await Assessment.findById(project.assessment);
             const page = { title: "Edit Project", link: "/projects" };
             res.locals.page = page;
+            res.locals.pathway = false;
+            if (assessment.title === "Open Data Pathway (2015)") {
+                console.log('pathway detected');
+                res.locals.pathway = true;
+            }
             return res.render('pages/projects/edit');
         }
     } catch (error) {

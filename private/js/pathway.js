@@ -1,7 +1,7 @@
 let defaultActivity = "";
 async function loadData() {
     try {
-      const response = await fetch('/models/pathway.json');
+      const response = await fetch('/assessments/?title=Open Data Pathway (2015)');
       const data = await response.json();
       return data;
     } catch (error) {
@@ -12,7 +12,7 @@ async function loadData() {
 
 async function loadAssessment(projectId) {
     try {
-        const response = await fetch(`/project/${projectId}`, {
+        const response = await fetch(`/projects/${projectId}`, {
             headers: {
                 'Accept': 'application/json'
             }
@@ -23,6 +23,7 @@ async function loadAssessment(projectId) {
         }
 
         const data = await response.json();
+        renderAssessmentMetadata(data);
         loadAssessmentData(data);
     } catch (error) {
         console.error('Error loading assessment:', error);
@@ -30,8 +31,63 @@ async function loadAssessment(projectId) {
     }
 }
 
+function renderAssessmentMetadata(data) {
+    // Fetch the project schema
+    fetch('/schemas/newProject.json')
+    .then(response => response.json())
+    .then(schema => {
+        // Render the form with the original schema
+        $('#dataForm').jsonForm({
+            schema: schema.schema,
+            form: schema.form,
+            value: data,
+            onSubmit: function (errors, values) {
+                alert('Open Data Pathway is readonly as the model is considered legacy. Please consider using a newer maturity model.')
+            }
+        });
+    });
+    // Fetch the country list from the API
+    fetch('/lib/countries.json')
+    .then(response => response.json())
+    .then(countries => {
+
+        // Create the label and dropdown elements
+        const countryLabel = $('<label for="countryDropdown" class="form-control">Organisation Location (Country)</label>');
+        const countryDropdown = $('<select id="countryDropdown" class="form-control"></select>');
+        countryDropdown.append('<option value="">Select a country</option>');
+
+        // Populate the dropdown with country options
+        countries.forEach(country => {
+            countryDropdown.append(`<option value="${country.cca2}" data-name="${country.name.common}">${country.name.common}</option>`);
+        });
+
+        // Insert the label and dropdown into the form before the submit button
+        $('.submit').before(countryLabel);
+        $('.submit').before(countryDropdown);
+
+        setTimeout(function() {
+            $('input[name="organisation.country.name"]').parent().parent().hide();
+            $('input[name="organisation.country.code"]').parent().parent().hide();
+        }, 200);
+
+        // Handle country selection
+        $('#countryDropdown').change(function () {
+            const selectedOption = $(this).find('option:selected');
+            const countryName = selectedOption.data('name');
+            const countryCode = selectedOption.val();
+
+            $('input[name="organisation.country.name"]').val(countryName);
+            $('input[name="organisation.country.code"]').val(countryCode);
+        });
+    })
+    .catch(error => {
+        console.error("Error fetching schema or country data:", error);
+    });
+}
+
 function createAssessmentTable(dimension,levelKeys) {
     const container = document.getElementById('assessment-container');
+    console.log(dimension);
     dimension.activities.forEach(activity => {
       const activityContainer = document.createElement('section');
       const activityId = activity.title.toLowerCase().replace(/\s+/g, '-');
@@ -67,7 +123,6 @@ function createAssessmentTable(dimension,levelKeys) {
 
         const questionContainer = document.createElement('div');
         questionContainer.className = 'question-container';
-        questionContainer.classList.add("level-" +question.associatedLevel);
 
         const label = document.createElement('label');
           label.textContent = question.text;
@@ -256,7 +311,7 @@ async function loadAssessmentData(savedAssessment) {
           data.dimensions.forEach(dimension => {
               dimension.activities.forEach(activity => {
                   // Find the corresponding activity in the saved assessment
-                  const savedActivity = savedAssessment.activities.find(sa => sa.title === activity.title);
+                  const savedActivity = savedAssessment.assessmentData.activities.find(sa => sa.title === activity.title);
                   if (savedActivity) {
                       activity.questions.forEach(question => {
                           // Find the corresponding question in the saved activity
@@ -275,9 +330,25 @@ async function loadAssessmentData(savedAssessment) {
       }
 }
 
-function loadNavBar(data) {
+function loadNavBar(data,projectId) {
+
         const dimensions = data.dimensions;
         const navList = document.getElementById('navList');
+
+        const metadataItem = document.createElement('li');
+        metadataItem.classList.add('nav-dimension-item'); // Add class for styling
+        metadataItem.classList.add('link'); // Add class for styling
+        metadataItem.setAttribute('id', 'nav-metadata');
+        const metadataTitle = document.createElement('span');
+        metadataTitle.textContent = "Metadata";
+        metadataTitle.classList.add('dimension-title');
+        metadataItem.appendChild(metadataTitle);
+        metadataItem.addEventListener('click', () => {
+            showMetadata();
+            updateHash("metadata");
+        });
+        navList.appendChild(metadataItem);
+
 
         dimensions.forEach(dimension => {
             const dimensionItem = document.createElement('li');
@@ -299,9 +370,67 @@ function loadNavBar(data) {
             dimensionItem.appendChild(activityList);
             navList.appendChild(dimensionItem);
         });
+
+        const downloadItem = document.createElement('li');
+        downloadItem.classList.add('nav-dimension-item'); // Add class for styling
+        downloadItem.classList.add('link'); // Add class for styling
+        downloadItem.setAttribute('id', 'nav-download');
+        const downloadTitle = document.createElement('span');
+        downloadTitle.textContent = "Download data (JSON)";
+        downloadTitle.classList.add('dimension-title');
+        downloadItem.appendChild(downloadTitle);
+        downloadItem.addEventListener('click', () => {
+            downloadProjectDataAsJSON(projectId);
+        });
+        navList.appendChild(downloadItem);
+
+}
+
+async function downloadProjectDataAsJSON(projectId) {
+    try {
+        // Fetch the JSON data from the server
+        const response = await fetch(`/projects/${projectId}`, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch JSON data: ${response.statusText}`);
+        }
+
+        // Parse the JSON data
+        const data = await response.json();
+
+        // Convert the JSON data to a string
+        const jsonString = JSON.stringify(data, null, 2);
+
+        // Create a Blob with the JSON data
+        const blob = new Blob([jsonString], { type: 'application/json' });
+
+        // Create a download link
+        const url = URL.createObjectURL(blob);
+
+        // Create an anchor element
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `project_${projectId}.json`; // Set the desired file name
+
+        // Programmatically click the link to trigger the download
+        document.body.appendChild(link);
+        link.click();
+
+        // Clean up the URL object
+        URL.revokeObjectURL(url);
+        document.body.removeChild(link);
+
+    } catch (error) {
+        console.error('Error downloading JSON:', error);
+    }
 }
 
 function showActivity(activityId) {
+    document.getElementById("metadata").classList.remove('active');
         document.querySelectorAll('.activity').forEach(activity => {
             activity.classList.remove('active');
         });
@@ -317,6 +446,16 @@ function showActivity(activityId) {
         }
 }
 
+function showMetadata() {
+    document.querySelectorAll('.activity').forEach(activity => {
+        activity.classList.remove('active');
+    });
+    const selectedActivityNav = document.getElementById('nav-metadata');
+    const selectedActivity = document.getElementById("metadata");
+    selectedActivity.classList.add('active');
+    selectedActivityNav.classList.add('active');
+}
+
 function updateHash(activityId) {
         if (history.replaceState) {
             history.replaceState(null, null, `#${activityId}`);
@@ -324,6 +463,7 @@ function updateHash(activityId) {
             location.hash = activityId; // Fallback for older browsers
         }
 }
+
 
 // Show the activity based on the URL hash on load
 window.addEventListener('load', () => {
@@ -346,7 +486,7 @@ const projectId = urlParts[urlParts.length - 1]; // Extract the project ID from 
 
 let levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
 const data = await loadData();
-loadNavBar(data);
+loadNavBar(data,projectId);
 
 if (data) {
     if (data.levels) {

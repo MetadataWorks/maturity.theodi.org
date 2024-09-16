@@ -1,12 +1,37 @@
-const mongoose = require('mongoose');
 const Hubspot = require('../models/hubspot');
 const User = require('../models/user');
 const hubspot = require('@hubspot/api-client');
 const projectController = require('../controllers/project');
+const cron = require('node-cron');
+const crypto = require('crypto');
+const { json } = require('express');
 
 const hubspotKey = process.env.HUBSPOT_API_KEY;
 
 const hubspotClient = new hubspot.Client({ accessToken: hubspotKey })
+
+
+/**
+ * Computes a SHA256 hash of the given data.
+ * @param {Object} data - The data to hash.
+ * @returns {string} The hexadecimal hash string.
+ */
+const computeHash = (data) => {
+    return crypto.createHash('sha256').update(JSON.stringify(data)).digest('hex');
+};
+
+/**
+ * Formats a JavaScript Date object to YYYY-MM-DD.
+ * @param {Date} date - The date to format.
+ * @returns {string} The formatted date string.
+ */
+const formatDate = (date) => {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${year}-${month}-${day}`;
+};
 
 async function getHubspotUser(userId, email) {
     try {
@@ -92,55 +117,92 @@ async function getHubspotProfile(userId) {
     }
 }
 
-async function updateToolStatistics(userId) {
-    try {
-        // Get the user profile from the user table (firstLogin, lastLogin)
-        const user = await User.findById(userId);
+async function updateToolStatistics() {
+    // Fetch all HubSpot profiles with populated userId
+    const hubspotProfiles = await Hubspot.find({}).populate('userId');
 
-        // Format dates into DD/MM/YYYY format
-        const formatDate = date => {
-            const d = new Date(date);
-            const day = String(d.getDate()).padStart(2, '0');
-            const month = String(d.getMonth() + 1).padStart(2, '0');
-            const year = d.getFullYear();
-            return `${year}-${month}-${day}`;
-        };
+    for (const profile of hubspotProfiles) {
+        const user = await User.findById(profile.userId);
 
-        const firstLogin = formatDate(user.firstLogin);
-        const lastLogin = formatDate(new Date());
+        if (!user) {
+            console.warn(`User not found for HubSpot profile ID: ${profile.hubSpotId}`);
+            continue;
+        }
 
-        // Get the hubspot profile
-        const hubspotProfile = await getHubspotProfile(userId);
-        const hubSpotId = hubspotProfile ? hubspotProfile.hubSpotId : null;
+        // Fetch user's projects with populated assessments
+        const userProjects = await projectController.getUserProjects(user._id);
+        const projects = userProjects.ownedProjects;
 
-        // Get the projects data
-        const userProjects = await projectController.getUserProjects(userId);
-        const projects = userProjects.ownedProjects.projects;
+        if (!projects || !Array.isArray(projects)) {
+            console.warn(`No projects found for user ID: ${user._id}`);
+            continue;
+        }
+
+        // Build the userData array using populated assessments
+        const userData = projects.map(project => ({
+            assessmentId: project._id,
+            assessmentTitle: project.assessment?.title || 'Unknown Assessment',
+            achievedLevel: project.assessmentData?.overallAchievedLevel ?? null,
+            activityCompletionPercentage: project.assessmentData?.activityCompletionPercentage ?? null,
+            statementCompletionPercentage: project.assessmentData?.statementCompletionPercentage ?? null,
+            created: formatDate(project.created),
+            lastModified: formatDate(project.lastModified)
+        }));
+
+        // Compute current hash
+        const currentHash = computeHash(userData);
+
+        // Compare with stored hash
+        if (currentHash === profile.lastUpdatedHash) {
+            console.log(`No changes detected for user ID: ${user._id}. Skipping update.`);
+            continue;
+        }
+
         // Calculate statistics
         const totalAssessments = projects.length;
-        const completedAssessments = projects.filter(project => project.status === 'done').length;
+        const completedAssessments = projects.filter(project => project.assessmentData?.statementCompletionPercentage === 100).length;
 
-        // Prepare the data to be patched to Hubspot
+        // Prepare the data to be patched to HubSpot
         const patchData = {
             properties: {
-                completed_assessments: completedAssessments,
-                first_login__care_: firstLogin,
-                last_login__care_: lastLogin,
-                login_count__care_: user.loginCount,
-                total_assessments: totalAssessments
+                completed_assessments__maturity_: completedAssessments,
+                first_login__maturity_: formatDate(user.firstLogin),
+                last_login__maturity_: formatDate(user.lastLogin),
+                login_count__maturity_: user.loginCount,
+                total_assessments__maturity_: totalAssessments,
+                json_data__maturity_: JSON.stringify(userData)
             }
         };
 
-        if (hubSpotId) {
-            await hubspotClient.crm.contacts.basicApi.update(hubSpotId, patchData);
-        } else {
-            console.error("Hubspot profile not found for user with ID:", userId);
+        // Update the HubSpot contact
+        try {
+            await hubspotClient.crm.contacts.basicApi.update(profile.hubSpotId, patchData);
+            console.log(`HubSpot profile updated for user ID: ${user._id}`);
+        } catch (hubspotError) {
+            console.error(`Error updating HubSpot for user ID: ${user._id}:`, hubspotError);
+            continue; // Skip updating the hash if HubSpot update fails
         }
-    } catch (error) {
-        console.error("Error in updateToolStatistics:", error);
-        throw error; // Rethrow the error to be handled elsewhere
+
+        // Update the stored hash
+        profile.lastUpdatedHash = currentHash;
+        try {
+            await profile.save();
+            console.log(`Hash updated for user ID: ${user._id}`);
+        } catch (saveError) {
+            console.error(`Error saving hash for user ID: ${user._id}:`, saveError);
+        }
     }
+
+    console.log('Scheduled updateToolStatistics job completed.');
 }
 
+function initializeScheduledJobs() {
+    // Schedule the job to run every hour
+    cron.schedule('0 * * * *', () => {
+        updateToolStatistics();
+    });
 
-module.exports = { getHubspotUser, getHubspotProfile, updateToolStatistics };
+    console.log('Scheduled updateToolStatistics job initialized to run every hour.');
+}
+
+module.exports = { getHubspotUser, getHubspotProfile, updateToolStatistics, initializeScheduledJobs };

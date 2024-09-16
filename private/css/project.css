@@ -58,6 +58,14 @@ th {
     font-size: 1.2em;
     font-weight: bold;
 }
+#readOnly {
+    width: 100%;
+    background-color: var(--red);
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    padding: 1em;
+}
 th.level-1,
 span.level-1,
 div.level-1,
@@ -178,7 +186,6 @@ div.level-5,
 }
 .disabled {
   color: #bbb !important;
-  background-color: #e0e0e0 !important;
 }
 #assessment-container {
     flex-grow: 1;
@@ -187,12 +194,12 @@ div.level-5,
     padding-right: 20px;
 }
 .question-container {
-  width: 90%;
-  left: -1%;
+  width: 100%;
   position: relative;
-  padding: 3%;
   height: 100%;
-  top: -8px;
+  padding-bottom: 1em;
+  border-bottom: 1px solid var(--color-dark-blue);
+  padding-top: 1em;
 }
 .question-container textarea {
     width: 100%;
@@ -202,25 +209,8 @@ div.level-5,
     background-color: white !important;
     color: inherit !important;
 }
-.question-container.active.level-1 {
-    border: 1px solid var(--red);
-    border-top: none;
-}
-.question-container.active.level-2 {
-    border: 1px solid var(--orange);
-    border-top: none;
-}
-.question-container.active.level-3 {
-    border: 1px solid var(--green);
-    border-top: none;
-}
-.question-container.active.level-4 {
-    border: 1px solid var(--lightblue);
-    border-top: none;
-}
-.question-container.active.level-5 {
-    border: 1px solid var(--blue);
-    border-top: none;
+.question-container button.selected:hover {
+    color: white !important;
 }
 .project nav,
 .report-page nav {
@@ -496,6 +486,15 @@ div.level-5,
 
 #navList li ul li {
     padding: 0.5em 0; /* Add some space between items */
+
+}
+#navList .link {
+    color: var(--color-dark-blue);
+}
+#navList .link span:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
 }
 #metadata {
     display: none;

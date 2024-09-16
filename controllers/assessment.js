@@ -42,6 +42,29 @@ exports.getAssessmentById = async (req, res) => {
   }
 };
 
+// GET /?title - Get a single assessment by title as JSON
+exports.getAssessmentByTitle = async (req, res) => {
+  try {
+    // Retrieve the title from the query string
+    const { title } = req.query;
+
+    if (!title) {
+      return res.status(400).json({ message: 'Title is required' });
+    }
+
+    // The canAccessAssessment middleware has already validated access
+    const assessment = await Assessment.findOne({ title });
+
+    if (!assessment) {
+      return res.status(404).json({ message: 'Assessment not found' });
+    }
+
+    res.json(assessment);
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving assessment', error });
+  }
+};
+
 // POST / - Create a new assessment
 exports.createAssessment = async (req, res) => {
   try {

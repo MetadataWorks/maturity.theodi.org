@@ -20,7 +20,8 @@ const assistantRoutes = require('./routes/assistant');
 const assessmentsRoutes = require('./routes/assessment');
 const { loadProject } = require('./middleware/project');
 const loadAssessments = require('./lib/loadAssessments');
-//const { getHubspotProfile, updateToolStatistics } = require('./controllers/hubspot');
+const { initializeScheduledJobs } = require('./controllers/hubspot');
+ //const { getHubspotProfile, updateToolStatistics } = require('./controllers/hubspot');
 const app = express();
 const port = process.env.PORT || 3080;
 app.set('view engine', 'ejs');
@@ -136,6 +137,7 @@ app.get('/admin', function(req,res) {
 });
 
 app.use(loadProject);
+initializeScheduledJobs();
 
 app.use('/assessments', assessmentsRoutes);
 app.use('/projects', assistantRoutes);

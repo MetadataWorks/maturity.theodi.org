@@ -9,6 +9,7 @@ const hubspotSchema = new mongoose.Schema({
     companyMembership: Boolean,
     membershipStatus: String,
     membershipType: String,
+    lastUpdatedHash: String
   }, {
     collection: 'Hubspot' // Specify the collection name
   });

@@ -48,9 +48,11 @@
                     const assessmentDropdown = $('<select id="assessmentSelect" class="form-control"></select>');
                     assessmentDropdown.append('<option value="">Select model</option>');
 
-                    // Populate the dropdown with assessment options
+                    // Populate the dropdown with assessment options, skipping readOnly ones
                     assessments.forEach(assessment => {
-                        assessmentDropdown.append(`<option value="${assessment._id}">${assessment.title}</option>`);
+                        if (!assessment.readOnly) {  // Skip assessments that are readOnly
+                            assessmentDropdown.append(`<option value="${assessment._id}">${assessment.title}</option>`);
+                        }
                     });
 
                     setTimeout(() => {
