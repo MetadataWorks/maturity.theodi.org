@@ -9,11 +9,9 @@ const isMember = async (req, res, next) => {
     if (hubspotUser && hubspotUser.membershipStatus === "Active") {
         // If membershipStatus is active, proceed to the next middleware or route handler
         return next();
-    }
-    if (projectCount >= freeLimit) {
+    } else {
         return res.status(403).json({ message: `You need to be an ODI member to access AI summaries` });
     }
-
 }
 
 module.exports = { isMember };
