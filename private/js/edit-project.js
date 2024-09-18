@@ -58,7 +58,8 @@ function createAssessmentTable(dimension, levelKeys) {
     const container = document.getElementById('assessment-container');
     dimension.activities.forEach(activity => {
         const activityContainer = document.createElement('section');
-        const activityId = activity.title.toLowerCase().replace(/\s+/g, '-');
+        const dimensionPrefix = dimension.name.toLowerCase().replace(/\s+/g, '-');
+        const activityId = dimensionPrefix + "/" + activity.title.toLowerCase().replace(/\s+/g, '-');
         activityContainer.setAttribute('id', activityId);
         activityContainer.className = 'activity';
 
@@ -309,7 +310,8 @@ function loadNavBar(data,projectId) {
 
         const activityList = document.createElement('ul');
         dimension.activities.forEach(activity => {
-            const activityId = activity.title.toLowerCase().replace(/\s+/g, '-');
+            const dimensionPrefix = dimension.name.toLowerCase().replace(/\s+/g, '-');
+            const activityId = dimensionPrefix + "/" + activity.title.toLowerCase().replace(/\s+/g, '-');
             const activityItem = document.createElement('li');
             activityItem.classList.add('nav-activity-item'); // Add class for styling
 
@@ -411,7 +413,14 @@ function updateHash(activityId) {
 
 function toggleNav() {
     const nav = document.querySelector('.project nav');
+    const toggleButton = document.querySelector('.project .nav-toggle');
     nav.classList.toggle('shrunk');
+
+    if (nav.classList.contains('shrunk')) {
+        toggleButton.innerHTML = '&#8594;'; // Right arrow
+    } else {
+        toggleButton.innerHTML = '&#8592;'; // Left arrow
+    }
 }
 
 function debounce(func, wait) {

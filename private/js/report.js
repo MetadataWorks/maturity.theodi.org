@@ -132,7 +132,7 @@ function createDimensionDetails(dimension, levelKeys, dimensionIndex) {
 
     // Create a span to hold the level name with a class based on the achieved level
     const levelNameSpan = document.createElement('span');
-    const levelName = levelKeys[dimension.userProgress.achievedLevel - 1];
+    const levelName = levelKeys[dimension.userProgress.achievedLevel - 1] || "none";
     levelNameSpan.textContent = levelName;
     levelNameSpan.className = `level level-${dimension.userProgress.achievedLevel}`;
 
@@ -265,12 +265,19 @@ function createActivityQuestions(section, activity, levelKeys) {
             <th style="width: 20%;">Notes</th>
         `;
 
-        // Sort statements: correct answers first, then incorrect, then unanswered
+        // Sort statements first by level, then by correct/incorrect/unanswered
         const sortedStatements = statements.sort((a, b) => {
+            // Sort by associated level first
+            if (a.associatedLevel !== b.associatedLevel) {
+                return a.associatedLevel - b.associatedLevel;
+            }
+
+            // Sort by whether the question is answered
             const aAnswered = a.userAnswer ? 1 : 0;
             const bAnswered = b.userAnswer ? 1 : 0;
             if (aAnswered !== bAnswered) return bAnswered - aAnswered;
 
+            // Sort by whether the answer is correct
             const aCorrect = a.userAnswer && a.userAnswer.answer === a.positive;
             const bCorrect = b.userAnswer && b.userAnswer.answer === b.positive;
             if (aCorrect !== bCorrect) return bCorrect - aCorrect;
@@ -278,9 +285,11 @@ function createActivityQuestions(section, activity, levelKeys) {
             return 0;
         });
 
+        // Create table rows for each statement
         sortedStatements.forEach(statement => {
             const row = table.insertRow();
 
+            // Add level column if required
             if (includeLevel) {
                 const levelCell = row.insertCell();
                 const levelName = levelKeys[statement.associatedLevel - 1];
@@ -292,7 +301,6 @@ function createActivityQuestions(section, activity, levelKeys) {
             questionCell.textContent = statement.text;
 
             const answerCell = row.insertCell();
-
             if (!statement.userAnswer) {
                 answerCell.textContent = '-';
             } else if (statement.userAnswer.answer === statement.positive) {
@@ -307,6 +315,7 @@ function createActivityQuestions(section, activity, levelKeys) {
 
         questionsDiv.appendChild(table);
     };
+
 
     const currentLevelStatements = activity.statements.filter(statement => statement.associatedLevel === activity.userProgress.achievedLevel);
     const nextLevelStatements = activity.statements.filter(statement => statement.associatedLevel === activity.userProgress.achievedLevel + 1);
@@ -484,8 +493,7 @@ function loadNavBar(data,projectId) {
     const dimensions = data.dimensions;
     const navList = document.getElementById('navList');
 
-
-    const editItem = createNavItem('/projects/' + projectId,"<- Back to edit page");
+    const editItem = createNavItem('/projects/' + projectId, '← Back to edit page');
     navList.appendChild(editItem);
 
     const topItem = createNavItem('#assessment-contriner',"Top");
@@ -532,7 +540,14 @@ function loadNavBar(data,projectId) {
 
 function toggleNav() {
     const nav = document.querySelector('.report-page nav');
+    const toggleButton = document.querySelector('.report-page .nav-toggle');
     nav.classList.toggle('shrunk');
+
+    if (nav.classList.contains('shrunk')) {
+        toggleButton.innerHTML = '&#8594;'; // Right arrow
+    } else {
+        toggleButton.innerHTML = '&#8592;'; // Left arrow
+    }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
