@@ -44,7 +44,7 @@
                 .then(response => response.json())
                 .then(assessments => {
                     // Create the assessment dropdown
-                    const assessmentLabel = $('<label for="assessmentSelect" class="form-control">Assessment</label>');
+                    const assessmentLabel = $('<label for="assessmentSelect" class="form-control">Model</label>');
                     const assessmentDropdown = $('<select id="assessmentSelect" class="form-control"></select>');
                     assessmentDropdown.append('<option value="">Select model</option>');
 

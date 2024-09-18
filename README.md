@@ -45,7 +45,7 @@ This model assesses an organisation's maturity in publishing and using open data
 ### 2. Data Ethics Maturity Model (Coming Soon)
 This model will help organisations assess their maturity in handling data ethically, ensuring that data practices are aligned with ethical standards.
 
-### 3. Data Practices Maturity Assessment (Coming Soon)
+### 3. Data Practices Maturity Model
 This assessment will evaluate an organisation's data practices across key areas of data governance and management.
 
 ## Installation

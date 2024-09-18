@@ -39,15 +39,15 @@
 <div class="content-block light-grey">
     <div style="text-align: center; width: 100%;">
         <br/>
-        <button class="transparent" onclick="window.location.href='/projects/new'">Start a new evaluation</button>
+        <button class="transparent" onclick="window.location.href='/projects/new'">Start a new assessment</button>
     </div>
 </div>
 <div class="content-block white">
-    <h1>My evaluations</h1>
+    <h1>My assessments</h1>
     <table id="myProjectsTable" class="display" style="width:100%"></table>
 </div>
 <div class="content-block light-grey">
-    <h1>Evaluations shared with me</h1>
+    <h1>Assessments shared with me</h1>
     <table id="sharedProjectsTable" class="display" style="width:100%"></table>
 </div>
 </div>
@@ -95,7 +95,7 @@ function renderMyProjects() {
             },
             {
                 data: 'assessment.title',
-                title: 'Assessment',
+                title: 'Model',
                 width: '10%',
                 defaultContent: ''
             },
@@ -275,7 +275,7 @@ function renderSharedProjects(data) {
             },
             {
                 data: 'assessment.title',
-                title: 'Assessment',
+                title: 'Model',
                 width: '10%',
                 defaultContent: ''
             },
