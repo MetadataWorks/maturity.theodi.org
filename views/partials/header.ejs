@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title><%= page.title %></title>
 
 <script type="text/javascript" src="/lib/jquery-3.7.1.min.js"></script>
@@ -51,7 +54,6 @@
 						</form>
 					</li>
 				<% } else { %>
-					<li><a href="/glossary" id="glossary-link" class="toggle-link <% if (page.link === '/glossary') { %>selected<% } %>">Glossary</a></li>
 					<li><a href="/about" id="privacy-link" class="toggle-link <% if (page.link === '/about') { %>selected<% } %>">Your privacy</a></li>
 					<li><a href="/auth/django" class="toggle-link">Login</a></li>
 				<% } %>

@@ -11,7 +11,7 @@
             padding: 2em;
         }
     </style>
-    <h1 id="newProjectTitle">New Project</h1>
+    <h1 id="newProjectTitle">New Assessment</h1>
     <div id="res" class="alert"></div>
     <form id="dataForm"></form>
 
@@ -73,6 +73,8 @@
             fetch('/lib/countries.json')
                 .then(response => response.json())
                 .then(countries => {
+
+                    countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
                     // Create the label and dropdown elements
                     const countryLabel = $('<label for="countryDropdown" class="form-control">Organisation Location (Country)</label>');
                     const countryDropdown = $('<select id="countryDropdown" class="form-control"></select>');
