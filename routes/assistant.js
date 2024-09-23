@@ -91,7 +91,7 @@ async function checkDimensionSummariesExist(projectData, dimensions) {
 router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjectAccess, isMember, async (req, res) => {
     try {
         const projectId = req.params.id;
-        const { activityTitle } = req.query;
+        const { activityTitle, dimensionName } = req.query;
 
         // 1. Retrieve the project data from the database
         const projectData = await Project.findById(projectId);
@@ -108,42 +108,41 @@ router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjec
 
         const assessmentTitle = assessmentData.title;
 
-        // 3. Find the dimension and activity data by title
-        const dimension = projectData.assessmentData.dimensions.find(dimension =>
-            dimension.activities.some(activity => activity.title === activityTitle)
-        );
+        // 3. Find the dimension by name
+        const dimension = projectData.assessmentData.dimensions.find(dim => dim.name === dimensionName);
 
         if (!dimension) {
-            return res.status(404).json({ error: 'Dimension not found for the activity' });
+            return res.status(404).json({ error: 'Dimension not found' });
         }
 
+        // 4. Find the activity by title within the dimension
         const activity = dimension.activities.find(act => act.title === activityTitle);
 
         if (!activity) {
             return res.status(404).json({ error: 'Activity not found' });
         }
 
-        // 4. Create a deep copy of the activity object to remove notes before sending to AI
+        // 5. Create a deep copy of the activity object to remove notes before sending to AI
         const activityCopy = JSON.parse(JSON.stringify(activity));
 
-        // 5. Remove notes from userAnswer in the activityCopy
+        // 6. Remove notes from userAnswer in the activityCopy
         activityCopy.statements.forEach(statement => {
             if (statement.userAnswer && statement.userAnswer.notes) {
                 delete statement.userAnswer.notes;
             }
         });
 
-        // 6. Use the getOrGenerateActivitySummary function with the modified activityCopy
+        // 7. Use the getOrGenerateActivitySummary function with the modified activityCopy
         const levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
         const summary = await getOrGenerateActivitySummary(activityCopy, dimension.name, levelKeys, assessmentTitle);
 
-        // 7. Generate hash for the current activity state
+        // 8. Generate hash for the current activity state
         const activityHash = generateHash(activity.statements.map(s => s.userAnswer));
 
-        // 8. Update the specific activity's aiResponse in the dimension
+        // 9. Update the specific activity's aiResponse in the dimension
         const updateQuery = {
             _id: projectId,
-            'assessmentData.dimensions.name': dimension.name,
+            'assessmentData.dimensions.name': dimensionName,
             'assessmentData.dimensions.activities.title': activityTitle
         };
 
@@ -158,16 +157,16 @@ router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjec
 
         const updateOptions = {
             arrayFilters: [
-                { 'dim.name': dimension.name },
+                { 'dim.name': dimensionName },
                 { 'act.title': activityTitle }
             ],
             new: true
         };
 
-        // 9. Perform the update
+        // 10. Perform the update
         await Project.findOneAndUpdate(updateQuery, updateAction, updateOptions);
 
-        // 10. Send the summary as the response
+        // 11. Send the summary as the response
         res.json({ response: summary });
 
     } catch (error) {
@@ -175,6 +174,7 @@ router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjec
         res.status(500).json({ error: 'An error occurred while generating the summary' });
     }
 });
+
 
 // Route to get dimension summary
 router.get('/:id/assistant/getDimensionSummary', ensureAuthenticated, checkProjectAccess, isMember, async (req, res) => {

@@ -723,7 +723,7 @@ async function getAIDimensionSummary(dimensionData) {
     }
 }
 
-async function getAIActivitySummary(activityData) {
+async function getAIActivitySummary(activityData,dimensionName) {
     try {
         // Extract the project ID from the URL or other relevant source
         const urlParts = window.location.pathname.split('/');
@@ -732,6 +732,7 @@ async function getAIActivitySummary(activityData) {
         // Prepare the query parameters for the request
         const queryParams = new URLSearchParams({
             activityTitle: activityData.title,
+            dimensionName: dimensionName,
         });
 
         // Send a GET request to the server route

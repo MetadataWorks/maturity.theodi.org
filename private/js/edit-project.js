@@ -59,7 +59,7 @@ function createAssessmentTable(dimension, levelKeys) {
     dimension.activities.forEach(activity => {
         const activityContainer = document.createElement('section');
         const dimensionPrefix = dimension.name.toLowerCase().replace(/\s+/g, '-');
-        const activityId = dimensionPrefix + "/" + activity.title.toLowerCase().replace(/\s+/g, '-');
+        const activityId = dimensionPrefix + "-" + activity.title.toLowerCase().replace(/\s+/g, '-');
         activityContainer.setAttribute('id', activityId);
         activityContainer.className = 'activity';
 
@@ -118,7 +118,7 @@ function createAssessmentTable(dimension, levelKeys) {
             trueButton.className = 'true-button';
             trueButton.onclick = (event) => {
                 event.stopPropagation();
-                handleStatementSelection(statement, true, activity);
+                handleStatementSelection(statement, true, dimension, activity);  // Pass dimension and activity
             };
 
             const falseButton = document.createElement('button');
@@ -126,13 +126,13 @@ function createAssessmentTable(dimension, levelKeys) {
             falseButton.className = 'false-button';
             falseButton.onclick = (event) => {
                 event.stopPropagation();
-                handleStatementSelection(statement, false, activity);
+                handleStatementSelection(statement, false, dimension, activity);  // Pass dimension and activity
             };
 
             buttonContainer.appendChild(trueButton);
             buttonContainer.appendChild(falseButton);
 
-            bubble.addEventListener('click', () => openStatementModal(statement, notesIcon, activity));
+            bubble.addEventListener('click', () => openStatementModal(statement, notesIcon, dimension, activity));
 
             // Restore user answer and notes if they exist
             if (statement.userAnswer) {
@@ -159,7 +159,7 @@ function createAssessmentTable(dimension, levelKeys) {
     });
 }
 
-function openStatementModal(statement, notesIcon, activity) {
+function openStatementModal(statement, notesIcon, dimension, activity) {
     const modal = document.getElementById('statement-modal');
     const modalStatement = document.getElementById('modal-statement');
     const modalContext = document.getElementById('modal-context');
@@ -167,6 +167,7 @@ function openStatementModal(statement, notesIcon, activity) {
     const modalFalseButton = document.getElementById('modal-false-button');
     const modalNotesTextarea = document.getElementById('modal-notes');
 
+    // Populate the modal with statement details
     modalStatement.textContent = statement.text;
     modalContext.textContent = statement.context || "";
     modalNotesTextarea.value = statement.userAnswer ? statement.userAnswer.notes : "";
@@ -175,30 +176,35 @@ function openStatementModal(statement, notesIcon, activity) {
     modalTrueButton.classList.toggle('selected', statement.userAnswer && statement.userAnswer.answer === true);
     modalFalseButton.classList.toggle('selected', statement.userAnswer && statement.userAnswer.answer === false);
 
+    // Handle True button click
     modalTrueButton.onclick = () => {
         modalTrueButton.classList.add('selected');
         modalFalseButton.classList.remove('selected');
-        handleStatementSelection(statement, true, activity);
+        handleStatementSelection(statement, true, dimension, activity);  // Pass dimension and activity
     };
+
+    // Handle False button click
     modalFalseButton.onclick = () => {
         modalFalseButton.classList.add('selected');
         modalTrueButton.classList.remove('selected');
-        handleStatementSelection(statement, false, activity);
+        handleStatementSelection(statement, false, dimension, activity);  // Pass dimension and activity
     };
 
+    // Handle modal close event
     const closeModal = () => {
         if (!statement.userAnswer) {
             statement.userAnswer = {};
         }
         statement.userAnswer.notes = modalNotesTextarea.value;
         notesIcon.style.display = statement.userAnswer.notes.trim() ? 'inline' : 'none';
-        updateProjectData(statement, activity);
+        updateProjectData(statement, dimension, activity);  // Pass dimension and activity
         modal.style.display = 'none';
 
         // Trigger debounced save
         debouncedSaveProgress(projectData);
     };
 
+    // Close modal on close button click or outside click
     modal.querySelector('.close').onclick = closeModal;
     window.onclick = (event) => {
         if (event.target == modal) {
@@ -206,10 +212,13 @@ function openStatementModal(statement, notesIcon, activity) {
         }
     };
 
+    // Show the modal
     modal.style.display = 'block';
 }
 
-function handleStatementSelection(statement, isTrue, activity) {
+
+function handleStatementSelection(statement, isTrue, dimension, activity) {
+
     statement.userAnswer = {
         answer: isTrue,
         notes: statement.userNotes || ""
@@ -224,21 +233,21 @@ function handleStatementSelection(statement, isTrue, activity) {
         }
     });
 
-    // Update projectData with the user's selection
-    updateProjectData(statement, activity);
+    // Update projectData with the user's selection in the context of the dimension and activity
+    updateProjectData(statement, dimension, activity);
 
     // Recalculate the completion percentage for the activity and update the pie
     const activityCompletion = calculateActivityCompletion(activity);
-    updateProgressPie(activity.title.toLowerCase().replace(/\s+/g, '-'), activityCompletion);
 
-    // Recalculate the overall completion percentage and update the overall pie
-    // Calculate overall completion metrics
-    //const { activityCompletionPercentage, statementCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
-//    updateOverallProgressPie(overallCompletion);
+    const dimensionPrefix = dimension.name.toLowerCase().replace(/\s+/g, '-');
+    const activityId = dimensionPrefix + "-" + activity.title.toLowerCase().replace(/\s+/g, '-');
+
+    updateProgressPie(activityId, activityCompletion);
 
     // Trigger debounced save
     debouncedSaveProgress(projectData);
 }
+
 
 function submitProjectForm(errors, values) {
     if (errors) {
@@ -311,7 +320,7 @@ function loadNavBar(data,projectId) {
         const activityList = document.createElement('ul');
         dimension.activities.forEach(activity => {
             const dimensionPrefix = dimension.name.toLowerCase().replace(/\s+/g, '-');
-            const activityId = dimensionPrefix + "/" + activity.title.toLowerCase().replace(/\s+/g, '-');
+            const activityId = dimensionPrefix + "-" + activity.title.toLowerCase().replace(/\s+/g, '-');
             const activityItem = document.createElement('li');
             activityItem.classList.add('nav-activity-item'); // Add class for styling
 

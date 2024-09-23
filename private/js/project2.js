@@ -1,10 +1,15 @@
 let projectData = {};  // This will store the current state of the project
 
-function updateProjectData(statement, activity) {
-    const projectDimension = projectData.assessmentData.dimensions.find(d => d.activities.some(a => a.title === activity.title));
+function updateProjectData(statement, dimension, activity) {
+
+    // Find the correct dimension and activity by their names
+    const projectDimension = projectData.assessmentData.dimensions.find(d => d.name === dimension.name);
     const projectActivity = projectDimension.activities.find(a => a.title === activity.title);
+
+    // Find the corresponding statement
     const projectStatement = projectActivity.statements.find(s => s.text === statement.text);
 
+    // Update the user answer for the statement
     projectStatement.userAnswer = {
         answer: statement.userAnswer.answer,
         notes: statement.userAnswer.notes

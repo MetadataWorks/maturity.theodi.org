@@ -1,7 +1,7 @@
 {
   "name": "maturity.theodi.org",
-  "version": "1.0.5",
-  "description": "The ODI Maturity Assessment Tool (pathway)",
+  "version": "1.1.0",
+  "description": "The ODI Maturity Assessment Tool",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/theodi/pathway2.theodi.org.git"
+    "url": "git+ssh://git@github.com/theodi/maturity.theodi.org.git"
   },
   "author": "David Tarrant",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/theodi/pathway2.theodi.org/issues"
+    "url": "https://github.com/theodi/maturity.theodi.org/issues"
   },
-  "homepage": "https://github.com/theodi/pathway2.theodi.org",
+  "homepage": "https://github.com/theodi/maturity.theodi.org",
   "dependencies": {
     "@hubspot/api-client": "^11.1.0",
     "bcrypt": "^5.1.1",
