@@ -67,95 +67,91 @@ function createAssessmentTable(dimension, levelKeys) {
         activityHeading.innerHTML = dimension.name + " / " + activity.title || "Dimension > Activity";
         activityContainer.appendChild(activityHeading);
 
-        const table = document.createElement('table');
-        const header = table.insertRow();
+        // Iterate over questions in each activity
+        activity.questions.forEach(question => {
+            const questionContainer = document.createElement('div');
+            questionContainer.className = 'question-container';
+            questionContainer.setAttribute('data-question', question.text);  // Add unique identifier
 
-        levelKeys.forEach((level, index) => {
-            const th = document.createElement('th');
-            const levelIndex = index + 1;
-            th.textContent = levelIndex + ": " + level;
-            th.className = "level-" + (index + 1);
-            header.appendChild(th);
-        });
+            // Display the question text and context above the table
+            const questionTitle = document.createElement('h3');
+            questionTitle.textContent = question.text;
+            questionContainer.appendChild(questionTitle);
 
-        const row = table.insertRow();
-
-        // Initialize cells for each level
-        const levelCells = {};
-        levelKeys.forEach((level, index) => {
-            levelCells[index + 1] = row.insertCell();
-        });
-
-        activity.statements.forEach(statement => {
-            const cell = levelCells[statement.associatedLevel];
-
-            const statementContainer = document.createElement('div');
-            statementContainer.className = 'statement-container';
-            statementContainer.classList.add("level-" + statement.associatedLevel);
-
-            const bubble = document.createElement('div');
-            bubble.className = 'statement-bubble positive-' + statement.positive;
-
-            const statementSpan = document.createElement('span');
-            statementSpan.className = 'statement';
-            statementSpan.textContent = statement.text;
-            bubble.appendChild(statementSpan);
-
-            const notesIcon = document.createElement('img');
-            notesIcon.className = 'notes-icon';
-            notesIcon.style.display = 'none';
-            notesIcon.src = '/images/notes-icon.svg';
-            notesIcon.alt = 'Notes Icon';
-            bubble.appendChild(notesIcon);
-
-            const buttonContainer = document.createElement('div');
-            buttonContainer.className = 'button-container';
-            bubble.appendChild(buttonContainer);
-
-            // True/False buttons that appear on hover or tap
-            const trueButton = document.createElement('button');
-            trueButton.textContent = 'True';
-            trueButton.className = 'true-button';
-            trueButton.onclick = (event) => {
-                event.stopPropagation();
-                handleStatementSelection(statement, true, dimension, activity);  // Pass dimension and activity
-            };
-
-            const falseButton = document.createElement('button');
-            falseButton.textContent = 'False';
-            falseButton.className = 'false-button';
-            falseButton.onclick = (event) => {
-                event.stopPropagation();
-                handleStatementSelection(statement, false, dimension, activity);  // Pass dimension and activity
-            };
-
-            buttonContainer.appendChild(trueButton);
-            buttonContainer.appendChild(falseButton);
-
-            bubble.addEventListener('click', () => openStatementModal(statement, notesIcon, dimension, activity));
-
-            // Restore user answer and notes if they exist
-            if (statement.userAnswer) {
-                if (statement.userAnswer.answer) {
-                    bubble.classList.add('true-selected');
-                } else {
-                    bubble.classList.add('false-selected');
-                }
-                if (statement.userAnswer.notes) {
-                    notesIcon.style.display = 'inline';
-                }
+            if (question.context) {
+                const questionContext = document.createElement('p');
+                questionContext.textContent = question.context;
+                questionContainer.appendChild(questionContext);
             }
 
-            statementContainer.appendChild(bubble);
-            cell.appendChild(statementContainer);
+            // Create table for each question
+            const table = document.createElement('table');
+            const header = table.insertRow();
+
+            // Add levels as headers
+            levelKeys.forEach((level, index) => {
+                const th = document.createElement('th');
+                th.textContent = (index + 1) + ": " + level;
+                th.className = "level-" + (index + 1);
+                header.appendChild(th);
+            });
+
+            const row = table.insertRow();
+
+            // Initialize cells for each level
+            const levelCells = {};
+            levelKeys.forEach((level, index) => {
+                levelCells[index + 1] = row.insertCell();
+            });
+
+            // Add statements directly to the <td> and apply selection logic
+            question.statements.forEach(statement => {
+                const cell = levelCells[statement.associatedLevel];
+                cell.className = 'statement-container level-' + statement.associatedLevel;
+
+                const statementSpan = document.createElement('span');
+                statementSpan.className = 'statement';
+                statementSpan.textContent = statement.text;
+                cell.appendChild(statementSpan);
+
+                const notesIcon = document.createElement('img');
+                notesIcon.className = 'notes-icon';
+                notesIcon.src = '/images/notes-icon.svg';
+                notesIcon.alt = 'Notes Icon';
+                notesIcon.style.display = statement.userAnswer && statement.userAnswer.notes ? 'inline' : 'none';
+                cell.appendChild(notesIcon);
+
+                // Restore user-selected level
+                if (question.userAnswer && question.userAnswer.level === statement.associatedLevel) {
+                    cell.classList.add('selected');
+                }
+
+                // Apply cleared class to levels below the selected level
+                if (question.userAnswer && question.userAnswer.level > statement.associatedLevel) {
+                    cell.classList.add('cleared');
+                }
+
+                // Add click event to <td> to select the statement
+                cell.addEventListener('click', () => handleStatementSelection(question, statement.associatedLevel, dimension, activity));
+            });
+
+            // Append the table to the question container
+            questionContainer.appendChild(table);
+
+            // Add textarea for notes
+            const notesTextarea = document.createElement('textarea');
+            notesTextarea.className = 'notes-textarea';
+            notesTextarea.placeholder = 'Add notes here...';
+            notesTextarea.value = question.userAnswer && question.userAnswer.notes ? question.userAnswer.notes : '';
+            notesTextarea.addEventListener('input', (event) => {
+                question.userAnswer.notes = event.target.value;
+            });
+            questionContainer.appendChild(notesTextarea);
+
+            activityContainer.appendChild(questionContainer);
         });
 
-        activityContainer.appendChild(table);
         container.appendChild(activityContainer);
-
-        if (defaultActivity === "") {
-            defaultActivity = activityId;
-        }
     });
 }
 
@@ -216,38 +212,54 @@ function openStatementModal(statement, notesIcon, dimension, activity) {
     modal.style.display = 'block';
 }
 
-
-function handleStatementSelection(statement, isTrue, dimension, activity) {
-
-    statement.userAnswer = {
-        answer: isTrue,
-        notes: statement.userNotes || ""
+function handleStatementSelection(question, selectedLevel, dimension, activity) {
+    // Update the userAnswer for the question with the selected level
+    question.userAnswer = {
+        level: selectedLevel,
+        text: question.statements[selectedLevel-1].text,
+        notes: question.userAnswer ? question.userAnswer.notes : ""
     };
 
-    const bubbles = document.querySelectorAll('.statement-bubble');
-    bubbles.forEach(bubble => {
-        const statementSpan = bubble.querySelector('.statement');
-        if (statementSpan.textContent === statement.text) {
-            bubble.classList.toggle('true-selected', isTrue);
-            bubble.classList.toggle('false-selected', !isTrue);
-        }
-    });
+    // Select only the statement cells within the relevant question table
+    const questionContainer = document.querySelector(`[data-question="${question.text}"]`);  // Assuming each question container has a unique data attribute like data-question
+
+    if (questionContainer) {
+        // Deselect all statement cells within this question and apply 'cleared' for levels below the selected one
+        const statementCells = questionContainer.querySelectorAll('.statement-container');
+        statementCells.forEach(cell => {
+            const levelClass = cell.className.match(/level-(\d+)/);
+
+            if (levelClass) {
+                const level = parseInt(levelClass[1]);
+
+                if (level === selectedLevel) {
+                    // Mark the selected statement cell
+                    cell.classList.add('selected');
+                    cell.classList.remove('cleared');
+                } else if (level < selectedLevel) {
+                    // Apply cleared to levels below the selected one
+                    cell.classList.add('cleared');
+                    cell.classList.remove('selected');
+                } else {
+                    // Remove any selection/clear state for levels above the selected one
+                    cell.classList.remove('selected', 'cleared');
+                }
+            }
+        });
+    }
 
     // Update projectData with the user's selection in the context of the dimension and activity
-    updateProjectData(statement, dimension, activity);
+    updateProjectData(question, dimension, activity);
 
-    // Recalculate the completion percentage for the activity and update the pie
+    // Recalculate the completion percentage for the activity and update the progress pie
     const activityCompletion = calculateActivityCompletion(activity);
-
     const dimensionPrefix = dimension.name.toLowerCase().replace(/\s+/g, '-');
     const activityId = dimensionPrefix + "-" + activity.title.toLowerCase().replace(/\s+/g, '-');
-
     updateProgressPie(activityId, activityCompletion);
 
     // Trigger debounced save
     debouncedSaveProgress(projectData);
 }
-
 
 function submitProjectForm(errors, values) {
     if (errors) {

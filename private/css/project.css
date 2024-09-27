@@ -209,12 +209,15 @@ div.level-5,
   padding-top: 1em;
 }
 .question-container textarea {
-    width: 100%;
+    width: 95%;
     border: 1px solid var(--grey);
     font-family: inherit;
     font-size: inherit;
     background-color: white !important;
     color: inherit !important;
+    margin: 1em;
+    min-height: 20px;
+    height: 60px;
 }
 .question-container button.selected:hover {
     color: white !important;
@@ -345,35 +348,13 @@ div.level-5,
 .statement-container {
     position: relative;
     margin: 10px;
-}
-.statement-bubble {
-    padding: 10px 15px;
-    background-color: #f0f0f0;
-    display: inline-block;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.statement-bubble.positive-true.true-selected {
+.statement-container.selected {
     background-color: #ceeed5;
 }
-.statement-bubble.positive-false.true-selected {
-    background-color: #facdd1;
-}
-.statement-bubble.positive-true.false-selected {
-    background-color: #facdd1;
-}
-.statement-bubble.positive-false.false-selected {
-    background-color: #ceeed5;
-}
-.statement-bubble.true-selected .true-button{
-    background-color: var(--blue) !important;
-    color: white;
-}
-.statement-bubble.false-selected .false-button {
-    background-color: var(--blue) !important;
-    color: white;
-}
+
 
 /* Modal styles */
 .modal {
@@ -575,6 +556,11 @@ section.dimension-details {
 .project-report table .dimension-row .dimension-name span {
     font-size: 1.3em;
 }
+.project-report .question-notes {
+    text-align: center;
+    margin: 1em;
+
+}
 .dimension-heatmap, .activity-heatmap {
     width: 80%;
     margin-left: auto;
@@ -593,7 +579,8 @@ span.level {
     margin-top: 2em;
 }
 .project-report .questions-table {
-    width: 80%;
+    width: 98%;
+    margin-top: 2em;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse; /* Ensures borders don't double up */
