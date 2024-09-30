@@ -11,6 +11,7 @@
     }
   },
   "public": true,
+  "levels": ["Initial", "Repeatable", "Defined", "Managed", "Optimising"],
   "dimensions": [
     {
       "name": "Data publication processes",

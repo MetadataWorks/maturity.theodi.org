@@ -139,7 +139,10 @@ router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjec
         });
 
         // 7. Use the getOrGenerateActivitySummary function with the modified activityCopy
-        const levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        let levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        if (assessmentData.levels) {
+            levelKeys = assessmentData.levels;
+        }
         const summary = await getOrGenerateActivitySummary(activityCopy, dimension.name, levelKeys, assessmentTitle);
 
         // 8. Generate hash for the current activity state
@@ -210,7 +213,10 @@ router.get('/:id/assistant/getDimensionSummary', ensureAuthenticated, checkProje
         }
 
         // 4. Prepare the level keys
-        const levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        let levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        if (assessmentData.levels) {
+            levelKeys = assessmentData.levels;
+        }
 
         // 5. Gather AI Summaries for each activity in the dimension
         const activitySummaries = [];

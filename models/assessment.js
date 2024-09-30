@@ -115,6 +115,9 @@ const assessmentSchema = new mongoose.Schema({
     default: false, // Default value is false (not public)
     required: true
   },
+  levels: {
+    type: [String], // Array of strings representing levels
+  },
   readOnly: {
     type: Boolean,
     default: false, // Default value is false (not public)

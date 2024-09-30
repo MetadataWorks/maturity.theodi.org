@@ -12,6 +12,7 @@
   },
   "public": true,
   "readOnly": false,
+  "levels": ["Beginning", "Emerging", "Learning", "Developing", "Mastering"],
   "dimensions": [
     {
       "name": "Engaging with others",

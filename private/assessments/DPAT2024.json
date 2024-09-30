@@ -12,6 +12,7 @@
   },
   "public": true,
   "readOnly": false,
+  "levels": ["Initial", "Repeatable", "Defined", "Managed", "Optimising"],
   "dimensions": [
     {
       "name": "Accountability",
