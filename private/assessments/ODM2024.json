@@ -1,2052 +1,1319 @@
 {
-  "title": "Open Data Maturity Model (2024)",
-  "description": "<p>The open data maturity model is a way to assess how well an organisation publishes and consumes open data, and identifies actions for improvement.</p><p>The model is based around five themes and five progress levels. Each theme represents a broad area of operations within an organisation. Each theme is then broken into areas of activity, which can then be used to assess progress.</p>",
-  "owner": "info@theodi.org",
-  "organisation": {
-    "name": "The Open Data Institute",
-    "homePage": "https://theodi.org",
-    "country": {
-      "name": "United Kingdom",
-      "code": "GB"
-    }
-  },
-  "public": true,
-  "levels": ["Initial", "Repeatable", "Defined", "Managed", "Optimising"],
-  "dimensions": [
-    {
-      "name": "Data publication processes",
-      "activities": [
-        {
-          "title": "Data release process",
-          "statements": [
-            {
-              "text": "There is little or no published open data.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Datasets that are published are done so using ad hoc and possibly manual processes, and are only available on the organisation's own regular website.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Released datasets are rarely, if ever, updated.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Licensing is not be explicitly addressed, meaning that published data is open to view but not open to use.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Specific teams or projects have defined a repeatable data publishing process.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some data URLs are standardised and persistent and directly link to data.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some datasets are released and updated according to a regular schedule.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Datasets are published under an open data licence, making them not just open to view but also open to use.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "There is a repeatable organisation-wide release process for publishing datasets, with a defined cadence of data release.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The release process has been adopted for some published datasets.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Datasets are published on a dedicated open data portal under a conformant open data licence.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "There is a central catalogue of published datasets, which is at least moderately complete.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "All published datasets are released according to the standard organisational process.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Datasets are published using an open source data portal, which has robust data management features.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "All datasets have unique and persistent identifiers and direct URLs.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Archived versions of key datasets are provided to support historical analysis.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Updates to datasets are released to a scheduled, published timetable.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The dataset catalogue is mostly complete regarding old datasets, and is always written to in full for new datasets as part of the release and update process, which is likely to be automatic. This is externally available.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Internal reports are available to highlight stale datasets.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation collects and monitors metrics on its release process, e.g. time taken to release and refresh datasets.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation acts to optimise the release process to reduce time between changes and releases.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Datasets are also made available through open data aggregation and indexing platforms.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The data release process includes steps to consider how open data may be used to support Artificial Intelligence / Machine Learning (AI/ML) use cases",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Standards development and adoption",
-          "statements": [
-            {
-              "text": "Datasets are not released using common standards.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Data is in a variety of formats, with no official quality control.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Some teams or projects have agreed on specific technical standards for formatting certain types of data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Standards are driven by internal priorities and needs, with limited consideration for data re-users.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Data is made available in structured formats (e.g. tabular form), which are easy for a human to reuse (e.g. XLS, XLSX).",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some metadata is gathered and published alongside the data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has defined a set of key technical data publishing standards which is internally available and frequently used. These standards address data formats (e.g. they demand non-proprietary, machine readabled structured formats such as CSV or JSON) and metadata needs, including the use of schemas.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Metadata is fairly complete and well structured, adhering to the same quality standards applied to the data itself.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Most data sets are machine readable. Column headings and data are all standardised and clear for primary datasets, with separate lookup tables often used to explain codes and terms.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "All datasets are released in conformance with the organisation's technical standards.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Datasets across the organisation are using standard code lists and identifiers. Relevant datasets are using open options.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Metadata is always considered alongside the primary data, with distinct descriptive and structural aspects. Standard open formats such as DCAT are beginning to be adopted.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation has defined a strategic approach for managing its data standards going forwards.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation monitors technology trends to ensure that its datasets are released according to evolving standards and best practices.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation is routinely using open standards, including code lists and identifiers, to help align its datasets with other sources. The same can be said of metadata too.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation is using specific standards with the explicit intention of making data AI/ML-ready.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Data management and governance",
-          "statements": [
-            {
-              "text": "Datasets are not managed in any consistent way.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "There is no clear ownership around internal datasets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Data ethics is not actively considered.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Specific teams or products have begun defining their own lightweight data governance processes, which are used ad hoc.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Specific individuals are aware of data ethics.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has defined a standard data governance process that has been applied to high value datasets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The process addresses key organisational issues and considers the complete dataset lifecycle.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Datasets have a well-defined owner through their lifecycle.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The standard data governance process is applied to all datasets. The process may be tailored to the needs of specific projects.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation routinely monitors data quality for its high-value datasets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Feedback from re-users is used to help drive improvements in data quality where appropriate.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation is working to improve its data governance processes, e.g. by monitoring the process to address circumstances where data governance may lapse.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation is working in partnership with re-users to help improve & maintain data quality. This may include accepting external contributions.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Assessing and mitigating risk",
-          "statements": [
-            {
-              "text": "The organisation recognises that there may be risks associated with data, but has not yet defined any processes for assessing and mitigating them.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation regularly evaluates the benefits and risks of releasing (all or part of) data that contains personal or sensitive data as open data. ",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Processes for assessing and mitigating risks are defined.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some datasets based on sensitive information are released, following efforts made to remove or aggregate data. Where personal information is released, appropriate consent or other lewful basis is established",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Standard processes for assessing and mitigating risks are defined, such as anonymisation and aggregation, and they are routinely applied to new datasets as deemed necessary.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Risk management is an explicit component of the data governance process.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Standard risk assessments and mitigations are applied to all datasets prior to publication. The organisation may also apply a standardised open data triage process.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Advanced Privacy Enhancing Technologies (PETs) (or alternative techniques) are employed to open data.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation seeks independent validation prior to release of high risk datasets.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation routinely assesses all datasets during their life-cycle in order to highlight sensitive information. An open data triage process is in place that is also published or linked to.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation monitors the changing data landscape to address emerging issues, including those poised by AI. This may involve changing the approach to risk assessment and mitigation, or even stopping a data release.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        }
-      ]
+    "title": "Open Data Maturity Model (2024)",
+    "description": "<p>The open data maturity model is a way to assess how well an organisation publishes and consumes open data, and identifies actions for improvement.</p><p>The model is based around five themes and five progress levels. Each theme represents a broad area of operations within an organisation. Each theme is then broken into areas of activity, which can then be used to assess progress.</p>",
+    "owner": "info@theodi.org",
+    "organisation": {
+      "name": "The Open Data Institute",
+      "homePage": "https://theodi.org",
+      "country": {
+        "name": "United Kingdom",
+        "code": "GB"
+      }
     },
-    {
-      "name": "Data literacy and skills",
-      "activities": [
+    "public": true,
+    "levels": ["Initial", "Repeatable", "Defined", "Managed", "Optimising"],
+    "dimensions": [
         {
-          "title": "Open data expertise",
-          "statements": [
-            {
-              "text": "Current open data activities rely on existing knowledge and skills of a small number of stakeholders and/or self-taught evangelists.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Expertise across the roles is undefined. Utilisation and resourcing is managed on an ad-hoc basis, with no/limited documented evidence of existing knowledge and skills in relation to open data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "There is limited understanding of which roles are directly linked to open data practices, and there is no/limited detail of open data activities in job descriptions of key roles.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation has data professionals embedded. These may be organised as a single team, or dispersed across teams.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Training and support around open data is driven by the needs of specific projects as they arise.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "In situations where internal expertise is limited, the organisation ensures access to key open data skills by partnering with external specialists.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has identified internal open data experts that help support and mentor others.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "There is a data focused working group of interested parties working on data related projects.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has several staff members with the necessary skills to implement data initiatives. These roles are typically centrally organised and focus on organisational projects.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation is actively building a shared understanding of open data practices. This covers common knowledge, operational requirements and strategic insight.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Open data awareness and training is a standard part of staff induction and/or development.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Staff are clear on how open data guides and informs organisational strategy.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "There are individuals responsible for managing open data. This includes reviewing processes and/or maintaining data sets. These individuals are champions for open data and build connections between open data and other data domains.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Teams across the organisation have a data champion who advocates on behalf of the team regarding strategic goals managed locally.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Knowledge and understanding of open data exists at all levels in the organisation.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Staff understand the impact of their own roles and responsibilities regarding open data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation acts to build and foster networks of open data expertise both within the organisation and the wider community.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation is formally exploring the ethical impacts of open data and examining how ethical data practices can support open data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation is looking to advance its open data practices by examining its maturity in other areas of data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Non-data professionals are included in key committees and stakeholder groups to discuss impact of projects and outcomes across the organisation.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
+            "name": "Data Publication Processes",
+            "activities": [
+                {
+                    "title": "Data Release Process",
+                    "questions": [
+                        {
+                            "text": "How are datasets published and made accessible to the public?",
+                            "statements": [
+                            {
+                                "text": "There is little or no open data available for public access.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Data is published on an ad-hoc basis across multiple platforms or websites.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "A set of defined datasets is published on a regular schedule.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Datasets are hosted on a managed platform with robust data management capabilities.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Datasets are automatically indexed in external data aggregation portals, ensuring seamless updates.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "Is there a clear and repeatable process for releasing data?",
+                            "statements": [
+                            {
+                                "text": "Data is published using ad-hoc, often manual processes.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Certain teams or projects follow a defined, repeatable process for publishing data.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "There is a consistent, organisation-wide data release process, with a regular release cadence.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "All published datasets follow a standard organisational process for release.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation tracks and measures metrics related to the release process, such as the time between updates.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How is the licensing of datasets managed?",
+                            "statements": [
+                            {
+                                "text": "Licensing is not addressed, leaving data open to viewing but not for reuse.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Datasets are published under an open data licence, enabling both access and reuse.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Licenses include clear attribution statements, making it easy for others to reuse the data.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Licenses are accompanied by detailed documentation explaining what aspects of the dataset are covered, such as structure, format, or third-party content.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "New technologies, such as AI, are assessed for their impact on licensing, ensuring compatibility and evaluating emerging risks.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How are dataset updates managed?",
+                            "statements": [
+                            {
+                                "text": "Datasets are rarely, if ever, updated once published.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some datasets are updated according to a predefined schedule.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Datasets are updated regularly, with updates following a published timetable.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Archived versions of key datasets are maintained to support historical analysis and comparisons.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Reports provide insights into dataset sustainability, highlighting stale datasets and emerging risks.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Standards Development and Adoption",
+                    "questions": [
+                        {
+                            "text": "Are datasets published using common standards?",
+                            "statements": [
+                            {
+                                "text": "Datasets are not released using common standards.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some teams or projects have agreed on specific technical standards for formatting certain types of data.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation has defined a set of key technical data publishing standards, which include data formats and metadata schemas.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "All datasets are released in full conformance with the organisation's technical standards.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation monitors technology trends to ensure datasets are released according to evolving standards and best practices.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How are data formats and accessibility managed?",
+                            "statements": [
+                            {
+                                "text": "Data is available in various formats with no standardisation or quality control.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Data is made available in structured formats that are easy for humans to reuse (e.g., XLS, CSV).",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Most datasets are machine-readable and use standardised column headings and lookup tables for clarity.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Datasets are released in open, non-proprietary formats (e.g., CSV, JSON) and include well-structured metadata.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Datasets are formatted to be AI/ML-ready, following advanced standards for machine readability.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "Is metadata consistently applied to datasets?",
+                            "statements": [
+                            {
+                                "text": "Metadata is not gathered or published alongside datasets.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some metadata is gathered and published, but the quality and completeness are inconsistent.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Metadata is well-structured and adheres to the same quality standards as the data itself.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Metadata follows open standards such as DCAT, ensuring consistency with other datasets.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation uses open standards for both data and metadata, ensuring alignment with other sources.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How is the process of standards management handled within the organisation?",
+                            "statements": [
+                            {
+                                "text": "There is no defined process for managing data standards.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Standards are driven by internal priorities with limited consideration for external data re-users.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "A formal process for data standards management has been defined and is consistently followed across the organisation.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation has a strategic approach for managing data standards and is beginning to adopt open standards.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation optimises its data standards management process by monitoring new technologies and ensuring compatibility with emerging use cases such as AI/ML.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Data Management and Governance",
+                    "questions": [
+                        {
+                            "text": "How consistently are datasets managed?",
+                            "statements": [
+                            {
+                                "text": "Datasets are not managed in any consistent way.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Specific teams or projects have begun defining their own lightweight data management processes, used ad hoc.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation has defined standard data management processes, applied to high-value datasets.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Standard data management processes are applied to all datasets, with the flexibility to tailor processes for specific projects.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation continually monitors and improves its data management processes, ensuring they are optimised for changing needs.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "Is ownership of datasets clearly defined?",
+                            "statements": [
+                            {
+                                "text": "There is no clear ownership around internal datasets.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Specific individuals or teams are informally responsible for certain datasets, but this is not clearly documented.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Each dataset has a well-defined owner, responsible for managing the data throughout its lifecycle.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Ownership is clearly documented for all datasets and regularly reviewed to ensure accountability throughout the data lifecycle.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Ownership structures are fully integrated into the organisation's data governance framework, ensuring that changes in ownership or responsibility are automatically tracked and updated.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How is data quality monitored and maintained?",
+                            "statements": [
+                            {
+                                "text": "Data quality is not actively monitored, and no formal process exists for ensuring data accuracy or completeness.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some datasets are reviewed for quality, but processes are inconsistent and reactive.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "High-value datasets are regularly monitored for quality, and issues are addressed as they arise.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Data quality for all datasets is actively monitored with clear guidelines for addressing quality issues, based on feedback from both internal and external users.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Data quality is proactively improved, with regular assessments and collaboration with external re-users to ensure datasets meet evolving needs and standards.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How is open data governance integrated into the organisation’s processes?",
+                            "statements": [
+                            {
+                                "text": "There is no formal governance process for managing open data.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Specific teams have informal governance processes for releasing open data, but these are inconsistent across the organisation.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation has established a governance framework for managing open data releases, applied to key datasets.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The open data governance framework is applied to all datasets, ensuring consistent practices and monitoring.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation continuously improves its open data governance, incorporating feedback from re-users and monitoring the impact of its data releases.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How is data cataloguing and accessibility managed?",
+                            "statements": [
+                            {
+                                "text": "There is no central catalogue of datasets, and accessibility is inconsistent.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some datasets are catalogued, but the catalogue is incomplete, and accessibility is inconsistent.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "A central dataset catalogue exists, with the majority of datasets included and accessible.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The dataset catalogue is complete, well-maintained, and accessible both internally and externally.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The dataset catalogue is optimised for accessibility and continuously updated, with external re-users contributing to improvements and updates.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Compliance and Risk",
+                    "questions": [
+                        {
+                            "text": "How does the organisation manage risks associated with data publication?",
+                            "statements": [
+                            {
+                                "text": "The organisation recognises that there may be risks associated with data, but has not yet defined any processes for assessing and mitigating them.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "The organisation has begun assessing risks associated with some datasets, but the process is informal and not yet documented across the board.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Processes for assessing and mitigating risks are defined and documented. These processes are applied routinely to high-value datasets.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Risk management is fully integrated into the data governance process. All datasets undergo a risk assessment before publication, and mitigation strategies such as anonymisation and aggregation are employed where needed.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation has a comprehensive risk management framework in place, including advanced Privacy Enhancing Technologies (PETs) and external validation for high-risk datasets. The process is transparent and linked to published risk registers.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How are datasets containing personal or sensitive information handled?",
+                            "statements": [
+                            {
+                                "text": "There is no formal process in place for handling datasets containing personal or sensitive information, and no risk assessment is conducted before data release.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "The organisation regularly evaluates the risks and benefits of releasing datasets containing personal or sensitive information, with informal methods for anonymisation or aggregation.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Standard processes for anonymising or aggregating personal or sensitive information are defined and applied to most datasets. Consent or lawful basis for releasing personal data is obtained where necessary.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "All datasets containing personal or sensitive information are subject to strict anonymisation or aggregation processes, with advanced techniques used for de-identification. Personal data is released only when fully compliant with legal frameworks.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation employs cutting-edge techniques for safeguarding personal data, including the use of Privacy Enhancing Technologies (PETs) and routinely monitors new privacy risks. A published open data triage process is in place and includes full transparency on how personal data is handled.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation address ethical considerations in its data practices?",
+                            "statements": [
+                            {
+                                "text": "Ethics is not formally considered in the organisation's data practices or publication processes.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Specific teams or individuals within the organisation are aware of ethical concerns but there is no standardised process for addressing them.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation has developed a standard process for addressing ethical considerations in its data practices, which includes evaluating the potential consequences of data publication.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Ethics is embedded into the data governance process, with routine evaluations of the ethical implications of data releases. Feedback loops are established to address any ethical concerns raised by stakeholders or re-users.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation takes a proactive approach to ethics, regularly reviewing and updating its ethical guidelines. Ethics is treated on par with legal compliance, and the organisation considers the long-term societal impact of its data releases, including the ethical implications of AI/ML use cases.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation ensure compliance with international data standards and legal frameworks?",
+                            "statements": [
+                            {
+                                "text": "The organisation has little awareness or knowledge of relevant international standards or legal frameworks relating to data publication.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "The organisation has begun assessing its compliance with some international standards and legal frameworks, but the process is informal.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation has developed processes to ensure compliance with key international standards and legal frameworks. These processes are applied to high-value datasets.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation routinely monitors compliance with international standards and legal frameworks, and has processes in place to ensure compliance across all datasets.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation actively monitors the changing regulatory landscape and ensures that all datasets comply with the most up-to-date standards and legal requirements. Compliance is externally validated where necessary.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How transparent is the organisation's risk management process?",
+                            "statements": [
+                            {
+                                "text": "There is no transparency around the organisation's risk management process, and the public has no insight into the risks associated with published datasets.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some information about the risks associated with data publication is available internally, but this information is not made public.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation publishes a risk register for key datasets, outlining potential risks and mitigation strategies. However, this register is incomplete.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "A comprehensive risk register is published and regularly updated, with detailed mitigation strategies for each dataset. The organisation is transparent about how risks are assessed and managed.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation's risk management process is fully transparent, with regular updates to the risk register and the inclusion of feedback from external stakeholders. The risk register is linked to the organisation's open data triage process and is accessible to the public.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "title": "Understanding the learning needs",
-          "statements": [
-            {
-              "text": "When reviewing individuals' learning and development, competencies or performance, the process does not include any focus on data literacy and skills.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "There is no standard learning needs analysis for data literacy and skills.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "There are limited opportunities/resources for individuals to learn more about data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "A shared understanding of data is beginning to develop within the organization, with certain areas already showing growing expertise.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Recognition of data expertise is primarily focused on direct data roles, with growing awareness needed for data skills within operational and strategic roles.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "There are processes that support individuals in undertaking learning, empowering them to identify their own learning needs and find appropriate resources.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Professionals are encouraged to identify learning needs in relation to data during their competency/performance review processes.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has undertaken a learning needs analysis, and has identified key data skills for development.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has a broad understanding of data learning needs, with an opportunity to refine focus in areas such as open data, ethics, and strategy. ",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has evaluated which teams or individuals require data upskilling.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has a repeatable process for conducting learning needs analysis that includes data as a theme, and manages this on an annual/bi-annual basis.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation has KPIs for data upskilling, and measures engagement with learning opportunities across the workforce. This may still focus on baseline skills rather than advancing expertise. However, there is likely some provision for advancing key skills aligned to business needs and strategy.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Data skills development is an area of development for all colleagues, identified as part of their performance or competency review.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Training provision is adapted based on outcomes of the regular learning needs analysis.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "KPIs are defined and understood. They measure learning beyond engagement, and emphasise the application of skills within work.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Learning strategy is closely aligned to organisational strategy, and the organisation is able to identify capability risks, and sustainably manage adaptability across the workforce.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "There are KPIs that align learning impact to business impact, such as growth, transformation, productivity and profitability.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
+            "name": "Data Literacy and Skills",
+            "activities": [
+                {
+                    "title": "Open Data Expertise",
+                    "questions": [
+                        {
+                            "text": "How does the organisation assess and support open data expertise?",
+                            "statements": [
+                            {
+                                "text": "Current open data activities rely on the knowledge of a small number of stakeholders, with no formal strategy for expanding this expertise.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Data professionals are embedded in teams, but there is no centralised strategy to develop open data expertise across the organisation.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Open data expertise is centralised in a few key individuals or teams, and the organisation partners with external specialists when required.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "There is a centralised open data team or network of experts, with clear roles and responsibilities defined across teams to support open data initiatives.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation fosters open data expertise across all levels, including external networks and partnerships that advance open data practices globally.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation encourage the growth of open data skills?",
+                            "statements": [
+                            {
+                                "text": "There are no formal training or mentoring programmes related to open data.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Training around open data is provided on an ad-hoc basis, driven by the needs of specific projects.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Internal open data experts mentor and support others, and there are growing training opportunities for staff.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Open data awareness and training are a standard part of staff development, and mentorship programmes are well established.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Open data training is embedded across all roles and is tailored to individual needs, with an active internal and external mentoring network.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Understanding Learning Needs",
+                    "questions": [
+                        {
+                            "text": "How does the organisation identify its data literacy and skills needs?",
+                            "statements": [
+                            {
+                                "text": "There is no formal process for identifying data literacy and skills needs within the organisation.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some teams and individuals have identified their learning needs, but there is no organisation-wide analysis or process.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation has undertaken a learning needs analysis and has identified key areas where data literacy and skills need improvement.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation conducts a structured learning needs analysis on a regular basis, identifying gaps in data literacy and aligning them with strategic objectives.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation continuously evaluates data literacy needs, aligning them with future business needs, and tracks how learning impacts organisational performance.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How are opportunities for learning and development provided?",
+                            "statements": [
+                            {
+                                "text": "There are limited or no opportunities for learning about data skills and literacy within the organisation.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Learning resources are available, but they are often ad-hoc and focus on specific projects rather than broader organisational needs.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation provides some structured learning opportunities, focusing on developing core data skills across teams.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation has well-defined learning programmes, and staff are actively encouraged to take part in data literacy training aligned with strategic goals.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Learning and development programmes are fully embedded, with tailored opportunities available for all staff to continuously improve their data literacy and skills.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Strategic Data Skills and Literacy",
+                    "questions": [
+                        {
+                            "text": "How are data literacy and skills driven strategically across the organisation?",
+                            "statements": [
+                            {
+                                "text": "There is no strategic ownership of data literacy and skills development within the organisation.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "The organisation has appointed a strategic owner for data literacy, but efforts are limited to tool-specific training (e.g. Excel).",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation provides internal training for data literacy, though it is still generic and not linked to specific job roles or strategic goals.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Data literacy and skills are embedded into performance reviews, and the organisation actively drives data literacy as a key strategic focus.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation continuously aligns its data literacy and skills development with broader strategic objectives, tracking KPIs and regularly adjusting its approach to meet future business needs.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation support teams with limited data expertise?",
+                            "statements": [
+                            {
+                                "text": "Teams with limited data expertise have no formal support for building skills or accessing data literacy resources.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some teams with limited data expertise are supported by ad-hoc resources, such as project-based training or external consultants.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Teams with limited data expertise are supported by centrally managed resources, such as data champions or dedicated data professionals.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "There is a clear support structure in place for teams with limited data expertise, including access to mentors, training programmes, and centrally managed data teams.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation provides tailored, continuous support to teams with limited data expertise, ensuring they are fully integrated into data-driven projects and have access to the necessary skills and resources.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "title": "Strategic data skills and literacy",
-          "statements": [
-            {
-              "text": "There is no strategic ownership of data within the organisation.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation provides tool specific training (e.g. Excel), but does not provide any direct training for open data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Provision is typically focused on access to knowledge rather than learning (i.e. how-to content repositories, rather than application of skills).",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation has appointed a strategic owner for data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Data literacy and skills courses are available internally. These are typically generic and non-specific to job role or purpose.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Strategic ownership includes learning as a key focus area.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Training and support around open data is offered to some teams as standard.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Learning resources are appropriately categorised to support individuals in identifying the most appropriate learning for their need.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Identified data literacy and skills courses are actively suggested to individuals across the organisation.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Staff across the organisation are clear on the need for developing data skills, and the impact this has on their role and responsibilities, as well as the broader organisational goals.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has implemented programmes of learning in relation to data. Teams and departments have loosely documented responsibilities for individuals in their areas and advise/feedback on the availability and suitability of learning provision.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Where there is limited data expertise in a team, the organisation manages support through dedicated resources in centrally managed teams.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Staff across the organisation are aware of the training provision available, and have identified their specific needs for development, and understand where to receive additional guidance on developing in additional areas.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "There are individuals who actively engage in piloting new learning opportunities to meet future business needs and anticipated changes in strategic direction.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Learning provision is nuanced, and provides introductory, intermediate and advanced literacy and skills. This goes beyond generic offerings and focuses directly on specific areas of expertise. It includes learning related to data governance, infrastructure and operations, as well as data ethics and its application to open data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
+            "name": "Customer Support and Engagement",
+            "activities": [
+                {
+                    "title": "Engagement and community building",
+                    "questions": [
+                        {
+                            "text": "How does the organisation engage with stakeholders and build a community around open data?",
+                            "statements": [
+                            {
+                                "text": "There is no systematic attempt to identify potential re-users, and communication with stakeholders is informal or absent.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some teams engage with stakeholders on an ad-hoc basis, but information about re-users and stakeholders is siloed.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Stakeholders are regularly identified and mapped, and there is a process for engaging them across different data releases.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation proactively seeks to engage stakeholders before and after data releases, using feedback to improve future publications.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "There is a comprehensive stakeholder engagement strategy linked to organisational goals, and the organisation actively builds and nurtures an external community of re-users.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation prioritise and communicate its data releases?",
+                            "statements": [
+                            {
+                                "text": "Data releases are driven by short-term internal priorities with little communication to external stakeholders.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some data releases are based on external demands, but there is no clear, coordinated process for prioritising publications.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Data releases are driven by re-user demand, with a process in place for stakeholders to request datasets.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation's data release strategy is communicated clearly to stakeholders, with a repeatable process to guide engagement and publication.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Data release priorities are informed by continuous dialogue with the community, and the organisation monitors and adjusts its strategy based on feedback and impact assessments.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation collaborate with others to improve open data practices?",
+                            "statements": [
+                            {
+                                "text": "The organisation has little or no collaboration with other organisations regarding open data.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "There is some ad-hoc collaboration with peer organisations within the same sector to share knowledge about open data.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "The organisation is engaged in sector-wide efforts to improve open data practices and supports external initiatives reactively.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation plays an active role in sector-level collaborations to advance open data practices, contributing proactively to cross-organisational efforts.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation leads sector-level initiatives to advance open data, establishing best practices and fostering innovation through challenges, partnerships, and dedicated engagement groups.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Re-user support processes",
+                    "questions": [
+                        {
+                            "text": "How does the organisation support re-users of its data?",
+                            "statements": [
+                            {
+                                "text": "There is no formal support for re-users, and individuals must find their own ways to access help.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some re-users can access ad-hoc support, but there are no centralised processes for providing help.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "A central support team exists, and re-users are provided with clear contact points to seek help regarding datasets.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "The organisation actively promotes its support offerings, providing clear expectations (e.g., response times) and fostering open communication through multiple channels (e.g., forums, social media).",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "The organisation measures the effectiveness of its support operations, ensuring re-users receive prompt responses and issues are addressed swiftly, using feedback to improve support processes.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation obtain feedback from re-users?",
+                            "statements": [
+                            {
+                                "text": "There is no systematic way to collect feedback from re-users, and issues are not actively monitored or addressed.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Individual teams collect feedback on an ad-hoc basis, but this is not shared or coordinated across the organisation.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Feedback is collected through formal channels, such as user forums, and there is a process for addressing issues that arise.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Re-users' feedback is routinely captured, analysed, and used to drive improvements in datasets and support processes.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Feedback collection is embedded into the organisation's processes, and the organisation routinely collaborates with re-users to enhance the quality and usefulness of its datasets and support services.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        },
+                        {
+                            "text": "How are re-user metrics monitored and used to improve data and support?",
+                            "statements": [
+                            {
+                                "text": "There is no monitoring of how re-users interact with datasets or the support process.",
+                                "associatedLevel": 1
+                            },
+                            {
+                                "text": "Some metrics are collected, but these are sporadic and focus on a limited number of datasets.",
+                                "associatedLevel": 2
+                            },
+                            {
+                                "text": "Metrics on re-user interactions are collected routinely, and they are analysed to inform improvements in data publication and user support.",
+                                "associatedLevel": 3
+                            },
+                            {
+                                "text": "Metrics are captured in an automated and structured way, providing insights into the impact of datasets and the efficiency of support operations.",
+                                "associatedLevel": 4
+                            },
+                            {
+                                "text": "Re-user metrics are continuously monitored, with insights driving strategic improvements in both data quality and user support services. Feedback loops ensure ongoing optimisation of the process.",
+                                "associatedLevel": 5
+                            }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Open data documentation",
+                    "questions": [
+                        {
+                        "text": "What level of documentation is provided with published datasets?",
+                            "statements": [
+                                {
+                                "text": "Datasets are released with little or no supporting documentation.",
+                                "associatedLevel": 1
+                                },
+                                {
+                                "text": "The level of documentation provided is inconsistent and depends on individual efforts.",
+                                "associatedLevel": 2
+                                },
+                                {
+                                "text": "A standard set of documentation and metadata is defined, but it is only applied to some datasets, typically high-value ones.",
+                                "associatedLevel": 3
+                                },
+                                {
+                                "text": "All datasets are released with a standard set of supporting documentation and metadata using established templates.",
+                                "associatedLevel": 4
+                                },
+                                {
+                                "text": "The organisation routinely provides comprehensive documentation and high-quality metadata for all datasets.",
+                                "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                        "text": "How does the organisation ensure the quality and consistency of documentation?",
+                        "statements":
+                            [
+                                {
+                                "text": "There are no established processes to ensure the quality or consistency of documentation across datasets.",
+                                "associatedLevel": 1
+                                },
+                                {
+                                "text": "Some teams have started using templates or guidelines to create documentation, but these are applied inconsistently.",
+                                "associatedLevel": 2
+                                },
+                                {
+                                "text": "The organisation has developed a standard approach for documentation, but not all datasets conform to these standards.",
+                                "associatedLevel": 3
+                                },
+                                {
+                                "text": "All datasets conform to an established documentation process, and this process is integrated into the data publishing workflow.",
+                                "associatedLevel": 4
+                                },
+                                {
+                                "text": "Supporting documentation and metadata creation are fully integrated into the publishing process and regularly reviewed for consistency.",
+                                "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                        "text": "How does the organisation gather feedback on documentation from re-users?",
+                        "statements":
+                            [
+                                {
+                                "text": "There is no formal process for gathering feedback on documentation from re-users.",
+                                "associatedLevel": 1
+                                },
+                                {
+                                "text": "Some re-users provide feedback informally, but there is no systematic approach to gathering or addressing their input.",
+                                "associatedLevel": 2
+                                },
+                                {
+                                "text": "A formal process is in place for re-users to provide feedback on documentation, and this is occasionally used to make improvements.",
+                                "associatedLevel": 3
+                                },
+                                {
+                                "text": "The organisation actively seeks feedback from re-users on documentation, and improvements are regularly made based on their input.",
+                                "associatedLevel": 4
+                                },
+                                {
+                                "text": "Re-users are encouraged to contribute to the improvement of documentation, and the organisation promotes the use of third-party resources and tools to supplement its documentation.",
+                                "associatedLevel": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Investment and Financial Performance",
+            "activities": [
+                {
+                    "title": "Financial oversight and procurement",
+                    "questions": [
+                        {
+                            "text": "How is funding managed for open data publication and its lifecycle?",
+                            "statements": [
+                                {
+                                    "text": "Data releases are unfunded and handled as exceptional, unplanned expenditure.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Individual projects include open data publication costs as part of their specific project budget, without considering longer-term costs.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Project funding includes long-term costs for open data publication, and responsibility for these costs is explicitly assigned to roles within the organisation.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation actively monitors the financial costs and benefits of open data publication as part of ongoing data governance processes.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The organisation seeks efficiency savings and sustainability strategies in open data publication, optimising data management and reducing licensing overheads where possible.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation ensure long-term sustainability in open data publication and management?",
+                            "statements": [
+                                {
+                                    "text": "There is no long-term sustainability plan for the ongoing management of published open data.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Open data is managed through short-term project funding without considering its long-term lifecycle.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "The organisation has a sustainability plan that includes budgeting for ongoing updates and management of key datasets.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "Sustainability planning is integrated into the organisation's data governance, ensuring consistent funding and updates for high-value datasets.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The organisation actively seeks external partnerships or additional funding streams to ensure the long-term sustainability of open data.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation address open data in procurement processes and contracts?",
+                            "statements": [
+                                {
+                                    "text": "Procurement processes and contracts do not address data supply, licensing, or re-use.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "The organisation seeks clarity around data rights retrospectively when it comes to procurement, in order to drive more open data adoption.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Some procurement activities and contracts are tailored to address open data licensing and re-use, depending on project needs.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation includes standard clauses in contracts and procurement activities to ensure clarity around data rights and re-use.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "All procurement processes and contracts include explicit reference to open data rights and re-use where applicable, and these are standard across all projects.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation manage its rights to release and re-use data from contracts or partnerships?",
+                            "statements": [
+                                {
+                                    "text": "The organisation is unaware of its rights to release or re-use data resulting from contracts or partnerships.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "The organisation is beginning to clarify its rights to release data retrospectively, but this is done on a project-by-project basis.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Clear processes are in place to ensure the organisation understands its rights to release and re-use data from contracts and partnerships.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation has an established process for ensuring that rights to release and re-use data are clear in all contracts and partnerships.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "Rights management for open data is fully integrated into all procurement and partnership processes, ensuring clarity from the outset for all contracts.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Understanding the value of open data",
+                    "questions": [
+                        {
+                            "text": "How does the organisation quantify the value of its open data?",
+                            "statements": [
+                                {
+                                    "text": "No attempt is made to quantify the value of published or re-used datasets.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "The organisation carries out some qualitative reporting on the value of datasets, but it is largely described in general terms without standardisation.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Valuation of datasets is done retrospectively, and the organisation uses qualitative methods across themes such as economic, social, and environmental benefits.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation has adopted a standardised approach for describing the value of its datasets, including quantitative methods for measuring ROI.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "All datasets are consistently valued using standard methods, with the valuation used to guide strategic investment decisions.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How is the value of open data communicated to stakeholders and re-users?",
+                            "statements": [
+                                {
+                                    "text": "There is no communication or reporting on the value of open data to internal or external stakeholders.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Some general benefits of open data are communicated through qualitative reports, but there are no clear actionable insights.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Periodic reports are shared on the value of open data, often with specific use cases or examples of re-use, demonstrating the value retrospectively.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation regularly publishes detailed reports on the value of its open data, including case studies, known re-uses, and stakeholder feedback.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "Reports are strategic and transparent, guiding future data releases and aligning with stakeholder needs. Feedback loops are established for ongoing improvement.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Strategic oversight",
+            "activities": [
+                {
+                    "title": "Open data strategy",
+                    "questions": [
+                        {
+                            "text": "Does the organisation have a defined open data strategy?",
+                            "statements": [
+                                {
+                                    "text": "The organisation has no strategy or policy with regards to open data.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Open data initiatives are viewed as experimental or driven by external factors, without a formal strategy.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "The organisation has a documented open data strategy that addresses key areas such as governance, data management, and open data publishing.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation has an open data strategy that is aligned with wider organisational goals and is supported by measurable targets for implementation.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "Open data is a critical component of the organisation’s overall strategy, and it is continuously reviewed to ensure alignment with evolving goals.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Who is responsible for delivering the open data strategy?",
+                            "statements": [
+                                {
+                                    "text": "There is no clear ownership or accountability for open data within the organisation.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Some parts of the organisation, such as project teams or departments, have developed their own strategies for open data.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Responsibility for the open data strategy is assigned at the senior management level, and ownership for data processes is well-defined.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "Senior management is fully engaged, and performance assessment of key executives is tied to the delivery of the open data strategy.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "There is broad organisational ownership of the open data strategy, with clear roles and responsibilities for its ongoing evolution and delivery.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation measure the impact and alignment of the open data strategy?",
+                            "statements": [
+                                {
+                                    "text": "There are no formal metrics or goals associated with the open data strategy.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Some benefits of open data are identified, but there are no clear metrics for measuring its impact.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Measurable targets are set for the implementation of the open data strategy, with regular reviews of progress.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation tracks the performance of the open data strategy through defined metrics that are aligned with organisational objectives.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "Metrics and goals are regularly reviewed and updated, ensuring alignment with organisational priorities and driving continuous improvement.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Asset catalogue",
+                    "questions": [
+                        {
+                            "text": "How is the organisation's asset catalogue created and maintained?",
+                            "statements": [
+                                {
+                                    "text": "There is no systematic approach to managing data sources as assets, and no asset catalogue exists.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Individual teams or projects maintain separate directories of the data assets they use, but there is no central coordination.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "An organisation-wide data asset catalogue has been developed to identify key datasets being published and used.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The catalogue is kept up to date and includes all high-value datasets across the organisation.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The organisation has an exhaustive asset catalogue that includes all datasets, not just high-value ones, and it is routinely maintained.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How comprehensive is the asset catalogue and how is it managed?",
+                            "statements": [
+                                {
+                                    "text": "There is no formal method for managing or updating the catalogue.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Some teams or departments manage their own catalogues, but there is limited coordination or formal process for updating them.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "The organisation's high-value datasets are included in the catalogue, but there are gaps in comprehensiveness or coordination across departments.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The catalogue includes all datasets that are used or published by the organisation, and there is a formal process in place for ensuring it is regularly updated.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The asset catalogue is managed comprehensively, and its upkeep is fully integrated into the organisation's data management strategy, with clear accountability.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How is the asset catalogue used and applied within the organisation?",
+                            "statements": [
+                                {
+                                    "text": "The asset catalogue, if it exists, is not used to inform decision-making or project planning.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Some teams make use of the asset catalogue to avoid duplicating datasets, but its application is inconsistent across the organisation.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "New projects and products attempt to reuse datasets referenced in the catalogue to prevent unnecessary duplication.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The catalogue is a critical resource for project planning, and the organisation strives for efficiency by reusing existing datasets whenever possible.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The organisation actively identifies overlaps and commonalities between datasets in the catalogue, achieving cost and efficiency savings by aligning or consolidating datasets.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "Is the asset catalogue shared externally, and how is it used to improve transparency?",
+                            "statements": [
+                                {
+                                    "text": "There is no publicly available asset catalogue, and no external transparency around the organisation’s data holdings.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Some information about data assets is shared externally, but it is sporadic and incomplete.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "Elements of the organisation's asset catalogue are publicly available as open data, providing transparency into key datasets.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The asset catalogue is regularly published and includes details about datasets that have not yet been released to help external users understand upcoming resources.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The organisation publishes its entire asset catalogue, including metadata and descriptions, and actively engages with external stakeholders to improve the quality and relevance of the datasets it holds.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Responsible data stewardship",
+                    "questions": [
+                        {
+                            "text": "How well does the organisation understand and assign responsibilities for data stewardship?",
+                            "statements": [
+                                {
+                                    "text": "There is little to no understanding of the concept of data stewardship, and responsibilities are undefined.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "There are defined responsibilities around data stewardship, including collecting, using, and sharing data. A specific job role may exist for these tasks.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "The organisation has a clear, public identity as a steward of data, with committed responsibilities for data collection, sharing, and use.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "Data stewardship responsibilities include publishing open data, securely sharing sensitive data, and building and maintaining data infrastructure.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The organisation has a system in place for continually assessing data stewardship responsibilities, ensuring data is used for public benefit and mitigating harm.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        },
+                        {
+                            "text": "How does the organisation demonstrate and improve its commitment to responsible data stewardship?",
+                            "statements": [
+                                {
+                                    "text": "There is no public commitment or action plan regarding responsible data stewardship.",
+                                    "associatedLevel": 1
+                                },
+                                {
+                                    "text": "Some public actions are taken to demonstrate responsible data stewardship, but these are limited to basic compliance with regulations.",
+                                    "associatedLevel": 2
+                                },
+                                {
+                                    "text": "The organisation demonstrates a clear, public commitment to responsible data stewardship, with ongoing actions and responsibilities.",
+                                    "associatedLevel": 3
+                                },
+                                {
+                                    "text": "The organisation adopts a systemic, iterative process to ensure data is used ethically, addressing public benefit and structural inequalities.",
+                                    "associatedLevel": 4
+                                },
+                                {
+                                    "text": "The organisation shows leadership in responsible data stewardship, with a proven public track record, and actively helps other organisations on their stewardship journey.",
+                                    "associatedLevel": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "Customer support and engagement",
-      "activities": [
-        {
-          "title": "Engagement and community building",
-          "statements": [
-            {
-              "text": "Little or no attempt is made to identify potential re-users for released open data.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Information about stakeholders is held by individuals, siloed within the organisation.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Data releases are reactively driven by short-term internal priorities, or based on ad hoc demands from re-users.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation's motivations for data releases are not communicated clearly to stakeholders.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation has little or no engagement with other organisations in its sector.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "No attempt is made to measure levels of engagement.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Some teams attempt to identify and engage with potential re-users of the datasets they are publishing.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some information about stakeholders is shared and co-ordinated between teams or departments.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has established a means by which potential re-users can request data.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some ad hoc attempts are made to assess the impact of data publishing efforts.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "There is some ad hoc engagement with individual organisations in the same sector to share knowledge",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Key stakeholders are identified and mapped, with a system in place for storing and co-ordinating information centrally.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has established a repeatable approach for engaging with external users which is tailored, as appropriate, to support individual data releases.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The engagement process includes outreach to the community both before and after the release of data.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation is actively seeking user demand for data in order to guide its engagement strategy and inform data releases.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation engages with groups or organisations in its sector and plays a reactive role in supporting the improvement of open data practices.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Stakeholder analysis is regularly conducted to inform strategic thinking about the management of stakeholder engagement, with clear links between engagement strategies and the overarching aims and objectives of the organisation and its stakeholders.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation is tracking some the effectiveness of its interventions as an open data publisher, identifying standard ways to measure and monitor the impact of key data releases.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation plays an active role in supporting open data initiatives in its sector.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation is working to increase engagement within identified, high-value stakeholder communities and for high-value datasets.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation is routinely tracking metrics relating to all its open data publishing efforts.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation proactively engages with its sector and takes a leading role in the improvement of open data practices and the promotion of further open data activities. This may include innovation challenges and dedicated community engagement groups.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation has clear processes for collaborating with peers on establishing best practice.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Open data documentation",
-          "statements": [
-            {
-              "text": "Datasets are released with little or no documentation.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The level of documentation released with datasets is based on the enthusiasm/drive of individuals involved in the release process.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Individual teams create the essential documentation required to support some of the data they are releasing.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some common templates or approaches are defined for creating and managing documentation.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has identified a standard set of documentation and metadata that should be released with each dataset.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Only some, e.g. high-value datasets, are released with this standard set of documentation and metadata.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "All datasets are released with supporting documentation and metadata using a standard template.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Creation and maintenance of supporting documentation is part of the data publishing process.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation invests in additional documentation and supporting materials to help re-users.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation routinely releases high quality metadata and documentation as appropriate for all of its datasets.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Externally published documentation is reviewed by key internal stakeholders before release.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Re-users are invited to provide feedback and contribute improvements to published resources. The organisation promotes the availability of third-party learning resources and tools.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Re-user support processes",
-          "statements": [
-            {
-              "text": "No user support process.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Re-users need to seek out and engage with individuals in the organisation in order to ask for support.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "There is no distinct monitoring or improvement of data use or issues.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Individual teams promote and provide ad hoc support for re-users of their data.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some data releases provide contact points for re-users to ask for support.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "A few monitoring metrics have been defined, but are sporadically checked on a limited number of datasets. Issues are likewise handled inconsistently.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation creates user forums as a means to enable discussion and collect feedback around datasets, and to communicate with its users.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Some metrics are routinely captured, and possibly automated.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has a central support team that helps re-users. This team is the primary means for re-users to seek help.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation promotes the level of support available to re-users for all datasets, such as expected response times.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation engages with re-users via multiple channels, e.g. social media, discussion forums.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "A mutually supportive set of metrics has been decided on, following a focused iterative process. A number of these are automated. A feedback process is in place for data users, with issues frequently handled.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation acts to measure the cost and efficiency of its support operations, and actively creates additional learning materials and community support groups as necessary.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation ensures that it is delivering on its support arrangement for all datasets. For example, response times are within goals. The backlog of issues is relatively small, with no issue waiting for an extensive period of time. Difficult issues are used to improve the overall process rather than simply being handled on a case by case basis.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Metrics are automated as much as possible, and are frequently reviewed and used for reporting and deciding on actions.",
-              "context": "",
-              "tags": [
-                "Publication"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Investment and financial performance",
-      "activities": [
-        {
-          "title": "Financial oversight and procurement",
-          "statements": [
-            {
-              "text": "Data releases are unfunded and done as exceptional expenditure.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Procurement processes and contracts do not address data supply or re-use.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation is unaware of its rights to release any data that results from, or is derived from, existing contracts.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Individual projects include open data publication costs as part of their budget, rather than addressing them separately.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation activly seeks retrospective clarity around data rights regarding procurement in order to drive more open data adoption.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Project funding and operational costs routinely include long term costs for open data publication. Responsibility for open data is explicitly part of specific roles.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation tailors some individual contracts and procurement activities to address data licensing, as required by the needs of specific projects/products",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation actively monitors the financial costs and benefits of open data publication and re-use.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation has clarity around costs and benefits of open data as part of ongoing data governance.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation has standard clauses in contracts and ITTs to ensure clarity around data rights and re-use.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation actively seeks efficiency savings around open data publication and re-use, such as by reducing data management and licensing overheads where possible.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "All ITTs and tenders from the organisation include reference to open data where appropriate for the contract",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Understanding the value of open data",
-          "statements": [
-            {
-              "text": "No attempt is made to quantify the value of either published or re-used datasets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "The organisation carries out some reporting on the value of some datasets, e.g. to a specific community. The valuation is not quantified and is largely described in terms of general benefits.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Valuation of data is done retrospectively to justify ongoing release of a dataset.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation uses richly described, qualitative ways of demonstrating the value of publishing data across economic, social and environmental themes.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Where appropriate, the organisation has defined quantitative ways to measure the value and ROI.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Valuation decisions inform the development of business cases in support of specific data releases.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation adopts one or more standard approaches for describing, and quantifying where relevant, the value of its data assets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Known re-uses and case studies are published alongside datasets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation ensures that all key datasets, whether internally generated or sourced from third parties, are consistently described, quantified in value, and accompanied by published case studies and known re-uses.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation routinely values all data assets. The valuation is used to drive all investment decisions relating to both data releases and use of external data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The metrics and approaches to measuring value are regularly assessed to ensure they align with organisational goals. This information is openly published for transparency.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Strategic oversight",
-      "activities": [
-        {
-          "title": "Open data strategy",
-          "statements": [
-            {
-              "text": "The organisation has no strategy or policy with regards to open data.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Initial data releases are seen as R&D exercises or are driven by external influence",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Individual business units identify benefits of open data for their individual activities.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "Some parts of the organisation, such as project teams or specific departments, have their own open data strategy.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has an open data strategy. This includes elements addressed in other activities, including data valuation, governance, standards, etc.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "There is clear responsibility and financial support for delivery of the open data strategy, at a senior management level. Ownership for key processes, such as data governance, is also well understood.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "The organisation has aligned delivery of open data policy and strategy with organisational objectives, and this clearly supports the wider digital/data/AI strategy as well.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation has set measurable targets for implementation of the strategy.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "Performance assessment of key executives is tied to delivery of the objectives laid out in the strategy.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation is using open data as a critical element of its overall organisational strategy.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "Metrics and goals are reviewed and adjusted over time, to continue to stretch the organisation and to ensure that open data goals are consistent with other goals.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Asset catalogue",
-          "statements": [
-            {
-              "text": "There is no methodical approach to managing data sources as assets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "Individual teams or projects maintain separate directories of data assets and data resources that they use.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "An organisation wide data asset catalogue has been developed to identify key datasets being published and used.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "All of the organisation's high-value datasets are in the catalogue.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Elements of the catalogue are publicly availble as open data and include unreleased datasets. ",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "All datasets published or used by the organisation are entered into the asset catalogue, not just those deemed to be of high value.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "New projects/products attempt to re-use datasets referenced in the catalogue, rather than creating new assets.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation strives for cost and efficiency savings by identifying overlaps and commonalities between datasets, and either aligning or replacing them as necessary.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        },
-        {
-          "title": "Responsible data stewardship approach",
-          "statements": [
-            {
-              "text": "There is little to no understanding of the concept of data stewardship.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 1,
-              "positive": false
-            },
-            {
-              "text": "There are defined responsibilities in the organisation around data stewardship, including collecting, using and sharing data. There may also be a specific job role for these tasks.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 2,
-              "positive": true
-            },
-            {
-              "text": "The organisation has a clear, public identity as a steward of data, with committed actions and responsibilities as to how that manifests in reality.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "Actions and responsibilities include publishing open data, securely sharing sensitive data and building and maintaining data infrastructure.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 3,
-              "positive": true
-            },
-            {
-              "text": "There is a stated approach to data stewardship that includes an iterative, systemic process of ensuring that data is collected, used and shared for public benefit, while mitigating the ways that data can produce harm, and addressing how it can redress structural inequalities.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 4,
-              "positive": true
-            },
-            {
-              "text": "The organisation demonstrates clear leadership in responsible data stewardship, with a proven, public track record.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "There are case studies with verified impact reports that demonstrate responsible data stewardship.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            },
-            {
-              "text": "The organisation continues to drive and improve definitions of responsible data stewardship, and supports other organisations in their journey.",
-              "context": "",
-              "tags": [
-                "Publication & re-use"
-              ],
-              "associatedLevel": 5,
-              "positive": true
-            }
-          ]
-        }
-      ]
-    }
-  ]
+    ]
 }

@@ -1,0 +1,623 @@
+{
+  "title": "Data Ethics Maturity Model (2024)",
+  "description": "<p>The Data Ethics Maturity Model is a tool for anyone who collects, uses and shares data. It helps assess and benchmark how widely embedded data ethics culture and practices are across your organisation.</p>",
+  "owner": "info@theodi.org",
+  "organisation": {
+    "name": "The Open Data Institute",
+    "homePage": "https://theodi.org",
+    "country": {
+      "name": "United Kingdom",
+      "code": "GB"
+    }
+  },
+  "public": true,
+  "levels": [
+    "Initial",
+    "Repeatable",
+    "Defined",
+    "Managed",
+    "Optimising"
+  ],
+  "dimensions": [
+    {
+      "name": "Organisational governance and internal oversight",
+      "activities": [
+        {
+          "title": "Organisational view of data ethics.",
+          "questions": [
+            {
+              "text": "How does your organisation perceive and engage with data ethics?",
+              "statements": [
+                {
+                  "text": "Data governance is seen as a legal issue, not a business need. Data ethics views focus on compliance and meeting a minimum standard, possibly with some resentment. Many within the organisation have no awareness of the importance of data ethics.",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Data ethics are considered ad hoc on an individual or team-wide basis, without an overarching organisational vision",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The importance of data ethics has been recognised at the highest levels of the organisation, but implementation of these ideals is not fully standardised or embedded",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "The organisation fully embraces the importance of data ethics at all levels and has developed a coherent statement or messaging around its approach to data ethics",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "Data ethics is viewed as an integral part of the organisation’s strategy from the board on down. Data ethics issues are regularly discussed and reviewed and policies updated as needed.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Policies around ethical collection use and sharing",
+          "questions": [
+            {
+              "text": "How does your organisation establish and manage policies for the ethical collection, use, and sharing of data?",
+              "statements": [
+                {
+                  "text": "No strategies, policies or defined principles that include ethical collection, use and sharing of data",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Strategies surrounding data ethics are developed and applied ad hoc, without an overarching policy and without much standardisation",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Standardised strategies are applied in some areas, though individual policies may not have been joined up into a cohesive organisational strategy for data ethics",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "The organisation has developed a coherent strategy surrounding data ethics, which is consistently applied, though may not be regularly reviewed.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The organisation has developed a consistent and coherent strategy surrounding data ethics, which is consistently applied, its impact regularly assessed and reviewed, with changes made when needed.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Roles and performance",
+          "questions": [
+            {
+              "text": "How clearly defined are roles and responsibilities for data ethics within your organisation?",
+              "statements": [
+                {
+                  "text": "No individual within the organisation takes responsibility for data ethics",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Some individuals take responsibility for data ethics on an ad hoc basis. This may not be formalised. There may be a pro forma person in charge of data ethics with little organisation-wide communication; most within the organisation view data ethics as “someone else’s job”.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Data ethics roles within the organisation are clear, though responsibilities may not be efficiently delegated. A few people within the organisation may still view data ethics as “someone else’s job”.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "Data ethics roles within the organisation are clear and responsibilities efficiently delegated. Everyone within the organisation is aware of their responsibility towards data ethics with appropriate performance standards in place.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The organisation has an ethics committee (or equivalent) to deal with decisions on ethical collection, use and sharing of data that affect the whole organisation, and regular reviews take place. Data ethics roles within the organisation are clear and responsibilities efficiently delegated. Everyone within the organisation is aware of their responsibility towards data ethics with appropriate performance standards in place.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Targets and metrics",
+          "questions": [
+            {
+              "text": "How does your organisation set targets and measure performance around data ethics?",
+              "statements": [
+                {
+                  "text": "No targets set or metrics collected around data ethics",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Targets or metrics may be collected for individual projects on an ad hoc basis. There may be little formalised monitoring in place.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Targets or metrics are regularly collected for specific projects or for certain individuals, though these may not be tied to larger organisational strategies",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "Performance assessments of key staff are tied to delivery of objectives in the data strategy or adherence to principles for ethical collection, use and sharing of data.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "Metrics monitoring ethical data practices are actively reviewed, used and adjusted over time to ensure alignment with the wider goals of the organisation.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Communication / information availability",
+          "questions": [
+            {
+              "text": "How is information about data ethics shared with internal and external stakeholders?",
+              "statements": [
+                {
+                  "text": "No available information on data ethics for stakeholders or employees",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Individuals within the organisation discuss data ethics on an ad hoc basis, though the output of the conversations may not be shared or widely available.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation has developed coherent messaging around data ethics. Some conversations and decisions may not be shared and organisation communication is lacking.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "Data ethics are discussed and communicated from the board on down, including through the data ethics committee. Information is published and all stakeholders are able to access information around data ethics.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "Data ethics are discussed and communicated from the board on down, including through the data ethics committee. Information is published and all stakeholders are able to access information around data ethics. Messaging is regularly reviewed and updated.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Skills and knowledge",
+      "activities": [
+        {
+          "title": "Knowledge of data ethics",
+          "questions": [
+            {
+              "text": "How well is knowledge of data ethics embedded within the organisation?",
+              "statements": [
+                {
+                  "text": "No awareness of importance of data ethics or basic principles",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "There is no shared understanding of data ethics and what it means for collection, use and sharing of data",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Data practitioners have a basic understanding of data ethics and what it means for collection, use and sharing of data for the organisation. Others within the organisation may not be clear on data ethics.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "All staff have a basic understanding of data ethics and what it means for collection, use and sharing of data for the organisation. Data practitioners have a deeper knowledge and understanding of ethical collection, use and sharing of data.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "All staff at all levels of the organisation have a deep knowledge and understanding of ethical collection, use and sharing of data. Staff are clear how this informs and supports organisational strategy.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Communities of Practice / Discussion Fora",
+          "questions": [
+            {
+              "text": "To what extent are data ethics discussions and Communities of Practice embedded within your organisation?",
+              "statements": [
+                {
+                  "text": "Data ethics are discussed rarely if at all and never in a formalised way",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "There are individuals with a focus on ethical decision making in each discipline, but it is not commonplace for whole teams to discuss ethical collection, use and sharing of data",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Internal peer groups and experts exist that share advice and guidance on ethical collection, use and sharing of data, but these may not be commonly attended or there may not be widespread organisational awareness of these groups.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "Well-established internal peer groups and experts exist that regularly and widely share advice and guidance on ethical collection, use and sharing of data.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The ethical collection, use and sharing of data is regularly discussed in a structured and formalised way designed to disseminate best practice and update knowledge and procedures throughout the organisation.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Training around data ethics",
+          "questions": [
+            {
+              "text": "What kind of training is available within the organisation on data ethics?",
+              "statements": [
+                {
+                  "text": "The organisation does not provide any direct support or training for staff in data ethics.",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Training and support for individuals/teams around data ethics is driven by the needs of specific projects",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation allocates budget towards basic data ethics training for all staff but training is not mandatory",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "All staff are required to undertake an introduction to data ethics training.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "Professional development of data practitioners in ethical data practices is considered a priority, and staff are encouraged to become certified data ethics practitioners.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Expertise",
+          "questions": [
+            {
+              "text": "How does the organisation build and maintain expertise in data ethics?",
+              "statements": [
+                {
+                  "text": "Internal evangelists may be self-taught with little formalised training.",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "The organisation relies on external expertise for guidance and practical support",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation may draw on external expertise for support around complex topics and projects",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "The organisation builds and fosters networks of expertise within the organisation and wider community.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The organisation uses its in-house data ethics expertise to provide leadership to the market, through support and guidance.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data management risk processes",
+      "activities": [
+        {
+          "title": "Identifying and assessing risk",
+          "questions": [
+            {
+              "text": "How are risks of harm to individuals and communities identified and assessed when collecting, using, and sharing data?",
+              "statements": [
+                {
+                  "text": "There are no defined processes for identifying and assessing risk of harm to individuals and communities when collecting, using and sharing data",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Processes are ad hoc for identifying and assessing risks of harm to individuals and communities when collecting, using and sharing data.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Processes for identifying and assessing risk of harm to individuals and communities when collecting, using and sharing data are standardised and include consideration of positive and negative unintended impacts. Adoption of the processes is not universal.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "All projects and disciplines follow standardised and embedded processes for identifying and assessing risk of harm to individuals and communities when collecting, using and sharing data that comprehensively include consideration of positive and negative unintended impacts.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "All projects and disciplines follow standardised and embedded processes for identifying and assessing risk of harm to individuals and communities when collecting, using and sharing data that comprehensively include consideration of positive and negative unintended impacts. The organisation monitors and adapts to changes to community norms, customs and values that influence what is considered ethical collection, use and sharing of data.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Addressing and mitigating risk",
+          "questions": [
+            {
+              "text": "How are risks addressed and mitigated when collecting, using, and sharing data?",
+              "statements": [
+                {
+                  "text": "Risks are only addressed when they threaten to become problematic for the organisation",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Risks are dealt with by individuals who care about or feel responsible for the issues, rather than in a systematic way",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Risks are prioritised based on expected impact and are dealt with in order of priority.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "The organisation puts mitigation processes in place for risks that have a higher likelihood of occurring.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "Performance around reducing harm is routinely assessed, reevaluated and linked to mitigation strategies where needed on a dynamic basis.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Use of data ethics tools",
+          "questions": [
+            {
+              "text": "What tools are used to assess and address ethical implications in your organisation?",
+              "statements": [
+                {
+                  "text": "Very little awareness of tools to consider ethical implications.",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Use of tools (for example Data Ethics Canvas, Consequence Scanning and the ODI’s Data Sharing Risk Assessment) to consider ethical implications from data is done on an ad hoc basis and is not consistent",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation has a preferred set of data ethics tools but these are not widely adopted.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "Use of data ethics tools (e.g., Data Ethics Canvas, Consequence Scanning and the ODI’s Data Sharing Risk Assessment) are widespread throughout the organisation.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "Data ethics tools have been customised for the organisation specifically and independently validated and regularly reviewed.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Funding and Procurement",
+      "activities": [
+        {
+          "title": "Funding",
+          "questions": [
+            {
+              "text": "How are ethical data practices funded within the organisation?",
+              "statements": [
+                {
+                  "text": "Activities to support ethical collection, use and sharing of data are unfunded",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Individual projects may include costs to examine potential positive and negative impacts from their collection, use and sharing as part of their budget.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "Project funding and operational costs routinely include long-term costs for assessing, building and demonstrating ethical collection, use and sharing of data.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "There are organisation-wide standards and clarity around the costs and benefits of ethical data practices",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The organisation publishes information about the costs/benefits of ethical data practices to help others learn from their approach.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Procurement and contracts with 3rd parties",
+          "questions": [
+            {
+              "text": "How does the organisation ensure ethical data practices in its procurement processes?",
+              "statements": [
+                {
+                  "text": "Procurement contracts do not include requirements around ethical data practices. The risk that suppliers use unethical practices around data is not recorded or mitigated",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "The organisation sometimes seeks clarity around ethical data practices of suppliers as part of procurement. This is driven by the needs of specific projects and is not routine.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation tailors individual contracts to cover ethical data practises, as required by the needs of projects / products.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "The organisation includes standard wording in all contracts that covers ethical data practices.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The organisation proactively carries out due diligence / audit around the ethical data practices of organisations they use data from, share data with and/or who collects data on their behalf.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stakeholder and staff engagement",
+      "activities": [
+        {
+          "title": "Communicating with stakeholders",
+          "questions": [
+            {
+              "text": "How does the organisation communicate with stakeholders who might be impacted by the data it collects, uses, or shares?",
+              "statements": [
+                {
+                  "text": "The organisation does not communicate with customers or staff that might be impacted by data collected, used or shared.",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Communication with customers or staff that might be impacted by projects collecting using or sharing data is ad hoc and may be one-way",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation has documented a repeatable approach for engaging people around collection, use and sharing of data but this is not widely adopted. The organisation has identified a means by which individuals or communities can raise concerns around ethical collection, use and sharing of data.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "It is routine for all teams to engage communities reflected in or impacted by the data.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The organisation proactively communicates their policies, and any changes to policies, with customers, staff and communities, and actively seeks feedback, including on the level of trust people have for the organisation with the data held on them.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Use of feedback",
+          "questions": [
+            {
+              "text": "How does the organisation gather and use feedback from communities reflected in or impacted by its data?",
+              "statements": [
+                {
+                  "text": "Feedback is not sought from communities data is about; unsolicited feedback may be viewed as unwelcome or problematic.",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Some teams / projects begin to use feedback from communities the data is about, or who are impacted by collection, use and sharing of the data, to inform internal data management processes",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation has documented how teams should use feedback from communities reflected in or impacted by data to inform their work. This is not yet widely adopted.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "It is routine for all teams to act on feedback from communities reflected in or impacted by the data.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The communities reflected in, or impacted by data are actively involved in key decisions that may affect them and decisions will not be taken forward without consensus.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Language and ease of communication.",
+          "questions": [
+            {
+              "text": "How does the organisation ensure that communications about its ethical data practices are clear and accessible to all stakeholders?",
+              "statements": [
+                {
+                  "text": "Communications around ethical data practices are dense, technical and unreadable (for example in legal language)",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Communications on ethical data practices do not use the language of the community reflected in, or impacted by, the data (for example they use internal, technical language)",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "The organisation uses language tailored to the audience when communicating with its community",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "The policy for ethical collection, use and sharing of data is published online and accessible to the public. It is written in such a way as to be understood by all stakeholders, though may not be proactively shared with those not immediately concerned (e.g., the wider industry).",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The policy for ethical collection, use and sharing of data is published online and accessible to the public. It is written in such a way as to be understood by all stakeholders. The organisation shares its experience around ethical collection, use and sharing of data, for example in articles, case studies or at events.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Legal standing and compliance",
+      "activities": [
+        {
+          "title": "Knowledge of legal and regulatory requirements",
+          "questions": [
+            {
+              "text": "What is the organisation's level of awareness and understanding of legal and regulatory requirements for protecting individuals and communities from harm?",
+              "statements": [
+                {
+                  "text": "No awareness of legislative or compliance requirements to protect individuals and communities from harm.",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Knowledge of legal and regulatory compliance to protect individuals from harm is limited to a few individuals within the organisation.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "There is organisational guidance on compliance with legal and social requirements to avoid harm to individuals and communities, but this is not widely adopted.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "The organisation has very clear guidance on compliance with all legal and social requirements, and engages proactively with regulators to shape future regulations and guidance to consider ethical collection, use and sharing of data.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "The organisation has very clear guidance on compliance with all legal and social requirements, and engages proactively with regulators to shape future regulations and guidance to consider ethical collection, use and sharing of data. The organisation shares its approach to compliance to support best practice across the industry.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Application of legal and regulatory requirements",
+          "questions": [
+            {
+              "text": "How does the organisation ensure compliance with legal, regulatory, and social norms regarding data collection, use, and sharing?",
+              "statements": [
+                {
+                  "text": "There is no attempt to comply with legal or regulatory requirements",
+                  "associatedLevel": 1
+                },
+                {
+                  "text": "Some attempts are made on an ad hoc basis to comply with legal and regulatory requirements, but these may be inconsistent with some problems “swept under the carpet”.",
+                  "associatedLevel": 2
+                },
+                {
+                  "text": "There are clear organisation-wide attempts to comply with all legal and regulatory requirements. There may be a diminished focus on social norms and this may not be widely adopted.",
+                  "associatedLevel": 3
+                },
+                {
+                  "text": "All teams use a standardised structure for checking compliance against relevant legislation and social norms and this is measured as part of performance reporting.",
+                  "associatedLevel": 4
+                },
+                {
+                  "text": "Application of the organisation’s legal obligations around data collection, use and sharing are routinely reassessed and updated to reflect evolving requirements, social and political priorities.",
+                  "associatedLevel": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
