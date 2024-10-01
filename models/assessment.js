@@ -29,10 +29,18 @@ const statementSchema = new mongoose.Schema({
   }],
   associatedLevel: {
     type: Number
-  },
-  positive: {
-    type: Boolean
   }
+}, { _id: false });
+
+// Define the question schema
+const questionSchema = new mongoose.Schema({
+  text: {
+    type: String
+  },
+  context: {
+    type: String
+  },
+  statements: [statementSchema]
 }, { _id: false });
 
 // Define the activity schema
@@ -40,10 +48,7 @@ const activitySchema = new mongoose.Schema({
   title: {
     type: String
   },
-  statements: [statementSchema],
-  questions: {
-    type: mongoose.Schema.Types.Mixed
-  }
+  questions: [questionSchema] // Array of questions
 }, { _id: false });
 
 // Define the dimension schema
@@ -109,6 +114,9 @@ const assessmentSchema = new mongoose.Schema({
     type: Boolean,
     default: false, // Default value is false (not public)
     required: true
+  },
+  levels: {
+    type: [String], // Array of strings representing levels
   },
   readOnly: {
     type: Boolean,

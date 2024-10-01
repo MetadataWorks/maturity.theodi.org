@@ -1,35 +1,38 @@
 let projectData = {};  // This will store the current state of the project
 
-function updateProjectData(statement, dimension, activity) {
-
+function updateProjectData(question, dimension, activity) {
     // Find the correct dimension and activity by their names
     const projectDimension = projectData.assessmentData.dimensions.find(d => d.name === dimension.name);
     const projectActivity = projectDimension.activities.find(a => a.title === activity.title);
 
-    // Find the corresponding statement
-    const projectStatement = projectActivity.statements.find(s => s.text === statement.text);
+    // Find the corresponding question
+    const projectQuestion = projectActivity.questions.find(q => q.text === question.text);
 
-    // Update the user answer for the statement
-    projectStatement.userAnswer = {
-        answer: statement.userAnswer.answer,
-        notes: statement.userAnswer.notes
+    // Update the user answer for the question with the selected level
+    projectQuestion.userAnswer = {
+        level: question.userAnswer.level, // Store the selected level
+        text: question.statements[question.userAnswer.level-1].text, // Store the statement text
+        notes: question.userAnswer.notes  // Store any notes added for the question
     };
 
-    // Update activity completion
+    // Update activity completion based on the selected level
     projectActivity.completionPercentage = calculateActivityCompletion(projectActivity);
     updateActivityProgress(projectActivity);
 
-    // Update dimension progress
+    // Update dimension progress based on the updated activity
     updateDimensionProgress(projectDimension);
 
-    // Calculate overall achieved level for the whole assessment
+    // Calculate the overall achieved level for the entire assessment
     const overallAchievedLevel = calculateOverallAchievedLevel(projectData.assessmentData.dimensions);
     projectData.assessmentData.overallAchievedLevel = overallAchievedLevel;
 
-    // Update overall completion metrics
-    const { activityCompletionPercentage, statementCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
+    // Update overall completion metrics (replace statementCompletionPercentage with questionCompletionPercentage)
+    const { activityCompletionPercentage, questionCompletionPercentage } = calculateOverallCompletion(projectData.assessmentData.dimensions);
     projectData.assessmentData.activityCompletionPercentage = activityCompletionPercentage;
-    projectData.assessmentData.statementCompletionPercentage = statementCompletionPercentage;
+    projectData.assessmentData.questionCompletionPercentage = questionCompletionPercentage;  // Store question completion percentage
+
+    // Trigger debounced save
+    debouncedSaveProgress(projectData);
 }
 
 function updateActivityProgress(activity) {
@@ -44,90 +47,106 @@ function updateActivityProgress(activity) {
 }
 
 function updateDimensionProgress(dimension) {
-    const levelTotals = {};
-    let maxAchievedLevel = 0;
+    const levelTotals = {}; // To track totals for each level across the dimension
+    let minAchievedLevel = null; // Track the lowest common achieved level across all activities
 
-    // Initialize levelTotals with zeros for each level
+    // Iterate through activities to calculate level coverage
     dimension.activities.forEach(activity => {
-        activity.statements.forEach(statement => {
-            const level = statement.associatedLevel;
-            if (!levelTotals[level]) {
-                levelTotals[level] = { total: 0, positive: 0 };
-            }
-            levelTotals[level].total += 1;
-            if (statement.userAnswer && statement.userAnswer.answer === statement.positive) {
-                levelTotals[level].positive += 1;
-            }
-        });
+        // Get the level coverage for this activity based on the user's selected answers
+        const levelCoverage = calculateLevelCoverage(activity);
+        const achievedLevel = calculateAchievedLevel(levelCoverage);
 
-        // Track the maximum achieved level across activities
-        if (activity.userProgress && activity.userProgress.achievedLevel > maxAchievedLevel) {
-            maxAchievedLevel = activity.userProgress.achievedLevel;
+        // Track the minimum achieved level (the lowest common level across all activities)
+        if (minAchievedLevel === null) {
+            minAchievedLevel = achievedLevel;
+        } else if (achievedLevel < minAchievedLevel) {
+            minAchievedLevel = achievedLevel;
+        }
+
+        // Update the levelTotals for all levels (from 1 to 5)
+        for (let level = 1; level <= 5; level++) {
+            if (!levelTotals[level]) {
+                levelTotals[level] = { total: 0, completed: 0 };
+            }
+
+            // For each level, accumulate totals for the entire dimension
+            levelTotals[level].total += activity.questions.length;
+
+            // For levels above the achieved level, count how many questions are answered at this level or above
+
+            activity.questions.forEach(question => {
+                if (question.userAnswer && question.userAnswer.level >= level) {
+                    levelTotals[level].completed += 1;
+                }
+            });
         }
     });
 
-    // Calculate the percentage of each level achieved across the dimension
-    const levelCoveragePercent = Object.keys(levelTotals).map(level => {
-        const { total, positive } = levelTotals[level];
-        return { [level]: Math.round((positive / total) * 100) };
-    });
-
-    // Determine the dimension's achieved level
-    let dimensionAchievedLevel = 0;
-    for (const level in levelTotals) {
-        if (levelTotals[level].positive === levelTotals[level].total) {
-            dimensionAchievedLevel = parseInt(level);
+    // Calculate the percentage of each level completed across the dimension
+    const levelCoveragePercent = {};
+    for (let level = 1; level <= 5; level++) {
+        // For levels below or equal to the achieved level, set completion to 100%
+        if (level <= minAchievedLevel) {
+            levelCoveragePercent[level] = 100;
         } else {
-            break;
+            // For levels above the achieved level, calculate the actual percentage of questions completed
+            const { total, completed } = levelTotals[level];
+            levelCoveragePercent[level] = Math.round((completed / total) * 100);
         }
     }
 
-    // Update the dimension's userProgress in projectData
+    // Update the dimension's userProgress with the lowest common achieved level and level coverage percent
     dimension.userProgress = {
-        achievedLevel: dimensionAchievedLevel,
-        levelCoveragePercent: levelCoveragePercent
+        achievedLevel: minAchievedLevel,
+        levelCoveragePercent: levelCoveragePercent // Store as an object for better lookups
     };
 
     return dimension.userProgress;
 }
 
 function calculateLevelCoverage(activity) {
-    const levelCoverage = [];
-    const totalStatementsByLevel = {};
+    const levelCoverage = {};
+    const totalQuestions = activity.questions.length;
 
-    // Initialize counters
-    activity.statements.forEach(statement => {
-        const level = statement.associatedLevel;
-        if (!totalStatementsByLevel[level]) {
-            totalStatementsByLevel[level] = { total: 0, positive: 0 };
-        }
-        totalStatementsByLevel[level].total += 1;
-        if (statement.userAnswer && statement.userAnswer.answer === statement.positive) {
-            totalStatementsByLevel[level].positive += 1;
+    // Initialize coverage object for each level
+    activity.questions.forEach(question => {
+        const level = question.userAnswer?.level;
+
+        if (level !== undefined) {
+            // Mark all levels up to and including the selected level as complete
+            for (let i = 1; i <= level; i++) {
+                if (!levelCoverage[i]) {
+                    levelCoverage[i] = { total: 0, completed: 0 };
+                }
+                // For each question, mark it complete for this level
+                levelCoverage[i].total = totalQuestions;
+                levelCoverage[i].completed += 1;
+            }
         }
     });
 
     // Calculate coverage percentage for each level
-    for (const level in totalStatementsByLevel) {
-        const { total, positive } = totalStatementsByLevel[level];
-        const levelProgress = Math.round((positive / total) * 100);
-        levelCoverage.push({ [level]: levelProgress });
+    for (const level in levelCoverage) {
+        const { total, completed } = levelCoverage[level];
+        const levelProgress = Math.round((completed / total) * 100);
+        levelCoverage[level] = levelProgress;  // Store percentage directly
     }
 
-    return levelCoverage;
+    return levelCoverage;  // Return as an object
 }
 
 function calculateAchievedLevel(levelCoverage) {
     let achievedLevel = 0;
 
-    for (const levelObj of levelCoverage) {
-        const level = parseInt(Object.keys(levelObj)[0]);
-        const coverage = levelObj[level];
+    // Iterate over each level in the levelCoverage object
+    for (const level in levelCoverage) {
+        const coverage = levelCoverage[level];
 
+        // If the coverage for the level is 100%, set it as the achieved level
         if (coverage === 100) {
-            achievedLevel = level;
+            achievedLevel = parseInt(level, 10); // Convert the level to an integer
         } else {
-            break;
+            break; // If coverage is less than 100%, stop iterating
         }
     }
 
@@ -156,18 +175,24 @@ function calculateOverallAchievedLevel(dimensions) {
 }
 
 function calculateActivityCompletion(activity) {
-    const totalStatements = activity.statements.length;
-    const completedStatements = activity.statements.filter(statement => statement.userAnswer && statement.userAnswer.answer !== undefined).length;
-    return Math.round((completedStatements / totalStatements) * 100);
+    // Total number of questions in the activity
+    const totalQuestions = activity.questions.length;
+
+    // Number of completed questions where the user has selected a level
+    const completedQuestions = activity.questions.filter(question => question.userAnswer && question.userAnswer.level !== undefined).length;
+
+    // Calculate and return the completion percentage
+    return totalQuestions > 0 ? Math.round((completedQuestions / totalQuestions) * 100) : 0;
 }
 
 function calculateOverallCompletion(dimensions) {
     let totalActivities = 0;
     let completedActivities = 0;
 
-    let totalStatements = 0;
-    let completedStatements = 0;
+    let totalQuestions = 0;
+    let completedQuestions = 0;
 
+    // Iterate over dimensions and their activities
     dimensions.forEach(dimension => {
         dimension.activities.forEach(activity => {
             totalActivities += 1;
@@ -176,18 +201,18 @@ function calculateOverallCompletion(dimensions) {
                 completedActivities += 1;
             }
 
-            // Accumulate statement completion
-            totalStatements += activity.statements.length;
-            completedStatements += activity.statements.filter(statement => statement.userAnswer && statement.userAnswer.answer !== undefined).length;
+            // Accumulate question completion
+            totalQuestions += activity.questions.length;
+            completedQuestions += activity.questions.filter(question => question.userAnswer && question.userAnswer.level !== undefined).length;
         });
     });
 
-    const activityCompletionPercentage = Math.round((completedActivities / totalActivities) * 100);
-    const statementCompletionPercentage = Math.round((completedStatements / totalStatements) * 100);
+    const activityCompletionPercentage = totalActivities > 0 ? Math.round((completedActivities / totalActivities) * 100) : 0;
+    const questionCompletionPercentage = totalQuestions > 0 ? Math.round((completedQuestions / totalQuestions) * 100) : 0;
 
     return {
         activityCompletionPercentage,
-        statementCompletionPercentage
+        questionCompletionPercentage
     };
 }
 
@@ -227,6 +252,7 @@ async function saveProgress(projectData) {
         });
 
         if (!response.ok) {
+            console.log(response);
             throw new Error('Failed to save progress');
         }
 

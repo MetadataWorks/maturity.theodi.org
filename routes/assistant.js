@@ -37,7 +37,7 @@ async function getAIReponse(prompt, tokens = responseTokens) {
 async function getAIActivitySummary(activity, dimensionName, levelKeys, assessmentTitle) {
     // 1. Generate the prompt
     const prompt = `
-    A user has completed part of a ${assessmentTitle} for the section "${activity.title}" under the "${dimensionName}" part of the assessment. You can find the maturity assessment for just this section in JSON form below with the user answers.
+    A user has completed part of a ${assessmentTitle} for the section "${activity.title}" under the "${dimensionName}" part of the assessment. You can find the maturity assessment for just this section in JSON form below. Each activity has a number of question and associated statements a user can choose. The userAnswer object contains the level of the statement they chose as well as the text.
 
     ${JSON.stringify(activity, null, 2)}
 
@@ -61,8 +61,8 @@ async function getOrGenerateActivitySummary(activity, dimensionName, levelKeys, 
         return `It is not possible to make any recommendations for ${activity.title} as no questions have been answered.`;
     }
 
-    // 2. Generate the hash of the current user answers
-    const currentHash = generateHash(activity.statements.map(s => s.userAnswer));
+    // 2. Generate the hash of the current user answers for questions
+    const currentHash = generateHash(activity.questions.map(q => q.userAnswer));
 
     // 3. Check if the hash has changed
     if (activity.aiResponse && activity.aiResponse.hash === currentHash) {
@@ -72,6 +72,12 @@ async function getOrGenerateActivitySummary(activity, dimensionName, levelKeys, 
 
     // 4. If the hash has changed or there's no summary, generate a new one
     const summary = await getAIActivitySummary(activity, dimensionName, levelKeys, assessmentTitle);
+
+    // 5. Save the new summary and hash in the activity (optional, if you want to cache it)
+    activity.aiResponse = {
+        summary,
+        hash: currentHash
+    };
 
     // 6. Return the new summary
     return summary;
@@ -126,18 +132,21 @@ router.get('/:id/assistant/getActivitySummary', ensureAuthenticated, checkProjec
         const activityCopy = JSON.parse(JSON.stringify(activity));
 
         // 6. Remove notes from userAnswer in the activityCopy
-        activityCopy.statements.forEach(statement => {
-            if (statement.userAnswer && statement.userAnswer.notes) {
-                delete statement.userAnswer.notes;
+        activityCopy.questions.forEach(question => {
+            if (question.userAnswer && question.userAnswer.notes) {
+                delete question.userAnswer.notes;
             }
         });
 
         // 7. Use the getOrGenerateActivitySummary function with the modified activityCopy
-        const levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        let levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        if (assessmentData.levels) {
+            levelKeys = assessmentData.levels;
+        }
         const summary = await getOrGenerateActivitySummary(activityCopy, dimension.name, levelKeys, assessmentTitle);
 
         // 8. Generate hash for the current activity state
-        const activityHash = generateHash(activity.statements.map(s => s.userAnswer));
+        const activityHash = generateHash(activity.questions.map(q => q.userAnswer));
 
         // 9. Update the specific activity's aiResponse in the dimension
         const updateQuery = {
@@ -204,7 +213,10 @@ router.get('/:id/assistant/getDimensionSummary', ensureAuthenticated, checkProje
         }
 
         // 4. Prepare the level keys
-        const levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        let levelKeys = ["Initial", "Repeatable", "Defined", "Managed", "Optimising"];
+        if (assessmentData.levels) {
+            levelKeys = assessmentData.levels;
+        }
 
         // 5. Gather AI Summaries for each activity in the dimension
         const activitySummaries = [];

@@ -36,19 +36,25 @@ function createReportTableRows(assessmentData, levelKeys) {
         const dimensionNameSpan = document.createElement('span');
         dimensionNameSpan.textContent = dimension.name;
         dimensionCell.appendChild(dimensionNameSpan);
+        console.log(dimension.userProgress);
 
         // Add the percentage complete for each level in subsequent cells
         levelKeys.forEach((level, index) => {
             const levelCell = row.insertCell();
+
             if (dimension.userProgress && dimension.userProgress.levelCoveragePercent) {
-                const levelProgress = dimension.userProgress.levelCoveragePercent.find(obj => obj[index + 1]);
-                const percentage = levelProgress ? levelProgress[index + 1] : 0;
-                if (percentage > 99) {
+                // Access levelCoveragePercent using the level key directly
+                const levelProgress = dimension.userProgress.levelCoveragePercent[index + 1];
+                console.log(levelProgress);
+                const percentage = levelProgress ? levelProgress : 0;
+
+                if (percentage >= 100) {
                     levelCell.textContent = "✔";
                     levelCell.classList.add('level-complete');
                 } else {
-                    levelCell.textContent = percentage ? `${percentage}%` : '-';
+                    levelCell.textContent = percentage > 0 ? `${percentage}%` : '-';
                 }
+
                 if (percentage > 0) {
                     changeCellOpacity(levelCell, percentage, "rgb(13,188,55)");
                     levelCell.classList.add('level-progress');
@@ -56,6 +62,7 @@ function createReportTableRows(assessmentData, levelKeys) {
             } else {
                 levelCell.textContent = '-';
             }
+
             levelCell.classList.add("level-" + (index + 1));
         });
 
@@ -73,17 +80,22 @@ function createReportTableRows(assessmentData, levelKeys) {
             // Add the percentage complete for each level in the subsequent cells for this activity
             levelKeys.forEach((level, index) => {
                 const levelCell = activityRow.insertCell();
+
                 if (activity.userProgress && activity.userProgress.levelCoveragePercent) {
-                    const levelProgress = activity.userProgress.levelCoveragePercent.find(obj => obj[index + 1]);
-                    const percentage = levelProgress ? levelProgress[index + 1] : 0;
-                    levelCell.textContent = percentage ? `${percentage}%` : '-';
+                    // Access levelCoveragePercent using the level key directly
+                    const levelProgress = activity.userProgress.levelCoveragePercent[index + 1];
+                    const percentage = levelProgress ? levelProgress : 0;
+
+                    levelCell.textContent = percentage > 0 ? `${percentage}%` : '-';
                     changeCellOpacity(levelCell, percentage, "rgb(13,188,55)");
                 } else {
                     levelCell.textContent = '-';
                 }
-                levelCell.className = "level-" + (index + 1);
+
+                levelCell.classList.add("level-" + (index + 1));
             });
         });
+
     });
 }
 
@@ -149,6 +161,7 @@ function createDimensionDetails(dimension, levelKeys, dimensionIndex) {
     section.appendChild(AIResponseParagraph);
 
     // Handle AI summary asynchronously
+
     getAIDimensionSummary(dimension)
         .then(summary => {
             AIResponseParagraph.innerHTML = summary;
@@ -223,6 +236,7 @@ function createActivityDetails(activity, dimensionName, levelKeys, dimensionInde
     createActivityQuestions(section, activity, levelKeys);
 
     // Handle AI summary asynchronously
+
     if (levelName) {
         // Start the async task without awaiting it
         getAIActivitySummary(activity, dimensionName, levelKeys)
@@ -239,98 +253,53 @@ function createActivityDetails(activity, dimensionName, levelKeys, dimensionInde
 }
 
 function createActivityQuestions(section, activity, levelKeys) {
-    const currentLevelQuestions = document.createElement('div');
-    currentLevelQuestions.className = 'current-level-questions';
-    currentLevelQuestions.innerHTML = '<h4>Current state at achieved level</h4>';
+    // Create the table for all questions
+    const table = document.createElement('table');
+    table.className = 'questions-table';
 
-    const nextLevelQuestions = document.createElement('div');
-    nextLevelQuestions.className = 'next-level-questions';
-    nextLevelQuestions.innerHTML = '<h4>Progress towards next level</h4>';
+    // Create the header row
+    const headerRow = table.insertRow();
+    headerRow.innerHTML = `
+        <th style="width: 40%;">Question</th>
+        <th style="width: 30%;">Answer</th>
+        <th style="width: 15%;">Level</th>
+        <th style="width: 15%;">Notes</th>
+    `;
 
-    const higherLevelQuestions = document.createElement('div');
-    higherLevelQuestions.className = 'higher-level-questions';
-    higherLevelQuestions.innerHTML = '<h4>Answers/Notes from higher levels</h4>';
+    // Function to add a row for each question
+    const createQuestionRow = (question) => {
+        const row = table.insertRow();
 
-    const createQuestionsTable = (questionsDiv, statements, includeLevel = false) => {
-        const table = document.createElement('table');
-        table.className = 'questions-table';
+        // Add question column
+        const questionCell = row.insertCell();
+        questionCell.textContent = question.text;
 
-        const headerRow = table.insertRow();
+        // Add answer column
+        const answerCell = row.insertCell();
+        if (!question.userAnswer || question.userAnswer.text === undefined) {
+            answerCell.textContent = 'No Answer';
+        } else {
+            answerCell.textContent = question.userAnswer.text;
+        }
 
-        // Adjust headers depending on whether the level column is included
-        headerRow.innerHTML = `
-            ${includeLevel ? '<th style="width: 15%;">Level</th>' : ''}
-            <th style="width: 55%;">Question</th>
-            <th style="width: 10%;">Achieved</th>
-            <th style="width: 20%;">Notes</th>
-        `;
+        // Add level column
+        const levelCell = row.insertCell();
+        const levelName = levelKeys[question.userAnswer?.level - 1] || 'No Level';
+        levelCell.textContent = levelName;
+        levelCell.className = `level level-${question.userAnswer?.level || 'none'}`;
 
-        // Sort statements first by level, then by correct/incorrect/unanswered
-        const sortedStatements = statements.sort((a, b) => {
-            // Sort by associated level first
-            if (a.associatedLevel !== b.associatedLevel) {
-                return a.associatedLevel - b.associatedLevel;
-            }
-
-            // Sort by whether the question is answered
-            const aAnswered = a.userAnswer ? 1 : 0;
-            const bAnswered = b.userAnswer ? 1 : 0;
-            if (aAnswered !== bAnswered) return bAnswered - aAnswered;
-
-            // Sort by whether the answer is correct
-            const aCorrect = a.userAnswer && a.userAnswer.answer === a.positive;
-            const bCorrect = b.userAnswer && b.userAnswer.answer === b.positive;
-            if (aCorrect !== bCorrect) return bCorrect - aCorrect;
-
-            return 0;
-        });
-
-        // Create table rows for each statement
-        sortedStatements.forEach(statement => {
-            const row = table.insertRow();
-
-            // Add level column if required
-            if (includeLevel) {
-                const levelCell = row.insertCell();
-                const levelName = levelKeys[statement.associatedLevel - 1];
-                levelCell.textContent = levelName;
-                levelCell.className = `level level-${statement.associatedLevel}`;
-            }
-
-            const questionCell = row.insertCell();
-            questionCell.textContent = statement.text;
-
-            const answerCell = row.insertCell();
-            if (!statement.userAnswer) {
-                answerCell.textContent = '-';
-            } else if (statement.userAnswer.answer === statement.positive) {
-                answerCell.innerHTML = `<span class="question-progress">✓</span>${statement.positive === false ? '<br><span class="question-answer">(FALSE)</span>' : ''}`;
-            } else {
-                answerCell.innerHTML = '<span class="question-progress">✗</span>';
-            }
-
-            const notesCell = row.insertCell();
-            notesCell.textContent = statement.userAnswer && statement.userAnswer.notes ? statement.userAnswer.notes : '-';
-        });
-
-        questionsDiv.appendChild(table);
+        // Add notes column
+        const notesCell = row.insertCell();
+        notesCell.textContent = question.userAnswer?.notes || '-';
     };
 
+    // Iterate through the questions in the activity and add rows
+    activity.questions.forEach(question => {
+        createQuestionRow(question);
+    });
 
-    const currentLevelStatements = activity.statements.filter(statement => statement.associatedLevel === activity.userProgress.achievedLevel);
-    const nextLevelStatements = activity.statements.filter(statement => statement.associatedLevel === activity.userProgress.achievedLevel + 1);
-    const higherLevelStatements = activity.statements.filter(statement =>
-        statement.associatedLevel > (activity.userProgress.achievedLevel + 1) &&
-        (statement.userAnswer && (statement.userAnswer.answer !== undefined || statement.userAnswer.notes))
-    );
-
-    createQuestionsTable(currentLevelQuestions, currentLevelStatements, true);
-    createQuestionsTable(nextLevelQuestions, nextLevelStatements, true);
-    createQuestionsTable(higherLevelQuestions, higherLevelStatements, true); // Include level column
-
-    section.appendChild(currentLevelQuestions);
-    section.appendChild(nextLevelQuestions);
-    section.appendChild(higherLevelQuestions);
+    // Append the questions container to the section
+    section.appendChild(table);
 }
 
 function createExecutiveSummary() {
@@ -355,8 +324,10 @@ function createExecutiveSummary() {
 }
 
 function createHeatmap(container, data, levelKeys) {
-    // Implement the logic to create a heatmap for the dimension or activity
+    // Create the table element
     const table = document.createElement('table');
+
+    // Create the header row with level keys
     const headerRow = table.insertRow();
     levelKeys.forEach((level, index) => {
         const th = document.createElement('th');
@@ -365,25 +336,31 @@ function createHeatmap(container, data, levelKeys) {
         headerRow.appendChild(th);
     });
 
-
+    // Create the data row to show the heatmap for the levels
     const dataRow = table.insertRow();
     levelKeys.forEach((level, index) => {
         const td = dataRow.insertCell();
-        const levelProgress = data.userProgress.levelCoveragePercent.find(obj => obj[index + 1]);
-        const percentage = levelProgress ? levelProgress[index + 1] : 0;
-        if (percentage > 99) {
+
+        // Access levelCoveragePercent using the level key directly
+        const levelProgress = data.userProgress.levelCoveragePercent[index + 1];
+        const percentage = levelProgress ? levelProgress : 0;
+
+        // Display a checkmark if the percentage is 100%
+        if (percentage >= 100) {
             td.textContent = "✔";
             td.classList.add('level-complete');
         } else {
-            td.textContent = percentage ? `${percentage}%` : '-';
+            td.textContent = percentage > 0 ? `${percentage}%` : '-';
         }
+
+        // Apply progress styling if percentage is greater than 0
         if (percentage > 0) {
             td.classList.add('level-progress');
             changeCellOpacity(td, percentage, "rgb(13,188,55)");
         }
-
     });
 
+    // Append the table to the container
     container.appendChild(table);
 }
 
@@ -413,15 +390,15 @@ function createOverallMaturitySection(assessmentData, levelKeys) {
     activityCompletion.textContent = `Activity Completion: ${assessmentData.activityCompletionPercentage}%`;
     activityCompletion.className = 'activity-completion';
 
-    // Statement Completion Percentage
-    const statementCompletion = document.createElement('p');
-    statementCompletion.textContent = `Statement Completion: ${assessmentData.statementCompletionPercentage}%`;
-    statementCompletion.className = 'statement-completion';
+    // Question Completion Percentage (replacing Statement Completion)
+    const questionCompletion = document.createElement('p');
+    questionCompletion.textContent = `Question Completion: ${assessmentData.questionCompletionPercentage}%`;
+    questionCompletion.className = 'question-completion';
 
     // Append elements to the section
     overallSection.appendChild(overallLevelContainer);
     overallSection.appendChild(activityCompletion);
-    overallSection.appendChild(statementCompletion);
+    overallSection.appendChild(questionCompletion);
 }
 
 function createTableOfContents(assessmentData) {

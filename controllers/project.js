@@ -100,7 +100,8 @@ async function createProject(projectData, userId) {
 
         // Clone the dimensions of the assessment into the project's assessmentData field
         projectData.assessmentData = {
-            dimensions: assessment.dimensions
+            dimensions: assessment.dimensions,
+            levels: assessment.levels
         };
         // Create a new project instance
         const project = new Project(projectData);
