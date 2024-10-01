@@ -12,7 +12,7 @@
       },
       "title": {
         "type": "string",
-        "title": "Project Title",
+        "title": "Project title",
         "minLength": 1,
         "required": true
       },
@@ -23,10 +23,11 @@
       "organisation": {
         "type": "object",
         "title": "Organisation",
+        "required": true,
         "properties": {
           "title": {
             "type": "string",
-            "title": "Organisation Title"
+            "title": "Organisation title"
           },
           "country": {
             "type": "object",
@@ -34,11 +35,11 @@
             "properties": {
               "name": {
                 "type": "string",
-                "title": "Country Name"
+                "title": "Country name"
               },
               "code": {
                 "type": "string",
-                "title": "Country Code"
+                "title": "Country code"
               }
             }
           }
@@ -57,7 +58,7 @@
     },
     {
       "key": "title",
-      "title": "Project Title",
+      "title": "Project title",
       "validationMessage": "Please enter the project title."
     },
     {
@@ -70,7 +71,7 @@
     },
     {
       "key": "organisation.title",
-      "title": "Organisation Name"
+      "title": "Organisation name"
     },
     {
       "key": "organisation.country.name"

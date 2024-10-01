@@ -333,6 +333,9 @@ function loadNavBar(data,projectId) {
         dimension.activities.forEach(activity => {
             const dimensionPrefix = dimension.name.toLowerCase().replace(/\s+/g, '-');
             const activityId = dimensionPrefix + "-" + activity.title.toLowerCase().replace(/\s+/g, '-');
+            if (defaultActivity === "") {
+                defaultActivity = activityId;
+            }
             const activityItem = document.createElement('li');
             activityItem.classList.add('nav-activity-item'); // Add class for styling
 

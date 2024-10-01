@@ -89,7 +89,7 @@ function renderMyProjects() {
             },
             {
                 data: 'organisation.title',
-                title: 'Organisation Name',
+                title: 'Organisation name',
                 width: '10%',
                 defaultContent: ''
             },
@@ -101,7 +101,7 @@ function renderMyProjects() {
             },
             {
                 data: 'assessmentData.activityCompletionPercentage',
-                title: 'Activities Complete (%)',
+                title: 'Activities complete (%)',
                 width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
@@ -109,8 +109,8 @@ function renderMyProjects() {
                 }
             },
             {
-                data: 'assessmentData.statementCompletionPercentage',
-                title: 'Statements Complete (%)',
+                data: 'assessmentData.questionCompletionPercentage',
+                title: 'Questions answered (%)',
                 width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
@@ -119,7 +119,7 @@ function renderMyProjects() {
             },
             {
                 data: 'lastModified',
-                title: 'Last Modified',
+                title: 'Last modified',
                 width: '10%',
                 render: function(data, type, row) {
                     // Parse the date string into a Date object
@@ -135,7 +135,7 @@ function renderMyProjects() {
                     return '<button class="editBtn" data-id="' + row._id + '">Edit</button>' +
                            '<button class="shareBtn" data-id="' + row._id + '">Share</button>' +
                            '<button class="deleteBtn" data-id="' + row._id + '">Delete</button>' +
-                           '<button class="reportBtn" data-id="' + row._id + '">View Report</button>'
+                           '<button class="reportBtn" data-id="' + row._id + '">View report</button>'
                 }
             }
         ],
@@ -269,7 +269,7 @@ function renderSharedProjects(data) {
             },
             {
                 data: 'organisation.title',
-                title: 'Organisation Name',
+                title: 'Organisation name',
                 width: '10%',
                 defaultContent: ''
             },
@@ -281,7 +281,7 @@ function renderSharedProjects(data) {
             },
             {
                 data: 'assessmentData.activityCompletionPercentage',
-                title: 'Activities Complete (%)',
+                title: 'Activities complete (%)',
                 width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
@@ -289,8 +289,8 @@ function renderSharedProjects(data) {
                 }
             },
             {
-                data: 'assessmentData.statementCompletionPercentage',
-                title: 'Statements Complete (%)',
+                data: 'assessmentData.questionCompletionPercentage',
+                title: 'Questions answered (%)',
                 width: '10%',
                 defaultContent: '0%',
                 render: function(data, type, row) {
@@ -305,7 +305,7 @@ function renderSharedProjects(data) {
             },
             {
                 data: 'lastModified',
-                title: 'Last Modified',
+                title: 'Last modified',
                 width: '10%',
                 render: function(data, type, row) {
                     // Parse the date string into a Date object
@@ -319,7 +319,7 @@ function renderSharedProjects(data) {
                 width: '20%',
                 render: function (data, type, row) {
                     return '<button class="editBtn" data-id="' + row._id + '">Edit</button>' +
-                           '<button class="reportBtn" data-id="' + row._id + '">View Report</button>'
+                           '<button class="reportBtn" data-id="' + row._id + '">View report</button>'
                 }
             }
         ],
