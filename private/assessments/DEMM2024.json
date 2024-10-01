@@ -23,7 +23,7 @@
       "name": "Organisational governance and internal oversight",
       "activities": [
         {
-          "title": "Organisational view of data ethics.",
+          "title": "Organisational governance and internal oversight",
           "questions": [
             {
               "text": "How does your organisation perceive and engage with data ethics?",
@@ -49,12 +49,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Policies around ethical collection use and sharing",
-          "questions": [
+            },
             {
               "text": "How does your organisation establish and manage policies for the ethical collection, use, and sharing of data?",
               "statements": [
@@ -79,12 +74,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Roles and performance",
-          "questions": [
+            },
             {
               "text": "How clearly defined are roles and responsibilities for data ethics within your organisation?",
               "statements": [
@@ -109,12 +99,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Targets and metrics",
-          "questions": [
+            },
             {
               "text": "How does your organisation set targets and measure performance around data ethics?",
               "statements": [
@@ -139,12 +124,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Communication / information availability",
-          "questions": [
+            },
             {
               "text": "How is information about data ethics shared with internal and external stakeholders?",
               "statements": [
@@ -178,7 +158,7 @@
       "name": "Skills and knowledge",
       "activities": [
         {
-          "title": "Knowledge of data ethics",
+          "title": "Skills and knowledge",
           "questions": [
             {
               "text": "How well is knowledge of data ethics embedded within the organisation?",
@@ -204,12 +184,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Communities of Practice / Discussion Fora",
-          "questions": [
+            },
             {
               "text": "To what extent are data ethics discussions and Communities of Practice embedded within your organisation?",
               "statements": [
@@ -234,12 +209,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Training around data ethics",
-          "questions": [
+            },
             {
               "text": "What kind of training is available within the organisation on data ethics?",
               "statements": [
@@ -264,12 +234,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Expertise",
-          "questions": [
+            },
             {
               "text": "How does the organisation build and maintain expertise in data ethics?",
               "statements": [
@@ -303,7 +268,7 @@
       "name": "Data management risk processes",
       "activities": [
         {
-          "title": "Identifying and assessing risk",
+          "title": "Data management risk processes",
           "questions": [
             {
               "text": "How are risks of harm to individuals and communities identified and assessed when collecting, using, and sharing data?",
@@ -329,12 +294,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Addressing and mitigating risk",
-          "questions": [
+            },
             {
               "text": "How are risks addressed and mitigated when collecting, using, and sharing data?",
               "statements": [
@@ -359,12 +319,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Use of data ethics tools",
-          "questions": [
+            },
             {
               "text": "What tools are used to assess and address ethical implications in your organisation?",
               "statements": [
@@ -398,7 +353,7 @@
       "name": "Funding and Procurement",
       "activities": [
         {
-          "title": "Funding",
+          "title": "Funding and Procurement",
           "questions": [
             {
               "text": "How are ethical data practices funded within the organisation?",
@@ -424,12 +379,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Procurement and contracts with 3rd parties",
-          "questions": [
+            },
             {
               "text": "How does the organisation ensure ethical data practices in its procurement processes?",
               "statements": [
@@ -463,7 +413,7 @@
       "name": "Stakeholder and staff engagement",
       "activities": [
         {
-          "title": "Communicating with stakeholders",
+          "title": "Stakeholder and staff engagement",
           "questions": [
             {
               "text": "How does the organisation communicate with stakeholders who might be impacted by the data it collects, uses, or shares?",
@@ -489,12 +439,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Use of feedback",
-          "questions": [
+            },
             {
               "text": "How does the organisation gather and use feedback from communities reflected in or impacted by its data?",
               "statements": [
@@ -519,12 +464,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Language and ease of communication.",
-          "questions": [
+            },
             {
               "text": "How does the organisation ensure that communications about its ethical data practices are clear and accessible to all stakeholders?",
               "statements": [
@@ -558,7 +498,7 @@
       "name": "Legal standing and compliance",
       "activities": [
         {
-          "title": "Knowledge of legal and regulatory requirements",
+          "title": "Legal standing and compliance",
           "questions": [
             {
               "text": "What is the organisation's level of awareness and understanding of legal and regulatory requirements for protecting individuals and communities from harm?",
@@ -584,12 +524,7 @@
                   "associatedLevel": 5
                 }
               ]
-            }
-          ]
-        },
-        {
-          "title": "Application of legal and regulatory requirements",
-          "questions": [
+            },
             {
               "text": "How does the organisation ensure compliance with legal, regulatory, and social norms regarding data collection, use, and sharing?",
               "statements": [
