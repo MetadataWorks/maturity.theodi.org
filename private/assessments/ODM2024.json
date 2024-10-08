@@ -328,31 +328,6 @@
                                 "associatedLevel": 5
                             }
                             ]
-                        },
-                        {
-                            "text": "How is data cataloguing and accessibility managed?",
-                            "statements": [
-                            {
-                                "text": "There is no central catalogue of datasets, and accessibility is inconsistent.",
-                                "associatedLevel": 1
-                            },
-                            {
-                                "text": "Some datasets are catalogued, but the catalogue is incomplete, and accessibility is inconsistent.",
-                                "associatedLevel": 2
-                            },
-                            {
-                                "text": "A central dataset catalogue exists, with the majority of datasets included and accessible.",
-                                "associatedLevel": 3
-                            },
-                            {
-                                "text": "The dataset catalogue is complete, well-maintained, and accessible both internally and externally.",
-                                "associatedLevel": 4
-                            },
-                            {
-                                "text": "The dataset catalogue is optimised for accessibility and continuously updated, with external re-users contributing to improvements and updates.",
-                                "associatedLevel": 5
-                            }
-                            ]
                         }
                     ]
                 },
