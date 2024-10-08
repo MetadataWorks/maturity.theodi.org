@@ -433,6 +433,11 @@ function updateHash(activityId) {
     } else {
         location.hash = activityId;
     }
+
+    const element = document.getElementById(activityId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function toggleNav() {
