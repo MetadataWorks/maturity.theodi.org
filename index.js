@@ -25,6 +25,8 @@ const { initializeScheduledJobs } = require('./controllers/hubspot');
 const app = express();
 const port = process.env.PORT || 3080;
 app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, "views")); // Ensure correct path
+
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, { dbName: mongoDB });
