@@ -167,7 +167,7 @@ app.get('/about', function(req, res) {
   res.render('pages/about');
 });
 
-app.use(ensureAuthenticated, express.static(__dirname + '/private'));
+// app.use(ensureAuthenticated, express.static(__dirname + '/private'));
 
 // Error handling
 app.get('/error', (req, res) => res.send("error logging in"));
