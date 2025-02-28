@@ -127,7 +127,6 @@ function unauthorised(res) {
 // Routes
 
 app.use(express.static(__dirname + '/public')); // Public directory
-app.use(express.static(path.join(__dirname, "lib")));
 
 
 // Use authentication routes
