@@ -29,7 +29,13 @@ app.set("views", path.join(__dirname, "views")); // Ensure correct path
 
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { dbName: mongoDB });
+mongoose.connect(mongoURI, {
+  dbName: mongoDB,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  tls: true, // Ensure TLS is enabled
+  serverSelectionTimeoutMS: 50000, // Increase timeout
+});
 
 const db = mongoose.connection;
 
