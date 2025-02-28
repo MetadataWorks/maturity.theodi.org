@@ -9,8 +9,7 @@ const { Document, Packer } = require('docx');
 const fs = require('fs');
 const path = require('path');
 
-router.get('/', async (req, res, next) => {
-// router.get('/', ensureAuthenticated, async (req, res, next) => {
+router.get('/', ensureAuthenticated, async (req, res, next) => {
     try {
         const userId = req.session.passport.user.id;
         const acceptHeader = req.get('Accept');
