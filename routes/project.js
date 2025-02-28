@@ -28,7 +28,8 @@ router.get('/', ensureAuthenticated, async (req, res, next) => {
 });
 
 router.get('/new', ensureAuthenticated, (req, res) => {
-    const page = { title: "Project details", link: "projectDetails" };
+    const page = { title: "Project details", link: "/projects" };
+    //    const page = { title: "Project details", link: "projectDetails" };
     res.locals.page = page;
     res.render('pages/projects/new');
 });
