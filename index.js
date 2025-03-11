@@ -170,10 +170,12 @@ app.use('/projects', projectRoutes);
 app.get('/', function(req, res) {
   const page = {
     title: "ODI Maturity Assessment Tool",
-    link: "/"
+    // link: "/"
+    link: "/auth/local"
   };
   res.locals.page = page;
-  res.render('pages/home');
+  // res.render('pages/home');
+  res.render('pages/auth/localLogin');
 });
 
 app.get('/about', function(req, res) {
