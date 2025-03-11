@@ -7,16 +7,7 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/theodi/maturity.theodi.org.git"
-  },
-  "author": "David Tarrant",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/theodi/maturity.theodi.org/issues"
-  },
-  "homepage": "https://github.com/theodi/maturity.theodi.org",
   "dependencies": {
     "@hubspot/api-client": "^11.1.0",
     "bcrypt": "^5.1.1",
