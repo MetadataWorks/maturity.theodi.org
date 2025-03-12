@@ -34,6 +34,7 @@ async function processLogin(req, res) {
   }
 }
 
+
 // Authentication route for Google
 router.get('/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
