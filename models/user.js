@@ -1,20 +1,27 @@
-// models/user.js
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const mongoose = require('mongoose');
+const UserSchema = new mongoose.Schema({
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true, unique: true }, // Email must be unique
+    username: { type: String, unique: true }, // ✅ Username is unique but NOT required in the form
+    password: { type: String, required: true }
+});
 
-// Create user schema and model
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: { type: String, unique: true, required: true },
-    password: String,
-    firstLogin: Date,
-    lastLogin: Date,
-    loginCount: Number,
-    lastLoginFormatted: String,
-  }, {
-    collection: 'Users' // Specify the collection name
-  });
+// ✅ Generate username before saving
+UserSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
 
-  const User = mongoose.model('User', userSchema);
+    // Hash password
+    this.password = await bcrypt.hash(this.password, 10);
 
-  module.exports = User;
+    // Auto-generate username if it's not set
+    if (!this.username) {
+        this.username = this.email.split("@")[0] + Math.floor(Math.random() * 1000); // Example: "john123"
+    }
+
+    next();
+});
+
+module.exports = mongoose.model("User", UserSchema);
