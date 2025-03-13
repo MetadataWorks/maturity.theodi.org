@@ -2,7 +2,7 @@ const ensureAuthenticated = (req, res, next) => {
     if (req.isAuthenticated())
       return next();
     else
-      unauthorised(res);
+    return res.redirect("/auth/local");
   };
 
   const redirectIfAuthenticated = (req, res, next) => {
@@ -12,17 +12,10 @@ const ensureAuthenticated = (req, res, next) => {
     next();
   };
 
-  const unauthorised = (res) => {
-    const page = {
-      title: "Error"
-    };
-    res.locals.page = page;
-    const error = new Error("Unauthorized access");
-    error.status = 401;
-    throw error;
-  }
-
   const pageNotFound = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+      return res.redirect("/auth/local");
+    }
     const page = {
       title: "404 Not Found"
     };
