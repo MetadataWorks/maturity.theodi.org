@@ -1,28 +1,24 @@
 <%- include('../../partials/header') %>
 
-<section class="page-title light-grey content-block">
-  <h1>Login</h1>
-</section>
-
-<section class="content-block light-grey">
+<section class="content-block-register">
   <div class="login-form-container">
-    
-    <!-- ✅ Show error message if exists -->
     <% if (error) { %>
       <div class="alert alert-danger" style="color: red; padding: 10px; margin-bottom: 10px;">
         <%= error %>
       </div>
     <% } %>
-
-    <form action="/auth/local" method="POST">
+    <form action="/auth/local" method="post" class="login-form">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" name="email" id="email" required />
       </div>
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input type="password" name="password" id="password" required />
+      </div>
+      <div class="form-group-btn">
+        <button type="submit">Login</button>
       </div>
 
       <button type="submit" class="btn btn-primary">Login</button>
