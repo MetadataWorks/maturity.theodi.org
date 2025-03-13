@@ -20,6 +20,9 @@ const UserSchema = new mongoose.Schema(
 UserSchema.pre("save", async function (next) {
   console.log("🔒 Hashing Password Before Save...");
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
+  if (!this.username) {
+    this.username = this.email.split("@")[0] + Math.floor(Math.random() * 1000); // Example: "john123"
+  }
   next();
 });
 
