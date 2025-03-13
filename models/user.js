@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const SALT_ROUNDS = 10;
+const SALT_ROUNDS = 12;
 
 const UserSchema = new mongoose.Schema({
     firstName: { type: String, required: true },
@@ -15,8 +15,6 @@ const UserSchema = new mongoose.Schema({
 
 // ✅ Ensure password is hashed only when modified
 UserSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) return next(); // ✅ Hash only if modified
-
     console.log("🔒 Hashing Password Before Save...");
     this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
     next();
