@@ -8,6 +8,7 @@ const sendResetEmail = require("../lib/sendEmail");
 const router = express.Router();
 const { retrieveUserByEmail, createNewUser } = require("../controllers/user");
 const User = require("../models/user");
+const SALT_ROUNDS = require("../models/user").SALT_ROUNDS;
 
 router.post("/local", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -201,7 +202,6 @@ router.get("/reset-password/:token", async (req, res) => {
 });
 
 // Handle New Password Submission
-
 router.post("/reset-password/:token", async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
@@ -211,7 +211,7 @@ router.post("/reset-password/:token", async (req, res) => {
 
     const user = await User.findOne({
       resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() }, // Check if token is still valid
+      resetPasswordExpires: { $gt: Date.now() },
     });
 
     if (!user) {
@@ -224,16 +224,17 @@ router.post("/reset-password/:token", async (req, res) => {
 
     console.log("✅ Valid token found for:", user.email);
 
-    // ✅ Hash new password before saving
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // ✅ Use consistent bcrypt salt rounds
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
+    console.log("🔐 Hashed Password:", hashedPassword);
+
     user.password = hashedPassword;
-    user.resetPasswordToken = null; // Clear reset token
-    user.resetPasswordExpires = null; // Clear token expiration
+    user.resetPasswordToken = null;
+    user.resetPasswordExpires = null;
     await user.save();
 
     console.log("✅ Password updated successfully for:", user.email);
-
-    res.redirect("/auth/local"); // Redirect to login page after successful reset
+    res.redirect("/auth/local");
   } catch (err) {
     console.error("❌ Reset Password Submission Error:", err);
     res.status(500).render("pages/auth/resetPassword", {
@@ -242,6 +243,5 @@ router.post("/reset-password/:token", async (req, res) => {
     });
   }
 });
-
 
 module.exports = router;
