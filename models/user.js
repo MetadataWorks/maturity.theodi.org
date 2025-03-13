@@ -6,7 +6,9 @@ const UserSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true }, // Email must be unique
     username: { type: String, unique: true }, // ✅ Username is unique but NOT required in the form
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    resetPasswordToken: { type: String, default: null },
+    resetPasswordExpires: { type: Date, default: null }
 });
 
 // ✅ Generate username before saving

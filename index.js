@@ -153,14 +153,26 @@ app.use("/assessments", assessmentsRoutes);
 app.use("/projects", assistantRoutes);
 app.use("/projects", projectRoutes);
 
-app.get("/", function (req, res) {
-  const page = {
-    title: "Data Maturity Assessment Tool",
-    link: "/auth/local",
-  };
-  res.locals.page = page;
-  res.render("pages/auth/localLogin");
+app.get("/", function (req, res, next) {
+  try {
+    console.log("🟢 Rendering Login Page...");
+
+    const page = {
+      title: "Data Maturity Assessment Tool",
+      link: "/auth/local",
+    };
+
+    res.render("pages/auth/localLogin", {
+      page,
+      error: null // ✅ Ensure 'error' is always defined
+    });
+  } catch (err) {
+    console.error("❌ Error in / Route:", err);
+    next(err);
+  }
 });
+
+
 
 app.get("/about", function (req, res) {
   const page = {
