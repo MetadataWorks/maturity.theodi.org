@@ -44,6 +44,14 @@ router.get("/local", (req, res) => {
   });
 });
 
+router.get("/register", (req, res) => {
+  res.render("pages/auth/register", {
+    page: { title: "Register", link: "/auth/register" },
+    error: null,
+    formData: {},
+  });
+});
+
 router.post("/register", async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
