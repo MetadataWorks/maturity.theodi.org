@@ -530,7 +530,7 @@ fieldset .form-group {
 }
 /* HEADER END */
 
-/* LOGIN-REGISTER FORM START */
+/* LOGIN-REGISTER-FORGOT-RESET FORM START */
 .content-block-register {
   padding: 20px;
   max-width: 1200px;
@@ -538,6 +538,14 @@ fieldset .form-group {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.content-block-register .error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+.content-block-register .success-message {
+  color: green;
+  margin-bottom: 10px;
+}
 .login-form-container {
   box-shadow: 0px 0px 18px 0px #ededed;
   width: 478px;
@@ -563,7 +571,7 @@ fieldset .form-group {
   border-radius: 3px !important;
   height: 38px;
   width: 97%;
-  padding: 0 0 0  10px;
+  padding: 0 0 0 10px;
   margin: 0px;
 }
 .login-form #firstName,
@@ -587,7 +595,6 @@ fieldset .form-group {
   display: flex;
   justify-content: end;
   padding-top: 10px;
-
 }
 .form-group-btn button {
   background-color: #243167;
@@ -598,7 +605,7 @@ fieldset .form-group {
   font-size: 16px;
   cursor: pointer;
   font-weight: 700;
-    margin: 0px;
+  margin: 0px;
 }
 .form-group-btn button:hover {
   background-color: #1a2653;
@@ -606,7 +613,11 @@ fieldset .form-group {
   transform: translateY(-1px);
   filter: brightness(110%);
 }
-/* LOGIN-REGISTER FORM END */
+
+.form-group-btn button:focus {
+  box-shadow: none;
+}
+/* LOGIN-REGISTER-FORGOT-RESET FORM END */
 
 .flexcontainer {
   display: flex;
