@@ -1,22 +1,36 @@
 <%- include('../../partials/header') %>
-<section class="page-title light-grey content-block">
-  <h1>Login</h1>
-</section>
-<section class="content-block light-grey">
+
+<section class="content-block-register">
   <div class="login-form-container">
-    <form action="/auth/local" method="post">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+    <% if (error) { %>
+      <div class="alert alert-danger error-message">
+        <%= error %>
       </div>
+    <% } %>
+    <form action="/auth/local" method="post" class="login-form">
       <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
       </div>
+
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Login</button>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required />
       </div>
+      <div class="form-group-btn">
+        <button type="submit">Login</button>
+      </div>
+
     </form>
+
+    <!-- ✅ Show "Forgot Password?" link only if error is "Incorrect email or password" -->
+    <% if (error === "Incorrect email or password") { %>
+      <p>Forgot your password? <a href="/auth/forgot-password">Click here</a></p>
+    <% } %>
+
+    <p>Don't have an account? <a href="/auth/register">Register here</a></p>
+
   </div>
 </section>
+
 <%- include('../../partials/footer') %>

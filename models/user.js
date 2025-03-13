@@ -1,20 +1,27 @@
-// models/user.js
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const mongoose = require('mongoose');
+const SALT_ROUNDS = 12;
 
-// Create user schema and model
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: { type: String, unique: true, required: true },
-    password: String,
-    firstLogin: Date,
-    lastLogin: Date,
-    loginCount: Number,
-    lastLoginFormatted: String,
-  }, {
-    collection: 'Users' // Specify the collection name
-  });
+const UserSchema = new mongoose.Schema(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    username: { type: String, unique: true },
+    password: { type: String, required: true },
+    resetPasswordToken: { type: String, default: null },
+    resetPasswordExpires: { type: Date, default: null },
+  },
+  { collection: "users" }
+);
 
-  const User = mongoose.model('User', userSchema);
+// ✅ Ensure password is hashed only when modified
+UserSchema.pre("save", async function (next) {
+  console.log("🔒 Hashing Password Before Save...");
+  this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
+  next();
+});
 
-  module.exports = User;
+module.exports = mongoose.model("User", UserSchema);
+module.exports.SALT_ROUNDS = SALT_ROUNDS;

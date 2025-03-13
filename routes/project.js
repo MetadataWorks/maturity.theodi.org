@@ -11,9 +11,8 @@ const path = require('path');
 
 router.get('/', ensureAuthenticated, async (req, res, next) => {
     try {
-        const userId = req.session.passport.user.id;
+        const userId = req.user._id;
         const acceptHeader = req.get('Accept');
-
         if (acceptHeader === 'application/json') {
             const userProjects = await projectController.getUserProjects(userId);
             return res.json(userProjects);
@@ -23,6 +22,7 @@ router.get('/', ensureAuthenticated, async (req, res, next) => {
             return res.render('pages/projects/view');
         }
     } catch (error) {
+        console.log('projects error', error);
         next(error);
     }
 });
@@ -104,7 +104,7 @@ router.get('/:id/report', ensureAuthenticated, checkProjectAccess, async (req, r
 
 router.post('/', ensureAuthenticated, async (req, res) => {
     try {
-        const userId = req.session.passport.user.id;
+        const userId = req.user._id;
         const project = await projectController.createProject(req.body, userId);
         res.status(201).json(project);
     } catch (error) {

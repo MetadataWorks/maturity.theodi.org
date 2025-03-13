@@ -3,8 +3,8 @@ const Assessment = require('../models/assessment');
 // GET / - Get all assessments (filtered by user's access)
 exports.getAllAssessments = async (req, res) => {
   try {
-    const userId = req.session.passport.user.id;
-    const userEmail = req.session.passport.user.email;
+    const userId = req.user._id;
+    const userEmail = req.user.email;
 
     // Find assessments that are public, owned by the user, or shared with the user
     const assessments = await Assessment.find({

@@ -1,153 +1,200 @@
-// authRoutes.js
-
-const express = require('express');
-const passport = require('../passport'); // Require the passport module
-
-const { deleteLocalProjectsAndAccounts, retrieveOrCreateUser, updateDefaultPassword, getDefaultPassword } = require('../controllers/user');
-const { getHubspotUser, getHubspotProfile } = require('../controllers/hubspot');
-const { ensureAuthenticated } = require('../middleware/auth');
-const { getUserProjects } = require('../controllers/project');
-
+const express = require("express");
+const passport = require("../passport"); // Require the passport module
+const crypto = require("crypto");
+const sendResetEmail = require("../lib/sendEmail");
 const router = express.Router();
+const { retrieveUserByEmail, createNewUser } = require("../controllers/user");
+const User = require("../models/user");
+const { redirectIfAuthenticated } = require("../middleware/auth");
 
-async function processLogin(req, res) {
-  try {
-    const profile = req.session.passport ? req.session.passport.user : req.session.user;
-    const user = await retrieveOrCreateUser(profile);
-
-    // Update last login data
-    user.lastLoginFormatted = user.lastLogin.toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
-    user.lastLogin = new Date();
-    user.loginCount = user.loginCount + 1;
-
-    // Save the user
-    await user.save();
-
-    req.session.passport.user.id = user._id;
-
-    if (req.session.authMethod !== 'local') {
-      await getHubspotUser(user._id,user.email);
+router.post("/local", redirectIfAuthenticated, (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      console.error("❌ Login Error:", err);
+      return res.status(500).render("pages/auth/localLogin", {
+        page: { title: "Login", link: "/auth/local" },
+        error: "Internal Server Error. Please try again later.",
+      });
     }
 
-  } catch (error) {
-    console.log(error);
-  }
-}
+    if (!user) {
+      return res.status(400).render("pages/auth/localLogin", {
+        page: { title: "Login", link: "/auth/local" },
+        error: info.message || "Incorrect email or password.",
+      });
+    }
 
-// Authentication route for Google
-router.get('/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
-);
-
-// Authentication route for Django
-router.get('/django',
-  passport.authenticate('django')
-);
-
-// Callback endpoint for Google authentication
-router.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: '/error' }),
-  async (req, res) => {
-    req.session.authMethod = 'google';
-    // Successful authentication, redirect to profile page or wherever needed
-    await processLogin(req);
-    res.redirect('/projects');
-  }
-);
-
-// Callback endpoint for Django authentication
-router.get('/django/callback',
-  passport.authenticate('django', { failureRedirect: '/error' }),
-  async (req, res) => {
-    req.session.authMethod = 'django';
-    await processLogin(req);
-    res.redirect('/projects');
-  }
-);
-
-// Authentication route for local accounts
-router.post('/local',
-  passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
-  async (req, res) => {
-    req.session.authMethod = 'local';
-    await processLogin(req);
-    res.redirect('/projects');
-  }
-);
+    req.logIn(user, (err) => {
+      if (err) {
+        console.error("❌ Login Session Error:", err);
+        return res.status(500).render("pages/auth/localLogin", {
+          page: { title: "Login", link: "/auth/local" },
+          error: "Login session error. Please try again.",
+        });
+      }
+      return res.redirect("/projects"); // Redirect to dashboard after successful login
+    });
+  })(req, res, next);
+});
 
 // Render local login page
-router.get('/local', (req, res) => {
-  res.render('pages/auth/localLogin', {
-    page: {
-      title: 'Local Login',
-      link: '/login'
-    }
+router.get("/local", redirectIfAuthenticated, (req, res) => {
+  res.render("pages/auth/localLogin", {
+    page: { title: "Local Login", link: "/login" },
+    error: null,
   });
 });
 
-// Route to render reset password page for local users
-router.get('/local/reset-password', ensureAuthenticated,  (req, res) => {
-  res.render('pages/auth/changeLocalPassword', {
-    page: {
-      title: 'Reset Local Account Password',
-      link: '/reset-password'
-    }
+router.get("/register", redirectIfAuthenticated, (req, res) => {
+  res.render("pages/auth/register", {
+    page: { title: "Register", link: "/auth/register" },
+    error: null,
+    formData: {},
   });
 });
 
-// Get local password
-router.get('/local/password', ensureAuthenticated, async (req, res) => {
-  let currentPassword = await getDefaultPassword();
-  res.json({ currentPassword: currentPassword });
-});
-
-// Route to handle password reset
-router.post('/local/password', ensureAuthenticated, async (req, res, next) => {
-  const { newPassword } = req.body;
+router.post("/register", redirectIfAuthenticated, async (req, res) => {
   try {
-    // Delete all local projects and accounts before updating the password
-    await deleteLocalProjectsAndAccounts();
+    const { firstName, lastName, email, password } = req.body;
 
-    // Update local accounts password
-    await updateDefaultPassword(newPassword);
+    if (!firstName || !lastName || !email || !password) {
+      return res.status(400).render("pages/auth/register", {
+        page: { title: "Register", link: "/auth/register" },
+        error: "All fields are required.",
+        formData: { firstName, lastName, email },
+      });
+    }
 
-    res.status(200).json({ message: 'Password reset successfully and previous local users and projects deleted.' });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send('Internal Server Error');
+    const userExists = await retrieveUserByEmail(email);
+    if (userExists) {
+      return res.status(400).render("pages/auth/register", {
+        page: { title: "Register", link: "/auth/register" },
+        error: "User with this email already exists.",
+        formData: { firstName, lastName, email },
+      });
+    }
+
+    await createNewUser({ firstName, lastName, email, password });
+
+    res.redirect("/auth/local");
+  } catch (err) {
+    console.error("❌ Registration Error:", err);
+    return res.status(500).render("pages/auth/register", {
+      page: { title: "Register", link: "/auth/register" },
+      error: "Internal Server Error. Please try again later.",
+      formData: req.body,
+    });
   }
 });
 
-router.get('/profile', ensureAuthenticated, async (req, res) => {
-  res.locals.userProfile = await retrieveOrCreateUser(res.locals.user);
-  res.locals.userProfile.hubspot = await getHubspotProfile(res.locals.userProfile.id);
-  const page = {
-    title: "Profile page",
-    link: "/profile"
-  };
-  res.locals.page = page;
-  res.render('pages/auth/profile');
+// Render Forgot Password Page
+router.get("/forgot-password", redirectIfAuthenticated, (req, res) => {
+  res.render("pages/auth/forgotPassword", {
+    page: { title: "Forgot Password", link: "/auth/forgot-password" },
+    error: null,
+    message: null,
+  });
 });
 
-router.delete('/profile', ensureAuthenticated, async (req, res, next) => {
+// Forgot Password API
+router.post("/forgot-password", redirectIfAuthenticated, async (req, res) => {
+  const { email } = req.body;
+
   try {
-      // Get the user ID from the authenticated user
-      const userId = req.session.passport.user.id;
+    const user = await retrieveUserByEmail(email);
+    if (!user) {
+      return res.status(400).render("pages/auth/forgotPassword", {
+        page: { title: "Forgot Password" },
+        error: "No user found with that email.",
+        message: null,
+      });
+    }
 
-      // Check if the user has any projects
-      const userProjects = await getUserProjects(userId);
-      const ownedProjects = userProjects.ownedProjects;
+    // Generate reset token
+    const resetToken = crypto.randomBytes(20).toString("hex");
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour expiry
 
-      if (ownedProjects.length === 0) {
-          // If the user has no projects, delete the user
-          await deleteUser(userId)
-          res.status(200).json({ message: "User deleted successfully." });
-      } else {
-          // If the user has projects, send a message indicating deletion is not allowed
-          res.status(403).json({ error: "User cannot be deleted because they have projects. Please delete all owned projects first." });
-      }
-  } catch (error) {
-      next(error);
+    await user.save();
+
+    // Send reset email
+    const resetLink = `http://localhost:3080/auth/reset-password/${resetToken}`;
+    await sendResetEmail(user.email, resetLink);
+
+    res.render("pages/auth/forgotPassword", {
+      page: { title: "Forgot Password" },
+      message: "Password reset link has been sent to your email.",
+      error: null,
+    });
+  } catch (err) {
+    console.error("❌ Forgot Password API Error:", err);
+    return res.status(500).render("pages/auth/forgotPassword", {
+      page: { title: "Forgot Password" },
+      error: "Internal server error. Please try again later.",
+      message: null,
+    });
+  }
+});
+
+// Render Reset Password Page
+router.get("/reset-password/:token", redirectIfAuthenticated, async (req, res) => {
+  const { token } = req.params;
+
+  try {
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).render("pages/auth/resetPassword", {
+        page: { title: "Reset Password" },
+        error: "Invalid or expired token.",
+      });
+    }
+
+    res.render("pages/auth/resetPassword", {
+      page: { title: "Reset Password" },
+      token,
+      error: null,
+    });
+  } catch (err) {
+    console.error("❌ Reset Password Route Error:", err);
+    res.status(500).send("Internal Server Error - Something went wrong.");
+  }
+});
+
+// Handle New Password Submission
+router.post("/reset-password/:token", redirectIfAuthenticated, async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+
+  try {
+    const user = await User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+
+    if (!user) {
+      return res.status(400).render("pages/auth/resetPassword", {
+        page: { title: "Reset Password" },
+        error: "Invalid or expired token.",
+      });
+    }
+
+    user.password = password;
+    user.resetPasswordToken = null;
+    user.resetPasswordExpires = null;
+
+    await user.save();
+
+    res.redirect("/auth/local");
+  } catch (err) {
+    console.error("❌ Reset Password Submission Error:", err);
+    res.status(500).render("pages/auth/resetPassword", {
+      page: { title: "Reset Password" },
+      error: "Internal server error. Please try again later.",
+    });
   }
 });
 
