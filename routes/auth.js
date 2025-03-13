@@ -5,8 +5,9 @@ const sendResetEmail = require("../lib/sendEmail");
 const router = express.Router();
 const { retrieveUserByEmail, createNewUser } = require("../controllers/user");
 const User = require("../models/user");
+const { redirectIfAuthenticated } = require("../middleware/auth");
 
-router.post("/local", (req, res, next) => {
+router.post("/local", redirectIfAuthenticated, (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       console.error("❌ Login Error:", err);
@@ -37,14 +38,14 @@ router.post("/local", (req, res, next) => {
 });
 
 // Render local login page
-router.get("/local", (req, res) => {
+router.get("/local", redirectIfAuthenticated, (req, res) => {
   res.render("pages/auth/localLogin", {
     page: { title: "Local Login", link: "/login" },
     error: null,
   });
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", redirectIfAuthenticated, (req, res) => {
   res.render("pages/auth/register", {
     page: { title: "Register", link: "/auth/register" },
     error: null,
@@ -52,7 +53,7 @@ router.get("/register", (req, res) => {
   });
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", redirectIfAuthenticated, async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
 
@@ -87,7 +88,7 @@ router.post("/register", async (req, res) => {
 });
 
 // Render Forgot Password Page
-router.get("/forgot-password", (req, res) => {
+router.get("/forgot-password", redirectIfAuthenticated, (req, res) => {
   res.render("pages/auth/forgotPassword", {
     page: { title: "Forgot Password", link: "/auth/forgot-password" },
     error: null,
@@ -96,7 +97,7 @@ router.get("/forgot-password", (req, res) => {
 });
 
 // Forgot Password API
-router.post("/forgot-password", async (req, res) => {
+router.post("/forgot-password", redirectIfAuthenticated, async (req, res) => {
   const { email } = req.body;
 
   try {
@@ -136,7 +137,7 @@ router.post("/forgot-password", async (req, res) => {
 });
 
 // Render Reset Password Page
-router.get("/reset-password/:token", async (req, res) => {
+router.get("/reset-password/:token", redirectIfAuthenticated, async (req, res) => {
   const { token } = req.params;
 
   try {
@@ -164,7 +165,7 @@ router.get("/reset-password/:token", async (req, res) => {
 });
 
 // Handle New Password Submission
-router.post("/reset-password/:token", async (req, res) => {
+router.post("/reset-password/:token", redirectIfAuthenticated, async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
 

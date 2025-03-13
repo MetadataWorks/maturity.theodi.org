@@ -1,8 +1,8 @@
 const Hubspot = require('../models/hubspot');
 
 const isMember = async (req, res, next) => {
-    const user = req.session.passport.user;
-    const userId = user.id; // Assuming user ID is available in req.user after authentication
+    const user = req.user;
+    const userId = user._id; // Assuming user ID is available in req.user after authentication
 
     // 1. Look up the user in the HubSpot table to find if membershipStatus is "Active"
     const hubspotUser = await Hubspot.findOne({ userId });

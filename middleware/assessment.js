@@ -4,8 +4,8 @@ const Assessment = require('../models/assessment'); // Import your Assessment mo
 const canAccessAssessment = async (req, res, next) => {
     try {
         const assessmentId = req.params.assessmentID;
-        const userId = req.session.passport.user.id;
-        const userEmail = req.session.passport.user.email;
+        const userId = req.user._id;
+        const userEmail = req.user.email;
 
         // Find the assessment by ID
         const assessment = await Assessment.findById(assessmentId);
@@ -46,8 +46,8 @@ const canAccessAssessment = async (req, res, next) => {
 const canAdminAssessment = async (req, res, next) => {
     try {
         const assessmentId = req.params.assessmentID;
-        const userId = req.session.passport.user.id;
-        const userEmail = req.session.passport.user.email;
+        const userId = req.user._id;
+        const userEmail = req.user.email;
 
         // Find the assessment by ID
         const assessment = await Assessment.findById(assessmentId);

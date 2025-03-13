@@ -88,10 +88,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req, res, next) {
-  res.locals.user = req.session.passport
-    ? req.session.passport.user
-    : req.session.user;
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
   next();
 });
 
@@ -154,25 +152,11 @@ app.use("/projects", assistantRoutes);
 app.use("/projects", projectRoutes);
 
 app.get("/", function (req, res, next) {
-  try {
-    console.log("🟢 Rendering Login Page...");
-
-    const page = {
-      title: "Data Maturity Assessment Tool",
-      link: "/auth/local",
-    };
-
-    res.render("pages/auth/localLogin", {
-      page,
-      error: null // ✅ Ensure 'error' is always defined
-    });
-  } catch (err) {
-    console.error("❌ Error in / Route:", err);
-    next(err);
+  if (req.isAuthenticated()) {
+    return res.redirect("/projects"); // ✅ Redirect logged-in users to projects
   }
+  return res.redirect("/auth/local");
 });
-
-
 
 app.get("/about", function (req, res) {
   const page = {

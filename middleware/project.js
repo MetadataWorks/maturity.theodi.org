@@ -9,7 +9,7 @@ const loadProject = async (req, res, next) => {
     }
     if (req.session.projectId) {
         const id = req.session.projectId;
-        const userId = req.session.passport.user.id;
+        const userId = req.user._id;
         try {
             // Find the project by ID
             const project = await Project.findById(id);
@@ -40,8 +40,8 @@ const loadProject = async (req, res, next) => {
 const checkProjectAccess = async (req, res, next) => {
     try {
         const projectId = req.params.id;
-        const userId = req.session.passport.user.id;
-        const userEmail = req.session.passport.user.email;
+        const userId = req.user._id;
+        const userEmail = req.user.email;
 
         // Find the project by ID
         const project = await Project.findById(projectId);
@@ -77,7 +77,7 @@ const checkProjectAccess = async (req, res, next) => {
 const checkProjectOwner = async(req, res, next) => {
     try {
         const projectId = req.params.id;
-        const userId = req.session.passport.user.id;
+        const userId = req.user._id;
 
         // Find the project by ID
         const project = await Project.findById(projectId);

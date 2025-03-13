@@ -5,6 +5,13 @@ const ensureAuthenticated = (req, res, next) => {
       unauthorised(res);
   };
 
+  const redirectIfAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+      return res.redirect("/projects"); // ✅ Redirect to dashboard if already logged in
+    }
+    next();
+  };
+
   const unauthorised = (res) => {
     const page = {
       title: "Error"
@@ -54,4 +61,4 @@ const ensureAuthenticated = (req, res, next) => {
     }
   };
 
-module.exports = { ensureAuthenticated, pageNotFound, errorHandlingMiddleware };
+module.exports = { ensureAuthenticated, pageNotFound, errorHandlingMiddleware, redirectIfAuthenticated };
