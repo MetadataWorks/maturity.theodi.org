@@ -189,7 +189,14 @@ router.post("/reset-password/:token", redirectIfAuthenticated, async (req, res) 
 
     await user.save();
 
-    res.redirect("/auth/local");
+    req.logout(function (err) {
+      if (err) return next(err);
+    
+      // ✅ Destroy all active sessions after reset
+      req.session.destroy(() => {
+        res.redirect("/auth/local"); // Redirect to login page
+      });
+    });
   } catch (err) {
     console.error("❌ Reset Password Submission Error:", err);
     res.status(500).render("pages/auth/resetPassword", {
