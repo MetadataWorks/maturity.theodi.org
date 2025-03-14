@@ -99,7 +99,7 @@ router.get("/forgot-password", redirectIfAuthenticated, (req, res) => {
 // Forgot Password API
 router.post("/forgot-password", redirectIfAuthenticated, async (req, res) => {
   const { email } = req.body;
-  const apiUrl = process.env.HOST || "http://localhost:3000";
+  const apiUrl = process.env.BASE_URL || "http://localhost:3080";
 
   try {
     const user = await retrieveUserByEmail(email);
