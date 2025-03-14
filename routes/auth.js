@@ -99,6 +99,7 @@ router.get("/forgot-password", redirectIfAuthenticated, (req, res) => {
 // Forgot Password API
 router.post("/forgot-password", redirectIfAuthenticated, async (req, res) => {
   const { email } = req.body;
+  const apiUrl = process.env.BASE_URL || "http://localhost:3080";
 
   try {
     const user = await retrieveUserByEmail(email);
@@ -118,7 +119,7 @@ router.post("/forgot-password", redirectIfAuthenticated, async (req, res) => {
     await user.save();
 
     // Send reset email
-    const resetLink = `http://localhost:3080/auth/reset-password/${resetToken}`;
+    const resetLink = `${apiUrl}/auth/reset-password/${resetToken}`;
     await sendResetEmail(user.email, resetLink);
 
     res.render("pages/auth/forgotPassword", {
