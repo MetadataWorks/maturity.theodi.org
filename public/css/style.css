@@ -529,6 +529,16 @@ fieldset .form-group {
   color: #ead1dc;
   text-decoration: none;
 }
+@media (max-width: 1500px) {
+  .nav-link {
+    font-size: 14px;
+  }
+  .demo-button {
+    padding: 9px 22px;
+    font-size: 16px;
+  }
+}
+
 /* HEADER END */
 
 /* LOGIN-REGISTER-FORGOT-RESET FORM START */
