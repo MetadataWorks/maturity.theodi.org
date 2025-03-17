@@ -681,7 +681,7 @@ async function getAIDimensionSummary(dimensionData) {
         // Check if the response is successful
         if (!response.ok) {
             const errorData = await response.json();
-            if (response.status === 403 && errorData.message === "You need to be an ODI member to access AI summaries") {
+            if (response.status === 403 && errorData.message === "You need to be a MDW member to access AI summaries.") {
                 return errorData.message;
             } else {
                 throw new Error(`Failed to fetch AI executive summary: ${response.statusText}`);
@@ -723,7 +723,7 @@ async function getAIActivitySummary(activityData,dimensionName) {
         // Check if the response is successful
         if (!response.ok) {
             const errorData = await response.json();
-            if (response.status === 403 && errorData.message === "You need to be an ODI member to access AI summaries") {
+            if (response.status === 403 && errorData.message === "You need to be a MDW member to access AI summaries.") {
                 return errorData.message;
             } else {
                 throw new Error(`Failed to fetch AI executive summary: ${response.statusText}`);
@@ -759,7 +759,7 @@ async function getAIExecutiveSummary() {
         // If the response is not successful, handle it
         if (!response.ok) {
             const errorData = await response.json();
-            if (response.status === 403 && errorData.message === "You need to be an ODI member to access AI summaries") {
+            if (response.status === 403 && errorData.message === "You need to be a MDW member to access AI summaries.") {
                 return errorData.message;
             } else {
                 throw new Error(`Failed to fetch AI executive summary: ${response.statusText}`);

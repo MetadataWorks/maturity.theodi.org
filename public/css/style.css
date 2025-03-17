@@ -468,7 +468,7 @@ fieldset .form-group {
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -493,6 +493,7 @@ fieldset .form-group {
   list-style: none;
   display: flex;
   gap: 35px;
+  align-items: center;
 }
 
 .nav li {
@@ -528,6 +529,16 @@ fieldset .form-group {
   color: #ead1dc;
   text-decoration: none;
 }
+@media (max-width: 1500px) {
+  .nav-link {
+    font-size: 14px;
+  }
+  .demo-button {
+    padding: 9px 22px;
+    font-size: 16px;
+  }
+}
+
 /* HEADER END */
 
 /* LOGIN-REGISTER-FORGOT-RESET FORM START */

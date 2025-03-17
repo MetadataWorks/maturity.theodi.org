@@ -10,7 +10,11 @@ const isMember = async (req, res, next) => {
         // If membershipStatus is active, proceed to the next middleware or route handler
         return next();
     } else {
-        return res.status(403).json({ message: `You need to be an ODI member to access AI summaries` });
+        return res
+          .status(403)
+          .json({
+            message: `You need to be a MDW member to access AI summaries.`,
+          });
     }
 }
 
