@@ -468,7 +468,7 @@ fieldset .form-group {
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -493,6 +493,7 @@ fieldset .form-group {
   list-style: none;
   display: flex;
   gap: 35px;
+  align-items: center;
 }
 
 .nav li {
