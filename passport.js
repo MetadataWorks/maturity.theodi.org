@@ -3,6 +3,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const { retrieveUserByEmail } = require("./controllers/user");
 const User = require("./models/user");
+const { getHubspotUser } = require("./controllers/hubspot");
 
 passport.use(
   "local",
@@ -23,7 +24,7 @@ passport.use(
           console.log("❌ Password does not match");
           return done(null, false, { message: "Incorrect email or password" });
         }
-
+        await getHubspotUser(user._id, email);
         return done(null, user);
       } catch (err) {
         console.error("❌ Error in LocalStrategy:", err);
