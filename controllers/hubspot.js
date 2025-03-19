@@ -33,6 +33,38 @@ const formatDate = (date) => {
     return `${year}-${month}-${day}`;
 };
 
+async function createHubspotContact({_id, email, firstName, lastName}) {
+    try {
+        // ✅ Remove `lifecycle_stage` since it's not supported
+        const createContactRequest = {
+            properties: {
+                email: email,
+                firstname: firstName,
+                lastname: lastName
+            }
+        };
+
+        const newContact = await hubspotClient.crm.contacts.basicApi.create(createContactRequest);
+        const hubSpotId = newContact.id;
+
+        // Store the new contact in MongoDB
+        const newRecord = new Hubspot({
+            userId: _id,
+            hubSpotId,
+            companyMembership: false, // Default value; can be updated later
+            membershipStatus: "Unknown", // Default value
+            membershipType: "Not Specified" // Default value
+        });
+
+        await newRecord.save();
+
+        return hubSpotId; // Return HubSpot ID for reference
+    } catch (error) {
+        console.error("❌ Error in createHubspotContact:", error);
+    }
+}
+
+
 async function getHubspotUser(userId, email) {
     try {
         const contactSearchRequest = {
@@ -221,4 +253,4 @@ function initializeScheduledJobs() {
     console.log('Scheduled updateToolStatistics job initialized to run every hour.');
 }
 
-module.exports = { getHubspotUser, getHubspotProfile, updateToolStatistics, initializeScheduledJobs };
+module.exports = { getHubspotUser, getHubspotProfile, updateToolStatistics, initializeScheduledJobs, createHubspotContact };

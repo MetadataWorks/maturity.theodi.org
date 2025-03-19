@@ -6,6 +6,7 @@ const router = express.Router();
 const { retrieveUserByEmail, createNewUser } = require("../controllers/user");
 const User = require("../models/user");
 const { redirectIfAuthenticated } = require("../middleware/auth");
+const { createHubspotContact } = require("../controllers/hubspot");
 
 router.post("/local", redirectIfAuthenticated, (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -74,8 +75,10 @@ router.post("/register", redirectIfAuthenticated, async (req, res) => {
       });
     }
 
-    await createNewUser({ firstName, lastName, email, password });
-
+    const user = await createNewUser({ firstName, lastName, email, password });
+    if(user) {
+      await createHubspotContact(user);
+    }
     res.redirect("/auth/local");
   } catch (err) {
     console.error("❌ Registration Error:", err);

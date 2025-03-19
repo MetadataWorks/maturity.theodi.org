@@ -1,7 +1,7 @@
 {
-  "name": "maturity.theodi.org",
+  "name": "metadataworks",
   "version": "2.0.1",
-  "description": "The ODI Maturity Assessment Tool",
+  "description": "The MDW Maturity Assessment Tool",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
