@@ -275,13 +275,13 @@ router.get('/:id/assistant/getExecutiveSummary', ensureAuthenticated, checkProje
     try {
         const projectId = req.params.id;
 
-        // 1. Retrieve the project data from the database
-        let projectData = await Project.findById(projectId);
+        // 1. Retrieve the project data
+        const projectData = await Project.findById(projectId);
         if (!projectData) {
             return res.status(404).json({ error: 'Project not found' });
         }
 
-        // 2. Retrieve the assessment details to get the title
+        // 2. Get the assessment details
         const assessmentId = projectData.assessment;
         const assessmentData = await Assessment.findById(assessmentId);
         if (!assessmentData) {
@@ -289,66 +289,49 @@ router.get('/:id/assistant/getExecutiveSummary', ensureAuthenticated, checkProje
         }
 
         const assessmentTitle = assessmentData.title;
-
-        // 3. Get all dimensions
         const dimensions = projectData.assessmentData.dimensions;
 
-        // 4. Wait for dimension summaries to be populated (up to 30 seconds)
-        let waitTime = 0;
-        while (!(await checkDimensionSummariesExist(projectData, dimensions)) && waitTime < MAX_WAIT_TIME) {
-            await new Promise(resolve => setTimeout(resolve, RETRY_INTERVAL));
-            waitTime += RETRY_INTERVAL;
-
-            // Reload the project data to check for updates
-            projectData = await Project.findById(projectId);
+        // ✅ Check if all dimension summaries exist
+        const allReady = await checkDimensionSummariesExist(projectData, dimensions);
+        if (!allReady) {
+            return res.status(202).json({ message: 'Dimension summaries are still being processed. Try again shortly.' });
         }
 
-        // 5. If dimension summaries still don't exist, return an error
-        if (!(await checkDimensionSummariesExist(projectData, dimensions))) {
-            return res.status(500).json({ error: 'Dimension summaries could not be generated in time.' });
-        }
-
-        // 6. Gather the AI Summaries for all dimensions
+        // 3. Collect dimension summaries
         const dimensionSummaries = dimensions.map(dim => ({
             name: dim.name,
             summary: dim.aiResponse.summary
         }));
 
-        // 7. Generate a hash of the dimension summaries to check for changes
         const summaryHash = generateHash(dimensionSummaries);
 
-        // 8. Check if the executive summary already exists and hasn't changed
-        if (projectData.assessmentData.aiExecutiveSummary &&
-            projectData.assessmentData.aiExecutiveSummary.hash === summaryHash) {
-            // The hash hasn't changed, return the cached response
+        // 4. Return cached version if hash hasn’t changed
+        if (
+            projectData.assessmentData.aiExecutiveSummary &&
+            projectData.assessmentData.aiExecutiveSummary.hash === summaryHash
+        ) {
             return res.json({ summary: projectData.assessmentData.aiExecutiveSummary.summary });
         }
 
-        // 9. Prepare the prompt with all dimension summaries
+        // 5. Generate the executive summary prompt
         let prompt = `A user is completing a maturity assessment entitled ${assessmentTitle}. The following are the dimension summaries:\n\n`;
-
         dimensionSummaries.forEach(({ name, summary }) => {
             prompt += `Dimension: ${name}\nSummary: ${summary}\n\n`;
         });
-
         prompt += "Create an executive summary that provides an overall assessment of the user's progress and offers recommendations for next steps. Start with the summary paragraph and DO NOT include a title or heading at the start.";
 
-        // 10. Generate AI summary for the executive summary
-        const executiveSummary = await getAIReponse(prompt,(responseTokens * 2));
+        // 6. Get AI response
+        const executiveSummary = await getAIReponse(prompt, responseTokens * 2);
 
-        // 11. Cache the executive summary and hash
+        // 7. Save the executive summary
         projectData.assessmentData.aiExecutiveSummary = {
             hash: summaryHash,
             summary: executiveSummary
         };
-
-        // 12. Mark the specific path as modified
         projectData.markModified('assessmentData.aiExecutiveSummary');
-
-        // 13. Save the updated project data with the cached executive summary
         await projectData.save();
 
-        // 14. Send the executive summary as the response
+        // 8. Return the summary
         res.json({ summary: executiveSummary });
 
     } catch (error) {
@@ -356,5 +339,6 @@ router.get('/:id/assistant/getExecutiveSummary', ensureAuthenticated, checkProje
         res.status(500).json({ error: 'An error occurred while generating the executive summary' });
     }
 });
+
 
 module.exports = router;
