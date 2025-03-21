@@ -1,6 +1,44 @@
 .ai-response strong {
-    color: var(--color-dark-blue);
+  color: var(--color-dark-blue);
 }
 .ai-response h2 {
-    font-size: 1em;
+  font-size: 1em;
+}
+
+.ai-loading {
+  font-style: italic;
+  color: #888;
+  margin-top: 1rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Optional: subtle animation */
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
