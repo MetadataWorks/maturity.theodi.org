@@ -6,7 +6,8 @@ const isMember = async (req, res, next) => {
 
     // 1. Look up the user in the HubSpot table to find if membershipStatus is "Active"
     const hubspotUser = await Hubspot.findOne({ userId });
-    if (hubspotUser && hubspotUser.membershipStatus === "Active") {
+    console.log('hubspotUser', hubspotUser);
+    if (hubspotUser /* && hubspotUser.membershipStatus === "Active" */) {
         // If membershipStatus is active, proceed to the next middleware or route handler
         return next();
     } else {
