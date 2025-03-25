@@ -7,7 +7,7 @@ const { retrieveUserByEmail, createNewUser } = require("../controllers/user");
 const User = require("../models/user");
 const { redirectIfAuthenticated } = require("../middleware/auth");
 const { createHubspotContact } = require("../controllers/hubspot");
-
+const { deleteUserSessions } = require("../lib/sessionUtils");
 router.post("/local", redirectIfAuthenticated, (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
@@ -33,6 +33,7 @@ router.post("/local", redirectIfAuthenticated, (req, res, next) => {
           error: "Login session error. Please try again.",
         });
       }
+     req.session.userId = user._id.toString();
       return res.redirect("/projects"); // Redirect to dashboard after successful login
     });
   })(req, res, next);
@@ -141,72 +142,78 @@ router.post("/forgot-password", redirectIfAuthenticated, async (req, res) => {
 });
 
 // Render Reset Password Page
-router.get("/reset-password/:token", redirectIfAuthenticated, async (req, res) => {
-  const { token } = req.params;
+router.get(
+  "/reset-password/:token",
+  redirectIfAuthenticated,
+  async (req, res) => {
+    const { token } = req.params;
 
-  try {
-    const user = await User.findOne({
-      resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() },
-    });
-
-    if (!user) {
-      return res.status(400).render("pages/auth/resetPassword", {
-        page: { title: "Reset Password" },
-        error: "Invalid or expired token.",
+    try {
+      const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() },
       });
-    }
 
-    res.render("pages/auth/resetPassword", {
-      page: { title: "Reset Password" },
-      token,
-      error: null,
-    });
-  } catch (err) {
-    console.error("❌ Reset Password Route Error:", err);
-    res.status(500).send("Internal Server Error - Something went wrong.");
-  }
+      if (!user) {
+        return res.status(400).render("pages/auth/resetPassword", {
+          page: { title: "Reset Password" },
+          error: "Invalid or expired token.",
+        });
+      }
+
+      res.render("pages/auth/resetPassword", {
+        page: { title: "Reset Password" },
+        token,
+        error: null,
+      });
+    } catch (err) {
+      console.error("❌ Reset Password Route Error:", err);
+      res.status(500).send("Internal Server Error - Something went wrong.");
+    }
 });
 
-// Handle New Password Submission
-router.post("/reset-password/:token", redirectIfAuthenticated, async (req, res) => {
-  const { token } = req.params;
-  const { password } = req.body;
+router.post(
+  "/reset-password/:token",
+  redirectIfAuthenticated,
+  async (req, res, next) => {
+    const { token } = req.params;
+    const { password } = req.body;
 
-  try {
-    const user = await User.findOne({
-      resetPasswordToken: token,
-      resetPasswordExpires: { $gt: Date.now() },
-    });
+    try {
+      const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() },
+      });
 
-    if (!user) {
-      return res.status(400).render("pages/auth/resetPassword", {
+      if (!user) {
+        return res.status(400).render("pages/auth/resetPassword", {
+          page: { title: "Reset Password" },
+          error: "Invalid or expired token.",
+        });
+      }
+
+      user.password = password;
+      user.resetPasswordToken = null;
+      user.resetPasswordExpires = null;
+      await user.save();
+
+      await deleteUserSessions(user._id);
+
+      req.logout(function (err) {
+        if (err) return next(err);
+        req.session.destroy(() => {
+          res.redirect("/auth/local");
+        });
+      });
+    } catch (err) {
+      console.error("❌ Reset Password Submission Error:", err);
+      res.status(500).render("pages/auth/resetPassword", {
         page: { title: "Reset Password" },
-        error: "Invalid or expired token.",
+        error: "Internal server error. Please try again later.",
       });
     }
-
-    user.password = password;
-    user.resetPasswordToken = null;
-    user.resetPasswordExpires = null;
-
-    await user.save();
-
-    req.logout(function (err) {
-      if (err) return next(err);
-    
-      // ✅ Destroy all active sessions after reset
-      req.session.destroy(() => {
-        res.redirect("/auth/local"); // Redirect to login page
-      });
-    });
-  } catch (err) {
-    console.error("❌ Reset Password Submission Error:", err);
-    res.status(500).render("pages/auth/resetPassword", {
-      page: { title: "Reset Password" },
-      error: "Internal server error. Please try again later.",
-    });
   }
-});
+);
+
 
 module.exports = router;

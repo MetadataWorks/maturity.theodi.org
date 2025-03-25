@@ -69,9 +69,9 @@ app.use(
       mongoUrl: process.env.MONGO_URI, // Your MongoDB connection string
       dbName: process.env.MONGO_DB, // Your MongoDB database name
       collectionName: "sessions", // Name of the collection to store sessions
-      crypto: {
-        secret: process.env.SESSION_SECRET, // Encrypt session data
-      },
+      // crypto: {
+      //   secret: process.env.SESSION_SECRET, // Encrypt session data
+      // },
     }),
 
     cookie: {
