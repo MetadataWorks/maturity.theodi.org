@@ -29,7 +29,7 @@
     "node-cron": "^3.0.3",
     "node-fetch": "^3.3.2",
     "node-html-parser": "^6.1.13",
-    "nodemailer": "^6.10.0",
+    "nodemailer": "^7.0.7",
     "nodemon": "^3.1.0",
     "openai": "^4.56.2",
     "passport": "^0.6.0",
